@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#d1{
+				width:100px;
+				height:100px;
+				border:1px solid #000;
+				/*调用动画*/
+				/*animation-name:scroll;
+				animation-duration:5s;
+				animation-timing-function:linear;
+				animation-iteration-count:infinite;
+				animation-direction:alternate;*/
+				animation:scroll 2s linear infinite;
+				animation-fill-mode:backwards;
+			}
+			#d1:hover{
+				animation-play-state:paused;
+			}
+			@keyframes scroll{
+				/*状态1：左上角，背景颜色为红色*/
+				0%{
+					margin-top:0px;
+					margin-left:0px;
+					background-color:red;
+				}
+				/*状态2：右移500px，背景颜色绿色*/
+				25%{
+					margin-top:0px;
+					margin-left:500px;
+					background-color:green;
+				}
+				/*状态3：下移500px，背景颜色蓝色*/
+				50%{
+					margin-top:500px;
+					margin-left:500px;
+					background-color:blue;
+				}
+				/*状态4：左移500px, 背景颜色黄色*/
+				75%{
+					margin-left:0px;
+					margin-top:500px;
+					background-color:yellow;
+				}
+				/*状态5：上移500px，背景颜色红色*/
+				100%{
+					margin-top:0px;
+					margin-left:0px;
+					background-color:red;
+				}
+			}
+			@-webkit-keyframes scroll{
+				/*状态1：左上角，背景颜色为红色*/
+				0%{
+					margin-top:0px;
+					margin-left:0px;
+					background-color:red;
+				}
+				/*状态2：右移500px，背景颜色绿色*/
+				25%{
+					margin-top:0px;
+					margin-left:500px;
+					background-color:green;
+				}
+				/*状态3：下移500px，背景颜色蓝色*/
+				50%{
+					margin-top:500px;
+					margin-left:500px;
+					background-color:blue;
+				}
+				/*状态4：左移500px, 背景颜色黄色*/
+				75%{
+					margin-left:0px;
+					margin-top:500px;
+					background-color:yellow;
+				}
+				/*状态5：上移500px，背景颜色红色*/
+				100%{
+					margin-top:0px;
+					margin-left:0px;
+					background-color:red;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+	</body>
+</html>

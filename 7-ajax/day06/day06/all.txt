@@ -1,0 +1,205 @@
+今天学习的内容
+1:复习知识重点
+  php mysql CRUD操作的注意事项，返回值
+	http
+2:完成作业
+3:ajax GET/POST  --重点
+  ajax 示例      --重点&难点
+#-----------------------------------
+1:复习知识重点
+  php mysql CRUD操作的注意事项，返回值
+  DML (insert/update/delete)
+	$sql = "insert ....";
+ 	$result = mysqli_query($conn,$sql);
+  $result boolean{true/false}
+  DQL (select)
+	$sql = "select ...";
+	$result = mysqli_query($conn,$sql);
+	$result 结果集{Object}
+	$row = mysqli_fetch_assoc($result);
+	一行$row[name]
+      $row[id]
+	http
+	http 协议:功能传送网页{html/
+	          css/js/image/mp3}
+  http 请求{客户端浏览器发送服务器}
+	http 响应{服务器发送客户端浏览器}
+  请求消息{启始行/请求头/请求主体}
+	8种请求方式
+  响应消息{启始行/响应头/响应主体}
+  响应状态码
+	1xx  消息
+	2xx  正确 200 OK
+	3xx  重定向 301
+	            304
+	4xx  404  Not Found
+	5xx  500 服务器内部错误
+2:完成作业
+  2.1:删除新闻
+  2.2:添加新闻
+3:ajax GET/POST  --重点
+  2002 google AJAX
+	AJAX=html/css/js/dom/xml/http
+  目标:实现在无刷新无提交的情况下
+	     局部更新.
+  核心对象:XMLHttpRequest
+	作用:向web服务器发起异步请求,
+	     并且接收返回响应消息.
+  哪个请求同步:
+	1:地址栏输入url回车向服务器发送请求
+	2:<a href='1.php'></a>
+	3:表单提交
+	4:js location.href = '1.php'
+
+  图示:ajax异步请求.jpg
+   
+  ***XHR对象常用成员 --- 难点
+	1：创建 new XMLHttpRequest();
+  2: 成员属性
+	   2.1 readyState:
+		 作用:表示XHR对象当前状态,不能手工赋值
+		 其值会随请求-响应过程进行自动改变.
+		 可取值.
+		 0 UNSENT  请求信息尚未发送
+		 1 OPENED  XHR己经打开到WEB服务器连接
+		 2 HEADERS_RECEIVED XHR己经接到服务器响
+		           应消息头部.
+		 3 LOADING XHR正在加载响应消息主体
+		 4 DONE    XHR 接收完成响应消息
+    XHR状态图.jpg
+
+		2.2 status
+		    响应消息状态码, readyState 变为2
+        200 404
+		2.3 responseText
+		    响应文本，响应消息主体,
+				xht.readyState为3后开始接收文本.
+				4不再改变
+  3: 成员方法
+     open(method,url,isAsyn); 打开服务器连接
+		 method 请求方法 GET POST
+		 url    请求服务器程序地址
+		 isAsyn 是否是异步请求   true/false
+
+		 send() 把请求消息发送给web服务器
+		 POST 值拼在参数中
+		 GET  null
+	4: 成员事件
+     onreadystatechange: 
+		 XHR.readyState的值每次改变都会触发
+		 该事件.
+
+
+  ***XHR发起请求消息的步骤---重点
+	
+	1:创建XHR对象
+	  var xhr = new XMLHttpRequest();
+	2:监听XHR状态的改变
+	  xhr.onreadystatechange = function(){
+		  **如果readyState==4
+			**如果status==200
+			**接收responseText
+		}
+	3:打开连接到web服务器
+	  xhr.open(method,url,是否为异步);
+	4:发送请求消息
+	  xhr.send(请求主体);
+	
+
+
+	news/reg.html   注册
+	news/reg_do.php 处理注册表单
+  注册流程.jpg
+  中午:完成reg.html
+
+  #-------------------------------
+	ajax 示例      --重点&难点
+  
+	示例一:练习内容成绩录入
+	1:使用XHR对象发起异步请求--成绩录入
+    <h1>成绩录入系统</h1>
+		学生姓名[   ] 
+		语文成绩[   ]
+		{保存成绩}
+  要求:点击"保存成绩"按钮,发起异步请求
+	把数据提交服务器php
+	服务器返 "success" 或"error"
+	提示文字
+	客户端弹出 alert("保存成功/失败");
+  2:实现步骤
+	  15:22---15:32
+	  2.1:创建 
+		t_score表 
+		id       int 主键
+		name     varchar(25)
+		chinese  double(5,2);
+
+		15:32---15:50
+		2.2:score_add.html 显示输入框
+		   a:简单创建表单
+		2.3:score_add.php  接收客户数据 insert
+       b:完成
+			 http://127.0.0.1/day06/score_add.php
+			 ?name=tom&chinese=99.09
+			 c:ajax
+       解决问题 submit button区别
+			 a:submit 点击同步提交
+			 提交:1:将参数传递服务器程序
+			      2:将html刷新，所有填数据清空
+  
+  3：如何发送post请求
+	解决三步
+	  3.1 xhr.open('POST','login.php',true);
+		注意第一个参数
+		    第二个参数 url没有?
+		3.2 xhr.setRequestHeader('content-type',
+		'application/x-www-form-urlencoded');
+		post请求中参数要强行转换编码
+		3.3 xhr.send('name=tom&pwd=123');
+		post请求参数保存在请求主体中
+    score_add_post.html
+
+
+    当当图书项目  17:31--17:45
+		1:编写SQL,数据库名dangdang
+		          数据表名t_book
+							(id,name,price,putDate)
+              添加20行记录
+    2:编写 book_add.html 
+		  提供二个输入框一个button按钮
+			点击button后发起异步POST请求，
+			将用户输入添加数据库中,
+			提示成功失败
+    3:编写 book_add_do.php
+		  接收客户参数保存数据库
+			输出 success error
+    4:编写 book_search.html
+		       book_search_do.php
+     [js     ]
+		 <li>js指南</li>
+		 <li>js大全</li>
+		接收客户提交书名关键字
+		返回包含所有包含该关键字所有
+		完整书名;
+
+    服务器响应数据类型
+		1:success error 纯文本
+		  echo "success";
+    服务器程序php开头加第一句
+		header("Content-Type:text/plain;
+		charset=utf-8");
+		2:<li>css大全</li>
+		  <li>css指南</li>
+			echo "<li>css大全</li>";
+    服务器程序php开头加第一句
+		header("Content-Type:text/html;
+		charset=utf-8");
+
+    ajax:接收
+		xhr.responseText;
+
+
+
+		作业:
+		1:book_add.html    完成
+		2:book_search.html 完成

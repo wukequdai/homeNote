@@ -1,0 +1,42 @@
+正课: 
+1. 什么是DOM: 
+2. ***DOM树
+3. ***查找:
+    遍历:
+    按HTML查找:
+    按选择器查找:
+
+1. 什么是DOM:
+   原生js: ECMAScript标准(核心语法)
+              +DOM标准(专门操作网页内容的API) 100%兼容
+              +BOM没标准(专门操作浏览器窗口的API)
+   DHTML: 一切实现动态网页效果的技术的统称
+      DHTML=html+css+js
+
+   鄙视: HTML XHTML DHTML XML
+      HTML: 专门编写网页内容的语言
+      XHTML: 只是更严格的HTML语言标准
+      DHTML: 一切实现动态网页效果的技术的统称
+      XML: 专门存储结构化数据的标记语言: 
+               语法同HTML,只是可自定义标签名
+        <student>
+          <name>林心如</name>
+          <math>81</math>
+        </student>
+        在前端逐渐被JSON代替: 
+        JSON: JavaScript Object Notation
+        '{"name":"林心如","math":81}'
+
+   DOM: document object model
+     对网页内容: 查， 改，增，删，
+       
+
+
+
+
+
+
+
+
+
+ 

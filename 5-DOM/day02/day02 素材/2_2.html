@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>读取并修改元素的内容</title>
+<meta charset="utf-8" />
+<style>
+	select{width:100px;height:85px;}
+	div{display:inline-block;width:50px}
+</style>
+
+</head>
+<body>
+	<!--假设两个select元素，分别保存备选地区列表和选中地区列表
+实现两选择框之间选项的交换：
+    包括：当个选中项左右移动
+              多个选中项左右移动
+              全左移和全右移
+要求：两个select中的地区都要按照名称首字母排序
+-->
+	<select id="unsel" size="5" multiple>
+		<option>Argentina</option>
+		<option>Brazil</option>
+		<option>Canada</option>
+		<option>Chile</option>
+		<option>China</option>
+		<option>Cuba</option>
+		<option>Denmark</option>
+		<option>Egypt</option>
+		<option>France</option>
+		<option>Greece</option>
+		<option>Spain</option>
+	</select>
+	<div>
+<button onclick="move(this)">&gt;&gt;</button>
+<button onclick="move(this)">&gt;</button>
+<button onclick="move(this)">&lt;</button>
+<button onclick="move(this)">&lt;&lt;</button>
+	</div>
+	<select id="sel" size="5" multiple>
+	</select>
+	<script>
+		//查找id为unsel的元素保存在变量unsel中
+		//查找id为sel的元素保存在变量sel中
+		//新建两个变量: 
+			//unselCts保存所有未选中的国家名称: 
+			  //初始化为unsel的内容切割后的国家名称数组
+		var unselCts=
+					unsel.innerHTML
+							 .replace(
+								 /^\s*<option>|<\/option>\s*$/g,"")
+							 .split(/<\/option>\s*<option>/)
+				,
+				selCts=[];
+		
+		function move(btn){
+			//判断btn的内容: 
+				//是>>: 
+					//将unselCts数组拼接到selCts数组结尾，再保存回selCts中
+					//清空unselCts
+					break;
+				//是<<:
+					//将selCts数组拼接到unselCts数组结尾，再保存回unselCts中
+					//清空selCts
+					break;
+				//是>:
+				//是<:
+			//(判断结束)
+			//将unselCts和selCts都按首字母升序排列
+			//调用updateView,将unselCts数组更新到unsel元素
+			//调用updateView,将selCts数组更新到sel元素
+		}
+		//将一个数组更新到select
+		function updateView(sel,arr){
+			//arr拼接为option元素的字符串opts
+			//设置sel的内容为opts
+		}
+	</script>
+</body>
+</html>

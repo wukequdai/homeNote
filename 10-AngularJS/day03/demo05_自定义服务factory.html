@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<button ng-click="funcClick()">clickMe</button>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  //通过factory方法去创建服务
+  app.factory('$output',function(){
+    return {
+      print:function(){
+        console.log('这是我们自定义的服务');
+      }
+    }
+  })
+
+  app.controller('myCtrl', function ($scope,$output) {
+      $scope.funcClick = function(){
+        $output.print();
+      }
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

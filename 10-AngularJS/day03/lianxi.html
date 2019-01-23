@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+</head>
+<body ng-controller="myCtrl">
+
+<table>
+  <thead>
+  <tr>
+    <th>选中</th>
+    <th>名称</th>
+    <th>生日</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="obj in list">
+      <td>
+        <input type="checkbox"
+               ng-click="funcClick()"
+               ng-checked="selectAll"
+               ng-model="obj.isSelected"/>
+      </td>
+      <td>
+        {{obj.name}}
+      </td>
+      <td>
+        {{obj.birthday}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<input
+  ng-click="changeAll()"
+  ng-checked="select"
+  type="checkbox"
+  ng-model="selectAll"/> 全选或取消全选
+<br/>
+<button ng-click="checkStatus()">查看</button>
+
+<script>
+  var app = angular.module('myApp',['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+      $scope.list = [
+        {name:'King',birthday:'2011-11-11',isSelected:false},
+        {name:'Golden',birthday:'2012-12-12',isSelected:false}
+      ]
+
+      //全选操作时，将数组中的模型数据改成和全选一样的结果
+      $scope.changeAll  = function(){
+        angular.forEach($scope.list,function(value,key){
+          value.isSelected = $scope.selectAll;
+        })
+      }
+
+      //在这个函数中，判断数组中的isSeleted是否为true，是-》全选
+      // 否-》取消选中
+      $scope.funcClick = function(){
+          $scope.select = true;
+          angular.forEach($scope.list,function(value,key){
+              $scope.select = $scope.select && value.isSelected;
+          })
+      }
+
+      $scope.checkStatus = function(){
+          var result = "";
+          angular.forEach($scope.list,function(value,key){
+            if(value.isSelected)
+            {
+              result += (value.name+"被选中了");
+            }
+          })
+          if(result == "")
+          {
+            result = "都未选中"
+          }
+          alert(result);
+
+      }
+
+  })
+
+</script>
+
+</body>
+</html>

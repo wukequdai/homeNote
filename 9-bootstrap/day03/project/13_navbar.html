@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <style>
+    body {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+<!--导航条包含容器-->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!--部分1：导航条头部 = 品牌商标 + 汉堡包按钮-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TARENA</a>
+      <a class="navbar-toggle" href="#my-menu" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+
+    <!--部分2：导航条折叠部分 = 导航 + 超链接 + 按钮 + 文本 + 表单 ...-->
+    <div id="my-menu" class="collapse navbar-collapse">
+      <!--导航条中的导航/菜单-->
+      <!--<ul class="nav navbar-nav navbar-right">-->
+      <ul class="nav navbar-nav">
+        <li><a href="#">首页</a></li>
+        <li class="active"><a href="#">新闻</a></li>
+        <li class="dropdown">
+          <a data-toggle="dropdown" href="#">产品大全<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">冰箱</a></li>
+            <li><a href="#">洗衣机</a></li>
+            <li class="divider"></li>
+            <li><a href="#">奶粉</a></li>
+            <li><a href="#">尿不湿</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!--导航条中的超链接-->
+      <a class="navbar-text navbar-link navbar-right" href="#">注册</a>
+      <!--导航条中的文本-->
+      <span class="navbar-text navbar-right">|</span>
+      <!--导航条中的按钮-->
+      <a class="btn btn-success navbar-btn navbar-right" href="#">登录</a>
+      <!--导航条中的表单-->
+      <form class="navbar-form navbar-right">
+        <div class="form-group has-feedback">
+          <label class="sr-only" for="kw">搜索关键字：</label>
+          <input class="form-control" id="kw" placeholder="产品搜索">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--导航条包含容器-->
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container">
+    <!--部分1：导航条头部 = 品牌商标 + 汉堡包按钮-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.png" style="margin-top: -16px;">
+      </a>
+      <a class="navbar-toggle" href="#">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <!--部分2：导航条折叠部分-->
+  </div>
+</div>
+
+<div class="container">
+  <h1>JS插件——折叠</h1>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+  <h3>折叠组件应用2：响应式导航条</h3>
+
+</div>
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 左侧
+</button>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi dolore itaque nobis nostrum odio officia quia ratione, rem veritatis voluptatibus! Ad amet at beatae et minima molestias obcaecati voluptatem! Consequatur!</p>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootlint.js"></script>
+
+<script>
+  bootlint.showLintReportForCurrentDocument([]);
+</script>
+<script>
+  $('#myBtn').dropdown();
+</script>
+</body>
+</html>

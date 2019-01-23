@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<a name="#top"></a>
+		<h1>Welcome</h1>
+		<ul>
+			<li><a class="curr" href="http://tmooc.cn">go to tmooc</a></li>
+			<li><a href="http://tedu.cn" target="_blank">go to tedu</a></li>
+		</ul>
+		<script>
+			var names=["锄禾","白鹭"];
+			        //锄禾|白鹭|日日|明月
+			var str="锄禾日当午，一行白鹭上青天，床前明月光，日日思君不见君";
+											//根据数组内容动态生成正则
+			var reg=new RegExp(names.join("|"),"g");
+			console.log(str.match(reg));
+
+			//查找每个关键词的内容和位置
+			var str="No zuo no die,No can no bibi";
+			var reg=/no/ig;
+			var arr=null;
+			while((arr=reg.exec(str))!=null){
+				console.log(
+					"在位置"+arr.index+"发现敏感词"+arr[0]);
+				console.log("下次从"+reg.lastIndex+"开始");
+			}
+			
+			var html='<a name="#top"></a><h1>Welcome</h1><ul><li><a class="curr" href="http://tmooc.cn">go to tmooc</a></li><li><a href="http://tedu.cn" target="_blank">go to tedu</a></li></ul>';
+			var reg=/<a\s+[^>]*?href="([^"]*?)"/ig;
+			while(reg.exec(html)!=null){
+				console.log(RegExp.$1);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>在SVG中使用特效对象——渐变</h1>
+  <svg width="500" height="400">
+    <!--定义特效对象——define effects-->
+    <defs>
+      <!--定义个渐变特效对象-->
+      <linearGradient id="g1" x1="0" y1="0" x2="100%" y2="0">
+        <stop stop-color="#f00" offset="0"></stop>
+        <stop stop-color="#ff0" offset="50%"></stop>
+        <stop stop-color="#0f0" offset="100%"></stop>
+      </linearGradient>
+
+      <!--定义一个新的渐变对象-->
+      <linearGradient id="g2" x1="0" y1="0" x2="100%" y2="0">
+        <stop stop-color="red" offset="0%"></stop>
+        <stop stop-color="orange" offset="17%"></stop>
+        <stop stop-color="yellow" offset="33%"></stop>
+        <stop stop-color="green" offset="50%"></stop>
+        <stop stop-color="cyan" offset="67%"></stop>
+        <stop stop-color="blue" offset="83%"></stop>
+        <stop stop-color="purple" offset="100%"></stop>
+      </linearGradient>
+    </defs>
+
+    <rect width="400" height="100" x="50" y="50" fill="url(#g1)"></rect>
+    <rect width="400" height="100" x="50" y="200" fill="transparent" stroke="url(#g1)"></rect>
+
+    <text y="380" font-size="70" fill="url(#g2)">达内科技2017</text>
+  </svg>
+</body>
+</html>

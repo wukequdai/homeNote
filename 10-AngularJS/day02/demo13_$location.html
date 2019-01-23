@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<p>{{count}}</p>
+<p>{{url}}</p>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($location,$scope) {
+    $scope.count = 10;
+
+    $scope.url = $location.absUrl();
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style type="text/css">
+		.container{position:relative;}
+		.circle{
+			width:100px;
+			height:100px;
+			border:2px solid #aaa;
+			border-radius:50px;
+			position:absolute;
+			background:#faf;top:0
+		}
+	</style>
+ </head>
+ <body>
+	<h1>练习：jQuery万能动画函数</h1>
+	<div class="container">
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+		<div class="circle"></div>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		var width=100;
+		//为每个圆的下标
+		$(".circle").css("left",function(i){
+			return i*width
+		}).click(function(){
+			var left=parseFloat($(this).css("left"))
+			$(this)
+				.css("zIndex",10)//放大时不被遮挡
+				.animate({
+				width:200,height:200,opacity:0,
+				borderRadius:100,
+				top:-50,left:left-50,
+			},3000,function(){$(this).hide()})
+		});
+
+	</script>
+ </body>
+</html>

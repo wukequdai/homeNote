@@ -1,0 +1,150 @@
+一、模块化设计
+
+ng的四大特征：
+采用MVC--》 MVVM （viewModel） （视图中通过绑定的方式绑定了数据到视图）
+
+双向数据绑定：方向1（数据-》视图） 方向2（视图用户的操作-》数据 ngModel）
+
+依赖注入：将需要用到的依赖，在创建对象的时候写在参数列表中，ng的注入器将会从服务列表中去定位和创建对应的实例，就可以直接去使用了
+
+模块化设计：封装 重用
+
+
+1、模块化基础知识
+有多个模块时，如果要在一个模块中 调用其他模块所提供的一些对象，解决方案：在创建模块时，在依赖列表指定需要调用的模块的名称
+
+ var myModule02 =
+    angular.module('myModule02',['myModule01']);
+
+一个ng的模块 可以包含哪些组件？
+控制器
+自定义的指令
+服务
+filter/function/...
+
+2、路由模块 ngRoute
+
+ng是用来实现数据操作比较频繁的SPA 。
+
+SPA 
+使用ngRoute模块来实现SPA
+
+SPA的工作原理：
+①在地址栏中拿到地址，解析完整的html页面，解析后边路由地址 inbox
+②在路由词典中 去查找路由地址所对应的信息 tpl/inbox.html
+③发起异步请求，请求指定的页面，将指定的页面插入当前的DOM树
+
+
+具体实现方式：
+1、创建完整的页面，引入angular.js 以及 angular-route.js
+2、在创建模块的时候，指定依赖于ng和ngRoute
+3、在完整的页面中 需要指定一个容器 用来盛放代码片段 ngView
+4、创建模板页面
+5、配置路由词典
+$routeProvider
+ .when('/路由地址'，{路由信息})
+ .otherwise({redirectTo:'/路由地址'})
+6、测试
+如果地址栏中的路由地址，能够显示指定的代码片段，路由词典配置ok
+
+
+练习：2个代码片段 login.html register.html
+默认显示login
+alt+f2
+
+
+3、spa页面跳转的方式
+①直接修改地址栏
+②超链接 <a  href='#/路由地址'></a>
+③js（借助于$location）
+$location.path('/路由地址');
+
+设置控制器的时候，两种方式：
+①ng-controller
+②在配置路由信息的时候 去设置controller
+
+练习：login register main
+login 
+---a(没有账号去注册)--》register
+---button(登录到主页面)--》 main
+
+register
+---a(注册完，去登录) -->login
+
+main
+---button(退出登录)--》login
+
+注意：ng 页面的跳转，将跳转的方法 单独放在一个控制器中，然后就将这个控制器给 ngView的父元素（body）
+
+重复使用的东西 封装--》重用
+
+
+4、传参
+
+start a(点击跳转到结束页面，100)
+  end（接收到参数并显示在视图中）
+
+①发送 接收参数
+明确发送方和接收方
+start就是发送方
+end就是接收方
+②配置接收方的路由
+.when('/end/:num',{	templateUrl:'tpl/end.html' 
+})  
+$routeParams.num
+③发送参数
+***.html#/myEnd/2  <a href="#/myEnd/2"> $location.path('/myEnd/2')
+
+练习：
+创建一个完整manager.html
+check.html  a(去支付)->pay.html 传一个20，
+pay.html 接收到20 ，并显示在页面中； button（确认下单） 点击跳转到send
+send.html a（查看商品）->check.html
+
+
+4、ngAnimate 动画模块
+①引入js
+② 创建模块 指定依赖ng ngAnimate
+③使用动画模块
+ng-leave  准备离开 ng-leave-active 已经离开
+ng-enter 开始进入  ng-enter-active 已经进入
+
+
+5、表单验证
+注意点：
+①
+
+$pristine 是否未操作过
+$dirty ：是否操作过
+$valid 验证是否通过
+$invalid
+ 
+
+$error 这个是对象
+email 
+max 
+maxlength 
+min 
+minlength 
+number 
+pattern 
+required 
+url 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

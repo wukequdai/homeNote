@@ -1,0 +1,77 @@
+正课:
+1. BOM:
+  window
+    打开关闭窗口
+    窗口大小和窗口位置
+****定时器: 
+
+1. BOM: Browser Object Model
+      专门操作浏览器窗口的API——没有标准, 有兼容性问题
+    浏览器对象模型:
+    window: 代表整个窗口
+         2个角色: 1. 代替global成为全局作用域对象
+                       2. 封装所有DOM API和BOM API
+    history: 封装当前窗口打开后，成功访问过的历史url记录
+    navigator: 封装浏览器配置信息
+    document: 封装当前正在加载的网页内容
+    location: 封装了当前窗口正在打开的url地址
+    screen: 封装了屏幕的信息
+    event: 定义了网页中的事件机制
+
+打开和关闭窗口: 
+   1. 在当前窗口打开新链接，允许后退:
+       html: <a href="url"
+       js: /*window.*/open("url","_self")
+   2. 在当前窗口打开新链接，禁止后退: 
+       js:
+   3. 在新窗口打开新链接，可重复打开多个:
+       html: <a href="url" target="_blank"
+       js: open("url"/*,"_blank"*/)
+   4. 在新窗口打开新链接，只能打开一个:
+       html: <a href="url" target="?"
+       js: open("url","?")
+
+    每个窗口在内存中都有一个name属性
+       (自己不要起变量名为name)
+    name属性是内存中唯一标识一个窗体的名称
+    浏览器规定: 相同name的窗口只能打开一个
+                      后打开的会替换先打开的
+    何时指定name: 
+       a元素的target属性中写的就是新窗口的name属性
+       open()方法的第二个参数，也是新窗口的name属性
+
+    name属性可自定义，也可使用预定义值: _blank  _self ....
+
+窗口大小和窗口位置: 
+窗口大小: 
+   获取当前窗口大小:
+       完整窗口大小: window.outerWidth/outerHeight
+　　文档显示区大小: window.innerWidth/innerHeight
+   设置窗口大小: 
+       1. 在打开窗口时: 
+          var pop=window.open("url","name",config);
+          其中:config="left=?,top=?,width=?,height=?"
+                                                      文档显示区的大小
+          返回值: 返回弹出窗口的window对象
+             比如: pop->就是小窗口的window
+       2. 修改已经打开的窗口大小: 
+          .resizeTo(width,height): 修改到指定大小
+                          完整大小
+          .resizeBy(width增量,height增量): 让窗口增大多少
+        强调: 只能修改在弹出时就已经修改大小的窗口
+                不能修改默认全屏的当前窗口
+窗口位置: 
+   获取窗口相对于屏幕左上角的位置:
+       window.screenLeft/screenTop
+   修改已经打开的窗口位置: 
+       moveTo(left,top);
+       moveBy(left的增量,top的增量)
+
+   练习: 
+     屏幕总大小: screen.width/height
+        可用大小: screen.availWidth/availHeight
+                       =总大小-任务栏的宽/高
+
+
+
+

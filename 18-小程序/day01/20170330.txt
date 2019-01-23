@@ -1,0 +1,191 @@
+1.小程序（2）
+  魏晓武  QQ：3560501078  动态知识 
+2.小程序:镀金
+  web前端：ajax（） 后端：数据操作后端（页面 美工 app 小程序）
+3.小程序 Why
+  原生app  webapp      小程序
+  QQ           百度 JD       摩拜单车
+
+@小 1M
+@内嵌程序 无需安装 无需卸载
+@占用内存少
+@迭代方便
+@ android ios  
+     webapp html5 js 打包
+    小程序     wxml  js
+
+4.小程序 What
+  手机 微信-我-设置-关于微信 6.5.4
+                发现栏目- 京东-小程序-搜索 
+  
+  即用即卸载的应用
+  小
+  宿主是微信  -- 宿主 浏览器  node.js  微信
+  wxml  wxss js json
+
+
+5.小程序 How  
+   记事本    
+   editplus dw webstorm 
+   微信开发者工具   需要联网
+   open.weixin.qq.com
+北京区  浏览器中输入http://172.163.0.148 下载软件
+远程区  ftp1611 小程序 day01 
+5.1打开软件-出现二维码-选择微信小程序-添加程序-无APPID 名字abcd
+路径  e:/abcd
+
+5.2软件界面
+    编辑栏目  编写代码
+    调试栏目  调错
+    项目栏目  发布
+5.3 配置文件 
+  页面  pages/index/index.js  json wxml wxss
+  页面  pages/logs/ logs.js  json wxml wxss
+  全局配置  app.js   app.json   app.wxss  
+   
+  js          ====js
+  json     ====
+  wxml   ====html
+  wxss    ====css
+
+wx   ml  markup language
+
+5.4 app.json  全局配置文件
+  "pages":[
+      "pages/index/index",
+      "pages/login/login",
+      "pages/logs/logs"
+    ]
+
+"window"键 状态栏 样式
+"tabBar"键 下面选项卡
+
+   pages/images/图片
+
+"networkTimeout" 超时时间的设置
+"debug" 调试状态
+
+
+  xiao.rar 帮助手册
+ json  不要写注释  字符串 
+{
+ "dd":34,
+ "dd":"df",
+ "dkdjfj":"df"
+}
+ js  对象区别
+
+{
+ dd:34,  /*fdfsd*/
+ dfd:546
+}
+
+5.5app.js  
+ App({
+  onLaunch:function(){  加载1次 },
+  onShow:function(){  出来 频率高},
+  onHide:function(){   隐藏 频率高},
+  onError:function(){   出错},
+  version:"1.0.2",
+  kk:function(){  }//供内页使用的数据和方法
+ })
+
+如果 页面级别的js文件想调用全局app.js 里面的变量和方法
+需要 页面级别的js文件中第一句话写 var a=getApp();
+  a.version
+
+App({
+ 一堆的事件，
+ 全局方法和变量
+})
+
+
+ window.alert(3)
+小程序中 没有window  document
+               jquery zepto依赖DOM
+ console
+
+5.6app.wxss flex 全局css 
+     微信小程序无需引入css 全局样式表 app.wxss
+                                           会自动的寻找同名wxss
+ xxx.wxml 页面会自动link两个
+
+ flex:流体盒子  浮动的问题
+ 父子
+   父属性  :display:flex;
+   儿子属性: order:1
+
+
+绿色代表的padding
+蓝色代表 width height
+黄色   margin
+黑灰色  border
+
+5.7 页面级别：
+ xxx
+  xxx.wxml  html  
+     view div  
+     text span 
+     iamge img
+   ...很多 组件
+  xxx.wxss
+    div{}
+   image{}
+   view{}
+  .abc{}
+  .mn .abc{}
+  样式属性完全一样
+
+  xxx.js    自动通过script标记插入到同名wxml文件中
+  var a=getApp();//
+    Page({
+       data:{
+      mn:23
+    }//全局变量 页面
+       
+       事件函数
+      onXXX  页面
+       kk:34
+    })
+
+{{23}}
+  文字 不变的 写死
+         动态变化的值  ng
+
+5.7.1不同点： 修改innerHTML   无DOM  甚至连event上都没有
+ 只有 target currentTarget
+app.js {数据清空}
+app.wxss padding:0;
+xxx.wxml   删掉view class="container"内部的所有
+xxx.wxss 全删掉
+xxx.js  {}
+  this.setData({
+    vvv:"李四"
+  })
+
+5.7.1不同点：显示隐藏
+  t.style.display="none"
+  view style="translate:rotate(90deg);"
+   hhh:"90"
+ 定时器  定位 Date setData()
+5.7.1不同点：如何获取值
+  
+点赞
+
+
+  xxx.json === 单页样式 大于 app.json
+     app.json window键
+ 6键
+
+
+文件组成 app.js json wxss
+ pages/xx/xx.js json wxss wxml
+ 不同点:DOM WINDOW
+    变化的值 wxml里面  形成ng变量    setData  
+作业:
+ jd首页--美团
+时钟
+
+
+
+

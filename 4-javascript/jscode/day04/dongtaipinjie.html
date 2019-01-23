@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=["床前","举头","低头"];
+		var str="床前明月光，举头地上霜，举头望明月，低头思故乡";
+		var reg=new RegExp(arr.join("|"),"g");
+		var names=str.match(reg);
+		console.log(String(names));
+		var eg=/^\d{6}$/;//6位数字
+		while(true){
+			var input=prompt("输入密码");
+			if(!eg.test(input)){
+				alert("输入有误")}
+			else
+				break;
+		}
+		document.write("验证通过");
+	</script>
+</body>
+</html>

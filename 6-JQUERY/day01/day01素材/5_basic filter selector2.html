@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>...</title>
+ <style>
+  #nav li:last-child{
+  /*#nav li:first-child
+    #nav li:nth-child(1/even/odd/2n/2n+1)
+    #nav li:only-child*/
+    /*border:1px solid red;*/
+  }
+ </style>
+</head>
+<body>
+  <!-- ul#nav>(li>ul>li*3)+(li>ul>li) -->
+  <ul id="nav">
+    <li>电影
+      <ul>
+        <li>星球大战</li>
+        <li>萌宠</li>
+        <li>海底总动员</li>
+      </ul>
+    </li>
+    <li>剧集<ul><li>鬼吹灯</li></ul></li>
+  </ul>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //var lis=document.querySelectorAll(
+      //"#nav li:last-child"
+    //);
+    //for(var i=0;i<lis.length;i++){
+      //lis[i].style.border="1px solid red";
+    //}
+    $("#nav li:last-child").css(
+      "border","1px solid red"
+    );
+  </script>
+</body>
+</html>

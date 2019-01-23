@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+	/*	"use strict";
+		var config={
+			ip:"123.123.0.456",
+			port:27014,
+			uname:"root",
+			db:"ENS"
+		}
+		Object.freeze(config);
+		config.port=888;//报错*/
+		/*var arr1=[1,2,4,6,7,8];
+		var arr2=[2,6,8,0,4];
+		console.log(
+			arr2.every(function(val,i,arr){
+				return i<arr2.length-1?val<=arr2[i+1]:ture;
+			})
+		);*/
+		//将arr中每个元素*2后放入新数组中，原数组不变
+		/*var arr=[1,2,3,4,5];
+		var enens=arr.map(function(val){
+			return val*2;
+		})
+		console.log(String(arr));
+		console.log(String(enens));*/
+		var arr=[1,2,3,4,5];
+		var enens=arr.filter(function(val){
+			return val%2==0;
+		});
+		var odds=arr.filter(function(val){
+			return val%2==1;
+		});
+		console.log(String(arr));
+		console.log(String(enens));
+		console.log(String(odds));
+	</script>
+</body>
+</html>

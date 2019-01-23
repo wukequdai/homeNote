@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar class="bar-calm">
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <ul class="list">
+    <li
+      ng-repeat="tmp in list"
+      class="item">
+      {{tmp}}
+    </li>
+  </ul>
+
+</ion-content>
+
+<ion-footer-bar class="bar-calm">
+  <button class="button button-small button-positive" ng-click="jumpToTop()">Top</button>
+  <button class="button button-small button-positive" ng-click="getNowPosition()">saveNowPos</button>
+  <button class="button button-small button-positive"
+          ng-click="ToPosition()">ToPostion</button>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope', '$ionicScrollDelegate',
+    function ($scope, $ionicScrollDelegate) {
+
+      $scope.list = [];
+      for (var i = 0; i < 100; i++) {
+        $scope.list.push(i);
+      }
+
+
+      $scope.jumpToTop = function () {
+        $ionicScrollDelegate.scrollTop(true);
+        //$ionicScrollDelegate.scrollBottom(); 滚动到底部
+      }
+
+      $scope.getNowPosition = function () {
+        var pos = $ionicScrollDelegate.getScrollPosition();
+        console.log(pos);
+      }
+
+        //滚动到20的时候，位置时1060.69
+      $scope.ToPosition = function () {
+        //滚动到指定的位置
+        $ionicScrollDelegate.scrollTo(0,1060,true);
+      }
+
+    }])
+
+</script>
+
+</body>
+</html>

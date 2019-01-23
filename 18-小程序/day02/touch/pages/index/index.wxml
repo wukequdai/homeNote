@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="abc" 
+    style="width:100%;  overflow:hidden;  height:300px; background-color:#0f0; position:relative;"
+      bindtouchstart="st"
+      bindtouchmove="mv"
+      bindtouchend="ed"
+    >
+
+      <view class="inner" 
+       style="width:10000000px; position:absolute; left:{{lf}}px; top:0; ">
+         <view>12</view>
+         <view>22</view>
+	 <view>32</view>
+	 <view>42</view>
+
+      </view>
+
+  </view> 
+</view>

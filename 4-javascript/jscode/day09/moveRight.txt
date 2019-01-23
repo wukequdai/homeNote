@@ -1,0 +1,36 @@
+moveRight:function(){//右移所有行
+		//为data拍照保存在before中
+		var before=String(this.data);
+		//遍历data中每一行
+		for(var r=0;r<this.RN;r++){
+			//调用moveRightInRow(r)
+			this.moveRightInRow(r);
+		}//(遍历结束)
+		//为data拍照保存在after中
+		var after=String(this.data);
+		if(after!==before){//如果before不等于after
+			this.randomNum();//随机生成一个数
+			this.updateView();//更新页面
+		}
+},
+moveRightInRow:function(r){//右移第r行
+		//c从CN-1开始,反向遍历r行，到>0结束
+			//找r行c列前一个不为0的位置prevc
+			//如果prevc是-1，就退出循环
+			//否则
+				//如果r行c列是0
+					//将r行prevc列的值赋值给r行c列
+					//将r行prevc列置为0
+					//c留在原地
+				//否则，如果r行c列的值等于r行prevc列的值
+					//将r行c列的值*2
+					//将r行prevc列的值置为0
+},
+getPrevInRow:function(r,c){
+		//查找r行c列左侧前一个不为0的位置
+		//prevc从c-1开始，反向遍历，到>=0结束
+			//如果r行prevc列不等于0
+				//返回prevc
+		//(遍历结束)
+		//返回-1
+}

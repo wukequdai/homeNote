@@ -1,0 +1,50 @@
+var adv={
+	DISTANCE:0,//总距离，就等于div的高
+	DURATION:2000,//总时间
+	STEPS:400,//总步数，建议DURATION/STEPS>=5ms
+	interval:0,steps:0,//时间间隔和步长
+	moved:0,//已经移动的步数
+	div:null,
+	WAIT:1000,
+	init(){//初始化动画的数据
+		//查找主角div
+		this.div=document.getElementById("msg");
+		//获得总距离（div计算后的高转换为浮点数）
+		this.DISTANCE=parseFloat(getComputedStyle(this.div).height);
+		//计算interval和step
+		this.interval=this.DURATION/this.STEPS;
+		this.step=this.DISTANCE/this.STEPS;
+		this.move(1);
+		this.div.children[0].onclick=function(){
+		//找到div下a绑定单击事件
+		if(this.timer==null)
+			this.move(-1);
+		}.bind(this);
+	},
+	move(dir){//上移
+		//启动周期性定时器每隔interval调用一次moveUpStep
+		this.timer=setInterval(this.moveStep.bind(this,dir),this.interval)
+	},
+	moveStep(dir){//移动一步
+		var bottom=parseFloat(//获得div的bottom
+			getComputedStyle(this.div).bottom
+		);
+		bottom+=dir*this.step;//将bottom+step
+		//将bottom设置回div
+		this.div.style.bottom=bottom+"px";
+		this.moved++;//将moved+1
+		if(this.moved==this.STEPS){//如果moved等于STEPS
+			//停止定时器，清空timer，mover，moved归0
+			clearInterval(this.timer);
+			this.timer=null;
+			this.moved=0;
+			if(dir==-1){//如果是下移
+				setTimeout(//就等待WAIT毫秒在调用move（1）
+					this.move.bind(this,1),this.WAIT)
+			}
+		}
+	}
+}
+adv.init();
+console.dir(adv);
+1893550340

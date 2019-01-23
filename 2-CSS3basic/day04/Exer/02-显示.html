@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#nav{
+				/*宽度，高度，背景颜色，水平居中对齐*/
+				width:990px;
+				height:40px;
+				background-color:#E64346;
+				margin:0 auto;
+			}
+			#nav p{
+				/*取消默认margin，宽度，高度，背景颜色*/
+				margin:0;
+				width:210px;
+				height:40px;
+				background-color:#CD2A2C;
+			}
+			#nav>p>a{
+				/*左浮动，高度，行高，文字：加粗，大小，颜色，取消下划线*/
+				float:left;
+				height:40px;
+				line-height:40px;
+				font-weight:bold;
+				font-size:14px;
+				color:#fff;
+				text-decoration:none;
+				padding-left:15px;
+			}
+			#nav>p>b{
+				/*右浮动，宽度，高度，背景，位置*/
+				float:right;
+				width:20px;
+				height:20px;
+				background:url(../Images/iconlist_2.png) no-repeat -65px 0;
+				margin:10px 10px 0 0;
+			}
+
+			#nav>p{
+				float:left;
+			}
+			#nav>ul{
+				float:left;
+				margin:0;
+				padding:0;
+				list-style:none;
+			}
+			#nav>ul li{
+				float:left;
+			}
+			#nav>ul li a{
+				/*宽度，高度，行高，文本：水平居中，大小，颜色，下划线，加粗*/
+				float:left;
+				width:100px;
+				height:40px;
+				line-height:40px;
+				text-align:center;
+				font-size:14px;
+				color:#fff;
+				text-decoration:none;
+				font-weight:bold;
+			}
+			#nav>ul li a:hover{
+				background-color:#BD2A2C;
+			}
+
+			#container{
+				width:990px;
+				min-height:200px;
+				margin:0 auto;
+			}
+
+			#cate_box{
+				margin:0;
+				padding:0;
+				list-style:none;
+
+				/*宽度，高度，背景颜色，左右下边框*/
+				width:210px;
+				min-height:400px;
+				background-color:#FAFAFA;
+				border:2px solid #CD2A2C;
+				border-top:none;
+				box-sizing:border-box;
+				/*上内边距*/
+				padding-top:5px;
+			}
+			#cate_box>li{
+				/*左内边距，上下内边距，宽度，下边框(白色)*/
+				padding:5px 0 5px 10px;
+				width:196px;
+				box-sizing:border-box;
+				border-bottom:1px solid #fff;
+				border-top:1px solid transparent;
+			}
+			#cate_box li:hover{
+				border-top-color:#ddd;
+				border-bottom-color:#ddd;
+				background-color:#fff;
+			}
+			#cate_box li>a{
+				color:#333;
+				text-decoration:none;
+				font-size:14px;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="nav">
+			<p>
+				<a href="#">全部商品分类</a>
+				<b></b>
+			</p>
+			<ul>
+				<li>
+					<a href="#">首页</a>
+				</li>	
+				<li>
+					<a href="#">服装城</a>
+				</li>	
+				<li>
+					<a href="#">食品</a>
+				</li>	
+				<li>
+					<a href="#">团购</a>
+				</li>	
+			</ul>
+		</nav>
+		<div id="container">
+			<ul id="cate_box">
+				<li>
+					<a href="#">图书、音像、数字商品</a>
+				</li>
+				<li>
+					<a href="#">家用电器</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

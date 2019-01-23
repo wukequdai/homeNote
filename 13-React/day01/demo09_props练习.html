@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var LabelComponent = React.createClass({
+      render:function(){
+        return <label>{this.props.lableName}</label>
+      }
+  })
+
+  var InputComponent = React.createClass({
+      render:function(){
+        return <input type="text"
+        placeholder={this.props.tips} />
+      }
+  })
+
+  var ButtonComponent = React.createClass({
+      handleClick:function(){
+        //console.log('btn is clicked');
+        this.props.clickHandle();
+        //this.props.btnName = "请登录";
+      },
+      render:function(){
+          return <button onClick={this.handleClick}>
+          {this.props.btnName}
+          </button>
+      }
+  })
+
+  var LoginWindow = React.createClass({
+      handleLoginClick:function(){
+        console.log('login');
+      },
+      handleRegisterClick:function(){
+        console.log('register');
+      },
+      render:function(){
+        return <div>
+          <LabelComponent lableName="用户名"/>
+          <InputComponent tips="请输入用户名"/>
+          <br/>
+          <LabelComponent lableName="密码"/>
+          <InputComponent tips="请输入密码"/>
+          <br/>
+          <ButtonComponent
+           clickHandle={this.handleLoginClick}
+           btnName="登录"/>
+          <ButtonComponent
+           clickHandle={this.handleRegisterClick}
+           btnName="注册"/>
+        </div>
+      }
+  })
+
+  ReactDOM.render(
+    <LoginWindow/>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

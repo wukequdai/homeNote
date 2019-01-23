@@ -1,0 +1,4 @@
+/*该文件中，只做IE6的兼容性代码*/
+h1{
+	background-color:orange;
+}

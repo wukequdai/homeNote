@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<!-- 
+			1、作用：将里面所有的表单控件的数据提交给服务器
+			2、提交方式：get
+			3、动作地址：本页
+			4、编码方式：application/x-www-form-urlencode
+		-->
+		<form>
+			<fieldset>
+				<legend>基本信息</legend>
+				<p>
+					用户名称：
+					<input type="text" name="txtUsername" value="请输入您的名称">
+				</p>
+				<p>
+					用户密码：
+					<input type="password" name="txtUserpwd">
+				</p>
+			</fieldset>
+			<p>
+				<!-- 注意：只有一组内的单选按钮才能实现单选功能。通过 name 属性进行分组 -->
+				用户性别：
+				<input type="radio" name="rdoGender" value="male" checked>男
+				<input type="radio" name="rdoGender" value="female" id="rdoFemale">
+				<label for="rdoFemale">女</label>
+			</p>
+			<p>
+				用户爱好：
+				<input type="checkbox" name="chkHobby" value="eat">吃
+				<input type="checkbox" name="chkHobby" value="drink">喝
+				<input type="checkbox" name="chkHobby" value="play">玩
+				<input type="checkbox" name="chkHobby" value="happy">乐
+				<input type="hidden" name="txtUserID" value="U1234567890">
+			</p>
+			<p>
+				用户头像：
+				<input type="file" name="txtImage">
+			</p>
+			<p>
+				自我介绍：
+				<textarea name="txtIntro" cols="50" rows="4">这家伙很懒，什么都没留下......</textarea>
+			</p>
+			<p>
+				籍贯选择：
+				<select name="selJiguan" size="5" multiple>
+					<option value="-1">===请选择===</option>
+					<option value="1">北京</option>
+					<option value="2">上海</option>
+					<option value="3">天津</option>
+					<option value="4">重庆</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" value="起飞">
+				<input type="reset" value="恢复">
+				<input type="button" value="普通按钮">
+			</p>
+		</form>
+	</body>
+</html>

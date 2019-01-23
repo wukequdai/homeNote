@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//65 66
+			//66 67
+			//67 67
+			/*var num = 65;
+			var num1 = num++;//num1=65 num=66
+			num1 = ++num;//num=67 num1=67
+			console.log(num);
+			console.log(num1);*/
+
+			var num=1;
+			//12
+			//8
+			//10
+			//11
+			//14				 2(2)    2(3)    3(4)
+			var result = ++num + num++ + num++ + ++num;//5(5)
+			console.log("表达式的结果为:"+result);
+			console.log("num="+num);
+
+			var num1 = 20;
+			//            20(19) + 18(18) - 18(17)
+			var result1 = num1-- + --num1 - num1--;
+			console.log("result1="+result1);
+			console.log("num1="+num1);
+		</script>
+	</body>
+</html>

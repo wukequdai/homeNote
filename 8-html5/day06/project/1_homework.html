@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    #container {
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      min-height: 200px;
+    }
+    #trash {
+      opacity: .3;
+    }
+  </style>
+</head>
+<body>
+<h1>拖放删除</h1>
+<img src="img/trash.png" id="trash">
+<hr/>
+<div id="container">
+  <img src="img/p3.png" id="p3">
+  <img src="img/p4.png" id="p4">
+  <img src="img/p5.png" id="p5">
+</div>
+
+<script>
+  //全局变量：记录被拖动的飞机是哪一个
+  var draggedPlane = null;
+
+  /*拖动源对象可能触发的事件*/
+  var list = document.querySelectorAll('#container img');
+  for(var i=0; i<list.length; i++){
+    var p = list[i]; //遍历每个IMG飞机元素
+    p.ondragstart = function(e){
+      draggedPlane = this; //记录被拖动的飞机对象
+    }
+    p.ondrag = function(e){}
+    p.ondragend = function(e){}
+  }
+
+  /*拖动目标对象可能触发的事件*/
+  trash.ondragenter = function(e){
+    trash.style.opacity = '1';
+  }
+  trash.ondragover = function(e){
+    e.preventDefault();//让drop可能触发
+  }
+  trash.ondragleave = function(e){
+    trash.style.opacity = '.3';
+  }
+  trash.ondrop = function(e){
+    trash.style.opacity = '.3';
+    //删除当前被拖动的小飞机IMG元素
+    container.removeChild(draggedPlane);
+  }
+</script>
+
+</body>
+</html>

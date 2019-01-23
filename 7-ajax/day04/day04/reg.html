@@ -1,0 +1,43 @@
+<html>
+ <head>
+ 	  <title>用户注册</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>用户注册</h1>
+ 		<form action="reg_do.php" method="post" id="loginForm">
+ 		<ul>
+ 			 <li>用户名 
+ 			 <input type="text" value="" name="name" id="name"/></li>
+ 			 <li>密码 
+ 			 <input type="password" value="" name="pwd" id="pwd"/></li>
+ 			 <li> <input type="submit" value="注册"/></li>
+ 		</ul>	
+ 		</form>
+ 		<script type="text/javascript">
+     //1:获取表单对象
+     var loginForm = document.getElementById("loginForm");
+     //2:绑定事件 onsubmit 
+     loginForm.onsubmit = function(){
+      //3:创建正则表达式
+      var nameReg = /^[a-z0-9_]{6,8}$/i;
+      var pwdReg = /^[0-9]{6,8}$/;
+      //4:获取用户名和密码验证
+      var name = document.getElementById("name");
+      var pwd = document.getElementById("pwd");
+      //5:如果不成功 return false;
+      if(!nameReg.test(name.value)){
+         alert("用户名格式不正确");
+         return false;
+      }
+      if(!pwdReg.test(pwd.value)){
+         alert("密码格式不正确");
+         return false;
+      }
+      //6:如果成功   return true;
+      return true;
+     };
+
+ 		</script>
+ 	</body>
+</html>

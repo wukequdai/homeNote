@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+/*多行注释*/
+/*多行注释*/
+/**3.Less变量**/
+.well {
+  color: #e4393c;
+  border: 3px solid #e4393c;
+  opacity: 0.6;
+  font-family: 'SimHei';
+}
+.alert {
+  color: #e4393c;
+}
+/**4.算术运算**/
+.col-sm-2 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.col-sm-4 {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #f54a4d;
+}
+.col-lg-1 {
+  width: 108.33333333px;
+}
+.col-lg-2 {
+  width: 216.66666667px;
+}
+/**5.Mixin 样式混入**/
+.box5 {
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #f00;
+}
+.alert {
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #f00;
+  color: #f00;
+}
+.well {
+  color: #e4393c;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #f00;
+  color: #f00;
+  font-size: 16px;
+}
+/**6.带参混入**/
+.alert6 {
+  padding: 1px;
+  margin-bottom: 5px;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+.well6 {
+  padding: 5px;
+  margin-bottom: 8px;
+  border: 1px solid #000000;
+  color: #000000;
+}
+/****************/
+.alert6 {
+  padding: 1px;
+  margin-bottom: 1px;
+  border: 1px solid #f00;
+}
+.well6 {
+  padding: 1px;
+  margin-bottom: 1px;
+  border: 1px solid #f00;
+}
+/**7.样式规则嵌套**/
+/*.main {
+  width: 1211px;
+}
+.main .affix {
+  list-style: none;
+}
+.main .affix li {
+  line-height: 2em;
+}
+.main .affix li > a {
+  text-decoration: none;
+}
+.main .affix li > a:hover {
+  text-decoration: underline;
+}*/
+.main {
+  width: 1211px;
+}
+.main .affix {
+  list-style: none;
+}
+.main .affix li {
+  line-height: 2em;
+}
+.main .affix li > a {
+  text-decoration: none;
+}
+.main .affix li > a:hover {
+  text-decoration: underline;
+}
+/**8.样式相关函数**/
+.alert-success {
+  background: #c0f6c1;
+  color: #39e43c;
+  border-color: #16a118;
+}
+.small2 {
+  width: 200px;
+  height: 150px;
+}
+.col-md-1 {
+  width: 80px;
+}
+.col-md-1 {
+  width: 8.33333333%;
+}

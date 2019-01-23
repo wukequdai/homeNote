@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.container {
+			border: 1px solid #aaa; overflow:hidden;
+		}
+		.block {
+			float: left; margin: 10px;
+			border: 1px solid #aaa;
+			background: #faa;
+			width: 150px; height: 150px;
+		}
+    .block:hover{ box-shadow:0 4px 8px #aaa; }
+		.close {
+			float: right; font-weight: bold;
+			opacity: .2; cursor: pointer;
+		}
+		.close:hover { opacity: 1; }
+	</style>
+ </head>
+ <body>
+  <h1>添加/删除节点</h1>
+	<button id="add-block">添加区块</button>
+	<div class="container">
+		<!-- <div class="block"> -->
+			<!-- <span class="close">&times;</span> -->
+		<!-- </div> -->
+	</div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //为id为add-block的按钮绑定单击事件
+    $("#add-block").click(function(){
+      //创建新的div
+      var $div=$('<div class="block"><span class="close">&times;</span></div>');      
+      var bg="rgb("+//生成随机背景色字符串:
+        Math.floor(Math.random()*256)+","+
+        Math.floor(Math.random()*256)+","+
+        Math.floor(Math.random()*256)+
+      ")";//rgb(xxx,xxx,xxx)
+      $div.css("background",bg);//设置div的背景为bg
+      //获得当前按钮的下一个兄弟
+      $(this).next().prepend($div);
+    });
+    //为div下的class为close的按钮绑定单击事件
+    $(".container").delegate(
+      ".block>.close","click",function(){
+      //删除当前按钮的父元素
+      $(this).parent().remove();
+    });
+  </script>
+	
+ </body>
+</html>

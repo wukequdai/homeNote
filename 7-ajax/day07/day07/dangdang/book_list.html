@@ -1,0 +1,92 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+    <style>
+       .container{
+          position:relative;
+       }
+       #suggest{
+         position:absolute;
+         list-style:none;
+         padding:0;
+         margin:0;
+         border:1px solid #aaa;
+         top:100%;
+         left:0;
+         width:230px;
+         display:none;
+       }
+       #suggest li{
+          line-height:2em;
+       }
+       #suggest li:hover{
+          background:#eee;
+       }
+
+    </style>
+ 	</head>
+ 	<body>
+ 		<h1>图书列表-->处理xml数据</h1>
+    <table id="tab1" width="100%" border="1">
+      <thead>
+      <tr>
+        <td>图书名称</td>
+        <td>价格</td>
+        <td>操作</td>
+      </tr>
+      </thead>
+      <tbody id="tbody1">
+
+      </tbody>
+    </table>
+    <script>
+      //1:页面加载成功绑定事件处理方法
+      window.onload = function(){
+      console.log(1);
+      //2:创建XHR对象
+      var xhr = new XMLHttpRequest();
+      //3:绑定事件 onreadystatechange
+      xhr.onreadystatechange = function(){
+      console.log(2);
+         if(xhr.readyState===4){ 
+           if(xhr.status===200){
+           console.log(3);
+           //3.1:服务器程序 book_list_do.php
+           //发送数据xml
+           //3.2:xhr接收
+           //XMLDOM根对象<===>document
+           var xmlDoc = xhr.responseXML;
+           //3.3 获取所有book标签对象21
+           var bookTags = xmlDoc.querySelectorAll('book');
+           //3.4 循环遍历所有book对象
+           var html = '';
+           for(var i=0;i<bookTags.length;i++){
+            //3.5 book对象表示 xml中一个book对象
+            var book = bookTags[i];
+            var name = book.querySelector('name')
+            .innerHTML;
+            var price =book.querySelector('price').innerHTML;
+            //3.6 拼接 <tr><td></td></tr>
+            html += '<tr>';
+            html += '<td>'+name+'</td>';
+            html += '<td>'+price+'</td>';
+            html += '<td></td>';
+            html += '</tr>';
+         }
+         //17:12---17:22
+         tbody1.innerHTML = html; 
+
+
+
+         }//4
+         }//200
+      }//change
+      //4:打开连接 book_list_do.php
+      //5:发送数据
+      xhr.open('GET','book_list_do.php',true);
+      xhr.send(null);
+      }
+    </script>
+ 	</body>
+</html>

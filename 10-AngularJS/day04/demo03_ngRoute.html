@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+</head>
+<body>
+
+<!--指定盛放代码片段的容器-->
+<ng-view></ng-view>
+
+<script>
+  var app = angular.module('myApp',
+    ['ng','ngRoute']);
+
+  //配置路由词典:①添加路由 ②对异常处理
+  app.config(function ($routeProvider) {
+
+    $routeProvider
+      .when("/myStart",{
+        templateUrl:'tpl/start.html'
+      })
+      .when('/myMain',{
+        templateUrl:'tpl/main.html'
+      })
+      .otherwise({redirectTo:'/myStart'})
+
+  })
+
+</script>
+
+</body>
+</html>

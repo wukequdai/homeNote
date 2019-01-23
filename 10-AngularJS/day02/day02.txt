@@ -1,0 +1,123 @@
+
+ngApp/ngInit/ngBind/ngSrc...
+
+创建文件模板：
+①选中需要创建模板的内容，拷贝
+②点击file->new->Edit file templates
+③点击+,指定name和extension，把内容粘贴，保存即可。
+
+一、自定义指令
+①如何创建
+	app.directive('指令名称'，func)；
+
+属性：
+template 显示的模板内容
+restrict 限定它使用场景 E（element）A（attribute）C（class）M（comment） restrict:'EAC
+replace: 替换
+scope
+
+②使用指令
+	element/attribute/class/comment
+
+注意：
+指令命名的时候，驼峰式，有两部分构成：前缀-公司、项目、模块简写，后缀-指令的作用
+使用指令的时候，采用烤串式（-）
+
+③调用指令的时候，需要出传参
+在创建指令的时候，scope,是一个对象，在这个对象中定义需要接受的参数名称:
+scope:{
+	testName:'@'
+}
+
+<div ts-hello test-name='123'>
+
+@是直接读取属性后边的引号的值
+=是中读取属性后边引号的名称所对应的真实的数据
+
+练习：创建自定义指令 tsDirective,传入ts-name="Hello World",作为element去调用指令并显示出来
+
+①创建
+②调用
+
+二、双向数据绑定
+方向1：将模型数据绑定到视图
+绑定方式：{{}}+ngRepeat/ngIf/ngShow..
+
+对比：
+DOM操作：先查找元素，将数据更新到元素
+AngularJS操作：操作主要围绕模型数据：创建model，修改model
+
+方向2：将视图中用户输入绑定到模型数据上
+绑定方式：ngModel
+<input type='text' ng-model='number'/>
+
+$scope.$watch('模型数据的名字',function(){
+})
+
+练习：监听复选框（是否同意）/下拉菜单（喜欢的颜色）/单选框（选择性别） button按钮-》将用户的输入打印出来。
+
+构建页面元素
+方向2的绑定：将用户的输入绑定到模型数据
+点击按钮，将模型数据打印出来。
+
+注意事项：对于select，如果要设置某一个默认被选中：
+<select ng-model="color"
+        ng-options="color.name for color in colors">
+
+</select>
+
+$scope.color = $scope.colors[2];
+
+
+ 三、过滤器
+
+进行数据的格式化、筛选、处理。。
+
+语法： {{表达式  | 过滤器:'参数1':'参数2' | 过滤器}}
+特点： 支持多重过滤，支持传参的。
+
+currency/date/orderBy/uppercase/lowercase/number/limitTo
+
+过滤器练习：
+有一个学生数组，age/name/score,（5条数据） 显示在ul
+①按照age升序
+②按照score降序并只显示前3名
+
+四、常用方法
+angular.forEach、uppercase、lowercase
+toJson 序列化：将一个对象序列为一个json格式的字符串fromJson 反序列化：将json string --》 对象
+
+五、服务
+
+1、服务是什么
+是一个单例对象，就是在每一个应用中只会被初始化一次
+
+2、种类
+①ng内置的服务（$scope/$location/$window..）
+②自定义的服务
+
+3、$scope $rootScope（控制范围）
+
+①每一个控制器的$scope，都是单独的作用域对象
+②创建第一个控制器，$scope的id是2，第二控制对应的是3
+③$rootScope的id是1，根作用域控制对象
+
+4、使用服务的基本步骤
+①在处理函数中，注入需要用到的服务名称（名字千万不能写错）
+②直接调用服务中所提供的数据和方法
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

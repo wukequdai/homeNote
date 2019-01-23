@@ -1,0 +1,25 @@
+
+body{
+  margin: 100px 0 100px 0;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.navbar-footer-menu{
+  list-style: none;
+  margin:0;
+  padding:0
+}
+
+.navbar-footer-menu li{
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  line-height: 50px;
+}

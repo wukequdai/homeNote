@@ -1,0 +1,62 @@
+/*通用设置*/
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'SimHei';
+  font-size: 14px;
+}
+.container:before {
+  content: ' ';
+  display: table;
+}
+.container:after{
+  content: ' ';
+  display: table;
+  clear: both;
+}
+/*当前网页的特有设置*/
+.box {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  margin: 100px auto;
+  width: 450px;
+  min-height: 350px;
+  padding: 1.5em;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.control-label {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  text-align: right;
+}
+.form-control {
+  padding: 4px;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+}
+.help-block {
+  padding: 4px;
+  color: #fff;
+  border-radius: 2px;
+}
+.default {
+  background: #aaa;
+}
+.danger {
+  background: #c00;
+}
+.success {
+  background: #0b0;
+}
+
+
+
+
+
+
+

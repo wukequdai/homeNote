@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>使用Canvas绘制路径——直线</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(50,50);
+    ctx.lineTo(450,350);
+    ctx.lineTo(450,50);
+    //ctx.closePath();
+
+    ctx.stroke();
+
+    ctx.fillStyle = '#afa';
+    ctx.fill();
+  </script>
+</body>
+</html>

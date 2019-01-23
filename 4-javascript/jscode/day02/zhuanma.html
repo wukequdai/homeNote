@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		var msg=prompt("请输入一串代码");
+		function encode(msg){
+			var code="";
+			//遍历msg中每个字符
+			for(var i=0;i<msg.length;i++){
+				//将msg中i位置的字符的unicode好拼接到code中
+				code+=msg.charCodeAt(i);
+			}
+			return code;
+		}
+		var code=encode(msg);
+		alert(code);
+	</script>
+</body>
+</html>

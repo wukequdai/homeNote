@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制路径——圆拱</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    //绘制可以前进的圆拱进度条
+    var startAngle = -90; //圆拱的起始角度
+    var endAngle = -90;  //圆拱的终点角度
+
+    var timer = setInterval(function(){
+      //清除画布中已有内容
+      ctx.clearRect(0,0,500,400);
+
+      //重新绘制底盘圆圈
+      ctx.beginPath();
+      ctx.arc(250,200, 100, 0, 2*Math.PI);
+      ctx.lineWidth = 20;
+      ctx.strokeStyle = '#aaa';
+      ctx.stroke();
+
+      //绘制进度条圆圈 —— 开始新路径
+      ctx.beginPath();
+      ctx.arc(250,200,100,startAngle*Math.PI/180,endAngle*Math.PI/180);
+      ctx.strokeStyle = '#0a0';
+      ctx.stroke();
+      endAngle += 5;
+
+      //绘制指示性文字
+      var txt = parseInt((endAngle-startAngle)*100/360) + '%';
+      ctx.font = '60px SimHei';
+      ctx.textBaseline = 'top';
+      var txtWidth = ctx.measureText(txt).width;
+      ctx.fillText(txt, 250-txtWidth/2, 200-60/2);
+
+    },50);
+
+  </script>
+</body>
+</html>

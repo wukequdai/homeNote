@@ -1,0 +1,42 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>取消与利用冒泡</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<div id="keys">
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button><br>
+			<button>C</button>
+			<button>+</button>
+			<button>-</button>
+			<button>=</button>
+		</div>
+		<textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+			//选择id为keys的div，绑定单击事件
+   $("#keys").delegate("button","click",function(){
+        //this->e.target
+        var $tar=$(this);//获得目标元素
+        var $sc=$("#sc");
+        switch($tar.html()){
+          case "C":
+            $sc.val(""); break;
+          case "=":
+            try{
+              $sc.val(eval($sc.val()));
+            }catch(err){
+              $sc.val(String(err));
+            }
+            break;
+          default:
+            $sc.val($sc.val()+$tar.html());
+        }
+      });
+		</script>
+	</body>
+</html>

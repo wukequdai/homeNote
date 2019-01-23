@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1、声明各种数据类型的变量
+			var num1 = 15;
+			var num2 = 13;
+			var str1 = "15";
+			var str2 = "13";
+			var boo1 = true;
+			var boo2 = false;
+			var obj1 = null;
+			var obj2 = null;
+			var und1;
+			var und2;
+			//2、查看 变量的数据类型
+			/*console.log(typeof(num1));
+			console.log(typeof(str1));
+			console.log(typeof boo1);
+			console.log(typeof obj1);
+			console.log(typeof und1);*/
+			//3、隐式转换
+
+			//3.1 number + string ：将number转换成string，再做运算
+			var r1=num1+str1;//? 15 + "15"
+			console.log(r1);
+			console.log(typeof(r1));//? string
+			//3.2 number + boolean : 将 boolean 数据 转换成了 number 类型 再做运算
+			var r2=num1+boo1;
+			console.log(r2);//?
+			console.log(typeof(r2));//?
+			//3.3 number + null : 将 null 当成 number 去看，结果为 number
+			var r3 = num1 + obj1;
+			console.log(r3);//?
+			console.log(typeof(r3));//?
+			//3.4 number + undefined : 结果 NaN ，数据类型为 number
+			var r4 = num1 + und1;
+			console.log(r4);
+			console.log(typeof(r4));
+			//3.5 string + boolean : 将 boolean 转换成 string 再做运算 ,结果为 string
+			var r5 = str1 + boo1;
+			console.log(r5);//?
+			console.log(typeof(r5));//?
+			//3.6 string + null : 将 null 转成 string ， 再做运算 ，结果为 string
+			var r6 = str1 + obj1;
+			console.log(r6);
+			console.log(typeof(r6));
+			//.7 string + undefined : 将 undefined 转换为 string，再做运算，结果为 string
+			var r7 = str1 + und1;
+			console.log(r7);
+			console.log(typeof(r7));
+		</script>
+	</body>
+</html>

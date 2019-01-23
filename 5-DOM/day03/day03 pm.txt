@@ -1,0 +1,105 @@
+正课:
+1. ***HTML DOM常用对象: 
+  Image   Select>Option  Table>...    Form>...
+
+删除元素: parent.removeChild(child对象)
+
+1. Image: 代表img元素
+     核心DOM: var img=document.createElement("img");
+     HTML DOM: var img=new Image();
+
+2. Select: 代表一个select元素
+    创建: 无
+    属性: 除标准属性外,
+       .selectedIndex: 当前选中项下标 *
+       .options: 包含当前select下所有option对象的集合 *
+           .options.length: 获得option元素的个数
+           .options.length=0: 清空所有option
+       .value: 获得当前选中项的值: 
+          如果选中项有value属性，则返回选中的opt的value
+          如果选中项没有value，则返回选中的opt的内容
+    方法: 
+      添加option: 
+       核心:            sel.appendChild(opt)
+       html DOM: sel.add(opt) *
+      删除option:
+       核心:              sel.removeChild(sel.options[i])
+       HTML DOM: sel.remove(i)
+    事件: 
+      onchange: 当选中项发生改变时 *
+
+   Option: 代表一个option元素
+      创建: 
+         核心DOM: 
+             var opt=document.createElement("option");
+             opt.text=text;
+             opt.value=value;                   
+         HTML DOM: var opt=new Option(text,value);
+      属性: text,  value,   index: option在当前select下的位置
+
+   练习: 第二种事件绑定方式: 在js中动态绑定事件
+            elem.on事件名=function(){
+	this->.前的elem对象
+            }
+
+3. Table: 表示一个table元素
+       tHead: 创建: var thead=table.createTHead()
+                   删除: table.deleteTHead();
+                   获取: table.tHead
+           tr:  创建: 
+                  var tr=tHead.insertRow(i);//省略i，默认末尾追加
+                删除: tHead.deleteRow(i);
+                获取: tHead.rows
+             td: 创建: var td=tr.insertCell(i);//省略i，默认末尾追加
+                      强调: insertCell只能创建td, 不能创建th
+                  删除: tr.deleteCell(i);
+                  获取: tr.cells
+       tBodies: 
+           tBody: 创建: var tbody=table.createTBody();
+                       获取: table.tBodies[i]
+       tFoot:  创建: var tfoot=table.createTFoot()
+                   删除: table.deleteTFoot();
+                   获取: table.tFoot
+
+   
+   tr.rowIndex: 记录了tr在 整个表 中的下标位置
+   table.deleteRow(i): 可用tr.rowIndex ——首选
+   tbody.deleteRow(i): 不能用tr.rowIndow，只能用tr在tbody内的下标。
+
+   练习: 三大对话框: alert()   confirm()   prompt()
+         确认: var bool=confirm("提示信息"); 
+                      两个按钮: 确定 true        取消 false
+
+      内存泄漏:
+        原因: 在事件处理函数中，使用外层函数的DOM对象
+                 形成了闭包
+        后果: 即使DOM树中删除了元素
+                 闭包依然将元素对象保存在内存中
+        解决: 在事件处理函数中，不要使用外层函数的DOM对象
+                 要随找随用
+
+4. Form对象:
+  获取form对象:  document.forms[i/id/name]
+      属性: .elements: 保存了表单中所有表单元素的对象
+               .length: 记录表单中表单元素的个数
+      方法: .submit() 专门用于用代码提交表单
+  
+    表单元素: 
+       获取: var elem=form.elements[i/id/name]
+                                 form.name —— 只能访问带name的元素
+       方法: .focus() 让当前元素获得焦点——
+	    每个页面只能有1个焦点。
+                     当前元素获得焦点同时，原焦点元素自动失去焦点
+                .blur() 让当前元素失去焦点——很少用
+
+
+
+
+
+
+
+
+
+
+
+

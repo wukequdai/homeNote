@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=[1,12565,164,4,146,312346,2];
+		//定义比较器函数
+		var compareASC=function(a,b){return -(a-b)};
+		//将比较函数作为参数传入sort方法中
+		arr.sort(compareASC);
+		console.log(String(arr));
+		var arr2=["rose","tom","jerry","smith","lily"];
+		arr2.sort(compareASC);
+		console.log(String(arr2));
+		function biJIao(arr2,compare){
+			if(compare==undefined){
+				
+			}
+		}
+		var bus=[];
+		for(var i=1;i<=5;i++){
+			//bus.push("乘客"+i);//开头入栈
+			bus.unshift("乘客"+i);//结尾入栈
+			console.log(String(bus));
+		}
+		while(bus.length>0){
+			//var c=bus.pop();//结尾出站
+			var c=bus.shift();//开头出站
+			console.log(c+"下车");
+			console.log(String(bus));
+		}
+		var kouJue=[];
+		for(var i=1;i<=9;i++){
+			kouJue.push(i+"*"+i+"="+(i*i));
+			console.log(String(kouJue));
+		}
+		//定义函数将十进制转二进制
+		function dec2bin(dec){
+			var bin=[];//定义空数组
+			while(dec>0){
+				//bin.push(dec%2);//将除数除2的余数压入bin
+				bin.unshift(dec%2);
+				dec=parseInt(dec/2);//余数取整数
+			}
+			//bin.reverse();//颠倒
+			return bin.join("");
+		}
+		var n=123;
+		console.log(n.toString(2));
+		console.log(dec2bin(n));
+		//抢票案例
+		/*var ts=5;
+		var queue=[];
+		for(var i=1;i<=5;i++){
+			queue.push("乘客"+i);
+		}
+		queue.push("你");
+		console.log(String(queue));
+		while(ts>0){
+			var c=queue.shift();
+			console.log(c+"抢票成功");
+			console.log(String(queue));
+			ts--;
+		}
+		console.log(String(queue)+"出票失败！");*/
+		//抢票
+		var ticket=5;
+		var queue=[];
+		for(var i=1;i<=5;i++){
+			queue.push("乘客"+i);
+		}
+		queue.push("你");
+		console.log(String(queue));
+		while(ticket>0){
+			var c=queue.shift();
+			console.log(c+"成功");
+			console.log(String(queue));
+			ticket--;
+		}
+		console.log(String(queue)+"出票失败！");
+		//随机生成一个行号，列号
+		var data=[
+			[2,4,2,4],
+			[4,2,4,2],
+			[2,4,2,4],                               
+			[4,2,4,2],
+		];
+		console.dir(data);
+		var r=Math.floor(Math.random()*4);
+		var c=Math.floor(Math.random()*4);
+		data[r][c]=2;
+		console.log(data.join("\n"))
+		function gameOver(){
+			for(var r=0;r<4;r++){
+				for(var c=0;c<4;c++){
+					if(data[r][c]==0)
+						return false;
+					if(c<4&&data[r][c+1]==data[r][c])
+						return false;
+					if(r<4&&data[r][c]==data[r+1][c])
+						return false;
+				}
+			}
+			return ture;
+		}
+		console.log(gameOver())
+		var pid="321323199510173911";
+		var gender=pid[pid.length-2]%2==1?"男":"女";
+		console.log(gender);
+		var birthday=pid.slice(6,-4);
+		console.log(birthday)
+	</script>
+</body>
+</html>

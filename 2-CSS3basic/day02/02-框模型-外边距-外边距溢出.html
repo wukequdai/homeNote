@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#d1,#d2{
+				width:200px;
+				height:200px;
+			}
+			#d1{
+				background-color:red;
+			}
+			#d2{
+				background-color:yellow;
+				/*1、增加上边框，解决#d3的溢出问题*/
+				/*border-top:1px solid transparent;
+				height:199px;*/
+			}
+			#d3{
+				width:100px;
+				height:100px;
+				background-color:green;
+				margin-top:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<div id="d2">
+			<!-- 解决方案3：增加空table -->
+			<table></table>
+			<div id="d3"></div>
+		</div>
+	</body>
+</html>

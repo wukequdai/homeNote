@@ -1,0 +1,74 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+    <style>
+       .container{
+          position:relative;
+       }
+       #suggest{
+         position:absolute;
+         list-style:none;
+         padding:0;
+         margin:0;
+         border:1px solid #aaa;
+         top:100%;
+         left:0;
+         width:230px;
+         display:none;
+       }
+       #suggest li{
+          line-height:2em;
+       }
+       #suggest li:hover{
+          background:#eee;
+       }
+
+    </style>
+ 	</head>
+ 	<body>
+ 		<h1>添加图书</h1>
+    <div class="container">
+       <input id="inputKW"/>
+       <button>书籍搜索</button>
+       <ul id="suggest">
+         <!-- <li>js大全</li> -->
+         <!-- <li>js指南</li> -->
+         <!-- <li>js入门</li> -->
+       </ul>
+    </div>
+    <script>
+       //1:获取用户输入框对象 
+       //2:绑定事件  onkeyup 添加处理函数
+       inputKW.onkeyup = function(){
+         //2.1: 如果用户没有输入任何内容
+         var kw = this.value;
+         //2.2: 隐藏显示列表suggest
+         //2.3: 返回程序
+         if(!kw){
+          suggest.style.display = "none";
+          return;
+         }
+         //2.4: 创建对象XHR
+         var xhr = new XMLHttpRequest();
+         //2.5: 绑定事件 onreadystatechange
+         xhr.onreadystatechange = function(){
+             //2.5.1 判断 4   200
+             //2.5.2 接收数据 保存
+             if(xhr.readyState===4){
+               if(xhr.status===200){
+                suggest.innerHTML = xhr.responseText;
+                suggest.style.display='block';
+               }
+             }
+             //suggest.innerHTML
+         }
+         //2.6: 打开连接 GET
+         xhr.open('GET','book_search_do.php?kw='+kw,true);
+         //2.7: 发送请求  11:00-11:10 练习
+         //               11:10-11:20 休息
+         xhr.send(null);
+       }
+    </script>
+ 	</body>
+</html>

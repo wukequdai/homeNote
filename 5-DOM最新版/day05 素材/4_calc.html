@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>取消与利用冒泡</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/3.css"/>
+		
+	</head>
+	<body>
+		<div id="keys">
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button><br>
+			<button>C</button>
+			<button>+</button>
+			<button>-</button>
+			<button>=</button>
+		</div>
+		<textarea id="sc" style="resize:none;width:200px; height:50px;" readonly></textarea>
+    <script>
+			+function(){
+				//为id为keys的div，添加单击事件监听
+				document.getElementById("keys")
+				        .addEventListener("click",calc);
+				//获得id为sc的文本域
+				var sc=document.getElementById("sc");
+				function calc(e){//this->div  X
+					var target=e.target;//获得目标元素:
+					//如果target是button
+					if(target.nodeName=="BUTTON"){
+						//判断目标元素的内容
+						switch(target.innerHTML){
+							case "C": sc.value=""; break;
+							case "=":
+								try{
+									sc.value=eval(sc.value); 
+								}catch(err){
+									sc.value=String(err);
+								}
+								break;
+							default: sc.value+=target.innerHTML;
+						}
+					}
+				}
+			}();
+		</script>
+	</body>
+</html>

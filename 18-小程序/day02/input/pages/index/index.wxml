@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+ 
+  <input type="text" value="{{num1}}" bindinput="xx"/>
+  <input type="text" value="{{num2}}" bindinput="yy"/>
+  <button bindtap="xy">和</button>
+</view>

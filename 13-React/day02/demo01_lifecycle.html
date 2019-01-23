@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+
+  var TestComponent = React.createClass({
+    componentWillMount:function(){
+      console.log('准备一些数据');
+      console.log(this.refs.pName);
+    },
+    componentDidMount:function(){
+      console.log('已经插入DOM');
+      console.log(this.refs.pName);
+    },
+    render:function(){
+      return <p ref='pName'>this is a paragraph</p>
+    }
+  })
+
+  ReactDOM.render(
+     <TestComponent/>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function testFor(){
+				var i=1;
+				for(;;){
+					if(i > 100){
+						break;
+					}
+					console.log("Hello");
+					i++;
+				}
+			}
+
+			function showNum(){
+				/*for(var i=1,j=100;i<=100;i++,j--){
+					console.log("i="+i+",j="+j);
+				}*/
+				for(var i=1,sum=0;i<=100;sum+=i,i++);
+				console.log(sum);
+			}
+
+			function printStar(){
+
+				for(var j=1;j<=5;j++){
+					var star="";
+					for(var i=1;i<=j;i++){
+						star+="*";
+					}
+					console.log(star);
+				}
+			}
+
+			function printMulti(){
+				for(var j=1;j<=9;j++){ //控制行数
+					var star="";
+					for(var i=1;i<=j;i++){ //控制每行打印的数据 数量
+						star+=(i+"*"+j+"="+(i*j))+"\t";
+					}
+					console.log(star);
+				}
+			}
+		</script>
+		<button onclick="showNum()">测试</button>
+		<button onclick="printStar()">打印**</button>
+		<button onclick="printMulti()">乘法表</button>
+	</body>
+</html>

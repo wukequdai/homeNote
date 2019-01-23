@@ -1,0 +1,131 @@
+1、运算符
+	1、位运算符
+		1、&
+			场合：判断一个数字奇偶性
+		2、|
+			场合：小数向下取整
+		3、^
+			场合：交换两个数字
+		4、<<
+			场合：对数字做乘2的操作
+		5、>>
+			场合：对数字做除2的操作
+	2、赋值运算符
+		n+=m; ==> n=n+m;
+		-=,*=,/=,%=,&=,|=,^=
+	3、条件运算符
+		语法：? :
+			条件?表达式1:表达式2;
+			判断条件，如果条件为真，则执行表达式1，并且以表达式1的结果作为整个表达式的结果，否则...
+2、函数
+	1、什么是函数
+		函数(function),或方法，过程
+		一段预定义好，可以被反复执行的代码块
+	2、定义函数
+		1、基本语法
+			语法：function 函数名(){代码块}
+			调用：函数名();
+				1、事件中调用
+					<button onclick="函数名()">...</button>
+				2、<script></script>中调用
+					<script>
+						function fun1(){...}
+						//调用
+						fun1();
+					</script>
+				3、函数内调用函数
+					<script>
+						function fun1(){...}
+						function fun2(){
+							//调用fun1函数
+							fun1();
+						}
+					</script>
+		2、带参函数定义
+			参数：一些需要传递到函数里进行操作的数据
+			语法：function 函数名(参数列表声明){}
+				参数列表：用 , 来隔开的参数名称(形参)
+				ex:
+					function showName(name){
+						console.log("欢迎:"+name);
+					}
+			调用：函数名(参数列表);
+				参数列表：用 , 来隔开的参数值(实参)
+				ex:
+					showName("张三丰");
+		3、有返回值的函数定义
+			返回值：函数调用完成后，需要带给函数调用处的一个具体数值。
+			语法：
+				function 函数名(参数列表){
+					...
+					...
+					return 值/变量/表达式;
+				}
+			调用：
+				var result = 函数名(参数列表);
+			注意：有返回值的函数，其本身就相当于是一个数值
+			ex:
+				function showNum(){
+					var num = 15;
+					return num;
+				}
+				********
+				var result = showNum();
+				console.log(result);
+
+				console.log(showNum());
+	3、变量的作用域
+		1、什么是作用域
+			指的是变量或函数的可访问范围，控制着变量或函数的可见性和生命周期
+		2、作用域可分为
+			1、函数作用域
+				只在当前函数内可访问-局部
+			2、全局作用域
+				任何位置处都可以被访问到-全局
+		3、函数作用域中的变量
+			function fun1(){
+				var num = 15;	//作用域 就在 fun1 范围内
+				console.log(num);//打印 15
+			}
+			console.log(num);// 报错，找不到num
+		4、全局作用域中的变量
+			<script>
+				var num = 25; //全局变量
+				function fun1(){
+					var num = 28;//局部变量
+					console.log(num);//结果：28
+					/*局部变量与全局变量冲突时，在函数内，优先使用的是局部变量*/
+				}
+				function fun2(){
+					showNum = 321;//全局变量
+				}
+				console.log(num);//结果：25
+				console.log(showNum);//报错(如果想使用showNum全局变量的话，必须要先调用fun2函数)
+			</script>
+		5、声明提前
+			JS程序在运行前，会将所有var声明的变量和function声明的函数，预读到所在作用域的最顶部。但是，对变量的赋值还保留在原位。
+			function fun1(){
+				console.log(num);//undefined
+				console.log("这是一个函数");
+				var num = 25;//为num赋值
+				console.log(num);//25
+			}
+		6、按值传递
+			将实参变量的值复制一份副本传递给方法的形参
+
+			function change(a,b){
+				a = 25;
+				b = 18;
+			}
+
+			function fun1(){
+				var n1 = 100;
+				var n2 = 100;
+				change(n1,n2);
+				console.log(n1,n2);//100 100
+			}
+
+
+
+
+

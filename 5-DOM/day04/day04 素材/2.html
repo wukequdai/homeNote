@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>小游戏：点不到的小窗口</title>
+  <meta charset="utf-8"/>
+ </head>
+ <body>
+  <script>
+		var WIDTH=120;//innerWidth
+		var HEIGHT=120;//innerHeight
+		var OFFSET=65;//outerHeight-innerHeight
+	  var MAXLEFT=screen.availWidth-WIDTH;
+		var MAXTOP=screen.availHeight-HEIGHT-OFFSET;
+		var rLeft=//在0~MAXLEFT之间生成随机整数
+						Math.floor(Math.random()*(MAXLEFT+1));
+		var rTop=//在0~MAXTOP之间生成随机整数
+						Math.floor(Math.random()*(MAXTOP+1));
+		//debugger;
+		config="left="+rLeft
+				 +",top="+rTop
+				 +",width="+WIDTH
+				 +",height="+HEIGHT;
+		//debugger;
+		var pop=open("about:blank","_blank",config);
+		var img=new Image();
+		img.src="E:/xiaoxin.gif";
+		img.style.width="100px";
+		img.onclick=function(){alert("约么?")};
+		pop.document.body.appendChild(img);
+	</script>
+ </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>添加图书</h1>
+ 		<form action="#" method="post">
+ 		<ul>
+ 			 <li>书名 
+ 			 <input type="text" value="" name="name1" id="name1"/></li>
+ 			 <li>价格 
+ 			 <input type="text" value="" name="price" id="price1"/></li>
+       <li>
+         <input id="btn1" type="button" value="添加" />
+       </li>
+ 		</ul>	
+ 		</form>
+    <script>
+      //1:获取按钮btn1
+      //2:绑定点击事件
+      btn1.onclick = function(){
+      //3:创建XMLHttpRequest
+      var xhr = new XMLHttpRequest();
+      //4:绑定事件 onreadystatechange
+      xhr.onreadystatechange = function(){
+         //4.1 readyState == 4
+         //4.2 status == 200
+         if(xhr.readyState === 4){
+            if(xhr.status === 200){
+               if(xhr.responseText==='success'){
+                   alert("添加成功");
+                   location.href = 'book_search.html';
+               }else{
+                   alert("添加失败");
+               }
+            }
+         }
+         //4.3 获取数据 succes error
+         //     alert
+      }
+      //5:打开连接 post   9:36---9:41
+      xhr.open('POST','book_add_do.php',true);
+      //6:修改请求头部
+      xhr.setRequestHeader('Content-Type',
+      'application/x-www-form-urlencoded');
+      //7:发送
+      xhr.send('name='+name1.value
+      +'&price='+price1.value);
+      }
+    </script>
+ 	</body>
+</html>

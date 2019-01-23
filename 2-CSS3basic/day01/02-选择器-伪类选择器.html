@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			/*a:link{
+				color:yellow;
+			}
+			a:visited{
+				color:orange;
+			}
+			a:hover{
+				font-size:24px;
+			}
+			a:active{
+				color:black;
+			}*/
+
+			a{
+				color:black;
+				text-decoration:none;/*取消下划线*/
+			}
+			a:hover{
+				color:red;
+				text-decoration:underline;/*显示下划线*/
+			}
+
+			#txtName{
+				color:gray;
+				font-style:italic;/*斜体*/
+			}
+			#txtName:focus{
+				color:green;
+			}
+			#txtName:active{
+				font-style:normal;/*正常字体，非斜体*/
+			}
+		</style>
+	</head>
+	<body>
+		用户名称：<input id="txtName" value="请输入用户名称">
+		<a href="http://www.csdn.net">CSDN</a>
+		<a href="http://www.163.com">网易</a>
+		<a href="http://www.youku.com">优酷</a>
+	</body>
+</html>

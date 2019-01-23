@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      box-sizing: content-box;
+    }
+    #chosenBox {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #aaa;
+      margin: 0 auto;
+    }
+    #listBox {
+      border: 1px solid #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="chosenBox">
+    <img src="img/p0.png" id="p0">
+  </div>
+  <hr/>
+  <div id="listBox">
+    <img src="img/p3.png" id="p3">
+    <img src="img/p4.png" id="p4">
+    <img src="img/p5.png" id="p5">
+  </div>
+  <script>
+    /**1.拖动listBox中的飞机到chosenBox上**/
+    //被拖动的源对象
+    var list = document.querySelectorAll('#listBox img');
+    for(var i=0; i<list.length; i++){
+      var p = list[i]; //遍历每个飞机元素
+      p.ondragstart = function(e){
+        //使用“拖拉机”记录被拖动的飞机的ID
+        e.dataTransfer.setData('PlaneID',this.id)
+      }
+      p.ondrag = function(e){}
+      p.ondragend = function(e){}
+    }
+    //被拖动的目标对象
+    chosenBox.ondragenter = function(e){}
+    chosenBox.ondragover = function(e){  e.preventDefault();    }
+    chosenBox.ondragleave = function(e){}
+    chosenBox.ondrop = function(e){
+      //隐藏问号飞机
+      p0.style.display = 'none';
+      //若chosenBox中此时除了p0还有其它飞机，应该放回#list
+      if(chosenBox.children.length>1){
+        listBox.appendChild(chosenBox.children[1]);
+      }
+      //从拖拉机上读取被拖动的飞机的ID
+      var pid = e.dataTransfer.getData('PlaneID');
+      var p = document.getElementById(pid);
+      chosenBox.appendChild( p );//将飞机从#listBox转移到#chosenBox
+    }
+
+    /**2.从chosenBox中拖动飞机到listBox，重新显示问号飞机**/
+    //被拖动的目标对象是listBox
+    listBox.ondragenter = function(e){}
+    listBox.ondragover= function(e){e.preventDefault();}
+    listBox.ondragleave = function(e){}
+    listBox.ondrop = function(e){
+      //获取源对象在拖拉机中保存的飞机ID，查找元素，转移到listBox
+      var pid = e.dataTransfer.getData('PlaneID');
+      var p = document.getElementById(pid);
+      listBox.appendChild(p);
+      //重新显示问号飞机
+      p0.style.display = 'block';
+    }
+  </script>
+
+
+</body>
+</html>

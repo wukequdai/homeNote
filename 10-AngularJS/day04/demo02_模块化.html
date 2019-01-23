@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myModule02">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<button ng-click="showAlert()">clickMe</button>
+
+<script>
+  var myModule01 = angular.module('myModule01',['ng']);
+
+  myModule01.service('$show', function () {
+    this.show = function () {
+      alert('$show service of 01 is called');
+    }
+  })
+
+  var myModule02 =
+    angular.module('myModule02',['myModule01']);
+
+  myModule02.controller('myCtrl',["$scope","$show",
+  function($scope,$show){
+    $scope.showAlert = function () {
+      $show.show();
+    }
+  }
+  ])
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

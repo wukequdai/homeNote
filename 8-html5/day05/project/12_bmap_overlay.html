@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=uqlOonX0kj081Bd1Fmhg8bevhm2iQEn1">
+  </script>
+  <style>
+    #container {
+      width: 800px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+<h3>欢迎访问李文华(liwenhua@tedu.cn)的网站</h3>
+<div id="container"></div>
+
+<script>
+  var map = new BMap.Map("container");          // 创建地图实例
+  var point = new BMap.Point(116.300982,39.916078);  // 创建点坐标
+  map.centerAndZoom(point, 17);                 // 初始化地图，设置中心点坐标和地图级别
+
+  /*添加地图覆盖物(overlay)*/
+  //标记点
+  /*var marker = new BMap.Marker(point);*/
+  var icon = new BMap.Icon('img/logo.png', new BMap.Size(30,69));
+  var marker = new BMap.Marker(point, {icon: icon});
+  marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+  map.addOverlay(marker);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function f1(){
+			var num1=Number(prompt("请输入一个数字"));
+			var num2=Number(prompt("请输入一个数字"));
+			var result=num1+num2;
+			window.alert("两个数字的和是"+result);
+		}
+		function f2(){
+			var one=Number(prompt("请输入一个数字"));
+			var two=Number(prompt("请输入一个数字"));
+			var three=Number(prompt("请输入一个数字"));
+			var max=one;
+			max>two?max:max=two;
+			max>three?max:max=three;
+			window.alert(max+"最大");
+		}
+		function f3(){
+			var sales=Number(prompt("请输入利润是多少万"));
+			var jj=0;
+			sales>100&&(jj+=(sales-100)*0.01,sales=100);
+			sales>60&&(jj+=(sales-60)*0.015,sales=60);
+			sales>40&&(jj+=(sales-40)*0.03,sales=40);
+			sales>20&&(jj+=(sales-20)*0.05,sales=20);
+			sales>10&&(jj+=(sales-10)*0.07,sales=10);
+			sales<10&&(jj+=sales*0.01);
+			alert("奖金为"+jj+"万");
+		};
+		function f4(){
+			var price,amount,pay;
+			var total,change;
+			price=prompt("请输入商品价格");
+			amount=prompt("请输入购买数量");
+			pay=prompt("请输入付款金额");
+			total=price*amount;
+			if(total>=500){
+				alert("花费超过500，打八折");
+				total*=0.8;
+				change=pay-total;
+			}else{
+				change=pay-total;
+			}
+			if(pay>=total){
+				window.alert("应收"+total+"找零"+change);
+			}else{
+				alert("您给的钱不够");
+			}
+		}
+		function f5(){
+			var height=prompt("请输入身高（m）");
+			var weight=prompt("请输入体重（kg）");
+			klt=weight*(height*height);
+			if(klt>25){
+				alert("偏胖");
+			}else if(klt<20){
+				alert("偏瘦");
+			}else{
+				alert("正常")
+			}
+		}
+	</script>
+	<button onclick="f1()">计算两个数的和</button>
+	<button onclick="f2()">计算最大值</button>
+	<button onclick="f3()">奖金是多少</button>
+	<button onclick="f4()">超市找零</button>
+	<button onclick="f5()">克莱托指数</button>
+</body>
+</html>

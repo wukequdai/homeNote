@@ -1,0 +1,10 @@
+Warning: mysqli_fetch_row()
+expects parameter 1 to be
+mysqli_result, boolean
+given in
+
+以上错误:原因:
+sql语句 99%
+解决:
+1:echo $sql;
+2:mysql中执行

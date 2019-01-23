@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <view>{{num}}</view>
+  <button bindtap="chg">点击</button>
+</view>

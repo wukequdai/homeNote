@@ -1,0 +1,108 @@
+今天学习的内容
+1:复习昨天知识重点
+  1:ajax常用对象属性方法事件
+	2:状态
+	3:ajax开发流程****
+2:作业 
+3:ajax 处理不同数据***
+  text
+	text/html
+	javascript
+  xml
+	json
+#----------------------------
+1:复习昨天知识重点
+  ajax:异步javascript and xml
+	作用:无刷新无提交情况下，异步发送请求
+	     接收数据，局部更新网页.
+  1:ajax常用对象属性方法事件
+	  XMLHttpRequest 浏览器内容对象
+		window.XMLHttpRequest
+	2:状态
+	  0    UNSENT    
+		1    OPENED
+		2    HEADERS_RECEIVED
+		3    LOADING
+		4    DONE   -----
+    属性
+		xhr.readyState                4
+		xhr.status     接收响应状态码 200
+		xhr.responseText 接收文本
+    方法
+		xhr.open(method,url,true);
+		xhr.send('name=tom&pwd=123');
+    事件
+		onreadystatechange
+	3:ajax开发流程****
+	  1:创建对象 XHR
+		2:绑定事件处理函数onreadystatechange
+		  5:接收数据
+		3:打开连接
+		4:发送数据
+2:作业 
+  add_book.html      添加图书表单
+	 a:表单  {图书价格/名称}
+	 c:ajax添加图书 POST
+	add_book_do.php    处理表单
+	 b:获取参数 添加数据
+	 success  error
+
+  常见错误二
+	1:数据库名称出错
+	2:参数名慎用     name
+
+	book_search.html   搜索图书
+	a
+	book_search_do.php 处理搜索表单
+	b
+  book_search.html   搜索图书
+	ajax
+
+	数据库:dangdang/t_book
+	(id,name,price,putdate)
+
+  图书搜索.jpg
+  var reg = /^\s*$/;
+
+	小结
+  1:事件键盘  onkeyup 获取输入内容
+	2:服务器响应类型
+	  纯文本
+		php  header("content-type:text/plain;
+		charset=utf-8");
+		html xhr.responseText;
+
+		html
+		php  header("content-type:text/html;
+		charset=utf-8");
+		html xhr.responseText;
+3:ajax 处理不同数据***
+  3.1:text
+	3.2:text/html
+	3.2:javascript
+  php 
+	header("content-type:application/
+	javascript;charset=utf-8");
+	console.log('abc');
+  html
+  eval(xhr.responseText);
+
+  练习:实现了国际化(i18n)的欢消息
+  1:编写php 
+	  读取客户端请求头部:Accpt-Language
+		截取前两个字母，
+		客户端的首先语言,据此返回不同js
+		片段.
+		header("Content-Type
+		:application/javascript");
+		echo "var msg = '你好';alert(msg);";
+  2:编写html:
+	  待页面加载完成，发起异步请求,
+		获取服务器给欢迎消息.
+    eval(xhr.responseText);
+
+    dangdang/i18n.html
+		dangdang/i18n_do.php
+
+  xml
+	json

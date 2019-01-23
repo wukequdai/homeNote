@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-side-menus>
+
+  <ion-side-menu-content>
+    <ion-header-bar class="bar-calm">
+      <button
+        menu-toggle="right"
+        class="button button-positive">
+        操作侧边栏
+      </button>
+      <h1 class="title">header</h1>
+    </ion-header-bar>
+
+    <ion-content>
+
+      <div class="button-bar">
+        <button
+          ng-click="openRight()"
+          class="button button-balanced">openRight</button>
+        <button
+          ng-click="closeRight()"
+          class="button button-assertive">closeRight</button>
+      </div>
+
+    </ion-content>
+
+    <ion-footer-bar class="bar-calm">
+      <h1 class="title">footer</h1>
+    </ion-footer-bar>
+
+  </ion-side-menu-content>
+
+  <!-- 指定侧边栏菜单要显示的内容和显示的方式-->
+  <ion-side-menu
+    width="100"
+    side="right">
+
+    <button menu-close class="button button-icon
+    icon ion-close"></button>
+
+    <div class="list">
+      <div class="item">test01</div>
+      <div class="item">test02</div>
+      <div class="item">test03</div>
+    </div>
+
+  </ion-side-menu>
+
+</ion-side-menus>
+
+
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope','$ionicSideMenuDelegate',
+      function ($scope,$ionicSideMenuDelegate) {
+        $scope.openRight = function () {
+          $ionicSideMenuDelegate.toggleRight(true);
+        }
+
+        $scope.closeRight = function () {
+          $ionicSideMenuDelegate.toggleRight(false);
+        }
+      }
+    ])
+
+</script>
+
+</body>
+</html>

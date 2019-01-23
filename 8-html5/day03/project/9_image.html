@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>使用Canvas绘制图像</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    var img = new Image();
+    img.src = 'img/p3.png';
+    //console.log(img.width + '-' +img.height);
+    img.onload = function(){
+      console.log('图片加载完成');
+      console.log(img.width + '-' +img.height);
+    }
+    alert('JS代码执行完成')
+  </script>
+</body>
+</html>

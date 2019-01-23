@@ -1,0 +1,69 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+    <style>
+       .container{
+          position:relative;
+       }
+       #suggest{
+         position:absolute;
+         list-style:none;
+         padding:0;
+         margin:0;
+         border:1px solid #aaa;
+         top:100%;
+         left:0;
+         width:230px;
+       }
+       #suggest li{
+          line-height:2em;
+       }
+       #suggest li:hover{
+          background:#eee;
+       }
+
+    </style>
+ 	</head>
+ 	<body>
+ 		<h1>添加图书</h1>
+    <div class="container">
+       <ul id="suggest">
+         <!-- <li>js大全</li> -->
+         <!-- <li>js指南</li> -->
+         <!-- <li>js入门</li> -->
+       </ul>
+    </div>
+    <script>
+      //9:55--10:00  练习  1,2,3,4
+      //10:00--10:10 休息
+      //1:当网页加载完成自动执行以下功能
+      window.onload = function(){
+      //2:发送ajax get请求 book_json_list.php
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if(xhr.status === 200){
+        //console.log(xhr.responseText);
+        //3:接收返回数据
+        //4:转换 json字符串-->js 对象
+        //   JSON.parse(xhr.responseText);
+        var list = JSON.parse(xhr.responseText);
+        //*5:JS 数组 循环  10:20--10:25
+        var html = "";
+        for(var i=0;i<list.length;i++){
+          var book = list[i];
+          //console.log(book.id+":"+book.name);
+          html += "<li>"+book.name+"</li>";
+        }
+        //*6:获取当前对象.id   .name获取数据
+        suggest.innerHTML = html;
+        }
+      }
+      }
+      xhr.open('GET','book_json_list.php',true);
+      xhr.send(null);
+      }
+    </script>
+ 	</body>
+</html>

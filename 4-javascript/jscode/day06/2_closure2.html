@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function factory(rate){//生产计算器的工厂
+				return function(rmb){//要生产的计算器
+					return (rmb*rate).toFixed(2);
+				}
+			}
+			var rmb2$=factory(0.1639);
+			//rmb2$: function(rmb){(rate=0.1639)
+				//return (rmb*rate).toFixed(2);
+			//}
+			console.log(rmb2$(1000));//163.9
+
+			var rmb2Euro=factory(0.1449);
+			console.log(rmb2Euro(1000));//144.9
+		</script>
+	</body>
+</html>

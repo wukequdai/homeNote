@@ -1,0 +1,146 @@
+1、ion-refresher 下拉刷新
+步骤
+①将ion-refresher放在ion-content的第一个子元素
+②指定属性on-refresh pulling-text
+③当完成数据的操作之后，发出广播
+$scope.$broadcast('scroll.refreshComplete')
+
+2、ion-infinite-scroll 上拉加载更多
+步骤：
+①将ion-infinite-scroll放到ion-content的最后一个元素
+②指定on-infinite
+③发出广播
+$scope.$broadcast('scroll.infiniteScrollComplete');
+
+注意：没有更多数据可以加载时，使用ngIf。
+
+练习：来实现一个列表，要求支持下拉刷新 上拉加载更多。
+
+3、$ionicScrollDelegate
+scrollTop/scrollBottom/scrollTo/getScrollPosition
+
+4、ionTabs
+ionTab title/icon/icon-on/icon-off/on-select/ng-click/on-deselect
+
+5、侧边栏菜单
+ion-side-menus/ion-side-menu/ion-side-menu-content
+
+width/side
+
+打开：
+menu-toggle='left/right'
+$ionicSideMenuDelegate.toggleLeft(true)
+$ionicSideMenuDelegate.toggleRight(true)
+
+关闭：
+menu-toggle='left/right'
+$ionicSideMenuDelegate.toggleLeft(false)
+$ionicSideMenuDelegate.toggleRight(false)
+menu-close关闭当前打开的侧栏菜单。
+
+6、$ionicActionSheet
+
+cancelText/cancel/destructiveText/destructiveButtonClicked/buttons/buttonClicked
+
+7、$ionicPopup
+alert/prompt/confirm/show(自定义的弹窗)
+
+8、$ionicLoading(显示一个加载中的覆盖层)
+show(template/duration/delay)/hide
+
+
+9、ui-router
+https://ui-router.github.io/
+支持路由的嵌套
+
+使用ngRoute：
+①引入angular-route.js
+②创建模块 指定依赖于ngRoute
+③指定盛放代码片段的容器 ng-view
+④创建代码片段
+⑤配置路由词典
+app.config(function($routeProvider){
+	$routeProvider.when('start',		{
+		  templateUrl:'tpl/start.html',
+		 controller:'startCtrl'
+		})
+	})
+⑥跳转
+$location.path('路由地址')
+<a href='#路由地址'>
+直接修改地址
+
+⑦传参
+明确发送和接收
+配置接收方的路由
+when('start/:id',{})   $routeParams.id
+发送参数
+
+
+使用uiRouter
+①引入对应的js文件 ionic.bundle.js
+(angualr-ui-router.js)
+②创建模块，指定依赖于 ionic
+(ui.router)
+③指定盛放代码片段的容器
+ui-view
+④创建代码片段
+⑤配置状态
+app.config(function($stateProvider,$urlRouterProvider){
+	//添加状态
+	$stateProvider.state('start',{})
+	$urlRouterProvider.otherwise('')
+})
+⑥跳转
+
+修改地址栏为状态的对应url
+a href='#/url'
+$state.go('person')
+ui-sref='person'
+
+⑦参数的传递
+明确发送 接收
+main->person
+
+配置接收方的状态
+state('person',{
+url:'/myPerson/:id',
+templateUrl:''
+})
+$stateParams.id
+
+发送参数
+修改地址栏为状态的对应url
+a href='#/url/2'
+$state.go('person',{id:2})
+ui-sref='person({id:2})'
+
+练习：
+通过uiRouter来管理代码片段:login、register、main
+login:
+ button(没有账号，去注册 js)-->register
+ button(登录 ui-sref) -->main  传参id,值为50
+
+register:
+ a(注册完成，去登录) -->login
+
+main  接收参数，将50显示出来
+ a(退出登录) --》login 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

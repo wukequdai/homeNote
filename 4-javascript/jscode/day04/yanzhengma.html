@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		//所有数字放在数组里
+		var chars=[];
+		for(var i=48;i<=57;i++)
+			//将当前Unicode号转成字，压入chars中
+			chars.push(String.fromCharCode(i));
+		for(var i=65;i<=90;i++)
+			chars.push(String.fromCharCode(i));
+		for(var i=97;i<=122;i++)
+			chars.push(String.fromCharCode(i));
+		console.log(String(chars));
+		//定义函数随机生成4位验证码
+		function getCode(){
+			var code=[];//创建空数组保存验证码
+			while(code.length<4){//反复
+				//0到chars.length-1之间生成一个随机数
+				var i=Math.floor(Math.random()*chars.length);
+				//将chars中i位置字符压入code 
+				code.push(chars[i]);
+			}
+			//返回无缝拼接的结果
+			return code.join("");
+		}
+		//生成初始验证码
+		var code=getCode();
+		while(true){//反复
+			var input=prompt("请输入验证码"+code);
+			//如果输入错误
+			if(input.toLowerCase()!=code.toLowerCase()){	
+				alert("验证错误，请重试");
+				code=getCode();}
+			else
+				break;
+		}
+		document.write("验证通过");
+	</script>
+</body>
+</html>

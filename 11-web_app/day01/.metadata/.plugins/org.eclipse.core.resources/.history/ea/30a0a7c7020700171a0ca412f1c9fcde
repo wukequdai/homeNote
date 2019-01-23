@@ -1,0 +1,9 @@
+package com.tarena.demo05_callandroid;
+
+import android.content.Context;
+
+public class WebInterface {
+	Context mContext;
+	
+	
+}

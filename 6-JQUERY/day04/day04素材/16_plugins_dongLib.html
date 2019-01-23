@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+ </head>
+  
+ <body>
+  <ul id="nav">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    var arr=[1,2,3,4];//数组
+    var $lis=$("#nav>li");//类数组对象
+  /*$.each vs $(...).each()
+    var sum=0;
+    
+    //$.each(arr,function(i){
+      //sum+=arr[i]
+    //});
+    //arr.each(function(i){
+      //sum+=arr[i]
+    //});
+    
+    //$.each($lis,function(i){
+      //sum+=parseFloat($(this).html());
+    //})
+    $lis.each(function(i){
+      sum+=arr[i]
+    });
+    console.log(sum);
+  /*添加一个sum方法，求jQuery查询结果对象中所有元素内容的和
+    jQuery.fn.sum=function(){//this->$(...)
+      var sum=0;
+      this.each(function(){//this->当前DOM元素
+        sum+=parseFloat($(this).html());
+      });
+      return sum;
+    }
+    console.log($("#nav>li").sum());
+  */
+  /*添加一个sum方法，求数组或集合中内容的和*/
+    $.sum=function(list){
+      var sum=0;
+      if(Array.isArray(list))
+        sum=list.reduce(function(prev,val){
+          return prev+val
+        },0);
+      else
+        list.each(function(){//this->当前DOM对象
+          sum+=parseFloat($(this).html());
+        });
+      return sum;
+    }
+    console.log($.sum(arr));
+    console.log($.sum($lis));
+  </script>
+ </body>
+</html>

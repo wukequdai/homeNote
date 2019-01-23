@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#d1{
+				margin-top:50px;
+				width:200px;
+				height:200px;
+				background-color:red;
+				/*指定过渡*/
+				transition-property:background,border-radius;
+				transition-duration:1s;
+				transition-timing-function:linear;
+				/*此处声明过渡：即管去又管回*/
+			}
+
+			#d1:hover{
+				background-color:yellow;
+				border-radius:50%;
+				/*此处声明过渡：只管去不管回*/
+			}
+
+			#scroll{
+				width:40px;
+				height:40px;
+				border:2px solid red;
+				background-color:yellow;
+				text-align:center;
+				line-height:40px;
+				border-radius:50%;
+				font-size:18px;
+				font-weight:bold;
+				/*过渡*/
+				transition:transform 5s;
+			}
+			#scroll:hover{
+				transform:translate(500px) rotate(1080deg);
+			}
+		</style>
+	</head>
+	<body>	
+		<div id="scroll">滚</div>
+		<div id="d1"></div>
+	</body>
+</html>

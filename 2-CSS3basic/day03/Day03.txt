@@ -1,0 +1,209 @@
+1、渐变
+	1、什么是渐变
+		两种或多种颜色之间平滑过渡的效果
+	2、渐变分类
+		1、线性渐变
+			按照一条直线的方式填充渐变色
+		2、径向渐变
+			按照原型的方式向外放射性填充渐变颜色
+		3、重复渐变
+			将线性渐变和径向渐变重复实现多次
+	3、色标
+		每个渐变颜色 出现的 "位置" 及其 "颜色值"
+	4、语法
+		1、属性 & 取值
+			属性：background-image
+			取值：
+				1、线性渐变
+					linear-gradient()
+				2、径向渐变
+					radial-gradient()
+				3、重复渐变
+					repeating-linear-gradient()
+					repeating-radial-gradient()
+		2、线性渐变
+			background-image:linear-gradient(angle,color-point,color-point,...);
+				1、angle ：线性渐变的方向或角度
+					取值：
+						1、关键字
+							1、to top : 从下向上填充
+							2、to right : 从左向右填充
+							3、to bottom : 从上向下填充
+							4、to left : 从右向左填充
+						2、角度
+							可以取值为 0deg ~ 360deg
+							to top -> 0deg
+							to right -> 90deg
+							to bottom -> 180deg
+							to left -> 270deg
+				2、color-point ：色标
+					由渐变的颜色 以及 出现的位置 组成
+					ex:
+						1、red 0px
+							开始的位置是红色
+						2、green 50px
+							按照填充的方向，50px的位置处，变为绿色
+						3、blue 100%
+							按照填充的方向，结束的位置处，变为蓝色
+					注意：色标中，可以省略位置不写，如果省略位置的话，css会按照元素的大小及填充方向平均分配渐变色
+		3、径向渐变
+			background-image:radial-gradient([size at position,]color-point,color-point);
+			1、size at positioin
+				可以省略，如果省略的话，css会默认分配渐变色，圆心在元素的中间位置处
+				size ：圆的半径，以px为单位
+				at ：关键字，不能省略
+				position ：圆心位置
+		4、浏览器兼容性
+			主流版本浏览器支持性比较好
+			对于不支持的版本，通过增加浏览器前缀的方式实现兼容性
+				Firefox ：-moz-
+				Chrome & Safari ：-webkit-
+				Opear ：-o-
+			
+			浏览器前缀加在什么位置?????
+			1、如果浏览器不支持属性的话，则将前缀加到属性名称前
+				animation:....;
+				-moz-animation:...;
+				-webkit-animation:....;
+				-o-animation:....:
+			2、如果浏览器支持属性，但不支持属性值的话，则将前缀加到属性值的前面
+				background-image:linear-gradient();
+				
+				background-image:-moz-linear-gradient();
+				background-image:-webkit-linear-gradient();
+				background-image:-o-linear-gradient();
+2、文本格式化
+	1、文本格式化
+		字体属性：大小，加粗，系列等
+		文本格式：文本颜色，线条样式，... ...
+	2、字体属性
+		1、指定字体系列
+			属性：font-family
+			取值：value1,value2,...
+			注意：如果字体中包含中文以及特殊符号的话，要用""引起来。
+			ex：
+				font-family:"微软雅黑",Arail,Times;
+				font-family:"microsoft yahei";
+		2、指定字体大小
+			属性：font-size
+			取值：以px或pt或em 为单位的数值;
+		3、指定字体加粗
+			属性：font-weight
+			取值：
+				1、normal
+					正常体
+				2、bold
+					加粗
+				3、value
+					400 ~ 900 之间的整百倍数
+					400 : normal一样
+					900 : bold一样
+		4、指定字体样式
+			属性：font-style
+			取值：
+				1、normal
+					正常体
+				2、italic
+					斜体
+		5、小型大写字母
+			作用：将元素中的所有小写英文字母转换为大写，但是大小与小写字符一样
+			属性：font-variant
+			取值：
+				1、normal
+					正常显示
+				2、small-caps
+					小型大写字符
+	3、文本属性
+		1、文本颜色
+			属性：color
+			取值：合法颜色值
+		2、文本排列方式
+			属性：text-align
+			取值：left/right/center
+		3、文字修饰
+			属性：text-decoration
+			取值：
+				1、none
+					无任何线条显示
+				2、underline
+					显示下划线
+				3、overfline
+					显示上划线
+				4、line-through
+					显示删除线
+		4、行高
+			作用：一行数据的高度。如果行高的高度高度数据本身高度，那么该行数据将在指定的行高范围内垂直居中。
+			属性：line-height
+			取值：px 为单位的数值
+			使用场合：
+				1、解决一行数据的垂直居中问题
+				2、拉长多行数据之间的间距-行间距
+		5、首行文本缩进
+			属性：text-indent
+			取值：px为单位的数值
+		6、文本阴影
+			属性：text-shadow
+			取值：h-shadow v-shadow blur color;
+3、表格
+	1、表格常用样式
+		1、边距属性
+			padding(table,td)
+			margin(table),不适用于td
+		2、尺寸
+			width,height
+		3、文本格式化属性
+			font-*
+			text-*
+		4、背景属性(颜色，图片，渐变)
+		5、border
+		6、vertical-align
+			内容垂直对齐方式
+			属性：vertical-align
+			取值：top/middle/bottom
+	2、表格特有样式
+		1、边框合并
+			属性：border-collapse
+			取值：
+				1、separate
+					默认值，分离边框模式
+				2、collapse
+					合并边框模式，table和td将合并成一个边框
+		2、边框边距
+			作用：设置单元格与表格，单元格与单元格之间的距离(cellspacing)
+			属性：border-spacing
+			取值：
+				1个值：水平和垂直间距相同
+				2个值：第1个值 表示水平间距，第2个值 表示垂直间距。两个值之间用空格隔开
+			注意：border-collapse属性必须是 separate时，边框边距才有效，否则无效
+		3、标题位置
+			属性：caption-side
+			取值：
+				1、top	
+					默认值，标题位于表格之上
+				2、bottom
+					标题位于表格之下
+		4、显示规则
+			作用：指定浏览器如何显示或布局一张表格，即设置单元格，行，表格的算法规则
+			属性：
+				table-layout
+			取值：
+				1、auto
+					自动表格布局，默认布局方式，单元格的尺寸实际上是由内容决定的。
+				2、fixed
+					固定表格布局，单元格的尺寸由设定的数据值来决定的，不由内容决定
+
+			自动表格布局 VS 固定表格布局
+			1、自动表格布局(默认布局方式)
+				1、单元格的大小由内容来决定
+				2、表格复杂时，加载会比较慢(缺点)
+				3、适用于不确定每列大小时使用
+				4、虽然效率较低，但比较灵活(特点)
+			2、固定表格布局
+				1、单元格的大小由设定的值来决定，与内容无关
+				2、会加速显示表格，不需要每行数据都进行计算(特点)
+				3、适用于确定每列大小时使用
+				4、虽然效率较高，但不够灵活(缺点)
+
+
+
+

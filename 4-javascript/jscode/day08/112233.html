@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function Flyer(name,speed){
+			this.name=name,
+			this.speed=speed
+		}
+		function Plane(name,speed,score){
+			Flyer.call(this,name,speed);
+			this.score=score;
+		}
+		function Bee(name,speed,award){
+			Flyer.call(this,name,speed);
+			this.award=award;
+		}
+		Bee.prototype.getAward=function(){
+			console.log(
+				"击落"+this.name+"获得奖励"+this.award);
+		}
+		Object.setPrototypeOf(
+			Bee.prototype,Flyer.prototype
+		);
+		var f16=new Plane("F16",1000,20);
+		var bee=new Bee("小蜜蜂",50,"1 life");
+		//f16.fly();
+		//f16.getScore();
+		bee.fly();
+		bee.getAward();
+	</script>
+</body>
+</html>

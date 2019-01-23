@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		body { margin: 0; }
+		.page {
+			position: fixed;
+			left: 0; right: 0; top: 0; bottom: 0;
+		}
+    .btn{
+      width:50px;height:50px;border:1px solid #aaa;
+      position:fixed; top:50%; margin-top:-25px;
+      border-radius:50%; font-size:25px; text-align:center; line-height:50px;
+      cursor:pointer; background:#fff;z-index:10;
+    }
+    .left{left:0;} .right{right:0;}
+	</style>
+ </head>
+ <body>
+  <div class="btn left">L</div>
+  <div class="btn right">R</div>
+	<div class="page actived" style="left: 0; background:#faa;"></div>
+	<div class="page" style="left: 100%; background:#afa;"></div>
+  <div class="page" style="left: 100%; background:#aaf;"></div>
+  <div class="page" style="left: 100%; background:#faf;"></div>
+  
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+    //选择第一个class为page的div绑定单击事件
+    $("div.btn.left").click(function(){
+      var $actived=$("div.actived");
+      //如果actived不是第一个page
+      if(!$actived.is(".page:last"))
+        //就让active出去，让下一个进来
+        $actived.animate({left:"-100%"},1000)
+          .next().animate({left:0},1000,function(){
+            //为新进入的page添加actived，为前一个page移出actived
+            $(this).addClass("actived")
+                   .prev().removeClass("actived");
+          });
+    });
+    $("div.btn.right").click(function(){
+      var $actived=$("div.actived");
+      //如果actived不是最后一个page
+      if(!$actived.is(".page:first"))
+        //就让active出去，让前一个进来
+        $actived.animate({left:"100%"},1000)
+        .prev().animate({left:0},1000,function(){
+          //为新进入的page添加actived，为后一个page移出actived
+          $(this).addClass("actived")
+                 .next().removeClass("actived");
+        });
+    })
+	</script>
+ </body>
+</html>

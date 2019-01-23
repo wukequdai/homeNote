@@ -1,0 +1,178 @@
+一、React介绍
+what 是一个开源的js库 由facebook、Instagram、独立开发者和公司构成的社区共同维护的
+when 为数据的渲染提供html视图
+why  fb构建大型应用程序时，数据变化非常快，带来视图更新对于浏览器遇到了性能瓶颈：大量的DOM操作（VirtualDOM）、逻辑及其复杂（状态与内容对应起来）
+
+特点：
+① jsx :	并不是一种新的语言，而是基于js的扩展
+②高效： 引入了VirtualDOM，最大限度的减少与DOM的交互
+③组件化：构建组件，方便复用、降低的测试难度
+④声明式设计：可以轻松描述应用
+⑤单向数据流
+
+reactjs.com
+
+注意事项：
+①React不支持ie8以下的浏览器
+②你的站点或者应用 压根不需要频繁的动态页面更新，没有必须要使用React
+
+
+二、React的核心思想和核心概念
+
+核心思想：封装组件
+
+核心概念：
+①组件
+②jsx（基于js的扩展，在js中直接使用html标签）
+建议使用jsx，而不是强制要求
+③VirtualDOM（虚拟DOM取代物理DOM作为操作对象）
+④DataFlow 
+通过props进行数据的传递
+
+
+三、搭建React开发环境
+
+①cli 命令行
+使用该开源项目进行通过命令行的操作 完成React代码的编写
+https://github.com/facebookincubator/create-react-app
+
+②使用官方的资源文件
+browser、react、react-dom
+
+四、React的用法
+
+1、方法
+ReactDOM.render(第一个参数，第二个参数);
+将第一个参数给渲染到第二个参数对应的内容
+
+babel：编译器 可以将jsx编译成js
+
+2、JSX基本语法规则
+①遇到了< ，交给html去解析
+②遇到了{}，交给js去解析
+
+建议使用jsx，否则通过js也能实现，但是会复杂一点
+
+注意：渲染的元素如果有多个，要求放在一个顶层标签中，否则会报错
+
+
+练习：创建一个新的文件，引入对应的js文件，在调用render去渲染时，常用的js表达式（逻辑运算、三目运算、算术运算）
+
+2、组件化
+①创建组件
+var HelloCom = React.createClass({
+	render:function(){
+	}
+})
+②调用组件
+<HelloCom ></HelloCom >
+
+注意事项：
+①组件命名首字母必须是大写的
+②要返回多个元素，放在顶层标签中，而且在return顶层标签这是不能换行的
+③在创建组件的过程中，要指定render方法
+
+3、复合组件
+
+将不同的组件，结合在一起，形成的新的组件称之为复合组件。
+
+4、props (properities属性 单向数据流动)
+
+a href
+ButtonComponent 
+指定的属性 buttonName='注册'this.props.buttonName
+
+总结：
+调用组件时，指定属性  ：属性名称='注册'
+在组件内要想拿到传递的属性：this.props.属性名称 
+
+props特点：指定的属性和props的属性是一一对应的，
+this.props.children 组件的所有子节点
+
+注意：
+①通过属性进行传递的时候，不仅传递普通的变量，还可以进行方法的传递
+②通过属性传递的值 在组件内部 只是用来读的，是read only,无法直接对属性传递的值进行修改
+
+
+5、ref
+组件并不是真实的DOM节点，而是存在内存中一种数据结构，叫做VirtualDOM（虚拟DOM），
+DOM diff算法 根据React的设计，所有的DOM变动，都先在VDOM发生， 然后再将实际发生变动的部分，反映在真实的DOM。
+
+需用从组件中得到真实的DOM节点，需要用到ref属性。
+
+input ref='inputTxt'
+
+this.refs.inputTxt
+
+练习：
+
+创建一个组件，两个输入框，一个按钮，点击按钮时候，从输入框拿到输入的数据（this.refs找到节点）进行求和，将结果显示在console
+
+
+练习：
+定义组件AComponent (input)
+定义组件BComponent （button）
+在MainComponent组件中包含上述两个组件
+问题：B组件的按钮点击时，如何拿到A组件中用户输入的内容
+①直接通过ref
+a input ref  ---> b this.refs.** 		this本身就是组件
+是不可行的
+②通过MainComponent进行处理
+input    --> 存到Main组件
+button  --> 读取Main组件
+第一步：将A组件中用户的输入 存到Main组件中
+onChange
+
+第二步：button  --> 读取Main组件
+
+
+6、State
+组件在React避免不了用户的互动，将组件看成状态机，会有一个初始状态，用户操作，状态会发生变化，从而出发ui的重新渲染
+
+①状态的初始化
+getInitialState（要求必须写成getInitialState）
+②设置状态
+setState()
+③读取状态
+this.state.状态名称
+
+
+注意事项：
+①setState之后要想查看状态的值，建议是在setState的第二参数中进行查看
+② 状态的设置时，只有一种方式:通过setState
+this.setState({switch:!this.state.switch});
+==>
+（以下方案是不可行）
+var switchValue = this.state.switch;
+swtichValue = true;
+③通过状态与视图的绑定，状态的更新 将同步到视图上。
+④组件中的getInitialState以及render方法，在创建组件的过程中是会自动调用，无需手工调用。
+在初始化状态的时候，可以在对象中定义多个状态
+
+
+
+每日练习：
+使用React中的状态去重构综合练习，将综合练习存储的result数据换成状态的方式进行处理。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

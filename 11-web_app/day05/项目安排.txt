@@ -1,0 +1,128 @@
+
+
+
+
+前端框架汇总：
+jQuery:      js的库 简化DOM操作
+jQuery UI ： 是一个html组件库，实现PC端应用
+bootStrap：  响应式 pc+移动端 偏向于PC端
+angularJS：  是一个实现SPA的js的MVC框架，数据操作比较频繁
+Ionic：h5的实现移动端应用程序的框架，集成了ng、cordova、ui库
+PhoneGap：通过plugin插件的形式 提供了丰富的js API，实现原生应用程序才能调用的功能（hybridApp）
+
+
+配对组合：
+jQuery+jQueryUI 
+jQuery+bootStrap
+jQuery+ng
+jQuery+Ionic(ng+phoneGap+ui) 
+
+jQueryUI+bootStrap 不建议
+jQueryUI+ng 
+jQueryUI+Ionic 不建议
+
+bootStrap+ng 
+bootStrap+Ionic 不建议 
+
+技术选型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+目的：实现移动端的app（开饭啦）
+
+技术构成： ionic
+(‘ui库->内容’ +  ‘ng->数据’ +‘uiRouter->处理路由’)
+
+
+1、项目的搭建
+①、创建项目，添加css、js、img、tpl文件夹，添加必须引用的css、js文件，添加自定义的css、js文件以及img图片，并创建完整的引导页面kaifanla.html；
+②、编写kaifanla.html文件：
+  定义模块ng-app=”kaifanla”
+  引入ionic.css以及自定义的css文件
+  定义用于替换模板的视图
+  引入ionic_bundle.js文件，并引入自定义的js文件。
+③、添加模板文件：添加 start/main/detail/order/myorder页面，每个页面中删掉原有内容，添加一个文字；
+④、编写 kaifanla.js 文件
+  定义各自的控制器
+  定义路由：为所有模板定义路由，默认跳转到start
+⑥、测试：跳转是否正常，是否有错误
+
+
+2、所有静态页面的编写---》运行通畅，数据静态死数据
+
+①start.html
+
+②main.html 模拟数据 
+
+http://ionicons.com/
+
+可以通过ng-include包含页头和页尾
+
+has-header has-footer --> ion-content
+
+③detail.html 详情页
+card
+
+④order.html 表单提交页
+
+
+⑤myOrder.html 个人中心页
+通过grid 模拟 table 展示数据
+
+
+3、调用php页面，联调
+
+条件：
+①工程在c:\xampp\htdocs
+②xampp的apache和mySql跑起来
+③测试-》 localhost: /  (不要直接在webStorm中打开)
+
+
+①main.html
+
+ng-model
+-->
+初始化模型数据：$scope.inputTxt = {kw:''};
+$watch : $scope.$watch('inputTxt.kw',function(){})
+方向2的数据绑定： ng-model='inputTxt.kw'
+
+尝试： ion-infinite-scroll 上拉加载更多
+
+②detail.html
+发送： main->a
+接受： detail
+	1、配置detail状态中的url  /detail/:id
+	2、$stateParams
+
+提交订单  id--》 order.html
+
+③order.html
+序列化：
+$httpParamSerializerJQLike
+
+④myOrder.html
+根据手机号 去查找所有的订单
+
+注册邀请：http://t.cn/RqG1Nja
+
+混合编程：
+	打开eclipse，将模拟器，新建一个Android应用，通过webView的loadUrl 
+wv.loadUrl('http://172.163.0.1/ionic_kaifanla/kaifanla.html');
+
+
+

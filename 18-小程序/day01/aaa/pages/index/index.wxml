@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container">
+ <!--头部区域-->
+ <view class="header"></view>
+ <!--标题-->
+ <view class="title"> </view>
+ <!--券-->
+ <view class="ticket1"> 1</view> 
+ <view class="ticket2"> 1</view> 
+</view>

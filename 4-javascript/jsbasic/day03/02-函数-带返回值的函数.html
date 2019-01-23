@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*编写一个函数，名称为 calResult，接收2个数字作为参数，并且在函数中计算两个数字的和，并返回。*/
+			function calResult(n1,n2){
+				var result = n1 + n2;
+				return result;
+			}
+
+			function testCalResult(){
+				/*主体功能：调用 calResult 函数 并且传递参数，得到返回值，打印输出*/
+				var r = calResult(10,20);
+				console.log("结果为:"+r);
+				document.write("结果为:"+r);
+				window.alert("结果为:"+r);//弹出一句话
+			}
+		</script>
+		<button onclick="console.log(calResult(15,18));">调用函数</button>
+		<button onclick="testCalResult();">调用函数</button>
+	</body>
+</html>

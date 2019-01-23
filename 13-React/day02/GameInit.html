@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <style>
+        body {
+            font: 14px "Century Gothic", Futura, sans-serif;
+            margin: 20px;
+        }
+
+        ol, ul {
+            padding-left: 30px;
+        }
+
+        .board-row:after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .status {
+            margin-bottom: 10px;
+        }
+
+        .square {
+            background: #fff;
+            border: 1px solid #999;
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 34px;
+            height: 34px;
+            margin-right: -1px;
+            margin-top: -1px;
+            padding: 0;
+            text-align: center;
+            width: 34px;
+        }
+
+        .square:focus {
+            outline: none;
+        }
+
+        .kbd-navigation .square:focus {
+            background: #ddd;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .game-info {
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container"></div>
+</body>
+
+<script type="text/babel">
+    var Square = React.createClass({
+        handleClick:function(){
+            //console.log('btn is clicked '+this.props.index);
+            this.props.clickHandle(this.props.index);
+        },
+        render() {
+            return (
+                <button onClick={this.handleClick}
+                        className="square">
+                {this.props.list[this.props.index]}
+                </button>
+    );
+    }});
+    //状态中的squares记录的是下过的棋子
+    //状态中的xIsNext记录的下一步还是x还是o
+    var Board = React.createClass({
+        getInitialState: function () {
+            return {
+                squares:Array(9).fill(null),
+                xIsNext: true
+            }
+        },
+        componentDidUpdate:function(){
+            //console.log('准备判断输赢了');
+            var result = calculateWinner(this.state.squares);
+            console.log("结果为:"+result);
+            var flagOver = false;
+            if(result)
+            {
+                alert(result+" 赢了");
+                flagOver = true;
+
+            }
+            else
+            {
+              //棋子全部下完，而且结果还是null 认为这是平局
+              if(this.state.squares.indexOf(null) == -1)
+              {
+                alert("平局");
+                flagOver = true;
+
+              }
+            }
+
+            if(flagOver)//棋子下完了
+            {
+              this.setState({
+              squares:Array(9).fill(null),
+              xIsNext:true});
+            }
+        },
+        handleSquareClick:function(index){
+          //在这个方法中根据index的值修改数组中对应下标的值--》记录下过的棋子
+            var list = this.state.squares;
+            list[index] = this.state.xIsNext?'X':'O';
+            this.setState(
+            {squares:list,
+             xIsNext:!this.state.xIsNext});
+
+        },
+        renderSquare(i) {
+            return <Square
+            index={i}
+            list={this.state.squares}
+            clickHandle={this.handleSquareClick}/>;
+        },
+        render() {
+            return (
+                    <div>
+                        <div className="status">{status}</div>
+                        <div className="board-row">
+                        {this.renderSquare(0)}
+                        {this.renderSquare(1)}
+                        {this.renderSquare(2)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(3)}
+                        {this.renderSquare(4)}
+                        {this.renderSquare(5)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(6)}
+                        {this.renderSquare(7)}
+                        {this.renderSquare(8)}
+                    </div>
+                    </div>
+    );}})
+
+    class Game extends React.Component {
+        render() {
+            return (
+                    <div className="game">
+                    <div className="game-board">
+                    <Board />
+                    </div>
+                    <div className="game-info">
+                    <div>{ status }</div>
+                    <ol>{/* TODO */}</ol>
+                    </div>
+                    </div>
+        );
+        }
+    }
+
+    // ========================================
+
+    ReactDOM.render(
+    <Game />,
+            document.getElementById('container')
+    );
+
+    function calculateWinner(squares) {
+        const lines = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+        for (let i = 0; i < lines.length; i++) {
+            const [a, b, c] = lines[i];
+            if (squares[a] &&
+                    squares[a] === squares[b] &&
+                    squares[a] === squares[c]) {
+                return squares[a];
+            }
+        }
+        return null;
+    }
+
+</script>
+
+</html>

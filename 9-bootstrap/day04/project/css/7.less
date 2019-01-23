@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+/*多行注释*/
+//单行注释
+/*多行注释*/
+//单行注释
+
+/**3.Less变量**/
+@jdRed: #e4393c;
+@thickBorder: 3px;
+@halfOpacity: .6;
+@baseFont: 'SimHei';
+@normalBorderStyle: solid;
+
+.well{
+  color: @jdRed;
+  border: @thickBorder @normalBorderStyle @jdRed;
+  opacity: @halfOpacity;
+  font-family: @baseFont;
+}
+.alert {
+  color: @jdRed;
+}
+
+
+/**4.算术运算**/
+@gutter:  10px;
+
+.col-sm-2 {
+  padding-left: @gutter/2;
+  padding-right: @gutter/2;
+}
+.col-sm-4 {
+  padding-left: @gutter/2;
+  padding-right: @gutter/2;
+  color: #111 + @jdRed;
+}
+
+@lgContainerWidth: 1300px;
+.col-lg-1 {
+  width: @lgContainerWidth/12;
+}
+.col-lg-2 {
+  width: @lgContainerWidth/6;
+}
+
+
+
+/**5.Mixin 样式混入**/
+.box5 {
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #f00;
+}
+.alert {
+  .box5;
+  color: #f00;
+}
+.well {
+  .alert;
+  font-size: 16px;
+}
+
+
+/**6.带参混入**/
+.box6(@pd, @mb, @c:#000) {
+  padding: @pd;
+  margin-bottom: @mb;
+  border: 1px solid @c;
+  color: @c;
+}
+.alert6 {
+  .box6(1px, 5px, #f00);
+}
+.well6 {
+  .box6(5px, 8px);
+}
+/****************/
+.box66() {
+  padding: 1px;
+  margin-bottom: 1px;
+  border: 1px solid #f00;
+}
+.alert6 {
+  .box66;
+}
+.well6 {
+  .box66;
+}
+
+
+/**7.样式规则嵌套**/
+/*.main {
+  width: 1211px;
+}
+.main .affix {
+  list-style: none;
+}
+.main .affix li {
+  line-height: 2em;
+}
+.main .affix li > a {
+  text-decoration: none;
+}
+.main .affix li > a:hover {
+  text-decoration: underline;
+}*/
+.main {
+  width: 1211px;
+  .affix {
+    list-style: none;
+    li {
+      line-height: 2em;
+      > a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/**8.样式相关函数**/
+@jdGreen: #39e43c;
+.alert-success {
+  background: lighten(@jdGreen, 30%);
+  color: @jdGreen;
+  border-color: darken(@jdGreen, 20%);
+}
+
+.small2 {
+  width: image-width("../img/2.jpg");
+  height: image-height("../img/2.jpg");
+}
+
+.col-md-1 {
+  //width: 970px/12;
+  width: floor(970px/12);
+}
+.col-md-1 {
+  width: percentage((970px/12)/970px);
+}
+
+
+
+
+
+
+
+

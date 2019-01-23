@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/*
+			//1、输入一个字符，判断是否为 小写英文字符
+			var c = prompt("请输入一个字符:");
+			//2、原理 ，比较 c 的 Unicode 码是否在 a(Unicode码) 和 z(Unicode码) 之间
+			//条件1:c >= "a"
+			//条件2:c <= "z"
+			var result = c>="a" && c<="z";
+			console.log(c+"是小写英文字符吗?"+result);
+			//汉字范围:\u4e00 ~ \u9fa5
+		*/
+
+		var c = prompt("请输入一个字符：");
+		//1、判断是否为 汉字
+		//1.1 条件1 c 是否 大于等于 \u4e00
+		//c >= "\u4e00";
+		//1.2 条件2 c 是否 小于等于 \u9fa5
+		//c <= "\u9fa5";
+		var isCHN=(c>="\u4e00")&&(c<="\u9fa5");
+		console.log(c+"是中文吗?"+isCHN);
+
+		//2、判断是否为 数字
+		//2.1 条件1 ：c是否大于等于 '0'
+		//2.2 条件2 ：c是否小于等于 '9'
+		var isNum=(c>="0")&&(c<="9");
+		console.log(c+"是数字吗?"+isNum);
+
+		//3、判断是否为 英文
+		//3.1 判断是否为 小写
+			//3.1.1 判断 c 是否 大于等于 a
+			//c>="a"
+			//3.1.2 判断 c 是否 小于等于 z
+			//c<="z"
+			//c>="a"&&c<="z";
+		//3.2 判断是否为 大写
+			//3.2.1 判断 c 是否 大于等于 A
+			//3.2.2 判断 c 是否 小于等于 Z
+			//c>="A"&&c<="Z";
+		var result = (c>="a"&&c<="z")||(c>="A"&&c<="Z");
+		console.log(c+"是一个英文吗?"+result);
+			
+			
+		</script>
+	</body>
+</html>

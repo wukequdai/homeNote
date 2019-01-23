@@ -1,0 +1,70 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+    <style>
+       .container{
+          position:relative;
+       }
+       #suggest{
+         position:absolute;
+         list-style:none;
+         padding:0;
+         margin:0;
+         border:1px solid #aaa;
+         top:100%;
+         left:0;
+         width:230px;
+       }
+       #suggest li{
+          line-height:2em;
+       }
+       #suggest li:hover{
+          background:#eee;
+       }
+
+    </style>
+ 	</head>
+ 	<body>
+ 		<h1>汽车列表</h1>
+    <table>
+      <thead>
+        <tr>
+          <td>编号</td>
+          <td>名称</td>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
+    <script>
+      //1:当网页加载完成自动执行以下功能
+      window.onload = function(){
+      //2:发送ajax get请求 book_json_list.php
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if(xhr.status === 200){
+          //2.1 获取服务器返回数据json字符串
+          //2.2 将json字符串转 js 数组
+          //11:10--11:20 休息
+          var rows = JSON.parse(xhr.responseText);
+          var html = '';
+          for(var i=0;i<rows.length;i++){
+              html += '<tr>';
+              html += '<td>'+rows[i].id+'</td>';
+              html += '<td>'+rows[i].name+'</td>';
+              html += '</tr>';
+          }
+          tbody.innerHTML = html;
+
+        }//200
+      }//4
+      }//onready
+      xhr.open('GET','che_json_list.php',true);
+      xhr.send(null);
+      }
+    </script>
+ 	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制图像</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    var img = new Image();
+    img.src = 'img/p3.png';
+    img.onload = function(){
+      var x = 0;
+      var y = 0;
+      setInterval(function(){
+        //清除画布已有内容
+        ctx.clearRect(0,0,500,400);
+
+        //绘制图像
+        ctx.drawImage(img, x, y);
+        x += 5;
+      },50)
+    }
+
+  </script>
+</body>
+</html>

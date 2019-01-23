@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1、输入一个考试成绩，判断该成绩是否在60~80之间
+			/*var score = prompt("输入一个成绩:");
+			score = Number(score);
+			var result=score>=60 && score<=80;
+			console.log("成绩是在60~80之间吗?"+result);*/
+			//2、判断 笔试和面试成绩，如果两个成绩其中有一个 超过或等于60，则视为面试通过
+			var bishi=Number(prompt("笔试成绩:"));
+			var mianshi=Number(prompt("面试成绩:"));
+			var result = bishi>=60 || mianshi>=60;
+			console.log("通过测试了吗?"+result);
+		</script>
+	</body>
+</html>

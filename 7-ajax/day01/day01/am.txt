@@ -1,0 +1,241 @@
+
+今天学习的内容
+程涛 chengtao@tedu.cn
+
+第三阶段
+ajax
+数据库服务器  --- SQL：难点1
+WEB服务器     --- PHP：难点2
+http协议      --- 抽象
+原生ajax      ---      难点3
+jquery中ajax
+#-------------------------------
+
+
+今日目标
+1:服务器概念--了解
+2:数据库服务器概念-- 了解
+3:操作数据库服务器 --  重点&难点
+
+
+为什么要学习服务器内容
+1:专业
+2:学习
+
+什么服务器
+1:硬件服务器
+2:软件服务器 {哪台计算机上运行服务器软件}
+
+软件服务器图01.jpg
+
+
+
+#数据库服务器概念
+数据库是一个软件：极为特殊软件
+解决二个问题:
+1:海量数据存储
+2:高速查询
+
+分类
+1: 网状数据库
+2: 树形数据库
+3：关系型数据库 -- 
+   SQLite/Mysql***/SqlServer/Oracle/DB2
+   互联网软件系统标配.
+4: 对象型数据库
+
+
+
+mysql数据库安装使用
+xampp  软件工具包
+1:apache  web 服务器
+2:mysql   数据库服务器
+3:php     web 服务器语言
+
+安装：下一步
+使用
+1:启动数据库服务器  打开控制面板
+  mysql     [start]
+2:进入mysql 系统
+ 2.1:打开windows控制台 
+ 2.2:控制面板点击 Explorer
+ 2.3:mysql>bin>mysql.exe
+ 2.4:将mysql.exe 拖动
+     windows控制台回车
+
+9:55---10:05   休息
+
+
+
+
+关系型数据库概念
+1:逻辑结构
+  mysql服务器软件-->库(database)-->表(table)-->行(row)-->列(column)
+2:物理文件
+  目录结构  
+   mysql
+    mysql.ini
+    bin{所有mysql命令}
+  启动文件      mysqld.exe deamon
+  数据文件      data
+  客户端的软件  mysql.exe
+
+3:访问数据库路径{标准访问路径}
+  mysql.exe -h 127.0.0.1 -uroot -p -P3306
+  简单 
+  mysql.exe 回车
+
+  -h:host   指定mysql服务器所在主机名
+  127.0.0.1 主机
+  -u:user      指定登录mysql服务器用户名
+  -p:password  指定登录mysql服务器密码
+  -P:端口号    3306 
+
+
+mysql管理指令
+1:显示当前mysql服务器所有库名称
+  show databases;
+2:进入指定库当中
+  use  库名称; 
+3:显示当前正在使用库名称
+  select database();
+#使用mysql指令后面加分号,结束 
+4:退出当前mysql程序
+  exit 
+5:查询当前库中所有表名称
+  show tables;
+6:查询指定表中所有记录
+  select * from 表名;     
+7:查询当前mysql编码
+  status
+
+
+
+
+练习:  10:35---10:37
+1:进入mysql使用root帐户
+2:显示当前所有库名称
+3:进入test库中
+4:显示当前库中所有表名称
+  Empty set #库空没有表
+
+
+
+SQL
+Strutured Query Language 结构化查询语言,
+一门专用于提交给数据库服务器语言,
+用于操作数据库服务器中的数据--
+增删改查询数据.
+
+SQL言执行方法两种:
+1)连接数据库服务器输入一条 SQL语句，以分号结尾，回车.
+  提交该命令给服务器执行
+2)把需要执行SQL语句编写一个.sql文件中，连接服务器,
+  把.sql中文中所有命令一同提交服务器执行.
+  mysql>source d:/xx.sql 不能加分号
+
+
+注意:***
+  sql文件名:
+  1:不能出现中文或特殊字符,只能英文或数字
+  2:不能加空格
+
+
+练习:
+1:创建xx.sql文件
+2:内容
+  2.1:显示当前mysql所有库名
+  2.2:进入test库中
+  2.3:查询当前库中所有表名称
+3:导入xx.sql文件
+  source d:/xx.sql
+
+10:57--11:00 练习
+11:00--11:10 休息
+
+
+SQL语句的分类
+1:DDL Data Define Language
+  定义库的特征，表的结构--操作列
+  CREATE/DROP/ALTER/TRUNCATE
+2:DML Data Manipulate Language
+  操作表中的记录行--操作行
+  INSERT/DELETE/UPDATE
+3:DQL Data Query Language***
+  SELECT 
+4:DCL Data Control Language
+  控制数据库用户的权限
+  GRANT/REVOKE
+
+
+#CREATE   创建一个库创建一个表
+#创建一个库
+ CREATE DATABASE 库名称;
+示例:
+ CREATE DATABASE crm;
+ 专家级创建库语句;
+ CREATE DATABASE crm1 CHARACTER SET utf8;
+
+#创建一个表
+ CREATE TABLE 表名称(
+  列名称1  类型,
+  列名称2  类型,
+  列名称3  类型,
+  ....
+  列名称n  类型
+ ); 
+
+ 表名称/列名称:必须英文数字不能数字开头
+ 类型
+ int      整型
+ varchar  字符串
+ datetime 日期
+ double   浮点小数
+ 
+ 雇员表:
+ 编号   int
+ 姓名   varchar(10)  #10字符(英文数字汉字)
+ 年龄   int 
+ 入职时间 datetime
+ 工资   double(10,2) 10位数字包含二位小数
+ 奖金   double
+
+
+ CREATE TABLE t_emp(
+  id   int,
+  name varchar(25),
+  age  int,
+  rdate datetime,
+  sal  double(10,2),
+  comm double(10,2)
+ );
+
+ 练习:11:51--11:53
+ 1:创建一张表t_emp
+ 2:查询表是否创建成功
+
+补充知识点编码:
+国内制定一系列编码标准
+1:gb2312     6000 简体中文英韩
+2:gbk        19000简繁体英韩日
+3:gb18030    20000简繁体英韩日
+
+4:utf-8        标准支持全世界所有国家文字
+坑:
+html/css/js/php  utf-8
+mysql            utf8
+
+5:latin-1   iso8859-1 
+ 只支持西欧国家文字{不支持中文}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>使用SVG绘制图形 —— 矩形</h1>
+  <svg id="svg10" width="500" height="400">
+  </svg>
+
+  <script>
+    //动态生成SVG元素的方法1： HTML字符串拼接
+    /*var html = `
+      <rect width="30" height="100" x="100"></rect>
+      <rect width="30" height="300" x="200"></rect>
+      <rect width="30" height="200" x="300"></rect>
+    `;
+    svg10.innerHTML = html;*/
+
+    //动态生成SVG元素的方法2： createElement()/appendChild()
+    //var r1 = document.createElement('rect');
+    var r1 = document.createElementNS('http://www.w3.org/2000/svg',  'rect');
+    r1.setAttribute('width', '50');
+    r1.setAttribute('height', '100');
+    r1.setAttribute('x', '100');
+    svg10.appendChild(r1);
+
+    //var r2 = document.createElement('rect');
+    var r2 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r2.setAttribute('width', '50');
+    r2.setAttribute('height', '300');
+    r2.setAttribute('x', '200');
+    svg10.appendChild(r2);
+  </script>
+</body>
+</html>

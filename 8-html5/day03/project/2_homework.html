@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+      /*使用CSS指定画布的宽和高是对画布进行缩放*/
+      /*width: 800px;
+      height: 200px;*/
+    }
+  </style>
+</head>
+<body>
+  <h3>使用Canvas绘制统计图</h3>
+  <!--<canvas id="c2" width="800" height="600"></canvas>-->
+  <canvas id="c2"></canvas>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    /*画布的尺寸只能使用标签属性或对象属性来赋值*/
+    var w = 800;
+    var h = 600;
+    c2.width = w;
+    c2.height = h;
+
+    //var ctx = $('#c2')[0].getContext('2d');
+    var ctx = c2.getContext('2d');
+    ctx.strokeRect(50,50, w-50*2, h-50*2);
+
+
+    //使用AJAX异步请求服务器端的JSON接口数据
+    $.ajax({
+      url: 'data/2.php',
+      success: function(list){
+        console.log('开始处理服务器端响应数据');
+        console.log(list);
+        doResponse(list);
+      },
+      error: function(){
+        console.log('处理响应数据失败')
+      }
+    });
+    //根据服务器端返回的数据，绘制统计图
+    function doResponse(list){
+      var count = list.length;//数据的数量
+      var barWidth = 700/(2*count+1);//一个柱子的宽度
+      for(var i=0; i<list.length; i++){
+        var dept = list[i]; //一个部门的数据
+        var w = barWidth;
+        var h = dept.value;
+        var x = (2*i+1)*barWidth + 50;
+        var y = 600-50-h;
+        //绘制矩形轮廓
+        ctx.strokeRect(x, y, w, h);
+
+        //填充矩形内容
+        var g = ctx.createLinearGradient(x,y, x, y+h);  //创建渐变对象
+        g.addColorStop(0, rc());
+        g.addColorStop(1, '#fff');
+        ctx.fillStyle = g; //应用渐变对象填充矩形
+        ctx.fillRect(x, y, w, h);
+      }
+    }
+
+    /*random color: 返回一个随机的颜色*/
+    function rc(){
+      var r = Math.floor(Math.random()*256);
+      var g = Math.floor(Math.random()*256);
+      var b = Math.floor(Math.random()*256);
+      return `rgb(${r},${g},${b})`;
+    }
+  </script>
+</body>
+</html>

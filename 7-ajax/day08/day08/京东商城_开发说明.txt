@@ -1,0 +1,90 @@
+1:分析功能模块
+  1.1:动态加载header.php
+	1.2:动态加载footer.php
+	 <div id="site_footer"></div>
+	 <div id="site_header"></div>
+	 header.php 输出所有京东首部html代码
+	 footer.php 输出所有京脚注  html代码
+   $("#site_header").load('header.php');
+	程序:js/productlist.js  
+	1.3:登录
+	   productlist.html
+		 #login-form
+     a:请用户输入用户名和密码
+		   如果用户登录成功
+     b:隐藏登录框
+		 c:在网页页头  欢迎qiangdong
+        data/user_login.php
+     d:获取用户名和密码
+		 e:查询数据库 jd_user
+		   e.1: SELECT count(uid) FROM jd_user
+			      WHERE uname = '' AND upwd = '';
+       e.2  SELECT uid FROM jd_user
+			      WHERE uname = '';
+       e.3: 如果登录成功返回用户uid
+            如果登录失败返回    -1 用户名密码出错
+	1.4:产品列表
+	    a:如果用户登录成功
+			b:jd/jd_product
+			  SELECT * FROM jd_product;
+      c:data/product_list.php
+			  发送json字符串
+      header("content-type:application/json;charset=utf-8");
+			$str = json_encode($arr);
+			echo $str;
+	1.5:分页{选作}
+	    mysql 专门为分页写关键 limit
+			SELECT * FROM t_book limit 
+			记录起始行,一共几行;
+			SELECT * FROM t_book limit 0,5;
+			SELECT * FROM t_book limit 5,5;
+			SELECT * FROM t_book limit 10,5;
+	1.6:商品加入购物车
+	    productlist.html
+			a:如果当前用户没有购物车创建
+			b:如果当前用户有购物车添加购物详细表
+			cart.php
+	1.7:购物车修改
+	    shoppingcart.html
+			a:修改购物车数量
+			  +  点击发送ajax请求更新表
+				-  点击发送ajax请求更新表
+				更新完数据库后一定要重新查询数据
+				显示购物车
+      cartdetail.php
+2:了解目录结构
+  htdocs/jd
+  jd       项目主目录
+	/data    所有服务器端程序目录 php
+	/js      所有js目录
+	         productlist.js
+					 shoppingcart.js
+  /img
+	/images  所有图片
+	/css     所有css文件
+	productlist.html    商品列表/登录/
+	shoppingcart.html   购物车
+3:了解数据库创建sql
+  库 jd  
+	表 
+	1:用户信息表       登录功能
+	  jd_user 
+	  uid     用户编号
+		uname   用户名
+		upwd    用户密码
+  2:产品信息表       产品列表
+	  jd_product
+		pid     产品id
+		pname   产品名称
+		price   产品价格 
+		pic     产品图片
+  3:购物车          每个用户有唯一购物车 
+	  jd_cart
+		cid             购物车id
+		userId          用户id
+  4:购物车详情表    购物车内的每一项
+	  jd_cart_detail
+		did             购物车详情表id
+    cartId          购物车id
+    productId       产品id
+    count INT       数量

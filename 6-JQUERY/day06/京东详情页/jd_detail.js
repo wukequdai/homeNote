@@ -1,0 +1,19 @@
++function(){
+	//为li绑定鼠标事件
+	$(".app_jd,.service").hover(function(){
+		//让当前li下的菜单显示
+		$(this).children("[id$=_items]").slideToggle()
+			//让上级保持hover
+					 .prev().addClass("hover");
+	}).mouseleave(function(){//当鼠标离开时
+		//li隐藏
+		$(this).children("[id$=_items]").hide()
+			//移除
+					 .prev().removeClass("hover");
+	});
+	$("#category").mouseenter(function(){
+		$("#cate_box").show();
+	}).mouseleave(function(){
+		$("#cate_box").hide();
+	})
+}();

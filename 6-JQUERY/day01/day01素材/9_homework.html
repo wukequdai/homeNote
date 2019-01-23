@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <style>
+    a{text-decoration:none; color:#000}
+    .dropdown{position:relative}
+    .dropdown>[data-trigger="dropdown"]{
+      padding:6px 10px;
+      border:1px solid #aaa; 
+      border-radius:6px;
+    }
+    .dropdown-menu{/*起始状态*/
+      list-style:none; margin:0; padding:0;
+      border:1px solid #aaa;
+      position:absolute; top:30px;
+      height:0; opacity:0; overflow:hidden;
+      transition:all .5s linear;
+    }
+    .dropdown>.in{/*结束状态*/
+      opacity:1; height:90px;
+    }
+  </style>
+ </head>
+  
+ <body>
+  <div class="dropdown">
+    <a data-trigger="dropdown" href="#">Dropdown</a>
+    <ul class="dropdown-menu">
+	    <li><a>Action</a></li>
+      <li><a>Another action</a></li>
+      <li><a>Something else here</a></li>
+	    <li><hr></li>
+      <li><a>Separated link</a></li>
+    </ul>
+  </div>
+
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //选择class为dropdown下的data-trigger为dropdown的按钮，绑定单击事件
+    $(".dropdown")
+      .mouseover(function(){//鼠标进入,加in
+        $(".dropdown>.dropdown-menu")
+          .addClass("in");
+      })
+      .mouseout(function(){//鼠标移出,去掉in
+        $(".dropdown>.dropdown-menu")
+          .removeClass("in");
+      });
+  </script>
+ </body>
+</html>

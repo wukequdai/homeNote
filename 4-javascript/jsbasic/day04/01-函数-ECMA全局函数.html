@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function testFun(){
+				//1、调用 isFinite()
+				/*var result = isFinite("hello");
+				console.log(result);*/
+
+				//2、调用 encodeURI 对地址进行编码
+				console.log("http://www.baidu.com/s?wd=瘦身");
+				var newURI = encodeURI("http://www.baidu.com/s?wd=瘦身");
+				console.log(newURI);
+
+				console.log("对newURI进行解码:");
+				var result = decodeURI(newURI);
+				console.log(result);
+
+			}
+
+			function exeJS(){
+				//让用户从 弹框中输入一段JS代码，然后再网页中执行
+				var js = prompt("请输入一段JS:");
+				console.log(js);
+				//动态执行 js
+				eval(js);
+			}
+		</script>
+		<button onclick="exeJS()">执行用户JS</button>
+		<button onclick="testFun()">testFun</button>
+		<a href="http://www.baidu.com/s?wd=瘦身">瘦身</a>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <style>
+    table{ border-collapse:collapse; width:100%}
+    table th,table td{
+      padding:6px 10px;text-align:center
+    }
+    /*table th{border-bottom:2px solid #aaa}*/
+    /*table>tbody>tr:not(:last-child)>td{*/
+      /*border-bottom:1px solid #aaa*/
+    /*}*/
+    /*table>tbody>tr:nth-child(odd){background:#afa}*/
+  </style>
+ </head>
+  
+ <body>
+  <!-- table>(thead>tr>th*4)+(tbody>tr*3>td*4) -->
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>旭</td>
+        <td>赵</td>
+        <td>@xuxu</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>东</td>
+        <td>张</td>
+        <td>@东sir</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>华</td>
+        <td>文</td>
+        <td>@culture</td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //选择thead中的th，设置下边框
+    $("table th")
+      .css("borderBottom","2px solid #aaa");
+    //选择tbody中的除第一行外的td,设置其borderTop
+    $("table>tbody>tr:gt(0)>td")
+      .css("borderTop","1px solid #aaa");
+    //选择tbody中的偶数行
+    $("table>tbody>tr:even")
+      .css("background","#afa")
+  </script>
+ </body>
+</html>

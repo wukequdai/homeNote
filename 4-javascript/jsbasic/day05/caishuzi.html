@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+ <script type="text/javascript">
+	function guess(){
+		var r=parseInt(Math.random()*100);
+		while(true){
+			var input=prompt("请输入一个数字，输入exit退出");
+			if(input=="exit"){
+				break;
+			}if(r>r){
+				alert("您输入大了，请重新输入")
+			}else if(input<r){
+				alert("您输入小了，请重新输入")
+			}else{
+				alert("恭喜您，猜对了。")
+				break;
+			}
+		}
+		alert("程序结束！！")
+	}
+ </script>
+ <button onclick="guess()">猜数字</button>
+</body>
+</html>

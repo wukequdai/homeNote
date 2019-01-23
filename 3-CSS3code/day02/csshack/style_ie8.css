@@ -1,0 +1,5 @@
+/*该文件中，只做IE8的兼容性代码*/
+h1{
+	background-color:purple;
+	border:1px dotted red;
+}

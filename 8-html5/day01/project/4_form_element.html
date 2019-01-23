@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>H5新增的表单元素</h1>
+
+  <form action="4.php">
+    <datalist id="dishList">
+      <option>京酱肉丝</option>
+      <option>鱼香肉丝</option>
+      <option>青椒肉丝</option>
+      <option>茄丁肉丝</option>
+    </datalist>
+    输入菜品：<input type="text" name="dish" list="dishList" autocomplete="off"/><br/>
+
+    连接进度：<progress></progress><br/>
+    下载进度：<progress value="0.2"></progress><br/>
+    下载进度：<progress id="p3" value="0"></progress><br/>
+
+    <!--最优值在上限和下限之间：黄绿黄-->
+    机油含量：<meter id="m1" min="0" max="100" low="30" high="70" optimum="55" value="0"></meter>
+    <br/>
+    <!--最优值在下限之下：绿黄红-->
+    PM25含量：<meter id="m2" min="0" max="500" low="100" high="300" optimum="10" value="0"></meter><span>0</span><br/>
+    <!--最优值在上限之上：红黄绿-->
+    每月工资：<meter id="m3" min="0" max="100000" low="10000" high="60000" optimum="90000" value="0"></meter><span>0</span>
+    <br/>
+
+
+    商品单价：30  购买数量：<input type="number" min="1" max="99" value="1">  小计：<output>30</output><br/>
+    商品单价：40  购买数量：<input type="number" min="1" max="99" value="2">  小计：<output>80</output><br/>
+    总计：<output>110</output><br/>
+
+
+    <input type="submit"/>
+  </form>
+  <script>
+    //使用周期性定时器，让进度条前进
+    var timer = setInterval(function(){
+      var v = p3.value;
+      //console.log( typeof v)    //number
+      v += 0.02;
+      p3.value = v;
+
+      if(v>=1){
+        clearInterval(timer);
+        //alert('下载完成')
+      }
+    }, 50);
+
+    //使用定时器控制度量衡
+    var t1 = setInterval(function(){
+      var v = m1.value;
+      v += 3;
+      m1.value = v;
+    },100);
+    //使用定时器控制度量衡
+    var t2 = setInterval(function(){
+      var v = m2.value;
+      v += 7;
+      m2.value = v;
+      m2.nextElementSibling.innerHTML = v;
+    },100);
+    //使用定时器控制度量衡
+    var t3 = setInterval(function(){
+      var v = m3.value;
+      v += 300;
+      m3.value = v;
+      m3.nextElementSibling.innerHTML = v;
+    },100);
+  </script>
+</body>
+</html>

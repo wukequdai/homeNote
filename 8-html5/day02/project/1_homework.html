@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/1.css"/>
+</head>
+<body>
+<div class="container">
+  <div class="box">
+    <form action="1.php">
+      <!--HTML5规范中推荐的表单写法-->
+      <div class="form-group">
+        <label class="control-label" for="uname">用户名：</label>
+        <input class="form-control" type="text" id="uname" name="uname" autofocus autocomplete="off" required minlength="5" maxlength="10"/>
+        <span class="help-block default">用户名长度在5~10位之间</span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="upwd">密码：</label>
+        <input class="form-control" type="text" id="upwd" name="uname"/>
+        <span class="help-block default">密码长度在5~10位之间</span>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="umail">邮箱：</label>
+        <input class="form-control" type="text" id="umail" name="uname"/>
+        <span class="help-block default">请输入合法的邮箱格式</span>
+      </div>
+      <div class="form-group">
+        <label class="control-label"></label>
+        <input class="btn" type="submit" value="提交注册信息">
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  /*失去焦点时，验证用户名的有效性*/
+  uname.onblur = function(){
+    //this.value 验证
+    //this.validity 验证
+    if(this.validity.valueMissing){
+      var msg = '用户名不能为空';
+      this.nextElementSibling.innerHTML = msg;
+      this.nextElementSibling.className = 'help-block danger';
+      this.setCustomValidity(msg);
+    }else if(this.validity.tooShort){
+      var msg = '用户名长度不能少于5位';
+      this.nextElementSibling.innerHTML = msg;
+      this.nextElementSibling.className = 'help-block danger';
+      this.setCustomValidity(msg);
+    }else if(this.validity.tooLong){
+      var msg = '用户名长度不能长过10位';
+      this.nextElementSibling.innerHTML = msg;
+      this.nextElementSibling.className = 'help-block danger';
+      this.setCustomValidity(msg);
+    }else {
+      var msg = '用户名输入有效';
+      this.nextElementSibling.innerHTML = msg;
+      this.nextElementSibling.className = 'help-block success';
+      this.setCustomValidity('');
+    }
+  }
+</script>
+</body>
+</html>

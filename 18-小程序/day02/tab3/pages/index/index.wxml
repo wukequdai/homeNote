@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <!--上-->
+  <view class="up">
+    <view class="{{cc[0]}}" data-p="0" bindtap="fn">新闻</view>
+    <view class="{{cc[1]}}" data-p="1" bindtap="fn">体育</view>
+    <view class="{{cc[2]}}" data-p="2" bindtap="fn">财经</view>
+  </view>
+<!--上-->
+  <view class="down">
+    <view class="one" style="display:{{ng[0]}}">新fdsasd闻</view>
+    <view class="one" style="display:{{ng[1]}}">体fdsdf育</view>
+    <view class="one" style="display:{{ng[2]}}">fdsf财经</view>
+  </view>
+
+</view>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Two.js的使用</h1>
+  <div id="container"></div>
+
+  <script src="js/two.js"></script>
+  <script>
+    var param = {
+      width:800,
+      height:400,
+      type: Two.Types.svg
+    };
+    var two = new Two(param).appendTo(container);
+
+    //使用Two.js提供的API创建一个圆形—— 定位点在中央
+    var c = two.makeCircle(200,200, 100);
+    c.fill = '#fa0';
+    c.stroke = '#a80';
+    c.linewidth = 5;
+
+    //使用Two.js提供的API创建一个矩形—— 定位点在中央
+    var r = two.makeRectangle(600,200,200, 200);
+    r.fill = '#0af';
+    r.stroke = 'transparent';
+    //r.noStroke();
+
+    //更新整个画布，重绘一次
+    two.update();
+  </script>
+</body>
+</html>

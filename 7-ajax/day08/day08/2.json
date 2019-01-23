@@ -1,0 +1,6 @@
+{
+   "ename":"tom",
+   "age":10,
+   "score":[98,98,99],
+   "birthday":{"year":1995,"month":10}
+}

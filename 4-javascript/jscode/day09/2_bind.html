@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+if(Function.prototype.bind===undefined)
+	Function.prototype.bind=function(obj/*,args1*/){
+		                             //arguments
+		var fun=this;//this->calc fun->calc
+		var args1=//保存除obj外的剩余参数到args1
+			Array.prototype.slice.call(arguments,1);
+			//相当于: arguments.slice(1)
+		return function(/*args2*/){
+			            //arguments
+			var args2=//复制后传入的新参数到args2
+				Array.prototype.slice.call(arguments);
+				//相当于arguments.slice();//复制所有元素
+								    //将新旧参数拼起来，一起传给fun
+			fun/*calc*/.apply(obj,args1.concat(args2))
+		}
+	/*
+		var fun=this;//先将原函数calc，另存为到变量fun
+		//bind方法返回一个新的内层函数对象
+		return function(){
+			           //arguments
+			//在新内层函数对象中借用fun引用的原函数
+			//用指定对象obj替换fun引用的原函数中的this
+			//接收所有传入新函数的参数，打散后传给fun函数
+			fun.apply(obj,arguments);//obj.calc();
+		}//闭包中永久固定保存了两个局部变量:fun和obj 
+	*/
+	}
+//bind函数元素: 创建一个新函数，在新函数中调用原函数，用call替换原函数中的this。且，替换this的对象被闭包固定在新函数中。
+function calc(base,bonus){
+	document.write(
+		this.name+"总工资:"+(base+bonus)+"<br>");
+}
+var lilei={name:"Li Lei"};
+var hmm={name:"Han Meimei"};
+//借用
+//calc.call(lilei,10000,5000);
+//calc.call(hmm,10000,6000);
+
+//基于calc创建新函数lilei_calc,永久绑定this为lilei
+var lilei_calc=calc.bind(lilei,10000);
+/*lilei_calc: function calc(base,bonus){
+	//this->lilei  base: 10000
+	console.log(this.name+"总工资是"+(base+bonus));
+}*/
+//不用传入对象，this也指一个固定的对象
+lilei_calc(5000);
+lilei_calc(6000);
+lilei_calc(3000);
+//再也无法被call/apply强行替换this
+//lilei_calc.call(hmm,10000,6000);
+		</script>
+	</body>
+</html>

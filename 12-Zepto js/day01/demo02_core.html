@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/zepto.js"></script>
+</head>
+<body>
+
+<script>
+  //数据操作
+  $.each([20,30,40], function (key,value) {
+    console.log(key,value);
+  })
+
+  $.each({id:3,name:'web'}, function (key,value) {
+    console.log(key,value);
+  })
+
+  $.map([20,30,40], function (value,key) {
+    console.log(key,value);
+  })
+
+  var array = [13,14,15,16];
+  var newArray = $.grep(array, function (value) {
+    return value%2 == 0
+  })
+  console.log(newArray);
+
+  var obj1 = {name:'Web'};
+  var obj2 = {age:20};
+
+  $.extend(obj1,obj2);
+  console.log(obj1);
+  console.log(obj2);
+
+  var jsonStr = '{"name":"BMW","age":20}';
+  var jsonObj = $.parseJSON(jsonStr);
+  console.log(jsonObj);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+

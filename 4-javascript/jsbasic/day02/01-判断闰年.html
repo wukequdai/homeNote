@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function leap(){
+				var year = Number(prompt("请输入一个年份:"));
+				var isRun=year % 4 ==0 && year % 100 !=0 || year % 400 == 0;
+				if(isRun)
+					document.write(year+"年是闰年");
+				else
+					document.write(year+"年不是闰年")
+			}
+			leap();
+			
+		</script>
+	</body>
+</html>

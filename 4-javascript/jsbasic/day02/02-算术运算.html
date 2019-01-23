@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1、菜：1.6，给了：2，问：找零
+			var price = 1.6;
+			var money = 2;
+			var change = money - price;
+			console.log("找零："+change);
+			//2、通过 四舍五入的 方式解决找零误差
+			console.log("找零："+change.toFixed(2));
+			//3、判断奇偶性
+			var num = prompt("请输入一个数字:");//string
+			var result = num % 2;
+			console.log("1为奇数，2为偶数："+result);
+		</script>
+	</body>
+</html>

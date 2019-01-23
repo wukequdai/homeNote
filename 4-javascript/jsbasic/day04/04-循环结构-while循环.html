@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 打印输出 10遍 Hello World
+			 */
+			function print10Hello(){
+				//1、循环条件：从第1遍开始，到第10遍结束
+				//2、循环操作：打印输出 Hello World
+
+				var i = 1;//从第1遍开始
+				while(i<=10){
+					//循环操作
+					console.log("第"+i+"遍:你好 世界!");
+					i++;//更新循环条件
+				}
+			}
+		</script>
+		<button onclick="print10Hello();">打印10遍Hello World</button>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>测试结果</h1>
+<hr/>
+总词汇量：<span id="spanTotal">0</span><br/>
+正确数量：<span id="spanCorrect">0</span><br/>
+最终得分：<span id="spanScore">0</span><br/>
+<hr/>
+<a href="2_word_test.html">重新测试</a>
+<a href="1_word_save.html">添加新词</a>
+<script>
+
+  var t = sessionStorage['TotalCount'];
+  var c = sessionStorage['CorrectCount'];
+  spanTotal.innerHTML = t;
+  spanCorrect.innerHTML = c;
+  spanScore.innerHTML = (c/t)*100+'%';
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ul>
+  <li ng-repeat="stu in stuList | orderBy:'age'">
+    {{"年龄为"+stu.age+" 名称"+stu.name+" 成绩"+stu.score}}
+  </li>
+</ul>
+
+<ul>
+  <li ng-repeat="stu in stuList
+  | orderBy:'score':true | limitTo:3">
+    {{"年龄为"+stu.age+" 名称"+stu.name+" 成绩"+stu.score}}
+  </li>
+</ul>
+
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+
+    $scope.stuList = [
+      {age:20,name:'Michael',score:81},
+      {age:18,name:'TBag',score:88},
+      {age:25,name:'Lincoln',score:87},
+      {age:26,name:'Sara',score:70},
+      {age:21,name:'Joy',score:60}
+    ];
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 打印1~100之间的数字
+			 */
+			function printNum(){
+				var i=1;//条件声明
+				//循环
+				while(i<=100){
+					//循环操作
+					console.log(i);
+					i++;//更新循环条件
+				}
+
+			}
+			/**
+			 * 累加 1~100 之间 所有数字的和
+			 */
+			function sum(){
+				var sum=0;//用于累加 1~100 的和
+				var i=1;//开始条件
+				while(i<=100){
+					//sum=sum+i;
+					sum+=i;
+					i++;//更新循环变量
+				}
+				//打印 sum 的值
+				console.log(sum);
+			}
+		</script>
+		<button onclick="printNum()">打印1~100</button>
+		<button onclick="sum();">计算1~100所有数字的和</button>
+	</body>
+</html>

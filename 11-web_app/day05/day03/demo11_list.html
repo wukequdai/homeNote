@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="listCtrl">
+
+<ion-header-bar class="bar-calm">
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item ng-repeat="tmp in list">
+      {{tmp}}
+
+      <!-- 显示一个可以滑动的列表项-->
+      <ion-option-button class="button-positive">
+        编辑
+      </ion-option-button>
+      <ion-option-button class="button-assertive">
+        删除
+      </ion-option-button>
+    </ion-item>
+  </ion-list>
+
+  <br/><br/>
+
+  <ion-toggle ng-model="isOrder">排序</ion-toggle>
+  <ion-list show-reorder="isOrder">
+    <ion-item ng-repeat="tmp in countList">
+      {{tmp}}
+      <ion-reorder-button
+        on-reorder="move(tmp,$fromIndex,$toIndex)"
+        class="ion-navicon"></ion-reorder-button>
+    </ion-item>
+  </ion-list>
+
+  <br/><br/>
+  <ion-toggle ng-model="isDelete">删除</ion-toggle>
+  <ion-list show-delete="isDelete">
+    <ion-item ng-repeat="tmp in numList">
+      {{tmp}}
+      <ion-delete-button
+        ng-click="delete($index)"
+        class="ion-minus-circled">
+      </ion-delete-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer-bar class="bar-calm">
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('listCtrl', ['$scope',
+    function ($scope) {
+      $scope.list = [100,200,300,400];
+
+      $scope.countList = [1,2,3,4,5];
+
+      $scope.numList = [10,20,30,40];
+
+      $scope.delete = function (index) {
+        $scope.numList.splice(index,1);
+      }
+
+
+      $scope.move = function (item,fromIndex,toIndex) {
+
+          //将以前位置的数据删除
+          $scope.countList.splice(fromIndex,1);
+          //将之前位置的数据插入到要显示的位置
+          $scope.countList.splice(toIndex,0,item)
+
+      }
+
+    }])
+</script>
+
+</body>
+</html>

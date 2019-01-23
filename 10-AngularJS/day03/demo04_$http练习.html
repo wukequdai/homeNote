@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <script src="js/jquery-1.11.3.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+请输入用户名：<input type="text" ng-model="info.name"/>
+<br/>
+<button ng-click="submitInfo()">提交</button>
+
+<p>{{result}}</p>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($http,$scope) {
+
+    $scope.info = {name:''};
+
+    $http.defaults.headers.post =
+    {'Content-Type':'application/x-www-form-urlencoded'};
+
+    $scope.submitInfo = function(){
+      console.log($scope.info);
+      var params = $.param($scope.info);
+      console.log(params);
+      $http.post('data/postServer.php',params)
+        .success(function(data){
+          $scope.result = data[0].welcomeInfo;
+        })
+        .error(function () {
+          console.log(arguments);
+        })
+    }
+
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

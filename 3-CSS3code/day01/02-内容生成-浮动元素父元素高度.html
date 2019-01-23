@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#parent{
+				border:1px solid black;
+			}
+			.c1{
+				width:200px;
+				height:200px;
+				background:red;
+				float:left;
+			}
+			.c2{
+				width:200px;
+				height:200px;
+				background:green;
+				float:left;
+			}
+			.c3{
+				width:200px;
+				height:200px;
+				background:blue;
+				float:left;
+			}
+
+			.clear:after{
+				content:"";
+				display:block;
+				clear:both;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="parent" class="clear">
+			<div class="c1"></div>
+			<div class="c2"></div>
+			<div class="c3"></div>
+			<!--
+				1、位置：位于父元素的最后一个子元素位置处
+				2、显示方式：必须是 块级block
+				3、内容：必须为空
+				4、clear属性必须为both
+			-->
+		</div>
+	</body>
+</html>

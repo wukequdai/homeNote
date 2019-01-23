@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <style>
+    .carousel-inner > .item > img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>JS插件——轮播广告</h1>
+
+  <h3>最最简单的轮播广告</h3>
+  <div class="carousel" data-ride="carousel">
+    <!--会旋转的内容-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+      </div>
+    </div>
+    
+    <!--不会旋转的内容-->
+  </div>
+
+
+  <h3>稍微复杂的轮播广告</h3>
+  <div class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="none">
+    <!--会旋转的内容-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+      </div>
+    </div>
+
+    <!--不会旋转的内容-->
+  </div>
+
+  <h3>带说明文字的轮播广告</h3>
+  <div class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="none">
+    <!--会旋转的内容-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-1</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-2</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-3</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-4</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--不会旋转的内容-->
+  </div>
+
+  <h3>带上一张/下一张按钮的轮播广告</h3>
+  <div id="ad5" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="none">
+    <!--会旋转的内容-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-1</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-2</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-3</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-4</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--不会旋转的内容-->
+    <a class="carousel-control left" data-slide="prev" href="#ad5">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" data-slide="next" href="#ad5">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+
+  <h3>带广告序号指示器(indicator)的轮播广告</h3>
+  <div id="ad6" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="none">
+    <!--会旋转的内容-->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="img/11.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-1</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/22.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-2</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/33.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-3</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+      <div class="item">
+        <img src="img/44.jpg">
+        <div class="carousel-caption">
+          <h4>世界名画-4</h4>
+          <span>Lorem sit amet, adipisicing eli corporis distinctio dolore hic.</span>
+        </div>
+      </div>
+    </div>
+
+    <!--不会旋转的内容-->
+    <a class="carousel-control left" data-slide="prev" href="#ad5">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" data-slide="next" href="#ad5">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+    <ul class="carousel-indicators">
+      <li data-slide-to="0" data-target="#ad6" class="active"></li>
+      <li data-slide-to="1" data-target="#ad6"></li>
+      <li data-slide-to="2" data-target="#ad6"></li>
+      <li data-slide-to="3" data-target="#ad6"></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootlint.js"></script>
+<script>
+  bootlint.showLintReportForCurrentDocument([]);
+</script>
+<script>
+  $('#myBtn').dropdown();
+</script>
+</body>
+</html>

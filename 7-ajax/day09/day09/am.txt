@@ -1,0 +1,94 @@
+今天学习的内容
+1:复习昨天重点知识 jquery ajax
+  京东
+2:其它jquery ajax方法
+3:分析上上次作业[味多美]
+4:京东{产品列表,添加购物车,查看购物车,购物车修改}
+#--------------------------
+1:
+  1.1:复习昨天重点知识 jquery ajax
+  jquery 框架
+	$.get(url,data,fn);
+	作用:发送一个ajax get请求并且回调fn函数
+  $.get("2.php?id=1",function(data){
+	   //data 返回数据 
+	});
+  可以接收服务器:
+	text;html;javascript;xml;json
+            eval()         JSON.parse();
+	$("选择器").load(url);
+	作用:加载服务器数据{必须是html片段}
+	     自动填充选择innerHTML
+  1.2:京东
+2:分析上上次作业[味多美]
+  2.1:添加蛋糕
+	2.2:依据蛋糕类别  苹果
+	    查询该类别下蛋糕
+3:其它jquery ajax方法
+  3.1:$.get();
+	3.2:$("选择器").load(url);
+  3.3:$.post(url,data,fn);
+	作用:发送异步post请求
+	url:请求程序地址
+	data:参数 
+	     a:'name=tom&pic=1.jpg'
+			 b:{name:tom,pic:1.jpg}
+  fn:回调函数:请求结束结果正确响应 200
+	   回调fn函数
+  3.4:$.getJSON(url);
+	   发送get请求只负责接json格式数据  
+  3.5:$.getScript(url);
+	   发送get请求只负责接javascript格式数据
+  01_ajax.html
+	01_ajax_do.php
+	02_ajax_do.php
+	3.6:$.ajax({})
+
+  面试题:jquery中如何处理-失败-的XHR请求消息
+	注意：上面的几种函数中第三个参数，
+	回调函数，都是响应完成且成功后回调函数，
+	没有提供处理失败请求机制
+
+	$.ajax() 
+	万能的AJAX封装函数，提供了非常多的可
+	选项.
+	$.ajax(
+	 {
+	    type:'GET',       //POST/GET/PUT/DELETE/HEAD
+			url:'x.php',
+			data:'k=v&k1=v',  //提交给服务器数据
+			beforeSend:fn,    //请求消息发送之前回调函数
+			success:fn,       //响应完成且成功回调
+			error,fn,         //响应完成但有问题回调
+			complete:fn       //响应完成后回调(不论成败)
+	 }
+	);
+
+  原生JS AJAX
+	//1:
+	var xhr = new XMLHttpRequest();
+	//2:
+	xhr.onreadystatechange = function(){
+	  if(xhr.readyState === 4){
+		  if(xhr.status == 200){
+			  success()!!!!!!!!!!!!!
+			}else{
+			  error();!!!!!!!!!!!!
+			}
+      complete();!!!!!!!!!
+		}
+	}
+	//3:
+	xhr.open();
+	beforeSend()!!!!!!!!!!!!
+	//4:
+	xhr.send();
+
+
+  假设请求成功
+	beforeSend()-->异步请求-->success()-->complete()
+	假设请求失败
+	beforeSend()-->异步请求-->error()-->complete()
+
+4:京东{产品列表,添加购物车,查看购物车,购物车修改}
+  京东商城_开发流程.txt

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar class="bar-calm">
+  <h1 class="title">{{titleNow}}</h1>
+</ion-header-bar>
+
+
+<ion-tabs class="tabs-icon-top">
+  <ion-tab
+    on-select="funcSelect('音乐')"
+    icon="ion-music-note"
+    title="music">
+
+    <ion-view>
+      <ion-content class="positive-bg">
+        <p>这是音乐的页面</p>
+      </ion-content>
+    </ion-view>
+
+  </ion-tab>
+  <ion-tab
+    on-select="funcSelect('电影')"
+    icon="ion-ios-videocam"
+    title="movie">
+
+    <ion-view>
+      <ion-content class="assertive-bg">
+        <p>这是电影的页面</p>
+      </ion-content>
+    </ion-view>
+
+  </ion-tab>
+  <ion-tab
+    on-select="funcSelect('个人中心')"
+    icon="ion-person"
+    title="person">
+
+    <ion-view>
+      <ion-content class="balanced-bg">
+        <p>这是个人中心页面</p>
+      </ion-content>
+    </ion-view>
+
+  </ion-tab>
+</ion-tabs>
+
+
+<!--<ion-footer-bar class="bar-calm">-->
+<!--<h1 class="title">footer</h1>-->
+<!--</ion-footer-bar>-->
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope',
+    function ($scope) {
+      $scope.titleNow = "";
+      $scope.funcSelect = function (msg) {
+        $scope.titleNow = msg;
+      }
+
+    }])
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <ion-list class="list list-inset">
+    <ion-item ng-click="show()">0</ion-item>
+    <ion-item>1</ion-item>
+    <ion-item>2</ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope','$ionicActionSheet','$timeout',
+    function($scope,$ionicActionSheet,$timeout){
+      
+      $scope.show = function () {
+
+        var hideSheet = $ionicActionSheet.show({
+          titleText:'请选择',
+          destructiveText:'删除',
+          destructiveButtonClicked: function () {
+            console.log('删除按钮被点击了');
+            return true;
+          },
+          cancelText:'取消',
+          cancel: function () {
+            console.log('点击了取消按钮');
+          },
+          buttons:[
+            {text:'分享'},
+            {text:'保存'}
+          ],
+          buttonClicked: function (index) {
+            if(index == 0)
+            {
+              console.log('用户按下了分享按钮');
+            }
+            else if(index == 1)
+            {
+              console.log('用户按下了保存按钮');
+            }
+            return true;
+          }
+        })
+        $timeout(function () {
+          hideSheet();
+        },2000);
+        console.log(hideSheet);
+      }
+      
+    }
+  ])
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

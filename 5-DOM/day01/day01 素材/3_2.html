@@ -1,0 +1,70 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>遍历节点树</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<span>Hello World !</span>
+		<ul id="nav">
+			<li>电影</li>
+			<li>综艺
+				<ul>
+					<li>跑男</li>
+					<li>爸爸</li>
+					<li>极限</li>
+				</ul>
+			</li>
+			<li>剧集</li>
+		</ul>	
+		<script>
+			//"use strict";
+			function getChildren1(parent){//(手写)
+				console.log(parent.nodeType!=3?
+					parent.nodeName:parent.nodeValue
+				);
+				var children=parent.childNodes;//节点树
+										//parent.children;//元素数
+				for(var i=0,len=children.length;i<len;i++){
+					//当前函数本身
+					arguments.callee(children[i]);
+				}
+			}
+			//console.time("getChildren1");
+			//getChildren1(document.body);
+			//console.timeEnd("getChildren1");
+
+			function getChildren2(parent){
+				//创建节点迭代器对象: 
+				var iterator=document.createNodeIterator(
+					parent, NodeFilter.SHOW_ALL,null,false
+				);
+				//循环调用iterator的nextNode()
+				var node=null;
+				while((node=iterator.nextNode())!=null){
+					console.log(node.nodeType!=3?
+						node.nodeName:node.nodeValue
+					);
+				}
+			}
+			//console.time("getChildren2");
+			//getChildren2(document.body);
+			//console.timeEnd("getChildren2");
+
+			var walker=document.createTreeWalker(
+				document.body,NodeFilter.SHOW_ELEMENT,
+				null,false
+			);
+			//找body下的ul
+			walker.firstChild();//walker->span
+			var ul=walker.nextSibling();//walker->ul
+			console.log(ul);
+			//找ul下的第二个li下的ul的第一个li中的内容
+			walker.firstChild();//第一个li
+			walker.nextSibling();//第二个li
+			walker.lastChild();//子菜单ul
+			var li=walker.firstChild();//第一个li
+			console.log(li.innerHTML);//跑男
+		</script>
+	</body>
+</html>

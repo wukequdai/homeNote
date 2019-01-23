@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*1、创建一个函数 名称:sayHello,主体功能为，向控制台上 输出一句 Hello World*/
+			function sayHello(){
+				console.log("Hello World");
+			}
+
+			/*2、创建一个函数，完整工资的计算*/
+			function calSalary(){
+				var salary = Number(prompt("请输入您的工资:"));
+				salary += 1000;
+				console.log("涨工资后："+salary);
+			}
+		</script>
+		<!-- 通过一个按钮 来调用 calSalary 函数 -->
+		<button onclick="calSalary();">计算工资</button>
+
+		<!-- 想通过一个按钮的单击事件，来调用 sayHello 的函数 -->
+		<button onclick="sayHello();">点击一下</button>
+		<div onclick="sayHello();">点击一下</div>
+	</body>
+</html>

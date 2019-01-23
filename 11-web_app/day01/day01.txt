@@ -1,0 +1,196 @@
+整体安排：
+①Android和混合编程
+②phoneGap
+③Ionic（2天）
+④项目（2天）
+
+
+一、WebApp/NativeApp/HybridApp
+
+1、WebApp 网页应用
+
+通过前端技术（html/css/js）来实现一个网页应用，提供一个类似于传统的应用程序一样的体验
+
+2、NativeApp 原生应用
+原生应用 就是借助SDK（software develop kit）调用sdk中所提供的组件和服务来实现的应用程序
+
+Android  iOS
+
+3、HybridApp 混合编程
+使用前端技术加上原生组件，来进行编程生成的app
+
+phoneGap （369cloud  appcan。。）是一个提供jsAPI的平台，旨在使用前端技术来编写hybridApp，来实现原生开发才能实现的功能，比如说拍照、录音、传感器的调用。。。
+
+
+二、Android开发环境（SDK）
+
+http://www.androiddevtools.cn/ 提供了android开发需要用到各种工具，从IDE到SDK都有。
+
+5步搞定环境搭建：
+http://www.cnblogs.com/zoupeiyang/p/4034517.html
+
+①JDK
+②SDK
+
+三、Android开发工具的使用
+
+
+adb.exe (Android Debug Bridge) 将项目中生成
+(C:\adt-bundle-windows-x86_64-20130522\adt-bundle-windows-x86_64-20130522\sdk\platform-tools)的apk的安装包，传输给模拟器或者真实手机，安装并打开，方便调试的工具
+
+创建模拟器：
+①命名
+②选中一款Device
+4寸的 480*800
+③虚拟sd卡
+
+启动模拟器：
+①点击工具条的Android Virtual Device  Manager
+②选中要启动的模拟器
+③点击start
+④launch
+
+使用eclipse的时候，可以点击window的showToolbar或者hideToolbar去控制工具条的显示和隐藏；
+可以点击window的Reset Perspective重置视图;
+代码不会自动保存 ,使用ctr+s来保存代码
+
+四、创建Android项目并运行
+基本步骤：
+①file ->new ->Android Application Project
+②配置
+应用名称、包的名称、启动图标。。
+③选中项目，点击右键 runAs-》AndroidApplication
+
+目录介绍：
+①src（source） 源代码
+②gen（generate） android项目自动生成的文件
+③Android *.*.*/Android Private Libraries是SDK提供的
+④assets: 存储的是资源文件，可以将不希望被打包处理的文件放在该文件夹下
+⑤bin：binary 二进制--》生成的可执行程序
+Android-》.apk(android package)
+iOS-》.ipa
+windowsPhone-》.xap
+⑥libs:需要依赖的jar包
+⑦res：resource 资源
+--drawable-** 存储的是各种分辨率下需要用到的图片资源
+--layout 存储的是布局文件（**.xml）
+⑧AndroidManifest.xml 清单文件，记录了当前Android项目很多配置信息
+添加权限：选中permissions这个标签页，点击add，选中uses permission
+版本号
+图标的设置
+。。。
+
+常见错误的解决方案：
+①timeout
+将eclipse和模拟器 都关掉 再打开
+②Android Library Project Can't be lauched
+一个库是无法被直接运行的，需要重新从创建项目，千万不要再标记该项目为一个库项目
+③ ActivityManager: Warning: Activity not started, its current task has been brought to the front
+没有对java和xml文件做任何的修改，重复的编译和运行
+
+四、第一个HybridApp
+HybridApp = 前端代码 + 原生组件
+
+
+步骤分析：
+①编写前端代码，在pc端测试 ，保证功能是正常的
+②创建一个Android的项目
+③将前端代码 拷贝 到Android项目中assets目录
+④编写java代码，调用前端代码
+
+
+设置显示前端代码的java写法：
+WebView AndroidSDK提供的原生组件
+//创建一个webView实例
+WebView wv = new WebView(getApplicationContext());
+
+//载入指定的html页面
+wv.loadUrl("file:///android_asset/demo01.html");
+
+wv.loadUrl("http://m.baidu.com");--->添加网络权限 AndroidManifest.xml文件中的permissions里去添加
+
+//设置app要去显示的内容视图
+setContentView 设置要显示的内容视图
+setContentView(wv);
+
+
+WebView:
+what?  是一个网页视图组件，可以展示html页面
+when？ 在onCreate的方法中（因为onCreate是一个Activity的生命周期的函数，是肯定会被执行）
+how? 本质是一个类，实例化，调用对象中的方法就可以
+
+
+练习：创建一个HybridApp，要求显示一个html： p和button，点击按钮隐藏段落。
+
+要想执行js，需要添加一个设置：
+wv.getSettings().setJavaScriptEnabled(true);
+
+想要在HybridApp中通过console输出日志信息，处理方案：
+在eclipse中，有个logcat，输出相关的日志信息：window-》showView-->other->输入logcat选中第一个。
+
+五、打包的常见2种方式
+1、将需要显示的代码 放到Android工程assets
+启动快（本地文件），如果更新代码，需要用户再来下载安装和使用
+
+2、将代码部署到服务器端，将服务器分配的url，写到loadUrl的参数
+
+更新版本方便 响应速度取决网络速度
+
+方式2来进行打包：
+①开饭啦项目 部署到服务器，得到url
+http://localhost/chaptor4/angularjs/kfl/kfl.html#/kfl_start
+
+查看ip地址方式：windows+R --> cmd -->ipconfig
+localhost-->172.163.100.154
+
+最终url：
+http://172.163.100.154/chaptor4/angularjs/kfl/kfl.html#/kfl_start
+②通过在Android项目中指定webView载入的页面地址
+打包运行在手机端的程序
+③添加网络权限
+
+
+
+js中调用java代码
+步骤1：创建一个java中的类，提供一个接口
+步骤2：允许我们在webView中调用上述接口
+步骤3：在js中调用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

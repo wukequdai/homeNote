@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				鄙视题: 原型中的方法 vs 构造函数上的方法
+				  如果规定一个方法只能被某一类的对象调用
+						就放在该类型的原型对象中
+					如果一个方法，不确定今后使用它的对象的类型，就直接放在构造函数上，将对象作为参数
+			*/
+			//如果Array上没有isArray
+			if(Array.isArray===undefined)
+				//在Array上添加isArray=
+				Array.isArray=function(obj){
+					//让obj借用Object的原型的toString方法,
+					//如果借用的结果等于"[object Array]"
+				return Object.prototype.toString.call(obj)
+								=="[object Array]";
+				}
+
+			var obj1={},obj2=[],obj3={};
+			obj3.__proto__=Array.prototype;
+			document.write(
+				Array.isArray(obj1)+"<br>"+//false
+				Array.isArray(obj2)+"<br>"+//true
+				Array.isArray(obj3)+"<br>"//false
+			);
+		</script>
+	</body>
+</html>

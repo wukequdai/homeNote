@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			/*1、声明计数器*/
+			body{
+				counter-reset:c1 0;
+			}
+			/*2、设置计数器增量*/
+			h1{
+				counter-increment:c1 1;
+				/*声明 c2 计数器*/
+				counter-reset:c2 0;
+			}
+			/*3、使用计数器*/
+			h1:before{
+				content:"第"counter(c1)"章、";
+			}
+			/*4、使用 c1 计数器的值*/
+			p:before{
+				content:counter(c1)"."counter(c2);
+			}
+			/*5、设置 c2 计数器的增量*/
+			p{
+				counter-increment:c2 1;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Web 基础知识</h1>
+		<p>基础知识1</p>
+		<p>基础知识2</p>
+		<p>基础知识3</p>
+		<h1>HTML 快速入门</h1>
+		<p>入门1</p>
+		<p>入门2</p>
+		<p>入门3</p>
+		<h1>网页中的文本</h1>
+		<p>文本1</p>
+		<p>文本2</p>
+		<p>文本3</p>
+	</body>
+</html>

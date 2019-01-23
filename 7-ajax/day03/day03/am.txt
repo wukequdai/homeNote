@@ -1,0 +1,125 @@
+
+今天学习的内容
+1:总结上次课的内容php
+2:扩展学习php中常用函数-- 掌握
+3:完整的CRUD功能点     -- 重点
+4:HTTP协议             -- 理论知识
+#----------------------------------
+1:总结上次课的内容php
+ web服务器
+  静态: html/css/js/swf/音视频   -- 客户端
+  动态: jsp/php/aspx/nodejs      -- 服务端
+ php基本语法
+  数据类型:
+    值型数:string/boolean/int/float
+    复合类:array**/object
+    特殊类型:null resource
+  运算符:
+    .   
+  逻辑结构: foreach($list as $k=>$v){
+  }
+  函数:
+  function add($num){
+   return $num;
+  }
+  add(10);
+
+  php操作mysql
+  1:连接数据库服务器
+    $conn = mysqli_connect(数据库服务器地址,用户名,密码,库);
+  2:编码
+    $sql = "set names utf8";
+    mysqli_query($conn,$sql);
+  3:执行 [insert update delete]
+    $sql = "insert ...."
+    $result = mysqli_query($conn,$sql);
+  4:$result true 执行成功/执行失败
+  5:关闭连接 -- 可以省略
+    mysqli_close($conn);
+
+2:扩展学习php中常用函数-- 掌握
+  @     放在一行的开头,用于压制此行的警告消息
+  die() 终止页的执行，输出一个错误消息
+  mysqli_insert_id($conn);
+        返回刚刚执行insert语句产生的自增编号
+  mysqli_affected_rows($conn);
+        返回刚刚执行的DML语句影响的行数
+
+
+
+  mysqli_fetch_row($result);
+    从结果集中抓取一行(索引数组)
+  mysqli_fetch_assoc($result);
+    从结果集中抓取一行(关联数组);
+  mysqli_fetch_all($result,MYSQLI_ASSOC)
+    从结果集中抓取所有记录            
+  
+3:完整的CRUD功能点     -- 重点
+ 1:设计表
+ 2:添加汽车
+ 3:删除汽车
+ 4:查询汽车{汽车名称/图片/价格/..}
+
+ a:创建huimache.sql文件
+ b:创建库，创建表，添加数据
+ cid   int         主键 自增
+ cname varchar(50) 不能为空 缺省值为字符串
+ pic   varchar(100)不能为空 缺省值为字符串
+ price double(10,2)不能为空 缺省值为0
+ birthday bigint   不能为空 缺省值为0
+ isonsale boolean  不能为空 缺省值为false  
+
+ #简介几个小知识点在创建表
+ NOT NULL DEFAULT ''
+ mysql数据库版本众多，极灵活
+ NOT NULL   当前列不能添加null这个数据.
+ DEFAULT '' mysql太灵活.BUG
+ 解决:如果是varchar列添加 DEFAULT '' 
+      如果是int    列添加 DEFAULT 0
+
+ 
+
+ 程序文件
+ htdocs/day02
+ index.html {列表} 添加汽车 删除汽车 查询汽车
+ 添加汽车
+ ** car_add.html   显示一个表单
+ ** car_add_do.php 将用户参数添加数据库
+ 删除汽车
+ ** car_delete.html 显示一个表单添加汽车编号
+ ** car_delete_do.php 删除指定汽车数据
+ 查询汽车
+ !! car_select.php  显示汽车列表
+
+
+
+
+
+ 常见错误
+ 1:权限不足
+   Access denied for user ''@'localhost'
+   解决:
+   退出
+   C:\xampp\mysql\bin\mysql.exe -uroot  ok
+   C:\xampp\mysql\bin\mysql.exe -uroot; error   
+ 2:多加分号
+source C:\xampp\htdocs\day02\huimaiche.sql; error
+source C:\xampp\htdocs\day02\huimaiche.sql ok
+
+总结:
+    insert update delete select
+    set names utf8;
+
+
+
+
+  读取数据1:抓取一行,返回一个索引数组
+  $row = mysqli_fetch_row($result);  
+  读取数据2:抓取一行，返回关联数组
+  $row = mysqli_fetch_assoc($result);
+  //读取数据3 抓取所有行--二维数组
+  $list = mysqli_fetch_all($result,MYSQLI_ASSOC);
+  var_dump($list);
+
+4:HTTP协议             -- 理论知识
+

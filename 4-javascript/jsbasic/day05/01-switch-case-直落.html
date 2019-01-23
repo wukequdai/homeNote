@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function printMonth(){
+				//用户输入一个月份，如果是1.3.5.7.8.10.12的话，输出有31天，如果是4.6.9.11的话，输出有30天，如果是2的话，输出，闰年29天，平年28天
+				var month = Number(prompt("Month:"));
+				switch(month){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					case 12:
+						console.log("有31天");
+						break;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+						console.log("有30天");
+						break;
+					case 2:
+						console.log("闰年29天，平年28天");
+						break;
+					default:
+						console.log("输入有误!");
+						
+				}
+			}
+		</script>
+		<button onclick="printMonth();">Month</button>
+	</body>
+</html>

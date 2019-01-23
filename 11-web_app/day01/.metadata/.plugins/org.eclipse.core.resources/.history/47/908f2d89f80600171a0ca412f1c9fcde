@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<p id="pid">This is a paragraph</p>
+
+<button onclick="hide()">clickMe</button>
+
+<script>
+  function hide(){
+    document.getElementById("pid").style.visibility='hidden';
+  }
+</script>
+
+</body>
+</html>

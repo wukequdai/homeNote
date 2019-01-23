@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str="No zuo no die,No can no bibi";
+			    //str="we two who and who";
+			var kwords=str.match(/no/ig);
+			  //null
+			str=str.replace(/no/ig,"**");
+			console.log(str);
+			console.log("共替换"+
+			 (kwords==null?0:kwords.length)
+			+"处");
+
+			//我去,我草,我去草,我草草,我去去
+			var str="那天，我去了她家，我说:'我草，你家真大'。她说，想和我去草地野餐。我草草的收拾了草地。她说:'我去去就来'";
+	str=str.replace(/(我)([去草]{1,2})/g,
+		function(kw,   $1, $2){
+			    //我去   我  去
+					//我去草 我  去草
+			//kw会自动获得每次匹配的关键词
+			return $1+($2.length==1?"*":"**");
+			//返回值会替换到当前关键词的位置
+		}
+	);
+			console.log(str);
+
+			//鄙视题:将每个单词首字母改大写
+			var str="you can you up";
+			//用正则找到每个单词,将单词分为首字母和剩余字母两组
+			//替换时，替换函数返回首字母转大写，再拼上剩余字母
+			str=str.replace(
+				/\b[A-Za-z]/g,
+				function(kw){ return kw.toUpperCase();}
+			);
+			console.log(str);//"You Can You Up"
+		</script>	
+	</body>
+</html>

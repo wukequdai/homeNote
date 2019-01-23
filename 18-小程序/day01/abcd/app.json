@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#064",
+    "navigationBarTitleText": "导航",
+    "navigationBarTextStyle":"#0f0",
+    "backgroundColor":"#0f0",
+    "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "color":"#000",
+    "selectedColor": "#ccc",
+    "backgroundColor": "#eee",
+    "borderStyle": "black",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text":"搜索商品",
+      "iconPath": "pages/images/s.png",
+      "selectedIconPath": "pages/images/s_s.png"
+    },
+    {
+      "pagePath": "pages/logs/logs",
+      "text": "我的订单",
+      "iconPath": "pages/images/o.png",
+      "selectedIconPath": "pages/images/o_s.png"
+    }   
+    ]
+  },
+  "networkTimeout":{
+    "request":5000,
+    "uploadFile":6000
+  },
+  "debug":false
+}

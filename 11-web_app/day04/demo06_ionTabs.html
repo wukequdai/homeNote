@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">{{title}}</h1>
+</ion-header-bar>
+
+
+<ion-tabs class="tabs-icon-top">
+  <ion-tab title="音乐"
+           on-select="funcSelect(0)"
+           icon-on="ion-ios-musical-notes"
+           icon-off="ion-ios-musical-note">
+    <ion-view>
+      <ion-content class="positive-bg">
+         这是音乐列表页面
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+  <ion-tab title="电影"
+           on-select="funcSelect(1)"
+           icon-on="ion-ios-musical-notes"
+           icon-off="ion-ios-musical-note">
+    <ion-view>
+      <ion-content class="balanced-bg">
+        这是电影列表页面
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+  <ion-tab title="应用"
+           badge="5"
+           badge-style="badge-assertive"
+           on-select="funcSelect(2)"
+           icon-on="ion-ios-musical-notes"
+           icon-off="ion-ios-musical-note">
+    <ion-view>
+      <ion-content class="calm-bg">
+        这是应用列表页面
+      </ion-content>
+    </ion-view>
+  </ion-tab>
+</ion-tabs>
+
+<!--<ion-content>
+
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>-->
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope', function ($scope) {
+
+      $scope.title = "";
+      $scope.funcSelect = function (index) {
+        //音乐被选中
+        if(index == 0)
+        {
+          $scope.title = "音乐";
+        }
+        else if(index == 1)//电影
+        {
+          $scope.title = "电影";
+        }
+        else if(index == 2)//应用列表
+        {
+          $scope.title = "应用列表";
+        }
+      }
+
+  }])
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

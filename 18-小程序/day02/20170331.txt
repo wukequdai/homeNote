@@ -1,0 +1,140 @@
+1.回顾
+  小程序  前端
+  小程序  构造  app.js  app.json app.wxss
+               页面  xx.js  xx.json  xx.wxml  xx.wxss
+  区别
+     @@@页面div html标记
+                       view text image map 
+     @@@css js无需引入
+     @@@单位 rpx
+     @@@流体布局
+
+     @@@ DOM  window
+     @@@ 内容 属性 改变变量  {{}}  修改ng变量 setData  特效制作
+     @@@ onclick="aa()"   bindtap="xx"
+
+2.  image  attr 标记属性
+                 property  css属性
+
+3. innerHTML
+    css属性
+    获取值ng
+    设置ng值
+    定时设置 setInterval
+    小程序 及时把this换成别变量
+ window.setInterval(function(){  
+ },300)
+
+4.时钟
+
+translate
+transform
+transition
+transparent
+
+5.wxml特殊语法<div></div>
+      <div  wx:if="" bindtap="xx"></div>
+  tab选项卡
+ 每个按钮  一个函数  每个函数控制n个变量
+    
+传参数  <div onclick="chg(0)"></div>  function chg(s){ s}
+ <view bindtap="abc" data-xxx="0">df</view>
+    abc:function(e){ e.target.dataset.xxx    }
+  
+5.2 dom操作 节点增 删 新建 克隆 插入
+                         appendChild  removeChild createElement cloneNode insertBefore
+  
+添加节点
+<xx wx:if="{{true}}"></xx>
+删除节点
+<xx wx:if="{{false}}"></xx>
+
+<xx wx:if="{{false}}"></xx>
+<xx wx:else="{{false}}"></xx>
+
+
+<xx wx:if=""></xx>
+<xx wx:elif=""></xx>
+<xx wx:elif=""></xx>
+<xx wx:elif=""></xx>
+<xx wx:else=""></xx>
+
+<block wx:if="">  block只起到作用 大括号 
+ <view></view>
+ <view></view>
+</block>
+<view wx:if="">
+   view
+   view
+</view>
+
+html+js语句  
+
+5.3 for
+  <view wx:for="{{[4,5,6]}}">
+    {{item}}::{{index}}
+  </view>
+  <view class="a{{item}}" wx:for="{{[6,7,8]}}">{{index}}fdsfsd</view>
+
+ <view class="a6">0</view>
+ <view class="a7">1</view>
+ <view class="a8">2</view>
+
+ <block wx:for="{{[4,5,6]}}">
+    <div> {{item}}::{{index}} </div>
+  </block>
+
+
+<view wx:for="{{kk}}">{{item}}{{index}}</view>
+
+
+<view wx:for="{{kk}}" wx:for-index="i">{{item}}{{i}}</view>
+<view wx:for="{{kk}}" wx:for-index="i" wx:for-item="v">{{v}}{{i}}</view>
+
+5.4  2048  鼠标键盘信息 event.keyCode  event.
+事件 bindtap="xx"  轻触    catchtap
+
+  bindlongtap="xx" 长触   catchlongtap
+  bindtouchstart      触摸开始  。。
+  bindtouchend       触摸结束  。。
+  bindtouchmove    触摸中      。。
+
+ 获取触摸点e.changedTouches[0].clientX
+ 获取屏幕宽度 wx.getSystemInfo({
+   success:function(res){}
+})
+
+参考例子：
+ 美团外卖 小程序  3g.qq.com
+ m.jd.com
+http://xwkj.org.cn/
+
+  bindtouchcancel   触摸取消  。。
+
+
+5.5 其他事件：input   bindinput="" value="{{dd}}"  bindinput="xx"
+  e.detail.value  任何输入元素  值 不用value 用e.detail.value
+
+  任何输入 onkeydown
+  输入绑定
+  value="{{dfd}}"
+
+ 8000   
+ 4000   8%       12%
+            2%
+           0.2%
+          
+ 4000  12%
+8000-320-80-8-480
+ 7200 交税 3500
+0-1500 3%                                  0
+1500-4500  10%    4700            -34
+4500-9000  15%     4700*15%   -100
+
+收入： 6809
+
+6.发布
+https://mp.weixin.qq.com
+
+
+

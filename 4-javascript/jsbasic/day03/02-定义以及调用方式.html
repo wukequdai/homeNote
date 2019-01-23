@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*1、定义一个可以接收两个数字的方法，返回这两个数字的和*/
+			function add(num1,num2){
+				var result = num1 + num2;
+				return result;
+			}
+
+			/*2、定义一个接收三个数字的方式，返回三个数中最大的值*/
+			function getMax(num1,num2,num3){
+				//1、声明 max 来保存最大值，暂时 将 num1的值 赋值给max
+				var max = num1;
+				//2、比较 max 和 num2 之间的大小，谁大，谁赋值给 max
+				max=num2>max?num2:max;
+				//3、比较 max 和 num3 之间的大小，谁大，谁赋值给 max
+				max=num3>max?num3:max;
+				//4、返回 max 的值 到 方法调用处
+				return max;
+			}
+
+			/*3、传入三个数字，由小到大的输出*/
+			function sort(x,y,z){
+				//将 最小的数值 赋值给x，其次赋值给y，最大的数值赋值给z
+
+				//1、如果 x > y 的话，则互换位置(x中所保存的就是 x 和 y 之间的最小值)
+				x>y&&(x^=y,y^=x,x^=y);
+				//2、如果 y > z 的话，则互换位置(y中所保存的就是 y 和 z 之间的最小值，同时，z中，所保存的就是 三个数中的最大值)
+				y>z&&(y^=z,z^=y,y^=z);
+				//3、如果 x > y 的话，则互换位置(x中所保存的就是 x 和 y 之间的最小值，同时，x中，所保存的就是 三个数中的最小值)
+				x>y&&(x^=y,y^=x,x^=y);
+				console.log(x,y,z);
+			}
+			
+			/*4、根据利润计算奖金
+						1、利润低于或等于10万元时，可提10%的奖金
+						2、利润高于10万元时，低于20万元时，低于10万元 按10%，高于10万元，可提7%的奖金
+						3、利润20万到40万之间，高于20万 可以5%的奖金
+						4、利润40万到60万之间，高于40万 可提3%的奖金
+						5、利润60万到100万之间，高于60万 可提1.5%的奖金
+						6、高于100万的部分，可提1%的奖金。
+						计算 奖金发放的总数
+				*/
+				/*
+					ex : 利润 120
+						高于100万的奖金：(120-100)*0.01=0.2
+						60~100的奖金：(100-60)*0.015=0.6
+						40~60的奖金：(60-40)*0.03=0.6
+						20~40的奖金：(40-20)*0.05=1
+						10~20的奖金：(20-10)*0.07=0.7
+						10以下的奖金：10*0.1 = 1
+				*/
+			function calc(sales){
+				//根据 sales 来计算 奖金(bonus)
+				var bonus = 0;//用于累加各阶段的奖金金额
+				//1、判断sales是否高于100，如果高于100，计算高出100W的奖金，并且累加到bonus的后面，将sales设置为 下个阶段的最高值，继续进行下个阶段的 奖金计算
+				sales>=100&&(
+					//1、计算 高出 100W的奖金
+					//2、将奖金追加到 bonus 后
+					bonus += (sales-100)*0.01,
+					//3、将 sales 设置为下个阶段的最大值
+					sales = 100
+				);
+				//2、判断 sales 是否高于 60W，如果高于的话，计算60W以上的 奖金((sales-60)*0.015),追加到bonus的后面，并且将 sales 设置为下个阶段的最大值
+				sales>=60&&(
+					bonus+=(sales-60)*0.015,
+					sales=60
+				);
+				//3、判断 sales 是否高于 40，计算 40~60之间的奖金
+				sales>=40&&(
+					bonus += (sales-40)*0.03,
+					sales = 40
+				);
+				//4、判断 sales 是否高于 20，计算20~40之间的奖金
+				sales>=20&&(
+					bonus+=(sales-20)*0.05,
+					sales=20
+				);
+				//5、判断 sales 是否高于 10，计算10~20之间的奖金
+				sales>=10&&(
+					bonus+=(sales-10)*0.07,
+					sales=10
+				);
+				//6、计算 10W以下的 奖金
+				bonus += sales*0.1;
+
+				console.log("奖金为:"+bonus);
+			}
+		</script>
+
+		<!-- 调用 函数-->
+		<button onclick="console.log(add(12,18));">计算两个数字的和</button>
+		<button onclick="console.log(getMax(56,98,45));">三个数字中的最大值</button>
+		<button onclick="sort(25,1,620)">三个数字排序输出</button>
+		<button onclick="calc(120);">计算奖金</button>
+	</body>
+</html>

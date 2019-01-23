@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="app">
+        <h1>Hello Web1611</h1>
+        <p id='device_id'>loading...</p>
+        <button onclick="getDeviceAcceleration()">get</button>
+        <button onclick="watch()">watch</button>
+        <button onclick="stopWatch()">stop</button>
+        <button onclick="record()">record</button>
+        <button onclick="showAlert()">alert</button>
+        <button onclick="playBeep()">beep</button>
+        <button onclick="playVibrate()">vibrate</button>
+        <button onclick="showConfirm()">showConfirm</button>
+        <button onclick="writeSth()">write</button>
+        <button onclick="readSth()">read</button>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+        //完成读操作
+        function readSth(){
+            window.requestFileSystem(
+              LocalFileSystem.PERSISTENT,
+              0,
+              getReadFS,
+              function() {
+                  alert("获取文件系统失败");
+              }
+            );
+        }
+
+        //拿到文件系统对象
+        function getReadFS(fileSystem){
+            fileSystem.root.getFile(
+              "test.txt",
+              null,
+              getReadFileEntry,
+              function(){
+                  alert("得到fileEntry失败");
+              }
+            )
+        }
+        //拿到fileEntry
+        function getReadFileEntry(fileEntry){
+            //获取file对象
+            fileEntry.file(
+              function (file) {
+                  var reader = new FileReader();
+                  reader.onloadend = function (event) {
+                      alert(event.target.result);
+                  }
+                  reader.readAsText(file);
+              },
+              function () {
+                  alert('获取file失败');
+              }
+            )
+
+        }
+
+
+        //完成写操作
+        function writeSth(){
+            console.log(' in write ');
+            window.requestFileSystem(
+              LocalFileSystem.PERSISTENT,
+              0,
+              getFS,
+              function() {
+                  alert("获取文件系统失败");
+              }
+            );
+        }
+        //得到文件系统 fileSystem
+        function getFS(fileSystem){
+            console.log(' in getFS ');
+            fileSystem.root.getFile(
+              "test.txt",
+              {create:true},
+              getFileEntry,
+              function(){
+                  alert("得到fileEntry失败");
+              }
+            )
+        }
+        //得到文件入口 fileEntry
+        function getFileEntry(fileEntry){
+            console.log(' in getFileEntry ');
+            //得到写对象 fileWriter
+            fileEntry.createWriter(
+              function (fileWriter) {
+                  console.log(' in creatWriter ');
+                  //完成写操作
+                  fileWriter.onwrite = function () {
+                      alert('write success!');
+                  }
+                  fileWriter.write(" Hello PhoneGap ");
+              },
+              function () {
+                  alert("创建写对象失败");
+              }
+            )
+
+        }
+
+
+
+
+        //显示确认窗口
+        function showConfirm(){
+            navigator.notification.confirm(
+              "你确定这样操作吗？",
+              function () {
+                  navigator.notification.alert('将确认操作');
+              },
+              "请谨慎操作",
+              "确认,取消"
+            );
+        }
+
+        //通过通知去显示一个弹窗
+        function showAlert(){
+            navigator.notification
+              .alert("this is a window");
+        }
+        //发出蜂鸣声
+        function playBeep(){
+            navigator.notification.beep(3);
+        }
+
+        //发出震动
+        function playVibrate(){
+            navigator.notification.vibrate(1000);
+        }
+
+        //得到当前的加速度信息
+        function getDeviceAcceleration(){
+            navigator.accelerometer
+              .getCurrentAcceleration(
+              function (acceleration) {
+                  alert("x is "+acceleration.x+
+                  " y is "+acceleration.y+
+                  " z is "+acceleration.z);
+              },
+              function () {
+                  alert('获取加速度信息失败');
+              }
+            )
+        }
+
+        //每隔500ms监听加速度数据的变化
+        function watch(){
+            watchId = navigator
+              .accelerometer.
+              watchAcceleration(
+              function (acceleration) {
+                console.log(
+                  acceleration.x+
+                  " y is "+acceleration.y +
+                  " z is "+acceleration.z);
+              },
+              function () {
+                console.log('watch failed');
+              },
+              {frequency:500}
+            )
+        }
+        //结束监听
+        function stopWatch(){
+            navigator.accelerometer.clearWatch(watchId);
+        }
+
+        //录制音频
+        function record(){
+            navigator.device.capture.captureAudio(
+              function (mediaFiles) {
+                    for(var i=0;i<mediaFiles.length;i++)
+                    {
+                        console.log(mediaFiles[i].fullPath);
+                    }
+              },
+              function () {
+                  alert('录制失败');
+              },
+              {limit:2}
+            )
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

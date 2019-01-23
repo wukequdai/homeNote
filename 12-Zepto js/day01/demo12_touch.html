@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/zepto_fx_detect_touch_gesture.js"></script>
+</head>
+<body>
+
+<div>
+  tap —元素tap的时候触发。
+  singleTap and doubleTap — 这一对事件可以用来检测元素上的单击和双击。(如果你不需要检测单击、双击，使用 tap 代替)。
+  longTap — 当一个元素被按住超过750ms触发。
+  swipe, swipeLeft, swipeRight, swipeUp, swipeDown — 当元素被划过时触发。(可选择给定的方向)
+</div>
+
+<script>
+  $('div').on('longTap', function (event) {
+    console.log('div is tapped');
+  })
+
+  $('div').off();
+
+  //swipe/swipeLeft/swipeRight/swipeUp/swipeDown
+  $('div').on('swipeLeft', function () {
+    console.log('swipe to left!!');
+  })
+
+  $('div').on('swipe', function () {
+    console.log('swiped!');
+  })
+
+</script>
+
+
+</body>
+</html>

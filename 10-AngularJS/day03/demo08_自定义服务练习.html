@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+num1:<input type="number" ng-model="num1"/>
+<br/>
+num2:<input type="number" ng-model="num2"/>
+<br/>
+<button ng-click="sum()">求和</button>
+
+<p>{{result}}</p>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.service('$add',function(){
+    this.calSum = function(num1,num2){
+      return (num1+num2);
+    }
+  })
+
+  app.controller('myCtrl', function ($add,$scope) {
+    $scope.sum = function () {
+        $scope.result =
+          $add.calSum($scope.num1,$scope.num2);
+    }
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

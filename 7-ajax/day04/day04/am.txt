@@ -1,0 +1,89 @@
+今天学习的内容
+1:复习php重点内容
+  php mysql CRUD 
+2:解答几个问题
+  2.1:练习时间多一些10分钟
+  2.2:mysql启动成功不稳定
+	2.3:端口没有占用
+3:作业
+  登录表单验证
+4:完成练习用户注册   --重点
+  完成练习用户列表   --重点
+5:http协议           --重点&难点
+#--------------------------------
+1:复习php重点内容
+  php mysql CRUD 
+  DML:
+	   $conn = mysqli_connect(); 连接数据库
+     $sql = "set names utf8";
+		 mysqli_query($conn,$sql);
+		 $sql = "insert delete update";
+		 $result = mysqli_query($conn,$sql);
+     $result boolean
+	DQL:
+	   $conn = mysqli_connect(); 连接数据库
+     $sql = "set names utf8";
+		 mysqli_query($conn,$sql);
+		 $sql = "select * ...";
+		 $result = mysqli_query($conn,$sql);
+     $result 结果集{查询结果-对象类型}
+
+		 //将结果集数据转换索引数组
+		 $row = mysqli_fetch_row($result);
+		 //将结果集数据转换关联数组
+		 $row = mysqli_fetch_assoc($result);
+		 //取到结尾 NULL
+
+
+2:解答几个问题
+  2.0:登录sql error
+	echo $sql
+  2.1:练习时间多一些10分钟
+  2.2:mysql启动成功不稳定
+  通常情况:程序问题->删除->改一个目录安装
+	c:/
+	启动不成功前，做了哪些操作
+	2.3:端口没有占用
+	3306   mysql
+	apache 80 443
+3:作业
+  登录表单验证
+4:完成练习用户注册   --重点
+  4.1:reg.html  表单{用户名,密码} 
+	4.2:reg_do.php 程序
+	   a:获取用户参数 用户名密码
+		 b:连接数据库
+		 c:设置编码
+		 d:添加数据库  t_login
+		   insert  
+		 e:成功判断
+  10:50---11:00 完成练习
+  完成练习用户列表   --重点
+
+5:http协议           --重点&难点
+  学习http协议的目标
+	http是客户端浏览器和web服务器之间通信所有
+	使用协议.
+  简洁:http协议传送网页
+	http://www.jd.com/
+  
+  http://www.tmooc.cn/web/index_new.html?tedu
+  1:调试AJAX应用中"手不见摸不着"的错误
+	2:进行页面访问优化
+  
+
+  <scheme>://<user>:<pwd>
+	@<host>:<port>/<path>;
+	<params>?
+	<query>#<frag>
+
+
+  URL和URN URI
+	Unified Resource Identifier 统一资源识别符
+	Unified Resource Naming     统一资源命名符
+	Unified Resource Locator    统一资源定位符   
+
+  中国 北京 海淀区 万寿路西街2号 文博大厦2层
+	2nd Floor,WB Tower,#2 West Street,HD ..
+
+  

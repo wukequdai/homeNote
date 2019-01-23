@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var data=[
+		//第 0 1 2 3 列
+				[2,4,2,4],//第0行
+				[4,2,8,2],//第1行
+				[2,4,8,4],//第2行
+				[4,2,4,2],//第3行
+			];
+			function isGameover(){//data是否游戏结束
+				//遍历data
+				for(var r=0;r<data.length;r++){
+					for(var c=0;c<data[r].length;c++){
+						//如果当前元素是0，直接返回false
+						if(data[r][c]==0){return false;}
+						//如果c<当前行的length-1,且当前元素等于右侧元素，直接返回false
+						if(c<data[r].length-1
+							&&data[r][c]==data[r][c+1]){
+							return false;	
+						}
+						//如果r<data的length-1,且当前元素等于下方元素，直接返回false
+						if(r<data.length-1
+							&&data[r][c]==data[r+1][c]){
+							return false;
+						}
+					}
+				}//(遍历结束)
+				return true;//返回true
+			}
+			//console.log(isGameover());//
+			//console.dir(data);
+			//console.log(data[2][1]);//4
+			//console.log(data[6][1]);//报错
+			//console.log(data[2][6]);//undefined
+
+			var provs=["北京市","河北省","山东省"];
+			          //  0        1        2
+			var cities=[
+				["东城区","西城区","海淀区"],//0
+				["石家庄市","保定市","唐山市"],//1
+				["德州市","济南市","青岛市"]//2
+			];
+			function getCitiesByProv(pname){
+				//遍历provs
+				for(var i=0;i<provs.length;i++){
+					//如果当前省份等于pname
+					if(provs[i]==pname){
+						break;//退出循环
+					}
+				}//(遍历结束)
+				//如果i等于provs的length
+				if(i==provs.length){
+					console.log("省份不存在");
+				}else{//否则
+					console.log("包括:"+cities[i]);
+				}
+			}
+			getCitiesByProv("河北省");
+			getCitiesByProv("四川省");
+		</script>
+	</body>
+</html>

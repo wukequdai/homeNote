@@ -1,0 +1,27 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>倒计时自动关闭/跳转页面</title>
+<meta charset="utf-8" />
+</head>
+<body>
+	<span id="msg">5秒钟后自动关闭</span><br>
+	<a href="javascript:stop()">留在本页</a>
+<script>
+	var span=document.getElementById("msg");
+	function calc(){
+		//去掉span内容中数字后的汉字
+		var n=parseFloat(span.innerHTML);
+		n--;
+		if(n>=1)
+			span.innerHTML=n+"秒钟后自动关闭";
+		else
+			close();
+	}
+	var timer=setInterval(calc,1000);
+	function stop(){
+		clearInterval(timer);
+	}
+</script>
+</body>
+</html>

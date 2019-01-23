@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		/*if(navigator.cookieEnabled)
+			document.write("已启用cookie，请妥善保存个人信息");
+		else
+			document.write("cookie已禁用，无法保存密码")<br>
+		function checkPlugIn(pname){
+			return checkPlugIn.plugins[pname]!==undefined
+		}
+		document.write(
+			checkPlugIn("Shockwave Flash")+"<br>");
+		document.write(checkPlugIn("Tencent QQ")+"<br>");*/
+		//判断是否启用cookie
+			if(navigator.cookieEnabled)
+				document.write("已启用cookie,请妥善保存个人信息<br>");
+			else 
+				document.write("cookie已禁用,无法保存密码<br>")
+
+		function checkPlugIn(pname){
+				return navigator.plugins[pname]!==undefined
+			}
+			document.write(
+				checkPlugIn("Shockwave Flash")+"<br>");
+			document.write(
+				checkPlugIn("Tencent QQ")+"<br>");
+
+			document.write(navigator.userAgent+"<br>");
+			var ua=navigator.userAgent;
+			var browser="",version="";
+			if(ua.indexOf("MSIE")!=-1)
+				browser="IE";
+			else if(ua.indexOf("Firefox")!=-1)
+				browser="Firefox";
+			else if(ua.indexOf("OPR")!=-1)
+				browser="OPR";
+			else if(ua.indexOf("Chrome")!=-1)
+				browser="Chrome";
+			else if(ua.indexOf("Safari")!=-1)
+				browser="Safari";
+			document.write(browser+"<br>");
+      //在ua中查找browser的位置i
+			var i=ua.indexOf(browser);
+			//让i跳过浏览器名称的长度再+1
+			i+=browser.length+1;
+			//选择ua中i位置开始的3位字符,转为浮点数
+			version=parseFloat(ua.slice(i,i+3));
+			document.write(version+"<br>");
+
+
+	</script>
+</body>
+</html>

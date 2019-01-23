@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>...</title>
+	<style type="text/css">
+		.table thead tr{border-bottom:2px solid black}
+	</style>
+</head>
+<body>
+  <ul class="btn-group">
+  	<li><a href="#">|<<</a></li>
+  	<li><a href="#">></a></li>
+  	<li><a href="#">||</a></li>
+  	<li><a href="#">>>|</a></li>
+  </ul>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		//清除list
+		$(".btn-group").css("listStyle","none");
+		//设置文字样式
+		$(".btn-group a").css({textDecoration:"none",
+		color:"#000",padding:"10px 20px",display:"inline-block"})
+		//左浮动
+		$(".btn-group>li").css({float:"left",border:"1px solid #000"});
+		//清除重叠
+		$(".btn-group>li:gt(0)").css("borderLeft",0);
+		//设置第一个左上，左下圆角
+		$(".btn-group>li:first").css({
+			borderTopLeftRadius:8,
+			borderBottomLeftRadius:8,
+		})
+		$(".btn-group>li:last").css({
+			borderTopRightRadius:8,
+			borderBottomRightRadius:8,
+		})
+		$(".btn-group>li a").click(function(){
+			alert("音乐music")
+		})
+	</script>
+	<div style="clear:both"></div>
+	<!-- table>(thead>tr>th*4)+(tbody>(tr>td*4)*3) -->
+	<table class="table">
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>username</th>
+				<th>userxing</th>
+				<th>email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>song</td>
+				<td>shi</td>
+				<td>@shisong</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>han</td>
+				<td>li</td>
+				<td>@lihan</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>cheng</td>
+				<td>lu</td>
+				<td>@lucheng</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		/*$("table").css({
+			borderCollapse3322
+			-:"collapse",
+			width:"100%"
+		})
+		$("table th,table,td").css({
+			padding:"6px 10px",
+			textAlign:"center"
+		})
+		//为thead中tr添加下边框
+		$("table>thead>tr").css("borderBottom","2px solid black");
+		//为tbody中第一行之后的所有兄弟行加上上边框
+		$("table>tbody>tr:gt(0)").css("borderTop","1px solid #000")
+		//偶数行变色
+		$("table>tbody>tr:even").css("background","#e4393c")*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+ERROR 2003 (HY000): Can't connect to MySQL server on 'localhost' (10061 "
+ error")
+
+
+错误一
+场景: 进入mysql显示这样错误
+文字意义:连接mysql服务器不成功
+根源:
+1:mysql服务器软件停止不启动
+2:mysql服务器启动失败
+
+
+ERROR 1044 (42000): Access denied for user ''@'localhost' to database 'crm1'
+错误二:
+场景:进入mysql创建库指令
+文字意义:访问mysql被拒绝
+根源:
+创建库创建表在mysql高级操作，必须权限很高用户
+才做这样的操作.
+权限太低
+
+解决:
+1:exit
+2:mysql.exe -uroot 
+
+
+
+ERROR 1007 (HY000): Can't create database 'crm1'; database exists
+错误三:
+场景:创建数据库时出现
+根源:当前库己经存在
+
+
+
+
+
+
+
+
+
+

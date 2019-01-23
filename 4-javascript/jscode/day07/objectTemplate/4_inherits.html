@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Student(sname,sage){
+				this.sname=sname;
+				this.sage=sage;
+			}
+			Student.prototype.toString=function(){
+				return "{sname:"+this.sname+", sage:"+this.sage+"}";
+			}
+			var father={
+				car:"infiniti",
+				bal:1000000000,
+				toString:function(){
+					return "有钱任性!";
+				}
+			}
+			Student.prototype=father;
+
+			var hmm=new Student("Han Meimei",12);
+			var lilei=new Student("Li Lei",11);
+			
+			console.log(String(hmm));
+			console.dir(hmm);
+			console.dir(lilei);
+		/* 仅修改两个对象间的继承关系
+			Object.setPrototypeOf(hmm,father);
+			console.log(String(hmm));
+			console.dir(hmm);
+			console.log(hmm.car);
+			console.log(hmm.bal);
+		*/
+		</script>
+	</body>
+</html>

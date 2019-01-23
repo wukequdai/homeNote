@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>表单元素的新属性——与验证相关</h1>
+
+  <form action="6.php">
+    用户姓名：<input type="text" name="uname" id="uname"  required minlength="3" maxlength="6"><br/>
+    手机号码：<input type="text" name="phone"   required pattern="1[3578]\d{9}" id="phone"><br/>
+    邮箱地址：<input type="email" name="mail"   id="mail"><br/>
+    您的年龄：<input type="number" name="age"   id="age" min="18" max="60"><br/>
+
+    <input type="submit"/>
+  </form>
+</body>
+</html>

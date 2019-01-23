@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <style>
+    div {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>栅格系统中列的适用性</h1>
+
+  <h3>XS列的适用性: xs/sm/md/lg</h3>
+  <div class="row">
+    <div class="col-xs-6">XS-6<br>XS-6</div>
+  </div>
+
+  <h3>SM列的适用性: sm/md/lg</h3>
+  <div class="row">
+    <div class="col-sm-6">SM-6<br>SM-6</div>
+  </div>
+
+  <h3>MD列的适用性: md/lg</h3>
+  <div class="row">
+    <div class="col-md-6">MD-6<br>MD-6</div>
+  </div>
+
+  <h3>LG列的适用性: lg</h3>
+  <div class="row">
+    <div class="col-lg-6">LG-6<br>LG-6</div>
+  </div>
+
+  <h3>列偏移的适用性</h3>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">XS-6<br>XS-6</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-sm-offset-3">XS-6<br>XS-6</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-md-offset-3">XS-6<br>XS-6</div>
+  </div>
+  <h3>一个列可以指定在不同屏幕的不同宽度占比</h3>
+  <div class="row">
+    <div class="col-xs-9 col-sm-6 col-md-3">响应式列</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9 col-md-3">响应式列</div>
+  </div>
+  <div class="row">
+    <!--<div class="col-xs-9 col-sm-9 col-md-3">响应式列</div>-->
+  </div>
+
+  <h3>列的隐藏</h3>
+  <div class="row">
+    <div class="col-xs-6 hidden-xs">XS-6</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 hidden-sm">XS-6</div>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootlint.js"></script>
+<script>
+  bootlint.showLintReportForCurrentDocument([]);
+</script>
+</body>
+</html>

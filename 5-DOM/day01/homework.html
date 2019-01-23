@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<span>Hello</span>
+	<h1>标题一</h1>
+	<script type="text/javascript">
+	//三个不用找就能获得的节点
+		console.log(document.documentElement);//html
+		console.log(document.head.nodeType);//1
+		console.log(document.body.nodeName);//body
+		//获得body中第一个节点
+		var span=document.body.firstChild;
+		//获得body中最后一个节点
+		var script=document.body.lastChild;
+		//获得body中所有直接子节点
+		var childNodes=document.body.childNodes;
+		console.log(span);
+		console.log(script);
+		console.log(childNodes);
+
+	</script>
+</body>
+</html>

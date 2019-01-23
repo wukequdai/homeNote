@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+  <style>
+    img{position:absolute;}
+  </style>
+ </head>
+ <body>
+	<h1>练习：jQuery万能动画函数</h1>
+	<img src="img/1.jpg">
+	<img src="img/2.jpg">
+	<img src="img/3.jpg">
+	<img src="img/4.jpg">
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    //$("img").first().css("left",0)  0
+            //.next().css("left",200) 1
+            //.next().css("left",400) 2
+            //.next().css("left",600) 3
+    //设置每个img的left依次增加200
+    $("img").css("left",i=>i*200)
+            .click(function(){
+              $(this).css("zIndex",10)//图片层次提升
+                     .animate({
+                        //宽,高,left,透明度同时变化
+                        width:400, height:300,
+                        //left基于当前-100
+                        left:parseFloat(
+                          $(this).css("left")
+                        )-100,
+                        opacity:0
+                     },2000,function(){//动画结束
+                       $(this).remove();//删除图片
+                     });
+            });
+  </script>
+ </body>
+</html>

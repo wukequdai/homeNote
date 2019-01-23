@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//函数作者:
+			function round(num,d){
+				if(!isNaN(num)&&!isNaN(d)){
+					num*=Math.pow(10,d);
+					num=Math.round(num);
+					num/=Math.pow(10,d);
+					return num;
+				}else{
+					throw new Error("孙子！参数必须是数字!");
+				}
+			}
+	
+			//调用者:
+			var num=prompt("请输入一个数字");
+			var d=prompt("请输入小数位数");
+			try{
+				console.log(round(num,d));
+			}catch(err){
+				alert(err);
+			}
+		</script>
+	</body>
+</html>

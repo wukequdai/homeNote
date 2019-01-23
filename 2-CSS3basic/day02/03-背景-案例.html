@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#txtName{
+				height:28px;
+				border:1px solid #ccc;
+				/*background-image:url(Images/user.png);
+				background-repeat:no-repeat;
+				background-position:5px center;*/
+				background:url(Images/user.png) no-repeat 5px center;
+				padding-left:33px;
+			}
+			#txtName:focus{
+				background-image:url(Images/pwd.png);
+			}
+			#txtPwd{
+				height:28px;
+				border:1px solid #ccc;
+				background-image:url(Images/pwd.png);
+				background-repeat:no-repeat;
+				background-position:right center;
+				padding-right:25px;
+			}
+			#txtName,#txtPwd{
+				width:204px;
+				box-sizing:border-box;
+			}
+			#container{
+				width:200px;
+				height:200px;
+				border:1px solid #ccc;
+				background:url(Images/p01.jpg) no-repeat;
+			}
+			#container:hover{
+				background-color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+		<p>
+			用户名称：<input id="txtName">
+		</p>
+		<p>
+			用户密码：<input type="password" id="txtPwd">
+		</p>
+	</body>
+</html>

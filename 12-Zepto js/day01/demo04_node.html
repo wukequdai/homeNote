@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/zepto.js"></script>
+</head>
+<body>
+
+
+<h1> Hello ZeptoJS </h1>
+<div id="container"></div>
+<p>Hello Never see</p>
+<span> before modify </span>
+
+<script>
+  //插入insertAfter insertBefore append appendTo prepend prependTo
+
+  var h2Element = $('<h2> header2 </h2>')
+  var h1 = $('h1');
+
+  //h2Element.insertBefore(h1);
+  h2Element.insertAfter(h1);
+
+  var h3Element = $('<h3> header3 </h3>');
+  var container = $('#container');
+  //container.append(h3Element);
+  h3Element.appendTo(container);
+
+  var h4Element = $('<h4> header4 </h4>');
+  //container.prepend(h4Element);
+  h4Element.prependTo(container);
+
+
+  //删除 remove/removeAttr/removeClass/removeProp
+  $('p').remove();
+
+  //修改 html/css/attr/addClass/removeClass...
+  var spanElement = $('span');
+  console.log(spanElement.html());
+  spanElement.html(' After modify')
+
+  console.log(spanElement.css());
+  spanElement.css({
+    color:'red',
+    backgroundColor:'#e6e6e6'
+  })
+
+
+
+</script>
+
+</body>
+</html>

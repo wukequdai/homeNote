@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .blue {
+      color: #33a;
+      background: #ccf;
+    }
+    .green {
+      color: #3a3;
+      background: #cfc;
+    }
+    .pink {
+      color: #a3a;
+      background: #fcf;
+    }
+  </style>
+</head>
+<body>
+  <h1>练习：使用localStorage</h1>
+  <h3>用户中心</h3>
+  <hr/>
+  <hr/>
+  <a href="13_index.html">首页</a>
+  <script>
+    //读取浏览器中存储的用户选中的主题色
+    var v = localStorage['UserTheme'];
+    document.body.className = v;
+  </script>
+
+  <script>
+    window.onstorage = function(){
+      console.log('localStorage数据改变了')
+      //读取浏览器中存储的用户选中的主题色
+      var v = localStorage['UserTheme'];
+      document.body.className = v;
+    }
+  </script>
+</body>
+</html>

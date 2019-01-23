@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>网易云播放器界面</h1>
+<canvas id="c2"></canvas>
+
+<script>
+  var progress = 0;  //所有图片总的加载进度 0~100
+
+  var imgBg = new Image();
+  imgBg.src = 'img/bg.jpg';
+  imgBg.onload = function(){
+    console.log('1.背景图片加载完成')
+    progress += 20; //加上第1张图片的权重
+    if(progress===100){  //判断总进度是否完成
+      startDraw();
+    }
+  }
+  var imgDisc = new Image();
+  imgDisc.src = 'img/disc.png';
+  imgDisc.onload = function(){
+    console.log('2.圆盘图片加载完成')
+    progress += 40; //加上第2张图片的权重
+    if(progress===100){  //判断总进度是否完成
+      startDraw();
+    }
+  }
+  var imgPause = new Image();
+  imgPause.src = 'img/pause.png';
+  imgPause.onload = function(){
+    console.log('3.暂停图片加载完成')
+    progress += 20; //加上第3张图片的权重
+    if(progress===100){  //判断总进度是否完成
+      startDraw();
+    }
+  }
+  var imgPlay = new Image();
+  imgPlay.src = 'img/play.png';
+  imgPlay.onload = function(){
+    console.log('4.播放图片加载完成')
+    progress += 20; //加上第2张图片的权重
+    if(progress===100){  //判断总进度是否完成
+      startDraw();
+    }
+  }
+
+  function startDraw(){
+    console.log('开始绘图.....');
+
+    //1.设置画布的尺寸
+    var w = imgBg.width;
+    var h = imgBg.height;
+    c2.width = w;
+    c2.height = h;
+    var ctx = c2.getContext('2d');
+
+    //2.绘制背景图
+    ctx.drawImage(imgBg, 0, 0);
+
+    //3.绘制黑色的胶片——填充一个黑色的圆形,半径120
+    ctx.beginPath();
+    ctx.arc(w/2,h/2,120, 0, 2*Math.PI);
+    ctx.fill();
+
+    //4.绘制黑色胶片上方的封面
+    var x = w/2- 120*Math.sin(Math.PI/4);
+    var y = h/2- 120*Math.sin(Math.PI/4);
+    var cw = 120*Math.sin(Math.PI/4) * 2;
+    var ch = cw;
+    ctx.drawImage(imgDisc, x, y, cw, ch);
+
+    //5.绘制播放/暂停按钮
+    var bw = 100;    //按钮的宽
+    var bh = 100;    //按钮的高
+    var x = (w-bw)/2;
+    var y = h-bh;
+    ctx.drawImage(imgPlay, x, y, bw, bh);
+
+    //6.为圆形“按钮”做事件绑定
+    c2.onclick = function(e){
+      var ex = e.offsetX; //事件的发生坐标
+      var ey = e.offsetY; //事件的发生坐标
+
+      var r = bw/2;//圆形按钮的半径
+      var cx = w/2; //圆心的坐标
+      var cy = h-r; //圆心的坐标
+
+      //若事件发生坐标到圆心坐标距离小于半径，则说明用户点击了按钮
+      if(Math.sqrt((ex-cx)*(ex-cx)+(ey-cy)*(ey-cy))<=r){
+        console.log('播放按钮被点击了');
+      }
+    }
+  }
+
+
+  console.log('JS代码执行完毕')
+</script>
+</body>
+</html>

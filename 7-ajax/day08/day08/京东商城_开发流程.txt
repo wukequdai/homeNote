@@ -1,0 +1,24 @@
+开发流程
+
+1:创建目录      htdocs/jd copy 我上传jd图片
+2:创建库创建表
+  set names utf8
+	source  jd.sql
+3:分析第1.1/1.2个功能
+  3.1:创建js/productlist.js
+	3.2:当页面加载完成动态加载
+	    header.php
+			footer.php
+  3.3:分析productlist.html
+	    放置头和尾标签
+			productlist.html 12 line
+			<div id="site_header">
+      </div>
+			productlist.html 86 line
+			<div id="site_footer">
+			</div>
+4:用户登录
+  jd/jd_user[uid,uname,upwd]
+	4.1:分析html:
+	productlist.html  89 line 登录窗口
+	

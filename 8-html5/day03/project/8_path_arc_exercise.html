@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制路径——圆拱</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    //openMouth();
+    //绘制张嘴的图案
+    function openMouth(){
+      //绘制外围轮廓
+      ctx.beginPath();
+      ctx.arc(250,200,100,45*Math.PI/180,315*Math.PI/180); //圆拱
+      ctx.lineTo(250,200); //到圆心的直线
+      ctx.closePath();
+
+      ctx.lineWidth = 5;
+      ctx.stroke();
+
+      //填充眼球
+      ctx.beginPath();
+      ctx.arc(250,150,25,0,2*Math.PI);
+      ctx.fillStyle = '#16f';
+      ctx.fill();
+
+      //填充眼神光 —— 两个小白球
+      ctx.beginPath();
+      ctx.arc(250+13,150-10,6,0,2*Math.PI);
+      ctx.arc(250+13-7,150-10-8,3,0,2*Math.PI);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+    }
+
+    //closeMouth();
+    //绘制闭嘴图案
+    function closeMouth(){
+      //绘制外围轮廓
+      ctx.beginPath();
+      ctx.arc(250,200,100,0,2*Math.PI); //圆拱
+      ctx.lineTo(250,200); //到圆心的直线
+      ctx.lineWidth = 5;
+      ctx.stroke();
+
+      //填充眼球
+      ctx.beginPath();
+      ctx.arc(250,150,25,0,2*Math.PI);
+      ctx.fillStyle = '#16f';
+      ctx.fill();
+
+      //填充眼神光 —— 两个小白球
+      ctx.beginPath();
+      ctx.arc(250+13,150-10,6,0,2*Math.PI);
+      ctx.arc(250+13-7,150-10-8,3,0,2*Math.PI);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+    }
+
+    var isOpen = true; //当前处于张嘴状态
+    setInterval(function(){
+      //清除画布上的已有内容
+      ctx.clearRect(0,0,500,400);
+
+      //绘制张嘴/闭嘴图案
+      if(isOpen){
+        closeMouth();
+        isOpen = false;
+      }else {
+        openMouth();
+        isOpen = true;
+      }
+    },500);
+  </script>
+</body>
+</html>

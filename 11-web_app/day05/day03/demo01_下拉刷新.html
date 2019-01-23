@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar class="bar-calm">
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <ion-refresher
+    pulling-text="下拉刷新"
+    on-refresh="refresh()">
+
+  </ion-refresher>
+
+  <div class="list">
+    <div
+      ng-repeat="tmp in list track by $index"
+      class="item">
+      <p>{{tmp}}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer-bar class="bar-calm">
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope',
+    function ($scope) {
+      $scope.list = [11, 22, 33, 44, 55];
+
+      $scope.refresh = function () {
+        console.log('on refresh...');
+        $scope.list.push(66);
+        $scope.$broadcast('scroll.refreshComplete');
+      }
+
+    }])
+
+</script>
+
+</body>
+</html>

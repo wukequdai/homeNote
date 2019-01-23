@@ -1,0 +1,6 @@
+/* 页面中 所有的 p 文本颜色：红色，背景颜色 ：黄色，文字大小24px */
+p{
+	color:red;
+	background-color:yellow;
+	font-size:24px;
+}

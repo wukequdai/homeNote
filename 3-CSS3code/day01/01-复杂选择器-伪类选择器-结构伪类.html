@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			/*#tbl tr:first-child{
+				background-color:yellow;
+			}
+			#tbl td:first-child{
+				background-color:red;
+			}
+			#tbl td:nth-child(2){
+				background-color:pink;
+			}*/
+
+
+			#tbl tr:not(:first-child) td:first-child{
+				background-color:red;
+			}
+			/*除第一行以外的其他行中的第二对td背景颜色为粉色*/
+			#tbl tr:not(:first-child) td:nth-child(2){
+				background-color:pink;
+			}
+			/*除第一行 以及 每行 第一列以外，剩下的td文本要加粗*/
+			#tbl tr:not(:first-child) td:not(:first-child){
+				font-weight:bold;
+				color:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" id="tbl">
+			<tr>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>年龄</td>
+				<td>爱好</td>
+			</tr>
+			<tr>
+				<td>张无忌</td>
+				<td>男</td>
+				<td>23</td>
+				<td>处对象</td>
+			</tr>
+			<tr>
+				<td>张翠山</td>
+				<td>男</td>
+				<td>50</td>
+				<td>殷素素</td>
+			</tr>
+			<tr>
+				<td>殷素素</td>
+				<td>女</td>
+				<td>46</td>
+				<td>张翠山</td>
+			</tr>
+		</table>
+	</body>
+</html>

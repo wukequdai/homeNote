@@ -1,0 +1,209 @@
+今天学习的内容
+1:复习昨天重点知识 http协议
+2:解答问题:注册之前是否要判断
+3:http 协议--  重点
+4:AJAX     --  重点&难点
+#----------------------------
+1:复习昨天重点知识 http协议
+  http 1.0
+	http 1.1
+   	   GET                   POST
+语义   客户端获取服务资源   客户端发数据给服务器
+如何   地址输入URL          表单  post
+发起   <a href=''>          ajax  post
+       js 跳转
+			 表单 GET
+			 ajax
+安全   不安全               不安全
+数据   1024                 没限制
+长度
+编码   中文乱码             没问题
+2:解答问题:注册之前是否要判断
+  reg.html
+	reg_do.php
+	a:获取用户名
+	b:查询数据库，是否有该用户名存在
+	  SELECT count(id) FROM t_login
+		WHERE name ='tom';
+  c:如果返回0 注册
+	d:如果返回1 该用户名己存在
+
+
+	解答二个问题
+	1:为什么php 里面有html/css/js
+	2:php工作顺序
+3:http 协议--  重点
+  如何使用http协议相关知识进行web访问优化
+  优化:web程序速度更快
+	提示:web访问优化可以从很多方面入手
+	     web服务器/网速/传输数据/数据库/
+			 浏览器解析速度{html/css/js}..
+
+  1)域名解析
+	  尽可能减少域名解析次数-
+		www.tmooc.cn
+    www.tmooc.cn/1.css
+    www.tmooc.cn/index.html
+		<script src="www.tmooc.com/jquery.js"
+		<img src="www.baidu.com/1.jpg"></a>
+		www.tmooc.cn/index.js
+		....
+	  www.tts.com/jquery.js
+  
+	2)尽可能少创建连接
+	  努力减少创建连接次数-使用
+		Connection: keep-alive
+
+	3)尽可能能少请求
+	  尽力减少请求次数--
+		合理进行资源合并,合理使用缓存
+  4)减少等待响应
+    提高提服务器运行速度--提高数据库运算及
+		查询速度.
+  5)接收响应
+	  尽可能减少数据长度--删除空白字符,
+		启用压缩
+
+		如果文件少，使用次数
+    http://tool.oschina.net/jscompress/
+    http://www.oschina.net/p/yui+compressor
+
+4:AJAX     --  重点&难点
+
+
+#--------------------------
+练习:搜狐新闻网
+目标:1:显示新闻列表标题
+     2:点击新闻新标题显示新闻详细信息
+		 3:添加新闻
+		 4:删除新闻
+开发流程
+     1:创建库sohu 创建表
+		 t_news   新闻表
+		 nid       新闻id 
+		 title     新闻标题
+		 content   新闻内容
+		 pubTime   新闻创建时间  [年月日时分秒]
+		 viewCount 新闻被点击次数
+		 新闻详细信息被查看次数
+		 t_user  用户表
+		 id 
+		 name
+		 pwd
+		 2: 程序
+		 news_list.php 显示新闻标题列表
+		               ul>li>a
+     news_detail.php 接收客户端 nid
+		               显示该新闻(点击次数+1)
+     news_delete.php 接收客户端 nid
+		               从数据库删除该新闻
+     news_add.html  提供添加新闻表单
+		                提交news_add_do.php
+		 news_add_do.php 接收客户端
+		                 title,content
+                    添加数据库并且显示
+										成功或者失败
+		                
+1:程序流程分析.jpg
+2:创建库创建表
+  2.1:在htdos创建目录 news
+	2.2:news/sohu.sql
+	    创建库 创建表 添加测试数据
+  2.3:导入数据顺序
+	    a:set names utf8
+			b:source  c:/sohu.sql
+3:news_list.php   查询新闻
+  3.1:从数据库查询 t_news表所有记录
+	SELECT * FROM t_news;
+	3.2:显示到ul>li>a 列表中 新闻标题
+  mysqli_fetch_assoc($result);
+	3.3:php连接sohu库，设置编码程序保存
+	    1_init.php程序中
+  3.4:news_list.php  第一行
+	    require('1_init.php');
+  示例:1.php 2.php
+4:news_detail.php 查询新闻详细信息
+  4.0:获取新闻 $nid = $_REQUEST['nid'];
+  4.1:更新nid当新闻点击次数viewcount
+	  UPDATE t_news SET 
+		viewcount = viewcount+1
+		WHERE nid = $nid;
+	4.2:查询新闻详细信息
+	  SELECT * FROM t_news
+		WHERE nid = $nid;
+  
+
+	小结练习:
+	1:数据库 
+	  年月日时分秒 datetime
+	  当前时间     now()
+		点击量       int
+  2:程序
+	  news_list.php  查询新闻
+		公共代码 连接数据库/设置
+		1_init.php
+		require('1_init.php');
+		news_detail.php
+		一条语句发送一次
+		$sql = ""
+		mysqli_query();
+
+    16:35---16:50 完成上述功能
+
+ 
+解答几个问题
+1:引号所有参数  'id'
+  $id = $_REQUEST['id'];
+2:所有sql字符串  
+  "SELECT * FROM t_news";
+3:双引号中数组,下标不用单引
+  "<li>新闻标题:$row[title]</li>";
+4:程序顺序
+  先 news_list.php
+	再 news_detail.php
+
+
+
+1:使用原生AJAX发起GET请求
+2:使用原生AJAX发起POST请求
+
+1.1AJAX 概述:
+  AJAX Asynchronous JavaScript And XML
+	异步的JS和XML
+
+1.2:2002年左右，由Google在搜索引擎中,
+  提出了GoogleSuggest效果,提出ajax概念
+	AJAX=HTML+CSS+JS+DOM+XML+HTTP
+	目标:实现在无刷新{无提交}的情况下
+	     页面内容的{局部更新}.
+  即用户在浏览网页同时，web服务器
+	提供新的内容.
+	常用应用场合:
+	聊天室,在线走势,搜索建议,移动应用...
+
+
+  浏览器中发起请求二种
+	a:同步请求:
+	  浏览器请求后，一片惨白，等待服务器响应
+		地址栏输入地址，表单提交,超链接/js跳转
+		3.php 惨白
+	b:异步请求:
+	  浏览器中有内容，同时又发请求处理响应.
+		AJAX---XHR {XMLHttpRequest}
+
+1.3:XMLHttpRequest对象的使用
+    XHR对象:作用向web服务器发起
+		        异步请求，并接收返回的数据.
+
+
+1.4:构建对象
+    a:window.XMLHttpRequest
+		//Ch/FF/Sa/IE9+
+		//IE8- ActiveXObject('Microsoft.XMLHTTP');
+
+
+
+
+作业:
+1:添加新闻
+2:删除新闻

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var ToDoInput = React.createClass({
+    handleClick:function(){
+      var result = this.refs.myInput.value;
+      //将用户输入的值传递给ToDoBox
+      this.props.handleAdd(result);
+    },
+    render:function(){
+      return <div>
+        <h1>待做事项列表</h1>
+        <input
+          ref="myInput"
+          type="text" placeholder="请输入要做的事情"/>
+        <button onClick={this.handleClick}>add</button>
+      </div>
+    }
+  })
+
+  var ToDoList = React.createClass({
+      render:function(){
+        return <ul>
+        {
+          //创建指定数量的ToDoItem
+          this.props.thingsList.map(
+          function(content,index){
+            return <ToDoItem
+                  ct={content}
+                  key={index}></ToDoItem>
+          })
+        }
+        </ul>
+      }
+  })
+
+  var ToDoItem = React.createClass({
+    render:function(){
+      return <li>
+        <button>delete </button>
+        <span>{this.props.ct}</span>
+      </li>
+    }
+  })
+
+  var ToDoBox = React.createClass({
+    getInitialState:function(){
+      return {list:[]};
+    },
+    handleInput:function(result){
+      //接收参数，将参数中内容写到状态中
+      var newList = this.state.list;
+      newList.push(result);
+      this.setState({list:newList},function(){
+       // console.log(this.state.list);
+      });
+
+    },
+    render:function(){
+      return <div>
+        <ToDoInput handleAdd={this.handleInput}>
+        </ToDoInput>
+        <ToDoList thingsList={this.state.list}></ToDoList>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <ToDoBox/>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

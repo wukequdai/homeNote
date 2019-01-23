@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<img ng-src="img/{{imgList[index]}}" alt=""/>
+
+<div ng-controller="myCtrl02">
+    <p>{{count}}</p>
+</div>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope,$interval) {
+      $scope.index = 0;
+      $scope.imgList = ['1.jpg','2.jpg','3.jpg','4.jpg']
+      $interval(function(){
+        $scope.index++;
+        if($scope.index > 3 )
+        {
+          $scope.index = 0;
+        }
+      },300);
+  })
+
+  app.controller('myCtrl02',function($scope,$interval){
+    $scope.count = 0;
+    promise = $interval(function(){
+      $scope.count++;
+      if($scope.count > 30)
+      {
+        $interval.cancel(promise);
+      }
+    },100);
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

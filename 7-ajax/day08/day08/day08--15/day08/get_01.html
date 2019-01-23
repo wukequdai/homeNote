@@ -1,0 +1,48 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>jquery $.get</h1>
+    <h1>服务器返回数据</h1>
+    <h1 id="result"></h1>
+    <script src="j.js"></script>
+    <script>
+      //jquery发送get请求
+      //1:参数 url请求地址
+      //2:参数 data 参数
+      //3:参数 fn   回调函数
+      //如果服务器正确返回消息 自动调用函数
+      //data 服务器返回数据
+      //请求方式一:text    11:50--12:00
+      //$.get("get_01_do.php",function(data){
+         //$("#result").html(data);
+      //});
+      ////请求方式二:html
+      //$.get("get_02_do.php",function(data){
+           //$("#result").html(data); 
+      //});
+      //请求方式三:javascript
+      //$.get() 功能非常强
+      //服务器返回js代码
+      //$.get() 自动执行代码 jquery 
+      //使用 eval();  14:20--14:30 
+      $.get("get_03_do.php",function(data){
+      });
+      ////请示方式四:xml
+      $.get("get_04_do.php",function(data){
+           console.log(data.querySelector("name").innerHTML);
+      });
+      //请求方式五:json
+      //JSON.parse(str);
+      $.get("get_05_do.php",function(data){
+          for(var i=0;i<data.length;i++){
+            console.log(data[i].name);
+          } 
+      });
+
+    </script>
+
+ 	</body>
+</html>

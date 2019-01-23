@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+</head>
+<body>
+<!-- 指定容器 -->
+<ng-view></ng-view>
+
+<script>
+  var app = angular.module('myApp', ['ng', 'ngRoute']);
+  //配置路由词典
+  app.config(function ($routeProvider) {
+    $routeProvider
+      .when('/myStart',{
+        templateUrl:'tpl/start.html'
+      })
+      .when('/myEnd/:num',{
+        templateUrl:'tpl/end.html',
+        controller:'endCtrl'
+      })
+      .otherwise({redirectTo:'/myStart'})
+  })
+
+  app.controller('endCtrl',['$scope','$routeParams',
+    function ($scope,$routeParams) {
+        console.log($routeParams.num);
+        $scope.count = $routeParams.num;
+    }
+  ])
+
+</script>
+</body>
+</html>

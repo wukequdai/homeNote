@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>使用SVG绘制图形 —— 圆形</h1>
+  <svg id="svg12" width="500" height="400">
+  </svg>
+
+  <script>
+    for(var i=0; i<15; i++){
+      var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('r', rn(10, 100));
+      c.setAttribute('cx', rn(0, 500));
+      c.setAttribute('cy', rn(0, 400));
+      c.setAttribute('fill', rc(0, 255));
+      c.setAttribute('fill-opacity', Math.random());
+
+      //将新创建的元素挂载到DOM树上
+      svg12.appendChild(c);
+    }
+
+    /*将单击事件委托给所有circle的父元素*/
+    svg12.onclick = function(e){
+      var target = e.target;
+      if(target.nodeName === 'circle'){
+        //为了防止该circle再次被点击，可以为其添加一个扩展属性，如data-animating=true
+        //只有当前元素没有改属性时，才执行下面的代码
+        var timer = setInterval(function(){
+          //修改半径
+          var r = target.getAttribute('r');
+          r = parseFloat(r);
+          r *= 1.05;
+          target.setAttribute('r', r);
+          //修改透明度
+          var p = target.getAttribute('fill-opacity');
+          p = parseFloat(p);
+          p *= 0.9;
+          target.setAttribute('fill-opacity', p);
+          //若足够透明，则删除该元素
+          if(p<0.001){
+            clearInterval(timer);
+            svg12.removeChild(target);
+          }
+        },50)
+      }
+    }
+
+
+    /*random number：返回指定范围内的随机整数*/
+    function rn(min, max){
+      return Math.floor( Math.random()*(max-min) + min );
+    }
+
+    /*random color：返回指定范围内的随机颜色*/
+    function rc(min, max){
+      var r = Math.floor(Math.random()*(max-min)+min);
+      var g = Math.floor(Math.random()*(max-min)+min);
+      var b = Math.floor(Math.random()*(max-min)+min);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+  </script>
+</body>
+</html>

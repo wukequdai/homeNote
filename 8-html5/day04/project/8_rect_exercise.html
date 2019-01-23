@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>使用SVG绘制图形 —— 矩形</h1>
+  <svg width="500" height="400">
+    <rect id="r1" width="200" height="200" fill="#f00" fill-opacity=".3" stroke="#00f" stroke-width="10" stroke-opacity=".3"></rect>
+  </svg>
+
+  <script>
+    r1.onmouseenter = function(){
+      this.setAttribute('fill-opacity',1);
+      this.setAttribute('stroke-opacity',1);
+    }
+    r1.onmouseleave = function(){
+      this.setAttribute('fill-opacity',0.3);
+      this.setAttribute('stroke-opacity',0.3);
+    }
+  </script>
+</body>
+</html>

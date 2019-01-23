@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var MyComponent = React.createClass({
+    handleClick:function(){
+        var num1 = parseInt(this.refs.inputNum1.value);
+        var num2 = parseInt(this.refs.inputNum2.value);
+        console.log(num1+num2);
+    },
+    render:function(){
+      return <div>
+        <input  type="text"
+                ref="inputNum1"
+                placeholder="num1"/>
+        <br/>
+        <input  type="text"
+                ref="inputNum2"
+                placeholder="num2"/>
+        <br/>
+        <button onClick={this.handleClick}>add</button>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <MyComponent/>,
+     document.getElementById('example')
+  );
+
+
+</script>
+
+</body>
+</html>

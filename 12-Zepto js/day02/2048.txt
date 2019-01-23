@@ -1,0 +1,99 @@
+
+目标：2048游戏 -》 移植到手机上应用
+
+步骤1：加入zepto中的touch模块，能够检测到上下左右的滑动
+关键词：swipeUp swipeDown swipeLeft swipeRight
+结果：通过上下左右的滑动  能够打印出往左右滑动
+
+注意：$符号的冲突 通过chrome内置的手机模拟效果去调试
+方案1：Zepto('#grid_panel').on（）
+方案2：将2048.js文件中的$换个名字
+
+真实的调用写好的方法：上下左右
+
+
+
+步骤2：调整grid、cell的宽高适应当前屏幕
+分析：计算当前视窗的宽和高，同时计算每一个grid和cell的宽高、距离上边左边的margin；同时通过zepto来设置css
+①拿到实际的宽和高  width height
+②计算grid/cell宽度、高度
+cell之间base-margin-left base-margin-top 约定为cell本身宽度、高度的1/4 -->  
+
+
+5*base_margin_left+4*(4*base_margin_left) =  width =21*base_margin_left
+
+base_margin_left = (1/21)*width;
+cell-width = 4*base_margin_left = (4/21)*width;
+
+
+③ 将得到*width *height  应用到元素。
+1、将之前写死的数据 删除掉--》 zepto找到元素 css方法去设置
+2、设置gridPanel宽高
+3、设置grid、cell宽高
+4、同时设置id=g00 01...g30 .. g33  top/left
+	  id=c00 c01...c30 .. c33  top/left
+
+
+第0行第0列： 
+top :base_marginTop   
+left:base_marginLeft*1+cell_width*0
+第0行第1列： 
+top :base_marginTop   
+left:base_marginLeft*2+cell_width*1
+第0行第2列：
+left:base_marginLeft*3+cell_width*2
+
+第1行第0列
+top：base_marginTop*2+cell_height
+第2行第0列
+top：base_marginTop*3+cell_height*2
+
+r行c列
+left：
+base_marginLeft*(c+1)+cell_width*c
+top:
+base_marginTop*(r+1)+cell_top*r
+
+
+优化：
+当移动完成之后，重新设置位置信息。
+
+
+
+
+
+部署方案（打包成移动端的hybridApp）：
+
+①eclipse+sdk（webView）+assets
+eclipse打开，手机的模拟器启动，创建一个Android工程，将前端代码拷贝到assets目录，写上几行java代码，最终生成一个hybridApp
+
+
+②eclipse+sdk（webView）+服务器端
+
+添加访问网络的权限。
+http://localhost/chaptor4/zepto/day2/2048.html
+-->
+localhost -> 172.163.**.**
+
+
+③phoneGap(appcan/369clund/..HBuilder)
+
+pc+移动端
+无需重复编译，通过服务器的连接 实现代码的同步
+支持多个平台（Android/iOS）
+
+1、template.zip（模板项目）
+2、phoneGap ：www（2048） 
+index.html->index01.html 2048.html->index.html
+3、启动phoneGap的pc端和移动端
+4、phoneGap文件夹上传到云端（build.phonegap.com）
+
+完成云端打包，下载对应的安装包.
+
+
+
+
+
+
+
+

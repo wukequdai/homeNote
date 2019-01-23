@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制路径——直线</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    //绘制X轴
+    ctx.beginPath();
+    ctx.moveTo(100,300);
+    ctx.lineTo(400,300);
+    ctx.lineTo(400-20,300-20);  //X轴箭头上
+
+    ctx.moveTo(400,300);
+    ctx.lineTo(400-20,300+20);  //X轴箭头下
+
+
+    ctx.lineWidth = 5;
+    //ctx.lineJoin = 'miter';  //尖角
+    ctx.lineJoin = 'round';  //圆形
+    //ctx.lineJoin = 'bevel';  //斜面
+    ctx.strokeStyle = '#f00';
+    ctx.stroke();
+
+    //绘制Y轴 —— 必须开始一条新路径
+    ctx.beginPath();
+    ctx.moveTo(100,300);
+    ctx.lineTo(100,100);
+    ctx.lineTo(100-20,100+20);
+    ctx.moveTo(100,100);
+    ctx.lineTo(100+20,100+20);
+
+    ctx.strokeStyle = '#0f0';
+    ctx.stroke();
+  </script>
+</body>
+</html>

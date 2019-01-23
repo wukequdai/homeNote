@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function round(num,d){
+				//num* 10的d次方
+				num*=Math.pow(10,d);
+				//对num四舍五入取整
+				num=Math.round(num);
+				//num/ 10的d次方
+				num/=Math.pow(10,d);
+				return num;
+			}
+			//测试:
+			console.log(
+				round(345.678,2),//345.68
+				round(345.678,0),//346
+				round(345.678,-1)//350
+			);
+
+			function doubleball(){
+				var reds=[];//定义空数组reds
+				//反复: 只要reds中少于6个
+				while(reds.length<6){
+					//在1~33之间生成一个随机整数r
+					var r=Math.floor(Math.random()*33+1);
+					//遍历reds中每个元素
+					for(var i=0;i<reds.length;i++){
+						//如果reds中当前元素等于r，就退出循环
+						if(reds[i]==r){break;}
+					}//(遍历结束)
+					//如果i等于reds的元素个数,就将r压入reds中
+					if(i==reds.length){reds.push(r);}
+				}//(循环结束)
+				//将reds按数字升序排列
+				reds.sort(function(a,b){return a-b});
+				//在1~16之间生成一个随机整数blue
+				var blue=Math.floor(Math.random()*16+1);
+				//返回 reds转为字符串 拼个| 拼上blue
+				return String(reds)+"|"+blue;
+			}
+			document.write("<h1>"+doubleball()+"</h1>");
+		</script>	
+	</body>
+</html>

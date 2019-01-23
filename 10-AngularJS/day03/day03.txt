@@ -1,0 +1,154 @@
+全选练习：
+①搭建脚手架
+②模拟数据
+③将数据展示出来
+④支持普通的选择
+⑤添加全选功能
+--选中一个或者多个要影响全选结果
+--全选是改变每个选项是否被选中
+-----将全选的数据绑定到单选视图
+-----修改单选模型数据
+
+一、内置的服务
+$location $scope $rootScope $window。。
+
+数据绑定的基本工作原理：
+{{num}}，ng会在背后添加上一个监听$watch，就会一个数据变化时执行的处理函数（更新DOM）
+怎么知道数据发生了变化呢？？
+有一个循环，是会周期性检查scope模型数据是否发生了变化，将这个循环称之为$digest循环。
+需要手工调用循环：$scope.$digest(); --> $scope.$apply()(触发$rootScope的所有的子对象$digest)
+
+
+练习：使用周期性定时器服务，实现一个图片轮播
+['1.jpg','2.jpg']
+实现一个自增的计数器，当大于20时，自动停止。（$interval.cancel）
+
+$interval $timeout
+
+二、$http
+与服务器端的通信，对于ajax请求的封装（简化操作）
+$http({method:'',url:''}).success().error()
+
+$http.get().success()
+
+前端与后端，制定需求的数。
+模拟数据
+联调
+交给测试
+发布到线上
+
+ng提交的post请求 content-type:application/json,这是被php服务器拒绝，解决方案：
+设置方式：
+$http.defaults.headers.post = {'Content-Type':'application/x-www-form-urlencoded'}
+
+与服务器交互 注意：
+①确认apache启动成功
+②通过浏览器直接访问，返回的内容是否是预期的内容
+③访问html文件的时候，一定注意端口号
+
+调试：
+①分析控制台的错误信息
+②network 有没有成功的发起请求，有没有成功的拿到数据，数据的格式是不是需要的
+
+ $http.post('/someUrl', data).success(successCallback);
+$http({method:'',url:''}).success().error()
+
+练习：点击按钮，通过post发送数据给服务器，服务器接收到数据返回给客户端，接收到结果显示出来。
+
+input  输入用户名
+button 
+
+服务器接收用户名，返回“欢迎登陆”+用户名
+
+①发起请求，将返回的内容显示在页面中
+②编写php文件
+
+
+三、自定义服务
+
+创建服务的常用4种方法：
+factory/service/contant/value
+1、factory
+app.factory(服务名称,function(){return {}})
+
+2、service
+app.service(服务名称，constructor func)
+
+3、constant/value
+app.constant(服务名称，{})
+app.value(服务名称，{})
+
+创建一个普通的服务，使用factory和service（一个是普通函数，构造函数），创建一个配置类的服务，使用constant和value
+
+练习：要求采用service方法创建一个求和的服务 $add（有个方法，有两个参数，求和将结果返回）
+
+页面：两个input标签，一个提交按钮，将求和结果显示在视图中
+
+四、依赖注入
+ng的4大特征：①采用了MVC ②双向数据绑定 ③依赖注入 ④模块化设计
+
+依赖注入(Dependency Injection)：将需要用到的服务或者其他对象 称之为依赖，将依赖注入到当前的控制器（就是在处理函数中写对应的服务的名称）
+
+为了提高站点或者应用的加载速度，进行文件的压缩
+--》 YUI compressor
+
+压缩有2种使用方式：
+①命令行
+java -jar c:\YUI-compressor.jar c:\demo09.js > c:\demo09.min.js
+
+②借助webStorm
+file->settings->tools->file watchers -> 加号 -》 yui compressor js -> program 为jar即可
+
+文件压缩的作用：
+①删除注释
+②删除没有意义的字符
+③将形参改了名字--》混淆
+
+每一个ng应用 都会有一个注入器：查找和创建依赖注入的服务，在查找服务的过程当中，通过一些标记去查找，根据标记的方式不同，依赖注入3种方式：
+①推断式（猜测式）
+如果文件压缩之后，依赖的服务变成了a/b/c..，没有办法去服务列表中查找和创建服务了
+②标记式
+//标记式依赖注入
+var func = function ($scope,$show) {
+  $scope.funcClick = function(){
+    $show.showAlert();
+  }
+};
+//打标记
+func.$inject = ["$scope","$show"];
+
+③行内式（内联式）
+1、是指在构建一个对象时，允许开发人员将一个字符型数组作为对象的参数，而不仅仅是一个函数；
+2、在字符型数组中，最后一个元素必须是处理函数；
+3、数组中写服务名称的顺序要和function注入服务的顺序保持一致！！
+
+总结：依赖注入采用行内式依赖注入
+
+练习：采用行内式依赖注入，创建一个求和的服务$add
+
+
+每日一练：
+使用service创建一个$heartBeat,定义两个方法
+方法1：开始心跳  0.5s，在控制台打印一句话
+方法2：结束心跳 
+
+创建服务、内置服务的使用、行内式依赖注入
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

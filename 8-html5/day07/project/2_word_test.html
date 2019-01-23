@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #list {
+      list-style: none;
+    }
+    #list li span {
+      display: inline-block;
+      width: 80px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<h1>生词测试</h1>
+<hr/>
+<ul id="list">
+ <!-- <li>
+    <span>red：</span>
+    <input>
+  </li>
+  <li>
+    <span>blue：</span>
+    <input>
+  </li>-->
+</ul>
+<button type="button" id="btResult">查看测试结果</button>
+<hr/>
+<script>
+  //向#list填充innerHTML
+  var html = '';
+  for(var i=0; i<localStorage.length; i++){
+    var e = localStorage.key(i); //获取第i个key
+    html += `
+      <li>
+        <span>${e}:</span><input>
+      </li>
+    `;
+  }
+  list.innerHTML = html;
+
+  //为btResult添加事件监听
+  btResult.onclick = function(){
+    var total = localStorage.length;//此次测试的单词总数
+    var correct = 0;//正确的单词的数量
+
+    var spanList = document.querySelectorAll('#list li span');
+    for(var i=0; i<spanList.length; i++){
+      var span = spanList[i];
+      var userInputChinese = span.nextElementSibling.value; //获取span后的input的value
+      var e = localStorage.key(i);
+      var c = localStorage[e];  //正确的中文
+      if(userInputChinese===c){
+        correct++;
+      }
+    }
+    //跳转到下一页面，显示测试的结果
+    sessionStorage['TotalCount'] = total;
+    sessionStorage['CorrectCount'] = correct;
+    location.href='3_test_result.html';
+  }
+</script>
+</body>
+</html>

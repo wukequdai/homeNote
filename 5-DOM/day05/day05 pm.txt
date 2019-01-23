@@ -1,0 +1,89 @@
+正课: 
+1. Event:
+     事件绑定: 3种: 
+***事件模型: 
+        冒泡
+        取消冒泡
+        利用冒泡
+     取消事件: 
+     事件坐标: 
+     页面滚动:
+     cookie: 读写
+
+1. 事件绑定: 3种: 
+   1. 在html中绑定: 
+      <button onclick="calc(this)"
+     问题: 无法对动态生成的元素绑定事件
+              不符合内容与行为分离的原则
+   2. 在js中动态绑定: 2种: 
+      1. btn.onclick方式
+      btn.on事件名=function(){
+          this -> btn;
+      }
+      触发事件时，btn.onclick();——事件处理函数
+     优: 可对任何元素动态绑定事件
+          内容与行为分离
+     缺: 无法为一个元素的一个事件同时绑定多个事件处理函数
+      2. btn.addEventListener("事件名",function(){...})
+     优: 为一个元素的一个事件同时绑定多个事件处理函数
+
+2. ***事件模型: 
+   目标元素: 实际点击的元素
+   DOM: 3个阶段: 
+     1. 捕获阶段(capture): 由外向内, 到目标元素结束
+                                      依次记录每级元素上绑定的相同事件
+     2. 目标触发: 默认，首先执行目标元素上的事件处理函数
+     3. 冒泡执行: 由内向外，按照捕获顺序的反向，依次触发各级父元素上绑定的事件
+
+    btn.addEventListener("事件名",function(){...},capture)
+      capture: false: 不在捕获阶段执行——默认
+                    true: 在捕获阶段提前执行！
+                      如果事件处理函数在捕获阶段提前出发，那么冒泡阶段不再重复触发。
+
+   IE8: 2个阶段: 没有捕获阶段
+      btn.attachEvent("on事件名",function(){...})
+
+事件对象: 
+  在事件发生时，自动创建的，保存事件相关信息的对象。
+  如何获得: 
+   DOM: 事件对象，默认会作为事件处理函数的第一个参数传入
+      IE8: window.event
+     e=e||window.event; //利用短路逻辑解决兼容性问题
+             
+  
+取消冒泡: 
+   DOM: e.stopPropagation();
+      IE8: e.cancelBubble=true;
+       if(e.stopPropagation){
+           e.stopPropagation();
+       }else{
+           e.cancelBubble=true;
+       }
+
+利用冒泡: 
+  优化: 尽量减少事件监听对象的个数
+   解决: 只在父元素上添加一次事件监听，所有子元素共用！
+    问题: 如何区分目标元素: e.target||e.srcElement
+                                             DOM      IE8
+
+取消事件: e.preventDefault();——阻止默认行为
+       IE8: e.returnValue=false;
+       if(e.preventDefault){
+           e.preventDefault();
+       }else{
+           e.returnValue=false;
+       }
+   练习: *form*的onsubmit事件: 
+               只要提交表单，正式提交前都会自动触发onsubmit
+
+事件坐标: 
+   1. 相对于整个屏幕的坐标: e.screenX|screenY
+   2. 相对于文档显示区的坐标:  e.clientX||e.x
+                                                e.clientY||e.y
+   3. 相对于相对定位的父元素的坐标: e.offsetX|e.offsetY
+
+页面滚动: 
+  onscroll: 当页面滚动时触发
+    scrollTop:  页面滚动，超出文档显示区顶部的高度
+
+

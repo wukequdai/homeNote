@@ -1,0 +1,202 @@
+今天学习的内容
+1:复习ajax重点知识
+2:上次作业
+3:轻量级数据格式json
+4:jquery实现ajax
+5:京东商城
+#-------------------
+1:复习ajax重点知识
+  a:XMLHttpRequest 属性方法事件
+  b:流程
+	c:处理不同类型数据
+	d:用
+3:轻量级数据格式json
+  ajax 处理批量格式数据
+  XML是字符串数据格式，用于描述数据,
+	稍微有点麻烦--重量级数据格式;
+
+  重量级数据格式
+	<book>
+   <id>1</id>
+   <name>js大全1</name>
+   <price>100.00</price>
+  </book>
+  1 js大全1 100.00 数据  100字节   1500字节
+	标签             50字节
+
+	小结:xml 重量级数据格式，缺点数据格式占用
+	空间太多.
+  解决方案:轻量级的数据格式 json
+
+  JSON是字符串数据格式，用于描述数据,
+	更加简单---轻量级级数据格式
+
+
+  JSON字符串的语法要求
+  1:一个JSON字符串有且只有一个根!
+	  可以是[]--表数组,
+		也可以是{}--表示一个对象
+	2:JSON中可以表示数字,bool,null,
+	  字符串--必须用双引号
+	3:[]数组中可以包含多个值,
+	4:{}对象中可以包含多个键值对
+	  使用逗号分隔,键和值之间用冒号分隔
+		键必须是双引号
+  1.json 
+	2.json
+	3.json
+
+  服务器端PHP中如何把数组转换JSON字符串
+  3.1:header("content-type:application/json;
+	    charset=utf-8");
+	$rows = 数据库中数据二维数组
+	3.2 $str = json_encode($rows);
+	3.3 echo $str;
+	#json_encode 功能:将数组转换json字符串
+  客户端JS如何把JSON字符串转JS对象
+	3.4 var str = xhr.responseText;
+  3.5 #JS中有一个函数JSON.parse(str); JS对象
+  JSON.parse(str);
+	函数功能:json字符串转换javascript对象或数组
+
+  dangdang/t_book
+	1:day08/book_json_list.php 9:40--9:50 
+	  查询所有t_book中数据转换json格式字符串
+	2:day08/book_json.html
+
+
+
+  小结:json
+  book_json_list.php 
+	1:获取数据库中t_book所有(数组)数据
+	2:将数组转换json字符串
+	  $str = json_encode($arr); 
+  3:输出客户端
+	  echo $str;
+  book_list.html
+	1:向 book_json_list.php 发送ajax请求
+	2:接收数据 
+	  2.1: xhr.responseText 现在还是json字符串
+		2.2: json字符串转换js 对象或者数组
+		     rows js数组
+		     var rows = JSON.parse(xhr.responseText);
+    2.3: 循环获取数组中每一个值
+		     for(var i=0;i<rows.length;i++){
+		2.4:  rows[i]; js 对象book
+		      rows[i].id
+					rows[i].name
+				 }
+  
+	??查询所有惠买车用户 name id 表格
+	huimaiche.t_login 表{id,name,pwd}
+	1:che_json_list.php  10:40--10:55
+	  1:查询huimaiche.t_login 所有记录
+		2:转换json字符串
+		  $str = json_encode($arr);
+			[
+			  {"id":1,"name":"tom","pwd":123},
+			  {"id":2,"name":"tom1","pwd":111},
+			]
+		3:返回客户端 
+		  echo $str;
+	2:che_json.html
+	  1:发送ajax请求che_json_list.php
+		2:接收服务器返回数据 json字符串 转 js 对象
+		  var rows = JSON.parse(xhr.responseText);
+		3:js数组--->转换html表格
+		  [{},{},{}]
+		  编号  名称
+			1      tom
+	
+	小结JSON
+	1:什么是JSON 
+    轻量级:数据格式或者JSON字符串
+		  {"id":1,"name":"tom"}
+		[
+		 {"id":1,"name":"tom"},
+		 {"id":2,"name":"tom1"}
+		]
+	2:服务器php如何将发送JSON 字符串
+	  php:函数json_encode($arr);
+		作用:将php数组转换json格式字符串
+		echo $str;
+	3:ajax 客户端如何接收JSON   字符串
+    var str = xhr.responseText;
+		str:json字符串转换javascript 数组
+		var rows = JSON.parse(str);
+		rows[i].id
+		rows[i].name
+4:jquery实现-->ajax
+    4.1:$.get(URL,[data],[fn]);
+    作用:发起XHR get请求,如果服务器返回成功
+		     响应消息，调用fn方法,
+				 在方法中处理响应数据.
+
+    示例:
+		$.get("type_list.php?id=1",function(data){
+		   console.log(data);
+		});
+    get_01.html    页面加载成功后发送ajax
+		               接收数据;
+		get_01_do.php  发送字符串hello 
+		get_02_do.php  发送html<i>hello</i> 
+  
+		4.2:$.post(URL,[data],[fn]);
+		4.3:$("选择器").load(URL,[data],[fn]);
+		4.4:$.getScript(URL,[data],[fn]);
+		4.5:$.getJSON(URL,[data],[fn]);
+		4.6:$.ajax({});
+
+
+错误集锦:
+1:头写错了
+header("content-type:application/javascript;charset=utf-8");
+header("content-type:application/xml;charset=utf-8");
+header("content-type:application/json;charset=utf-8");
+2:php数组格式错误
+get_05_do.php 写5遍
+如果程序有些错误:下载
+get_01.html
+get_01_do.php --- 05
+
+##------------------------------------
+下午:
+
+jquery 对AJAX操作封装函数
+load();
+格式:
+$('选择器').load(url,[data],[fn]);
+作用:
+发起一个XHR请求,data为null则为GET
+否则发起POST请求,把服务器返回的响应数据
+(必须是HTML片段)追加为选定元素innerHTML
+若有参数fn,则调用该函数.
+14:51--15:00
+1:load_01_do.php
+  header("content-type:text/html;charset=utf-8");
+	echo "<li>1</li>"
+2:load_01.html
+  <ul>..
+  $("#ul1").load("load_01_do.php");
+5:京东商城
+  京东商城开发说明.txt
+	京东商城_开发流程.txt
+2:上次作业
+
+
+  作业:
+	1:如果基础比较好同学
+	  a:产品列表
+		b:添加购物车
+		c:购物车修改
+  2:按照  
+	  京东商城_开发流程.txt
+		京东商城_开发说明.txt
+	  a:页面加载后发送ajax
+		  header.php
+			footer.php
+		b:登录  productlist.html
+		        user_login.php
+    留注释:删除代码重写一次
+
+

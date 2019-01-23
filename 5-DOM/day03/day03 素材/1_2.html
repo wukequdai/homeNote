@@ -1,0 +1,67 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>二级联动列表</title>
+<meta charset="utf-8" />
+<style>
+	.hide{ display: none; }
+</style>
+<script>
+	/*实现“省”和“市”的级联下拉列表*/
+	var cities=[[],		/*0号下标没有元素*/
+[{"name":'东城区',"value":101},
+ {"name":'西城区',"value":102},
+ {"name":'海淀区',"value":103},
+ {"name":'朝阳区',"value":104}],
+[{"name":'河东区',"value":201},
+ {"name":'河西区',"value":202},
+ {"name":'南开区',"value":303}],
+[{"name":'石家庄市',"value":301},
+ {"name":'廊坊市',"value":302},
+ {"name":'保定市',"value":303},
+ {"name":'唐山市',"value":304},
+ {"name":'秦皇岛市',"value":304}]
+			];
+	
+</script>
+
+</head>
+<body>
+	<select name="provs">
+		<option>—请选择—</option><!--0-->
+		<option>北京市</option><!--1-->
+		<option>天津市</option>
+		<option>河北省</option>
+	</select>
+	
+	<select name="cities" class="hide">
+	</select>
+	<script>
+		/*function selCts(selProvs){
+			//获得selProvs中选中项的下标i
+			//获得cities中i位置的子数组保存在cts中
+			//找到name为cities的sel元素,保存在selCities
+			//创建frag
+			//先创建option元素opt
+			//设置opt的内容为"-请选择-"
+			//将opt追加到frag中
+			//遍历cts中每个元素
+				//创建option元素opt
+				//设置opt的内容为当前城市对象的name属性值
+				//设置opt的value为当前城市对象的value属性值
+				//将opt追加到frag中
+			//(遍历结束)
+			//将frag整体追加到selCitites中
+		}*/
+		+function(){
+			//找到name为provs的select
+			var selProvs=document.getElementsByName("provs")[0];
+			var selCts=document.getElementsByName("cities")[0];
+			selProvs.onchange=function(){
+				
+			}
+
+		}();
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 要求用户输入一个年，月，日
+			 判断 该日 是这一年的第 ? 天 
+			*/
+			function calDate(){
+				var totalDays=0;
+				//1、要求用户输入年月日
+				var year=Number(prompt("Year:"));
+				var month=Number(prompt("Month:"));
+				var day=Number(prompt("Day:"));
+				//2、判断 输入的年份是否为闰年
+				var isRun=(year%4==0&&year%100!=0)||(year%400==0);
+				//3、判断用户输入的月份，在计算day是year的第多少天
+				switch(month){
+					case 1:
+						totalDays=day;
+						break;
+					case 2://2016.2.15
+						totalDays=31+day;
+						break;
+					case 3:
+						totalDays=31+(isRun?29:28)+day;
+						break;
+					case 4:
+						totalDays=31+(isRun?29:28)+31+day;
+						break;
+						
+				}
+
+				console.log(year+"年"+month+"月"+day+"日是"+year+"年的第"+totalDays+"天");
+
+
+
+				//1、假如 1995 年 1 月 15 日 ：15天
+				//2、假如 1995 年 2 月 15 日 ：31+15
+				//3、假如 1996 年 3 月 15 日 ：31+(28/29)+15
+				//4、...
+				//5、...
+			}
+		</script>
+		<button onclick="calDate();">日期计算器</button>
+	</body>
+</html>

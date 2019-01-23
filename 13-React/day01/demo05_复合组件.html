@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var ComponentTitle = React.createClass({
+    render:function(){
+      return <h1> Tarena </h1>
+    }
+  })
+
+  var ComponentLink = React.createClass({
+    render:function(){
+      return <a>www.tarena.com</a>
+    }
+  })
+
+  var ComponentInfo = React.createClass({
+    render:function(){
+      return <div>
+        <ComponentTitle></ComponentTitle>
+        <ComponentLink></ComponentLink>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <ComponentInfo></ComponentInfo>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

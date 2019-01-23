@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>全选和取消全选</title>
+
+</head>
+<body>
+	<h2>管理员列表</h2>
+	<table border="1px" width="500px">
+	  <thead>
+		<tr>
+			<th>
+				<label><input type="checkbox" onclick="checkAll(this)"/>全选</label>
+			</th>
+			<th>管理员ID</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<td><input type="checkbox" name="adminID" onclick="check1(this)"/></td>
+	  		<td>1</td>
+	  		<td>Tester</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox" name="adminID" onclick="check1(this)"/></td>
+	  		<td>2</td>
+	  		<td>Manager</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox" name="adminID" onclick="check1(this)"/></td>
+	  		<td>3</td>
+	  		<td>Analyst</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<td><input type="checkbox" name="adminID" onclick="check1(this)"/></td>
+	  		<td>4</td>
+	  		<td>Admin</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  </tbody>
+	</table>
+	<script>
+		function checkAll(chb){
+			//查找tbody下每行第一个td中的checkbox，保存在变量chbs中
+			var chbs=document.querySelectorAll(
+				"tbody td:first-child>[type='checkbox']"
+			);
+			//遍历chbs中每个元素
+			for(var i=0;i<chbs.length;i++){
+				//设置当前checkbox的checked=chb.checked
+				chbs[i].checked=chb.checked;
+			}
+		}
+		function check1(chb){
+			//查找thead中的checkbox保存在chbAll中
+			var chbAll=document.querySelector(
+				"thead th:first-child [type='checkbox']"
+			)
+			//如果chb未选中,修改chbAll为未选中
+			if(!chb.checked){chbAll.checked=false}
+			else{//否则
+			  //修改chbAll的checked为: 
+					//如果tbody中有未选中的checkbox,就改为false，否则改为true
+				chbAll.checked=
+					document.querySelector(
+				 "tbody td:first-child>input:not(:checked)"
+					)!=null?false:true;
+			}
+		}	
+	</script>
+</body>
+</html>

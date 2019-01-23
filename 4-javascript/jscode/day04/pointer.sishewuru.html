@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function round(num,d){
+			//将num*10的d次方
+			num*=Math.pow(10,d);                                 
+			//对num四舍五入取整
+			num=Math.round(num);
+			//返回num/10的d次方的结果
+			return num/Math.pow(10,d);
+		}
+		console.log(
+			//按照2位小数四舍五入
+			round(345.678,2),
+			//取整
+			round(345.678,0),
+			//按照十位数取整
+			round(345.678,-1)
+		);
+		/*function doubleball(){
+			var reds=[];
+			while(reds.length<6){//反复
+				//在1~33之间随机生成一个整数
+				var r=Math.floor(Math.random()*33+1);
+				for(var i=0;i<reds.length;i++){
+					//遍历reds中的每一个元素
+					//如果当前元素等于r，就退出循环
+					if(reds[i]==r) break;
+				}
+				//如果reds中不包含r，才将r压入reds中
+				if(i==reds.length) reds.push(r);
+			}
+			//将reds按照数字的升序排列
+			reds.sort(function(a,b){return a-b});
+			//1--16中生成一个篮球
+			var blue=Math.floor(Math.random()*16+1);
+			document.write(String(reds)+"|"+blue);
+		}
+		console.log(doubleball());*/
+		function shuang(){
+			var reds=[];
+			while(reds.length<6){
+				var r=Math.floor(Math.random()*33+1);
+				for(var i=0;i<reds.length;i++){
+					if(reds())
+				}
+			}
+		}
+	</script>
+</body>
+</html>

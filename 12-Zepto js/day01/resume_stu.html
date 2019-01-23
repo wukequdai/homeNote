@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <script src="js/zepto.js"></script>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0
+        }
+
+        ul .tl-wrap {
+            background: #eee;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 2px;
+        }
+
+        ul .tl-wrap.current {
+            color: #ffffff;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>About Me</h1>
+<p>出生年月：1999-10-10</p>
+<p>手机:185-6789-9876</p>
+<p>状态：工作中</p>
+<a href="http://www.baidu.com">个人技术博客</a>
+<br/>
+
+<h1>Work and Education</h1>
+<ul id='history'>
+
+</ul>
+
+<br/>
+
+<h1>Technology and Experience</h1>
+
+<div id="skills">
+
+</div>
+
+<script>
+    //发请求，拿到模拟的数据
+    $.get('data/getWorkInfo.php', function (data) {
+        console.log(data);
+        showHistory(data)
+    })
+
+    //将拿到对象数组，遍历，创建元素 插入到指定的ul
+    function showHistory(data){
+        var historyList = $('#history');
+        $.each(data, function (key,value) {
+            var li = $('<li></li>').addClass('tl-wrap');
+            if(key == 0)
+            {
+                li.addClass('current');
+            }
+            var p = $('<p>'+value.name+value.date+'</p>');
+            p.appendTo(li);
+            historyList.append(li);
+        })
+    }
+
+</script>
+
+
+</body>
+</html>

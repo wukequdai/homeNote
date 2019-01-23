@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+</head>
+<body>
+
+<script>
+  $(function () {
+
+    console.log('zepto is ready');
+
+    var node = $('<h1> Hello ZeptoJS </h1>',{
+      css:{color:'red'},
+      id:3
+    });
+
+    $('body').append(node);
+
+  })
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

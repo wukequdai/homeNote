@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			[id]{color:red;}
+			p[id]{font-style:italic;}
+			div[id][class]{font-size:24px;}
+			[class="impress"]{font-weight:bold;}
+			div[class~=redColor]{
+				font-size:24px;
+				font-weight:bold;
+				color:orange;
+				background-color:blue;
+			}
+			[class^=im]{
+				border:1px solid black;
+				box-shadow:5px 5px;
+				background-color:#e4393c;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="p1">id为p1的p元素</p>
+		<div id="d1">id为d1的div元素</div>
+		<div id="d2" class="important">id为d2的div元素</div>
+		<div class="impress">class为impress的div元素</div>
+		<div class="myImportant redColor">class为myImportant以及redColor的div元素</div>
+	</body>
+</html>

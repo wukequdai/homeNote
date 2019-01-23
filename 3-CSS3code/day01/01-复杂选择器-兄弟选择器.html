@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			/*通过 #p1 找到相邻兄弟span*/
+			#p1+span{color:red;}
+			#p1+div{color:green;}
+			/*通过 #p1 找到所有的 兄弟元素 span*/
+			#p1~span{font-weight:bold;background:yellow;}
+		</style>
+	</head>
+	<body>
+		<div>div元素</div>
+		<p id="p1">id为p1的p元素</p>
+		<span>span元素1</span>
+		<span>span元素2</span>
+	</body>
+</html>

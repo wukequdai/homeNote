@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var lxr=[];
+			lxr["name"]="林心如";
+			lxr["math"]=81;
+			lxr["chs"]=56;
+			lxr["eng"]=86;
+			//不能以字符串输出
+			console.log(String(lxr));
+			console.dir(lxr);//以对象方式输出
+			console.log(
+				lxr["name"]+"的数学成绩是"+lxr["math"]);
+			for(var key in lxr){//遍历关联数组:
+				console.log(key+" : "+lxr[key]);
+			}
+		</script>
+	</body>
+</html>

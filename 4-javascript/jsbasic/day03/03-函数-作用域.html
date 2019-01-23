@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var global_num = 12000000;
+			function fun1(){
+				//函数作用域中的变量(局部变量)
+				var num = 25;
+				console.log(num);
+				console.log("输出全局作用域变量："+global_num);
+			}
+
+			function fun2(){
+				/*console.log(num);*/
+				console.log(global_num);
+				/*打印 fun3 中所声明的全局变量 text_num*/
+				console.log(test_num);
+			}
+
+			function fun3(){
+				/*不使用var ，来声明一个全局变量*/
+				/*要求必须先调用一次fun3,才能够使用test_num全局变量*/
+				test_num=25;
+
+				/*调用 fun4 中的 参数 a,b,c*/
+				console.log(a,b,c);
+			}
+
+			function fun4(a,b,c){
+				console.log(a,b,c);
+			}
+
+			
+		</script>
+		<button onclick="fun1()">调用fun1</button>
+		<button onclick="fun2()">调用fun2</button>
+		<button onclick="fun3()">调用fun3</button>
+		<button onclick="fun4(5,10,15)">调用fun4</button>
+	</body>
+</html>

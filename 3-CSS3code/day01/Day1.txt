@@ -1,0 +1,257 @@
+1、复杂选择器
+2、内容生成
+3、多列
+4、CSS Hack
+==========================================
+1、复杂选择器
+	1、兄弟选择器
+		兄弟：平级元素
+		兄弟选择器：只能向后找元素，不能向前找元素
+		<div>
+			<p></p>
+			<span></span>
+			<div></div>
+		</div>
+		1、相邻兄弟选择器
+			1、作用
+				紧紧挨着的元素称之为相邻元素
+			2、语法
+				选择器1+选择器2{}
+				ex:
+					1、div+span
+						匹配 紧紧挨着div元素后面的span元素
+					2、#d1+span
+						匹配id为d1的元素后紧紧挨着的span元素
+					3、#d1+.important
+						匹配 紧紧挨着 id为d1的元素 后面的 class为important的元素
+		2、通用兄弟选择器
+			1、作用
+				通用:向后匹配所有
+			2、语法
+				选择器1~选择器2{}
+				ex:
+					1、#d1~span
+						匹配 #d1 后面 所有的 span元素
+					2、#d1~.important
+						匹配 #d1 后面 所有class为important元素
+	2、属性选择器
+		1、作用
+			允许使用元素所附带的属性 及其 值 ，进行元素的匹配
+			ex:匹配页面中所有的文本框
+		2、语法
+			[属性]
+			1、[attr]
+				attr:表示任意属性名称
+				作用：匹配页面中所有附带attr属性的元素
+				ex:
+					1、[id]
+						匹配页面中所有附带id属性的元素
+					2、[title]
+						匹配页面中所有附带title属性的元素
+			2、elem[attr]
+				elem:表示任意元素
+				作用：匹配页面中所有附带attr属性的elem元素
+				ex:
+					1、p[id]
+						匹配页面中所有附带id属性的p元素
+					2、img[title]
+						匹配页面中所有附带title属性的img元素
+			3、[attr1][attr2]
+				作用:匹配即具备attr1属性同时也具备attr2属性的元素
+				ex:
+					1、div[id][class]
+						匹配即具备id属性同时也具备class属性的div元素
+			4、[attr=value]
+				 [attr="value"]
+				 [attr='value']
+				 匹配 具备attr属性并且值为value的元素
+				 ex:
+					1、匹配页面中所有的文本框
+						input[type="text"]
+			5、[class~=value]
+				 多类选择器中使用
+				 class属性值是以空格隔开的值列表，value是值列表中的独立的值
+				 只要class属性值中，包含value选择器，就能够匹配出来
+			6、[attr^=value]
+				^= : 以...作为开始
+				匹配 attr 属性值 是以 value 字符作为开始的元素
+				<div class="col-5"></div>
+				<div class="col-3"></div>
+				ex:
+					1、[class^="col-"]
+						匹配 class 属性值 是以 col- 字符作为开始的元素
+			7、[attr$=value]
+				匹配 attr 属性值 是以 value 字符作为结束的元素
+				ex:
+					1、[class$="users"]
+						匹配 class 属性值 是以 users 字符作为结束的元素
+			8、[attr*=value]
+				*=:包含
+				匹配 attr 属性值中 包含 value 字符的元素
+				ex：
+					1、[class*="cols"]
+	3、伪类选择器
+		1、目标伪类
+			1、作用
+				匹配 被激活的 html锚元素(锚点)
+			2、语法
+				:target 或 选择器:target
+		2、元素状态伪类
+			1、作用
+				匹配元素可用，禁用，被选中的状态
+			2、语法
+				1、:enabled
+					匹配页面中每个已启用的元素(表单元素)
+				2、:disabled
+					匹配页面中每个被禁用的元素(表单元素)
+				3、:checked
+					匹配每个被选中的元素(radio,checkbox)
+		3、结构伪类
+			1、:first-child
+				匹配 属于其父元素中的 首个子元素
+			2、:last-child
+				匹配 属于其父元素中的 最后一个子元素 
+			3、:nth-child(n)
+				匹配 属于其父元素中的 第n个子元素
+				ex:
+					td:nth-child(2)
+
+					nth-child(1) == :first-child
+			4、:empty
+				匹配没有子元素(包括文本)的元素
+				ex:
+					<div>Hello World</div> : 非空
+					<div> </div>:非空
+
+					<div>
+					</div>:非空
+
+					<div></div>:empty
+			5、:only-child
+				匹配属于其父元素中的唯一子元素
+				<div>
+					<p></p> :only-child
+				</div>
+		4、否定伪类
+			匹配 非指定 选择器的每个元素
+			语法：
+				:not(selector)
+				将 满足 selector 选择器的元素 排除在外
+			ex:
+				1、控制 除第一行以外的 所有行的 第一列的背景颜色 为 红色
+					#tbl tr:not(:first-child){}
+	4、伪元素选择器
+		1、伪类 VS 伪元素
+			伪类：匹配到的是完整的元素
+			伪元素：匹配到的是元素中的某部分内容
+		2、语法
+			1、:first-letter 或 ::first-letter
+				匹配某元素中的首字符
+			2、:first-line 或 ::first-line
+				匹配某元素中的首行
+			3、::selection
+				匹配被用户选取的部分
+		3、: 与 ::
+			1、:
+				在css中表示的是 伪类选择器
+				在css2中还可以表示 伪元素选择器
+			2、::
+				在css3中，:只表示为类选择器
+				在css3中，::只表示伪元素选择器
+2、内容生成
+	1、作用
+		允许通过css的方式，动态的像某元素的内容区域生成或插入一部分数据
+	2、语法
+		1、伪元素选择器
+			1、:before 或 ::before
+				匹配某元素的内容区域之前
+				<div>(:before)This is a div</div>
+			2、:after 或 ::after
+				匹配某元素的内容区域之后
+				<div>This is a div(:after)</div>
+		2、属性
+			 属性:content
+			 取值:
+				1、字符串 ：普通文本
+				2、url()  ：插入一副图像
+				3、计数器
+		3、计数器
+			1、属性 ：counter-reset
+				作用：声明/复位 一个计数器
+				counter-reset:名称 值;
+				注意：
+					1、值可以省略，省略的话，默认为0
+					2、允许一次性声明多个计数器以及值
+						counter-reset:名1 值1 名2 值2;
+						ex:
+							counter-reset:c1 c2;
+							counter-reset:c1 0 c2 10;
+					3、在哪声明计数器？
+						不能放在使用计数器的元素中声明
+			2、属性：counter-increment
+				作用：用于设置某个计数器每次出现的增量值
+				语法：
+					counter-increment:名 增量值;
+					注意：
+						1、增量值可以省略，默认为1
+						2、增量值可以是正，也可以是负
+							正：递增
+							负：递减
+						3、可同时设置多个计数器增量，空格隔开
+							counter-increment:c1 1 c2 -1;
+						4、在哪声明计数器的增量？？？
+							哪个元素使用计数器，在哪个元素中声明增量
+			3、函数：counter()
+				作用：使用计数器生成的值
+				语法：
+					配合着 内容生成 一起来用
+					content:counter(计数器名);
+					content:"第"counter(名)"章、";
+			4、练习
+				1、Web基础知识
+					1.1 基础知识1
+					1.2 基础知识2
+					1.3 基础知识3
+				2、HTML快速入门
+					2.1 入门1
+					2.2 入门2
+				3、网页中的文本
+					3.1 文本1
+					3.2 文本2
+					3.3 文本3
+			声明两个计数器：
+				1、c1，控制外层数字计数器
+				2、c2，控制内层数字计数器
+3、多列
+	1、分隔列
+		将一段文本拆成几列
+		属性：column-count
+		取值：数字(无单位)
+		ex:
+			column-count:3;
+	2、列间隔
+		指定每两个列之间的间隔距离
+		属性：column-gap
+		取值：距离值
+		ex:
+			column-gap:15px;
+	3、列规则
+		指定每两个列之间的分隔线的 宽度，样式，颜色
+		属性：column-rule
+		取值：width style color;
+	4、浏览器兼容性
+		IE10+,Opera 支持多列
+		Firefox : -moz-
+		Chrome & Safari : -webkit-
+4、CSS Hack
+	1 、原则 & 原理
+		原则：根据不同的浏览器编写不同的css
+		原理：根据样式的优先级 来实现兼容性的处理 
+	2、CSSHack 的解决方式
+		1、CSS类内部Hack
+			1、实现
+				通过 css 属性 增加前缀或为属性值增加后缀的方式来匹配不同的浏览器
+		2、选择器Hack
+		3、HTML头部引用Hack
+
+

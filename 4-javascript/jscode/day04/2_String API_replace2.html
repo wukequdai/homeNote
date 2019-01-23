@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str=" \tzhang dong\t ";
+			function ltrim(str){//删除str开头的空字符
+				return str.replace(/^\s+/,"");
+			}
+			function rtrim(str){//删除str结尾的空字符
+				return str.replace(/\s+$/,"");
+			}
+			function trim(str){//删除str开头和结尾空字符
+				return str.replace(/^\s+|\s+$/g,"");
+			}
+			console.log(ltrim(str));//"zhang dong\t "
+			console.log(rtrim(str));//" \tzhang dong"
+			console.log(trim(str));//"zhang dong"
+
+			var birth="19831226";
+			birth=birth.replace(
+				/(\d{4})(\d{2})(\d{2})/,"$1年$2月$3日");
+			console.log(birth);
+		</script>
+	</body>
+</html>

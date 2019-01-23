@@ -1,0 +1,8 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<style> #adv{ position:absolute; top:100px; left:150px; display:none; } </style>
+</head>
+<body> <video id="media" width="720" height="400" controls loop poster="img/01.jpg"> <source src="source/video.mp4"></source> </video>  <div id="adv"> <img src="img/01.jpg" width="300" height="100" /> </div> </body>
+<script> function userPause(){ document.getElementById('adv').style.display='block'; }  function userPlay(){ document.getElementById('adv').style.display='none'; }  function initial(){ elem = document.getElementById('media'); elem.addEventListener('pause',userPause,false); elem.addEventListener('play',userPlay,false); } window.addEventListener('load',initial,false); </script>
+</html>

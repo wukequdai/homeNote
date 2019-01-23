@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			"use strict";
+			var eric={id:1001,name:"Eric"};
+		 (function(){//用闭包添加访问器属性和受保护变量
+				var _age=24;//受保护的变量
+				//为eric添加访问器属性age:18<=年龄<=65
+				Object.defineProperty(eric,"age",{
+					get:function(){
+						console.log("自动调用了get方法");
+						return _age;
+					},
+					set:function(value){
+						console.log("自动调用了set方法");
+						if(value>=18&&value<=65)
+							_age=value;
+						else
+							throw new Error(
+								"age must between 18 and 65!");
+					}
+				});
+			})();
+			console.log(eric.age);//get
+			eric.age=25;//set(25)
+			console.log(eric.age);//get
+			Object.preventExtensions(eric);
+			//eric: extensible:false
+			eric._age=-2;//set(-2)
+			console.log(eric.age);
+
+			/*eric:{
+				id:1001,
+				name:"Eric",
+				age:{
+					get:function(){(_age=24)return _age;},
+					set:function(value){(_age=24)_age=value;}
+				}
+			}
+			*/
+		</script>
+	</body>
+</html>

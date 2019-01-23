@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+//      toJson 序列化
+    var obj = {name:'zhangsan',sex:'boy'};
+    var str = angular.toJson(obj);
+    console.log(str);
+
+//    fromJson 反序列化
+    var jsonStr = '{"name":"lisi","sex":"boy"}';
+    var jsonObj = angular.fromJson(jsonStr);
+    console.log(jsonObj);
+
+//    uppercase/lowercase
+//    forEach
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

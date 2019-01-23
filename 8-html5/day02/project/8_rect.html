@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>使用Canvas技术绘图——绘制矩形</h1>
+  <canvas id="c8" width="500" height="400">
+    您的浏览器不支持CANVAS标签
+  </canvas>
+  <script>
+    var ctx = c8.getContext('2d');
+
+    //左上角描边一个矩形
+    ctx.lineWidth = 10;
+    ctx.strokeRect(0, 0, 100, 80);
+
+    //右上角填充一个矩形
+    ctx.fillRect(500-100, 0, 100, 80);
+
+    //左下角描边一个矩形
+    ctx.strokeStyle = '#00f';
+    ctx.strokeRect(0, 400-80, 100, 80);
+
+    //右下角填充一个矩形
+    ctx.fillStyle = '#ff0';
+    ctx.fillRect(500-100, 400-80, 100, 80);
+
+    //在正中央填充+描边一个矩形
+    ctx.fillRect(250-100/2,200-80/2, 100, 80);
+    ctx.strokeRect(250-100/2,200-80/2, 100, 80);
+  </script>
+</body>
+</html>

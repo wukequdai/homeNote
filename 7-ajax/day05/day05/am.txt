@@ -1,0 +1,71 @@
+今天学习的内容
+1:复习昨天重点知识 http协议
+2:解答问题:注册之前是否要判断
+3:http 协议--  重点
+4:AJAX     --  重点&难点
+#----------------------------
+1:复习昨天重点知识 http协议
+  http 1.0
+	http 1.1
+   	   GET                   POST
+语义   客户端获取服务资源   客户端发数据给服务器
+如何   地址输入URL          表单  post
+发起   <a href=''>          ajax  post
+       js 跳转
+			 表单 GET
+			 ajax
+安全   不安全               不安全
+数据   1024                 没限制
+长度
+编码   中文乱码             没问题
+2:解答问题:注册之前是否要判断
+  reg.html
+	reg_do.php
+	a:获取用户名
+	b:查询数据库，是否有该用户名存在
+	  SELECT count(id) FROM t_login
+		WHERE name ='tom';
+  c:如果返回0 注册
+	d:如果返回1 该用户名己存在
+
+
+	解答二个问题
+	1:为什么php 里面有html/css/js
+	2:php工作顺序
+3:http 协议--  重点
+  如何使用http协议相关知识进行web访问优化
+  优化:web程序速度更快
+	提示:web访问优化可以从很多方面入手
+	     web服务器/网速/传输数据/数据库/
+			 浏览器解析速度{html/css/js}..
+
+  1)域名解析
+	  尽可能减少域名解析次数-
+		www.tmooc.cn
+    www.tmooc.cn/1.css
+    www.tmooc.cn/index.html
+		<script src="www.tmooc.com/jquery.js"
+		<img src="www.baidu.com/1.jpg"></a>
+		www.tmooc.cn/index.js
+		....
+	  www.tts.com/jquery.js
+  
+	2)尽可能少创建连接
+	  努力减少创建连接次数-使用
+		Connection: keep-alive
+
+	3)尽可能能少请求
+	  尽力减少请求次数--
+		合理进行资源合并,合理使用缓存
+  4)减少等待响应
+    提高提服务器运行速度--提高数据库运算及
+		查询速度.
+  5)接收响应
+	  尽可能减少数据长度--删除空白字符,
+		启用压缩
+
+		如果文件少，使用次数
+    http://tool.oschina.net/jscompress/
+    http://www.oschina.net/p/yui+compressor
+
+4:AJAX     --  重点&难点

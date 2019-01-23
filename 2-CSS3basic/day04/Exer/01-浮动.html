@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			body{
+				font-size:12px;
+			}
+			
+			#discuss{
+				width:990px;
+				margin:0 auto;
+			}
+			#mt{
+				/*高度：30px，边框，上边框，背景颜色*/
+				height:30px;
+				border:1px solid #ddd;
+				border-top:2px solid #9d9d9d;
+				background:#F7F7F7;
+			}
+			#discuss-content{
+				border-bottom:1px solid #ddd;
+				padding-bottom:2px;
+			}
+
+			#discuss-datas{
+				width:990px;
+			}
+
+			#discuss-datas thead td{
+				/*加粗，上下内边距，下边框，文本居中对齐*/
+				font-weight:bold;
+				padding:5px 0;
+				border-bottom:1px solid #ddd;
+				text-align:center;
+				color:#666;
+			}
+
+			/*处理 .col1 的样式 (每行第一列的效果)*/
+			#discuss-datas td.col1{
+				width:620px;
+				text-align:left;
+			}
+			
+			/*内容行中所有的列*/
+			#discuss-datas tbody td{
+				/*虚线下边框，上下内边距，文本水平居中对齐，文本颜色*/
+				border-bottom:1px dotted #ddd;
+				padding:5px 0;
+				text-align:center;
+				color:#9c9a9c;
+			}
+
+			/*处理所有超链接*/
+			#discuss a{
+				color:#005aa0;
+				text-decoration:none;
+			}
+			#discuss a:hover{
+				text-decoration:underline;
+			}
+
+			/*晒，论 两幅图*/
+			#discuss-datas b{
+				/*宽度，高度，背景属性*/
+				padding-left:21px;
+				padding-bottom:2px;
+				padding-top:3px;
+				background-image:url(../Images/iconlist_1.png);
+				background-repeat:no-repeat;
+				margin-right:5px;
+			}
+			b.shai{
+				background-position:-110px -220px;
+			}
+			b.lun{
+				background-position:-152px -220px;
+			}
+
+			/*2017-01-09 浮动练习*/
+			#mt a{
+				float:left;
+				width:100px;
+				height:30px;
+				text-align:center;
+				line-height:30px;
+			}
+			#mt a.current{
+				/*左右上边框，背景颜色，文本颜色*/
+				border:1px solid #ddd;
+				border-bottom:none;
+				border-top:2px solid #E4393C;
+				background-color:#fff;
+				color:#E4393C;
+				/*位置上调:margin-top 给负值*/
+				margin-top:-6px;
+				height:35px;
+				line-height:35px;
+			}
+			#extra p{margin:0;}
+			/*方案1*/
+			/*#extra p.new{
+				float:left;
+			}
+			#extra p.total{
+				float:right;
+			}
+			#extra{
+				overflow:hidden;
+			}*/
+
+			/*方案2*/
+			#extra p.total{
+				float:right;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 练习 -->
+		<!-- #discuss : width:990px -->
+		<div id="discuss">
+			<!-- 页签 #mt : height:30px; ,边框，背景 -->
+			<div id="mt">
+				<a href="#">网友讨论圈</a>
+				<a href="#" class="current">晒单帖</a>
+				<a href="#">讨论帖</a>
+				<a href="#">圈子帖</a>
+				<a href="#">问答帖</a>
+			</div>
+			<!-- 内容 #discuss-content : 下边框 -->
+			<div id="discuss-content">
+				<!-- 表格 -->
+				<table id="discuss-datas">
+					<thead>
+						<tr>
+							<td class="col1">主题</td>
+							<td>回复/浏览</td>
+							<td>作者</td>
+							<td>时间</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="col1">
+								<b class="shai"></b>
+								<a href="#">
+									好大一瓶，不错
+								</a>
+							</td>
+							<td>0/0</td>
+							<td>
+								<a href="#">2001年冬天</a>
+							</td>
+							<td>
+								2011-11-11 11:11:11
+							</td>
+						</tr>
+						<tr>
+							<td class="col1">
+								<b class="lun"></b>
+								<a href="#">
+									好大一瓶，不错
+								</a>
+							</td>
+							<td>0/0</td>
+							<td>
+								<a href="#">2001年冬天</a>
+							</td>
+							<td>
+								2011-11-11 11:11:11
+							</td>
+						</tr>
+						<tr>
+							<td class="col1">
+								<b class="shai"></b>
+								<a href="#">
+									好大一瓶，不错
+								</a>
+							</td>
+							<td>0/0</td>
+							<td>
+								<a href="#">2001年冬天</a>
+							</td>
+							<td>
+								2011-11-11 11:11:11
+							</td>
+						</tr>
+						<tr>
+							<td class="col1">
+								<b class="lun"></b>
+								<a href="#">
+									好大一瓶，不错
+								</a>
+							</td>
+							<td>0/0</td>
+							<td>
+								<a href="#">2001年冬天</a>
+							</td>
+							<td>
+								2011-11-11 11:11:11
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 其他内容(略) -->
+				<div id="extra">
+					<p class="total">
+						共900个话题
+						<a href="#">浏览全部话题</a>
+					</p>
+					<p class="new">
+						有问题与其他用户讨论
+						<a href="#">[发表帖子]</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

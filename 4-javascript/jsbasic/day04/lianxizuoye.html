@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function chaxun(){
+			console.log("余额查询中...")
+		}
+		function qukuan(){
+			console.log("取款进行中...")
+		}
+		function zhuanzhang(){
+			console.log("转账进行中...")
+		}
+		function tuichu(){
+			console.log("退出系统，谢谢使用")
+		}
+		function phoneBank(choice){
+			switch(choice){
+				case 1:
+					chaxun();
+					break;
+				case 2:
+				case 3:
+					console.log("系统维护中...")
+					break;
+				case 0:
+					tuichu();
+					break;
+			}
+		}
+		function textphoneBank(){
+			var choice=Number(prompt("退出请按1\n取款请按2\n转账请按3\n退出系统请按0"));
+			phoneBank(choice);
+		}
+		function toDay(){
+			var y=prompt("请输入年份");
+			var m=prompt("请输入月份");
+			var d=Number(prompt("请输入天数"));
+			var totalDays=0;
+			var isRun=y%4==0&&y%100!=0||y%400==0;
+			var i=1;
+			while(i<m){
+				switch(i){
+					case 1:
+					case 3:
+					case 5:
+					case 7:
+					case 8:
+					case 10:
+					totalDays+=31;
+					break;
+					case 4:
+					case 6:
+					case 9:
+					case 11:
+					totalDays+=30;
+					break;
+					case 2:
+					if(isRun){
+						totalDays+=29;
+					}else{
+						totalDays+=28;
+					}
+					break;
+				}
+				i++;
+			}
+			totalDays+=d;
+			alert(y+"年"+m+"月"+d+"日，是第"+totalDays+"天");
+		}
+	</script>
+	<button onclick="textphoneBank()">银行系统</button>
+	<button onclick="toDay()">日期计算器</button>
+</body>
+</html>

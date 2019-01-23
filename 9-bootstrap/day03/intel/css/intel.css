@@ -1,0 +1,10 @@
+/*@import作用类似于PHP：require*/
+@import "bootstrap.css";
+
+/**自定义样式**/
+body {
+  font-family: "Helvetica Neue", Helvetica,'SimHei', Arial, sans-serif;
+}
+.my-main .row {
+  margin-bottom: 15px;
+}

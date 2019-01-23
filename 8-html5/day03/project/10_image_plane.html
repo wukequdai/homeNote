@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制图像</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    var img = new Image();
+    img.src = 'img/p3.png';
+    img.onload = function(){
+      console.log('图片异步加载完成')
+      console.log(img.width + '-' + img.height)
+      //画布左上角绘制图像
+      ctx.drawImage(img, 0, 0);
+      //画布右上角绘制图像
+      ctx.drawImage(img, 500-img.width, 0);
+      //画布左下角绘制图像
+      ctx.drawImage(img, 0, 400-img.height);
+      //画布右下角绘制图像
+      ctx.drawImage(img, 500-img.width, 400-img.height);
+
+      //画布正中央绘制图像
+      ctx.drawImage(img, 250-img.width, 200-img.height, img.width*2, img.height*2);
+    }
+
+    console.log('JS执行完成')
+  </script>
+</body>
+</html>

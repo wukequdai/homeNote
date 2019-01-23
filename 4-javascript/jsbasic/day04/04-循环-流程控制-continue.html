@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function testContinue(){
+				//1、打印 1~100之间 非3的倍数的数字
+				var i=1;
+				while(i<=100){
+					//判断：i 是否为 3的倍数，如果是3的倍数的话，则终止此次循环执行，继续下次循环。
+					if(i % 3 == 0){
+						i++;
+						break;
+					}
+					console.log(i);
+					i++;
+				}
+			}
+			
+			/***
+			 * 要求用户循环录入数据，直到exit为止
+			 */
+			function printMsg(){
+				while(true){
+					//1、录入数据
+					var msg=prompt("输入一段数据：");
+					//2、判断 msg 是否为 exit (条件)
+					if(msg == "exit"){
+						alert("拜拜!!!");
+						break;
+					}
+					//打印输出 msg 
+					console.log(msg);
+				}
+			}
+		</script>
+		<button onclick="testContinue();">打印非3的倍数</button>
+		<button onclick="printMsg();">循环打印数据</button>
+	</body>
+</html>

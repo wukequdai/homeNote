@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .container {
+      position: relative;
+      border: 1px solid #aaa;
+      text-align: center;
+      padding: 10px;
+    }
+    .btn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -32px;
+      margin-top: -32px;
+    }
+    .ad {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -100px;
+      margin-top: -75px;
+    }
+  </style>
+</head>
+<body>
+  <h1>练习：视频播放</h1>
+  <div class="container">
+    <video src="res/birds.mp4" id="v4" preload="metadata"></video>
+    <div class="ad">
+      <img src="img/2.jpg">
+    </div>
+    <a class="btn" id="btn" href="#">
+      <img src="img/play.png">
+    </a>
+  </div>
+
+  <script>
+    btn.onclick = function(e){
+      e.preventDefault();
+      if(v4.paused){  //当前处于暂停状态，则播放
+        v4.play();
+        this.firstElementChild.src='img/pause.png';
+      }else { //当前处于播放状态，则暂停
+        v4.pause();
+        this.firstElementChild.src='img/play.png';
+      }
+    }
+
+    var c = document.querySelector('.container');
+    //鼠标移入容器，则显示按钮；移出则隐藏按钮
+    c.onmouseenter = function(){
+      btn.style.display = 'block';
+    }
+    c.onmouseleave = function(){
+      btn.style.display = 'none';
+    }
+
+    var ad = document.querySelector('.ad');
+    /*视频播放则广告隐藏；暂停则广告显示*/
+    v4.onplay = function(){
+      ad.style.display = 'none';
+    }
+    v4.onpause = function(){
+      ad.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		input.error{
+			box-shadow:0 0 6px red;
+		}
+		label.error{
+			border:1px solid red;
+			background:pink;
+			color:#e4393c;
+			padding:6px 10px;
+			margin-left:10px;
+		}
+	</style>
+ </head>
+ <body>
+  <h1>jQuery.validate表单验证组件的使用</h1>
+	<form id="form-msg">
+		用户名: <input type="text" name="uname"><br><br>
+		密码名: <input type="password" name="upwd"><br><br>
+		邮箱名: <input type="text" name="mail"><br><br>
+		个人网站: <input type="text" name="site"><br><br>
+		<input type="submit" value="提交">	
+	</form>
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script>
+		$("$form-msg").validate({
+			rule:{
+			
+			}
+		})
+	</script>
+ </body>
+</html>

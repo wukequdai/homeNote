@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<books>
+  <book>
+    <id>1</id>
+	<name>js大全</name>
+	<price>100.50</price>
+	<pubdate>2000-10-10</pubdate>
+  </book>
+  <book>
+    <id>2</id>
+	<name>js大全</name>
+	<price>100.50</price>
+	<pubdate>2000-10-10</pubdate>
+  </book>
+</books>

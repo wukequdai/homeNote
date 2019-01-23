@@ -1,0 +1,325 @@
+1、CSS Hack
+	1、头部引用Hack
+		通过 HTML 条件注释 的方式，判断浏览器的类型及版本，选择性的执行某些内容
+		1、语法
+			<!--[if 条件 IE 版本]>
+				条件满足时则执行里面的内容
+			<![endif]-->
+			1、版本
+				6 ~ 10
+				如果省略版本，则判断是否为IE浏览器
+			2、条件
+				1、省略不写
+					判断是否为IE，或是否为指定版本的IE浏览器
+					ex:
+						1、<!--[if IE]><![endif]-->
+							判断是否为IE浏览器
+						2、<!--[if IE 7]><![endif]-->
+							判断是否为IE7浏览器
+				2、gt
+					判断 浏览器是否大于指定版本
+					ex:
+						1、<!--[if gt IE 6]><![endif]-->
+							判断是否 大于IE 6浏览器
+				3、gte
+					判断 浏览器是否大于等于指定版本
+					ex:
+						1、<!--[if gte IE 6]><![endif]-->
+							判断是否 大于等于IE6版本
+				4、lt
+					判断 浏览器是否小于指定版本
+				5、lte
+					判断 浏览器是否小于等于指定版本
+				6、!
+					判断 浏览器是否是条件以外的其他版本
+					<!--[if ! IE 6]><![endif]-->
+=======================
+1、转换
+2、过渡
+3、动画
+4、CSS优化
+=======================
+1、转换
+	1、转换的简介
+		1、什么是转换
+			改变元素在页面中的形状，位置，大小，角度的一种效果
+			在页面中 允许 实现 
+			1、2D转换
+				允许元素在x轴 和 y轴上做转换效果
+			2、3D转换
+				允许元素在x轴，y轴和z轴上做转换效果
+		2、转换属性
+			1、transform
+				属性：transform
+				取值：指定一组转换函数,多个转换函数之间用空格隔开
+			2、转换的原点
+				属性：transform-origin
+				取值：数值/百分比/关键字
+					两个值：原点在 x轴 和 y轴的位置
+					三个值：原点在 x轴，y轴，z轴的位置
+	2、2D转换
+		1、2D-位移
+			改变元素在页面中的位置
+			语法：
+				属性：transform
+				取值：
+					translate(x)
+						改变元素在x轴的位置
+						取值为正，右移
+						取值为负，左移
+					translate(x,y)
+						x : 改变元素在x轴的位置
+						y : 改变元素在y轴的位置
+							取值为正，下移
+							取值为负，上移
+					translateX(x)
+						改变元素在x轴的位置
+					translateY(y)
+						改变元素在y轴的位置
+		2、2D-缩放
+			改变元素在页面的默认大小
+			语法：
+				属性：transform
+				取值：
+					1、scale(value)
+						指定x轴和y轴的缩放比例(倍数)
+					2、scale(x,y)
+						分别指定x轴和y轴的缩放比例
+					3、scale(x)
+						指定x轴缩放比例
+					4、scale(y)
+						指定y轴缩放比例
+
+					函数值：
+						默认 1
+						缩小：0 - 1 
+						放大：大于1
+		3、2D-旋转
+			改变元素在页面中的角度
+			语法：
+				属性：transform
+				取值：rotate(ndeg)
+				 根据转换的原点实现角度的旋转
+				 n 取值为正，则顺时针旋转
+				 n 取值为负，则逆时针旋转
+			注意：
+				1、转换原点
+				2、坐标轴也跟着旋转
+		4、2D-倾斜
+			改变元素在页面中的倾斜角度，即形状
+			语法：
+				属性：transform
+				取值：
+					skew(xdeg)
+						向x轴产生倾斜效果
+						实际是改变y轴的倾斜角度
+						取值为正，y轴逆时针倾斜
+						取值父负，y轴顺时针倾斜
+					skew(xdeg,ydeg)
+						xdeg ：向x轴产生倾斜效果
+						ydeg ：向y轴产生倾斜效果
+							实际是噶变x轴的倾斜角度
+							取值为正，x轴顺时针倾斜
+							取值为负，x轴逆时针倾斜
+					skewX(xdeg)	:
+					skewY(ydeg) :
+	3、3D转换
+		1、perspective 属性
+			1、作用
+				模拟人眼到投射平面的距离
+			2、注意
+				该属性要添加在3D转换元素的父元素上，其子元素允许实现3D的转换效果
+			3、语法
+				perspective : 数值;
+				Chrome & Safari : -webkit-perspective
+		2、3D旋转
+			1、作用
+				允许使得元素在x轴，y轴，z轴上进行旋转的操作
+			2、语法
+				属性：transform
+				取值：
+					1、rotateX(xdeg)
+						以 x轴 作为中心轴去旋转元素
+					2、rotateY(ydeg)
+						以 y轴 作为中心轴去旋转元素
+					3、rotateX(zdeg)
+						以 z轴 作为中心轴去旋转元素
+					4、rotate3d(x,y,z,ndeg)
+						x,y,z 如果取值大于0，则说明该轴参与旋转
+						ndeg ， 旋转角度是多少
+						rotate3d(1,0,0,45deg)
+						rotate3d(1,1,1,45deg)
+		3、3D位移
+			1、作用
+				改变元素在z轴上的位置
+			2、语法
+				属性：transform
+				取值：
+					1、translatez(z)
+					2、translate3d(x,y,z)
+
+				属性：transform-style
+				作用：指定子元素的排列方式
+				取值：
+					1、flat
+						默认值，不保留其子元素的3d位置
+					2、preserve-3d
+						保留其子元素的3d位置,即允许子元素呈现出3d的位置排列
+2、过渡
+	1、什么是过渡
+		使得CSS属性值，在一段时间内平缓变化的效果
+	2、过渡的基本要素 & 属性
+		1、指定过渡的属性
+			1、作用
+				指定哪个属性值在变化的时候使用过渡的效果
+				属性：transition-property
+				取值：
+					1、none ：不使用过渡，默认
+					2、all ：所有属性全部使用过渡
+					3、property ：指定属性名称
+				允许使用过的效果的属性：
+					1、颜色属性
+					2、取值为数值的属性
+					3、转换属性
+					4、渐变
+					5、visibility属性
+					6、阴影属性
+				ex:
+					1、transition-property:background;
+					2、trnasition-property:transform;
+		2、指定过渡时间
+			1、作用
+				指定一个过渡效果在多长时间内完成
+				注意：必须指定过渡时间，否则没有效果
+			2、语法
+				属性：transition-duration
+				取值：以 s | ms 作为单位的数值
+			3、ex
+				transition-duration:300ms;
+		3、指定过渡的速度时间曲线函数
+			1、作用
+				指定变化速率
+			2、属性
+				transition-timing-function
+				取值：
+					1、ease
+						默认值，慢速开始，快速变快，慢速结束
+					2、linear
+						匀速
+					3、ease-in
+						慢速开始，加速结束
+					4、ease-out
+						快速开始，减速结束
+					5、ease-in-out
+						慢速开始和结束，中间先快后慢
+			3、ex
+				transition-timing-function:linear;
+
+		4、过渡延迟
+			1、作用
+				用户激发过渡操作后，等待多长时间后在显示效果
+			2、语法
+				属性：transition-delay
+				取值：以 s | ms 为单位的数值
+		5、过渡的简写方式
+			transition:property duration timing-function delay;
+			ex:
+				transition:background 1s linear,border-radius 2s linear;
+3、动画
+	1、什么是动画
+		使元素从一种样式逐渐变化为另一种样式的效果
+		动画是复杂的过渡效果
+	2、实现动画的步骤
+		1、声明动画
+			是一个独立的规则
+			包含动画的名称以及关键帧
+			关键帧：
+				 元素在 某个时间点上的状态
+		2、为元素调用动画
+			让元素调用指定的动画并且指定时间等参数
+	3、声明动画
+		语法
+			@keyframes 动画名称{
+				0% | from{
+					动画开始时，元素的样式
+				}
+				
+				...
+				50%{
+					动画执行到一半时，元素的样式
+				}
+				...
+
+				100% | to{
+					动画结束时，元素的样式
+				}
+			}
+
+			@-webkit-keyframes 动画名称{}
+			@-moz-keyframes 动画名称{}
+			@-o-keyframes 动画名称{}
+	4、动画属性
+		注意：浏览器兼容性，使用之前加浏览器前缀
+		1、指定调用动画名称
+			属性：animation-name
+		2、指定动画的执行时长
+			属性：animation-duration
+			取值：s | ms
+		3、指定动画的速度时间曲线函数
+			属性：animation-timing-function
+			取值：ease,linear,ease-in,ease-out,ease-in-out
+		4、指定动画的延迟
+			属性：animation-delay
+			取值：s | ms
+		5、指定动画播放次数
+			属性：animation-iteration-count
+			取值：
+				1、具体数值
+				2、infinite ：无限次播放
+		6、指定动画的播放方向
+			属性：animation-direction
+			取值：
+				1、normal
+					正常，从0% 到 100%
+				2、reverse
+					逆向播放，从100% 到 0%
+				3、alternate
+					轮流播放
+					奇数次数从 0 - 100
+					偶数次数从 100 - 0
+		7、动画的简写属性
+			属性：animation
+			取值：name duration timing-function delay iteration-count direction;
+
+		8、指定动画的填充模式
+			1、作用
+				指定动画播放前后，关键帧的状态
+			2、属性
+				animation-fill-mode
+				取值：
+					1、none
+						默认值，无填充
+					2、forwards
+						动画完成后，保持在最后一个帧状态上
+					3、backwards
+						动画播放前(延迟时间内)，元素会保持在第一帧的状态上
+					4、both
+						动画播放前后分别显示在第一帧和最后一帧状态上
+		9、指定动画播放状态
+			指定动画是播放还是暂停
+			属性：animation-play-state
+			取值：
+				1、paused
+					暂停
+				2、running
+					播放
+
+
+
+
+
+
+
+
+
+

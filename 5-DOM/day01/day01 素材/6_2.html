@@ -1,0 +1,112 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>使用Selector API实现购物车客户端计算</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; text-align:center;
+		border-collapse:collapse;
+	}
+	td,th{border:1px solid black}
+	td[colspan="3"]{text-align:right;}
+	/*让tbody中每行最后一个td背景变红*/
+	tbody>tr>td:last-child{background:red}
+	/*让tfoot下最后一个td背景变绿*/
+	tfoot td:last-child{background:green}
+</style>
+
+</head>
+<body>
+	<table id="data">
+		<thead>
+			<tr>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>iPhone6</td>
+				<td>¥4488</td>
+				<td>
+					<button onclick="calc(this)">-</button>
+					<span>1</span>
+					<button onclick="calc(this)">+</button>
+				</td>
+				<td>¥4488</td>
+			</tr>
+			<tr>
+				<td>iPhone6 plus</td>
+				<td>¥5288</td>
+				<td>
+				<button onclick="calc(this)">-</button>
+				<span>1</span>
+				<button onclick="calc(this)">+</button>
+				</td>
+				<td>¥5288</td>
+			</tr>
+			<tr>
+				<td>iPad Air 2</td>
+				<td>¥4288</td>
+				<td>
+						<button onclick="calc(this)">-</button>
+					<span>1</span>
+					<button onclick="calc(this)">+</button>
+				</td>
+				<td>¥4288</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">Total: </td>
+				<td>¥14064</td>
+			</tr>
+		</tfoot>
+	</table>
+	<script>
+		function calc(btn){
+			//数量加减
+			//找到旁边的span: btn->父元素td->子元素span
+			var span=btn.parentNode//td 
+								  .querySelector("span");
+			//将span的内容转为整数保存在变量n中
+			var n=parseInt(span.innerHTML);
+			//如果btn的内容是+,就n+1
+			//否则，如果n>1,就n-1
+			n+=btn.innerHTML=="+"?1:n==1?0:-1;
+			span.innerHTML=n;//将n保存回span的内容中
+	
+			//小计变化
+			//找btn的父元素的父元素,保存在变量tr中
+			var tr=btn.parentNode.parentNode;
+			                 //td tr
+			//找到price: 找tr下的第2个td的内容,选取1到结尾的剩余字符，转为浮点数，保存在变量price中
+			var price=parseFloat(
+				tr.querySelector("td:nth-child(2)")
+			    .innerHTML.slice(1)
+			);
+			//price*n,按两位小数四舍五入,在开头拼¥，放到tr最后一个td的内容中
+			tr.querySelector("td:last-child")
+			  .innerHTML="¥"+(price*n).toFixed(2);
+
+			//总计: 
+			//找到所有小计td
+			var tds=document.querySelectorAll(
+				"tbody>tr>td:last-child"
+			);
+			//遍历tds中每个td的内容
+			for(var i=0,total=0;i<tds.length;i++){
+				total+=parseFloat(
+					tds[i].innerHTML.slice(1)
+				);
+			}
+			//将总价放入tfoot中最后一个td中
+			document.querySelector(
+				"tfoot td:last-child"
+			).innerHTML="¥"+total.toFixed(2);
+		}
+	</script>
+</body>
+</html>

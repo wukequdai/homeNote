@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+  <style>
+    #my-proressbar{position:relative;}
+    #my-label{
+      position:absolute;
+      width:50px; height: 20px;
+      left:50%; margin-left:-25px;
+    }
+  </style>
+ </head>
+ <body>
+  <div id="my-progressbar">
+    <div id="my-label"></div>
+  </div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+	<script>
+    var $pb=$("#my-progressbar");
+    var $label=$("my-label");
+    $pb.progressbar({
+      value:0,
+      change(){//当进度改变时自动执行
+        $label.html(//获取pb的值，显示在label中
+          $(this).progressbar("value")+"%"
+        )
+      },
+      complete(){//当进度完成时自动执行
+        $label.html("completed!");
+      }
+    });
+    +function(){//测试: 每隔1秒进度增加10%
+      var timer=setInterval(function(){
+        $pb.progressbar("value",//修改pb的值+10%
+          $pb.progressbar("value")+10
+        );
+      },1000)
+    }()
+	</script>
+ </body>
+</html>

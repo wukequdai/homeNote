@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="loadingCtrl">
+
+<ion-header-bar class="bar-calm">
+  <button
+    ng-click="refresh()"
+    class="button button-icon
+  icon ion-refresh"></button>
+
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      ng-repeat="tmp in list track by $index">
+      {{tmp}}
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer-bar class="bar-calm">
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('loadingCtrl',
+    ['$scope', '$ionicLoading','$timeout',
+      function ($scope, $ionicLoading,$timeout) {
+
+        $scope.list = [100,200,300,400];
+
+        $scope.refresh = function () {
+          $ionicLoading.show({
+            template:'加载中...',
+            duration:1000
+          })
+
+//          $timeout(function () {
+//            $scope.list.
+//              push(Math.floor(Math.random()*100));
+//            $ionicLoading.hide();
+//          },2000);
+
+        }
+        
+      }])
+
+</script>
+
+</body>
+</html>

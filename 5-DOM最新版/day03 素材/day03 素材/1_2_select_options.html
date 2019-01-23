@@ -1,0 +1,87 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>二级联动列表</title>
+<meta charset="utf-8" />
+<style>
+	.hide{ display: none; }
+</style>
+<script>
+	/*实现“省”和“市”的级联下拉列表*/
+	var cities=[
+		[],		/*0号下标没有元素*/
+		[
+			{"name":'东城区',"value":101},
+			{"name":'西城区',"value":102},
+			{"name":'海淀区',"value":103},
+			{"name":'朝阳区',"value":104}
+		],
+		[
+			{"name":'河东区',"value":201},
+			{"name":'河西区',"value":202},
+			{"name":'南开区',"value":303}
+		],
+		[
+			{"name":'石家庄市',"value":301},
+			{"name":'廊坊市',"value":302},
+			{"name":'保定市',"value":303},
+			{"name":'唐山市',"value":304},
+			{"name":'秦皇岛市',"value":304}
+		]
+	];
+	
+</script>
+
+</head>
+<body>
+	<select name="provs">
+		<option>—请选择—</option><!--0-->
+		<option>北京市</option><!--1-->
+		<option>天津市</option>
+		<option>河北省</option>
+	</select>
+	
+	<select name="cities" class="hide">
+	</select>
+
+	<script>
+		+function(){
+			var selProvs=//找到name为provs的select
+				document.getElementsByName("provs")[0];
+			var selCts=//找到name为cities的select
+				document.getElementsByName("cities")[0];
+			//为selProvs绑定选中项改变事件
+			selProvs.onchange=function(){
+				//获得当前选中项的下标
+				var i=this.selectedIndex;
+				if(i){//如果i不是0
+					selCts.innerHTML="";//清空selCts的内容
+					//获得cities中相同位置子数组
+					var cts=cities[i];
+					var frag=//1. 创建文档片段
+						document.createDocumentFragment();
+					//创建一个option,设置内容为-请选择-
+					//2. 将opt追加到frag中
+					frag.appendChild(new Option("-请选择-"));
+					//将子数组动态生成option添加到selCts下
+					for(var i=0;i<cts.length;i++){
+						//创建option
+						//设置opt的内容为当前城市的name属性
+						//设置opt的value为当前城市的value属性
+						//将opt追加到selCts
+						frag.appendChild(
+							new Option(cts[i].name,cts[i].value)
+						);
+					}
+					//3. 将frag追加到selCts中
+					selCts.appendChild(frag);
+					//设置selCts显示
+					selCts.style.display="block";
+				}else{//否则,设置selCts隐藏
+					selCts.style.display="none";
+				}
+			}
+		}();
+	</script>
+</body>
+</html>

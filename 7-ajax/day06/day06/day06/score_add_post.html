@@ -1,0 +1,57 @@
+<html>
+ <head>
+ 	  <title>成绩管理系统</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>成绩输入</h1>
+ 		<form action="#" method="post" id="loginForm">
+ 		<ul>
+ 			 <li>用户名
+ 			 <input type="text" value=""
+       name="name" id="name1"/>
+       <span id="nameTip"
+       style="color:red"></span>
+       </li>
+ 			 <li>中文成绩 
+ 			 <input type="text" value="" name="chinese" id="chinese"/></li>
+ 			 <li> <input type="button" value="添加" id="btn1"/></li>
+ 		</ul>	
+ 		</form>
+  <script>
+     //1:获取button按钮
+     var btn1 = document.getElementById("btn1");
+     //2:绑定点击事件
+     btn1.onclick = function(){
+     //3:创建对象 XMLHttpRequest xhr
+     var xhr = new XMLHttpRequest();
+     //4:为 xhr 绑定事件 onreadystatechange
+     xhr.onreadystatechange = function(){
+       //4.1: xhr.readyState === 4
+       //4.2: xhr.status === 200
+       //4.3: 获取返回数据 success
+       //     alert("保存成功");
+       //     获取返回数据 error
+       //     alert("保存失败");
+       if(xhr.readyState === 4){
+         if(xhr.status === 200){
+           if(xhr.responseText === 'success'){
+             alert('保存成功');
+           }else{
+             alert('保存失败');
+           }
+         }
+       }
+     }
+     //5:打开连接 open();
+     xhr.open('POST','score_add.php',true);
+     //修改请求头
+     xhr.setRequestHeader('Content-Type',
+     'application/x-www-form-urlencoded');
+     //6:发送数据 send();
+     xhr.send('name='+name1.value+
+     '&chinese='+chinese.value);
+     }
+  </script>
+ 	</body>
+</html>

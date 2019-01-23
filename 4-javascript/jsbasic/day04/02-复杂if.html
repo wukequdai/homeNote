@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function calClt(){
+				var height=prompt("请输入您的身高(m):");
+				var weight=prompt("请输入您的体重(kg)");
+				var clt=weight/(height*height);
+				//判断clt指数
+				/*if(clt<20){
+					console.log("偏瘦！");
+				}else if(clt>25){
+					console.log("偏胖!");
+				}else{
+					console.log("正常!");
+				}*/
+
+				if(clt<20){
+					console.log("偏瘦!");
+				}else if(clt>=20&&clt<=25){
+					console.log("正常!");
+				}else if(clt>25){
+					console.log("偏胖!");
+				}
+			}
+		</script>
+		<button onclick="calClt();">计算克莱托指数</button>
+	</body>
+</html>

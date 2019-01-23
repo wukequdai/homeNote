@@ -1,0 +1,159 @@
+今天学习的内容
+1:复习php重点内容
+  php mysql CRUD 
+2:解答几个问题
+  2.1:练习时间多一些10分钟
+  2.2:mysql启动成功不稳定
+	2.3:端口没有占用
+3:作业
+  登录表单验证
+4:完成练习用户注册   --重点
+  完成练习用户列表   --重点
+5:http协议           --重点&难点
+#--------------------------------
+1:复习php重点内容
+  php mysql CRUD 
+  DML:
+	   $conn = mysqli_connect(); 连接数据库
+     $sql = "set names utf8";
+		 mysqli_query($conn,$sql);
+		 $sql = "insert delete update";
+		 $result = mysqli_query($conn,$sql);
+     $result boolean
+	DQL:
+	   $conn = mysqli_connect(); 连接数据库
+     $sql = "set names utf8";
+		 mysqli_query($conn,$sql);
+		 $sql = "select * ...";
+		 $result = mysqli_query($conn,$sql);
+     $result 结果集{查询结果-对象类型}
+
+		 //将结果集数据转换索引数组
+		 $row = mysqli_fetch_row($result);
+		 //将结果集数据转换关联数组
+		 $row = mysqli_fetch_assoc($result);
+		 //取到结尾 NULL
+
+
+2:解答几个问题
+  2.0:登录sql error
+	echo $sql
+  2.1:练习时间多一些10分钟
+  2.2:mysql启动成功不稳定
+  通常情况:程序问题->删除->改一个目录安装
+	c:/
+	启动不成功前，做了哪些操作
+	2.3:端口没有占用
+	3306   mysql
+	apache 80 443
+3:作业
+  登录表单验证
+4:完成练习用户注册   --重点
+  4.1:reg.html  表单{用户名,密码} 
+	4.2:reg_do.php 程序
+	   a:获取用户参数 用户名密码
+		 b:连接数据库
+		 c:设置编码
+		 d:添加数据库  t_login
+		   insert  
+		 e:成功判断
+  10:50---11:00 完成练习
+  完成练习用户列表   --重点
+
+5:http协议           --重点&难点
+  学习http协议的目标
+	http是客户端浏览器和web服务器之间通信所有
+	使用协议.
+  简洁:http协议传送网页
+	http://www.jd.com/
+  http://www.tmooc.cn/web/index_new.html?tedu
+  1:调试AJAX应用中"手不见摸不着"的错误
+	2:进行页面访问优化
+  
+
+  <scheme>://<user>:<pwd>
+	@<host>:<port>/<path>;
+	<params>?
+	<query>#<frag>
+
+
+  URL和URN URI
+	Unified Resource Identifier 统一资源识别符
+	Unified Resource Naming     统一资源命名符
+	  <a href="mailto:admin@tom.com">发邮件</a> 
+		<a href="tel:13999999999"></a>
+	Unified Resource Locator    统一的资源定位符   
+    <a href="http://www.baidu.com/logo.png"></a>
+  中国 北京 海淀区 万寿路西街2号 文博大厦2层
+	2nd Floor,WB Tower,#2 West Street,HD ..
+
+  
+  
+
+
+
+	#-------------------------------
+	下午
+
+  HTTP
+
+  IETF组织制定HTTP协议，规定WEB客户端和
+	服务器之间通信的消息格式。
+
+
+	面试题:HTTP/1.1(1999)
+	       HTTP/1.0(1996) 的改进有哪些?
+
+  1:持久连接 Connection:keep-alive 
+	2:虚拟主机 Host:tmoon.cn
+	           Host:tts.cn
+						 Host:tao.cn
+	3:代理连接 Proxy:xxx
+
+
+  RFC2612  Request For Comment 意见征求稿
+	
+  面试题:
+	1:八种请求方法有哪些?
+	2:GET和POST请求有什么不同?
+	  GET请求: 地址输入URL 超连接
+		         JS跳转      GET方式提交表单
+             AJAX发送GET
+		POST请求:POST方式提交表单
+		         AJAX发送POST
+    GET请求把请求数据追加在请求URI后面,
+		POST请求把请求数据追回请求消息主体中.
+
+		根据HTTP协议规定:
+		请求起始行不能超过1024字节
+
+		二者语义不同:
+		GET  表示客户端想获取资源.
+		POST 表示客户端想传数据给服务器.
+
+
+    阶段小项目:完整留言板
+		功能:
+		1:发表留言:用户需要提交自己姓名，
+		           电子邮件,留言内容.
+		2:浏览所有留言:
+		  可以查看编号，电子邮件,内容
+			发布时间.
+			BIGINT
+			DATETIME
+		3:删除某个留言:
+		  点击某个留言x删除该留言
+    需要的文件:
+		1:编写一个tarena.sql 
+		  16:35---16:45
+		  创建库/创建留言表 huimaiche.t_msg
+      添加测试数据 
+    建议:表名，列名小写
+    2:添加留言
+		  16:45--16:55
+		  msg_add.html  表单
+			msg_add_do.php
+		3:浏览所有留言  作业  
+		  msg_select.php
+		4:删除留言      作业
+		  msg_delete.php

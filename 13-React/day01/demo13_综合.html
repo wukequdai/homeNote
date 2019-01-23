@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var AComponent = React.createClass({
+    handleChange:function(){
+      var inputValue = this.refs.inputTxt.value;
+      console.log(inputValue);
+      this.props.changeHandle(inputValue);
+    },
+    render:function(){
+      return <input type="text"
+        onChange={this.handleChange}
+        ref='inputTxt'/>
+    }
+  })
+
+  var BComponent = React.createClass({
+    handleClick:function(){
+      this.props.clickHandle();
+    },
+    render:function(){
+      return <button onClick={this.handleClick}>
+      clickMe
+      </button>
+    }
+  })
+
+
+  var MainComponent = React.createClass({
+    result:'',
+    handleInputChange:function(value){
+      console.log('in main component:'+value);
+      this.result = value;
+    },
+    handleButtonClick:function(){
+      console.log(this.result);
+    },
+    render:function(){
+      return <div>
+        <AComponent
+        changeHandle={this.handleInputChange}/>
+        <BComponent
+         clickHandle={this.handleButtonClick}/>
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <MainComponent/>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

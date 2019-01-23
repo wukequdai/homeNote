@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  //通过service方法去创建一个服务
+  app.service('$student',function(){
+    this.name = 'lucy';
+    this.study = function(){
+      alert(this.name+" is studying");
+    };
+  })
+
+  app.controller('myCtrl', function ($scope,$student) {
+      console.log("名字为:"+$student.name);
+      $student.study();
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

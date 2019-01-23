@@ -1,0 +1,222 @@
+今天学习的内容
+1:复习昨天知识重点
+  1:ajax常用对象属性方法事件
+	2:状态
+	3:ajax开发流程****
+2:作业 
+3:ajax 处理不同数据***
+  text
+	text/html
+	javascript
+  xml
+	json
+#----------------------------
+1:复习昨天知识重点
+  ajax:异步javascript and xml
+	作用:无刷新无提交情况下，异步发送请求
+	     接收数据，局部更新网页.
+  1:ajax常用对象属性方法事件
+	  XMLHttpRequest 浏览器内容对象
+		window.XMLHttpRequest
+	2:状态
+	  0    UNSENT    
+		1    OPENED
+		2    HEADERS_RECEIVED
+		3    LOADING
+		4    DONE   -----
+    属性
+		xhr.readyState                4
+		xhr.status     接收响应状态码 200
+		xhr.responseText 接收文本
+    方法
+		xhr.open(method,url,true);
+		xhr.send('name=tom&pwd=123');
+    事件
+		onreadystatechange
+	3:ajax开发流程****
+	  1:创建对象 XHR
+		2:绑定事件处理函数onreadystatechange
+		  5:接收数据
+		3:打开连接
+		4:发送数据
+2:作业 
+  add_book.html      添加图书表单
+	 a:表单  {图书价格/名称}
+	 c:ajax添加图书 POST
+	add_book_do.php    处理表单
+	 b:获取参数 添加数据
+	 success  error
+
+  常见错误二
+	1:数据库名称出错
+	2:参数名慎用     name
+
+	book_search.html   搜索图书
+	a
+	book_search_do.php 处理搜索表单
+	b
+  book_search.html   搜索图书
+	ajax
+
+	数据库:dangdang/t_book
+	(id,name,price,putdate)
+
+  图书搜索.jpg
+  var reg = /^\s*$/;
+
+	小结
+  1:事件键盘  onkeyup 获取输入内容
+	2:服务器响应类型
+	  纯文本
+		php  header("content-type:text/plain;
+		charset=utf-8");
+		html xhr.responseText;
+
+		html
+		php  header("content-type:text/html;
+		charset=utf-8");
+		html xhr.responseText;
+3:ajax 处理不同数据***
+  3.1:text
+	3.2:text/html
+	3.2:javascript
+  php 
+	header("content-type:application/
+	javascript;charset=utf-8");
+	console.log('abc');
+  html
+  eval(xhr.responseText);
+
+  练习:实现了国际化(i18n)的欢迎消息
+  1:编写php 
+	  读取客户端请求头部:Accpt-Language
+		截取前两个字母，
+		客户端的首先语言,据此返回不同js
+		片段.
+		header("Content-Type
+		:application/javascript");
+		echo "var msg = '你好';alert(msg);";
+  2:编写html:
+	  待页面加载完成，发起异步请求,
+		获取服务器给欢迎消息.
+    eval(xhr.responseText);
+    dangdang/i18n.html
+		dangdang/i18n_do.php
+
+  3:如何使用手册
+	4:总结:ajax 知识点
+
+
+  
+	##服务器以何种格式向客户端返回"批量的复合数据"
+    批量复合数据:从数据库查询出来
+		一个数组，包含多个数据;
+		每一个数据双多个成员属性;
+		二维数组php;
+
+		[
+		  ["name"=>"tom","age"=>19],
+		  ["name"=>"jerry","age"=>19],
+		  ["name"=>"kk","age"=>21]
+		];
+	1:text/plain
+	  name@tom,age@19;name@jerry,age@19,
+		name@kk,age@21
+	2:text/html
+	  <div>
+		 <h1>name:tom;age:19</h1>
+		 <h1>name:jerry;age:19</h1>
+		 <h1>name:kk;age:21</h1>
+		</div>
+	3:application/xml   少点
+	  html:超文本标记语言，所有标签预定义好!
+		     用于描述一个网页的结构.
+		xml:可扩展的标签语言，所有标签自定义的!
+		    用于描述一段数据--尤其是批量复合
+
+    xml语法
+		1:xml文档类型声明如下
+		  <?xml version="1.0" encoding="utf-8"?>
+		2:整篇xml只能有一个根元素
+		3:标签有开始就必须有结束，开
+		  始标签与结束标签必须完成相同
+		4:标签不能嵌套交叉
+		5:标签有任意属性，属性值用""括号
+    示例:
+		books.xml
+		服务器:php header("application/xml;charset=utf-8");
+		客户:  xhr.responseXML;
+		返回xml文档对象-->document
+		DOM
+		1:html
+		2:xml
+		  querySelect();
+			querySelectAll("book");
+			getAttribute("id");
+
+
+
+   
+  练习:
+	了解xml数据格式->组织批量复合数据
+	1:book_list.html
+	  1.1:ajax 获取xml
+		1.2:创建表格
+	2:book_list_do.php
+	  2.1:获取数据库中所有记录
+		2.2:转换二维数组
+		2.3:将二维数组转换xml
+		2.4:输出xml
+  xml数据格式.jpg
+
+	常见错误调试方法
+	1:控制台/网络控制面板
+	2:下载文件错一定 header()
+
+
+
+  总结图书列表
+	重点数据以xml格式组织
+	a:book_list_do.php 
+	  从数据库查询记录-->二维数组->xml文件
+	b:book_list.html
+	  获取xml-->html 显示数据
+  c:发送
+	  book_list_do.php
+		header("content-type:
+		application/xml;charset=utf-8")
+	d:处理
+	  var xmlDoc = xhr.responseXML;
+    xmlDoc.querySelectorAll("book");
+		book.querySelector("name").innerHTML;
+
+  
+
+	味多美项目
+	17:40--17:55  创建库创建表
+	1:创建库 weiduomei
+	2:创建表 t_cake_type 蛋糕类型表
+	         10  巧克力蛋糕 3
+					 20  芝士蛋糕   2
+					 30  慕斯蛋糕   1
+	         t_cake      蛋糕表
+           id    name        pic      price typeId
+					 1     芒果巧克力  mgms.jpg 199   20
+					 ..
+  3:添加十条记录
+  作业:
+	4:蛋糕类型与蛋糕查询表单 cake_list.html
+	5:                       cake_list_do.php
+	6:添加蛋糕               cake_add.html
+	                         cake_add_do.php
+
+
+
+
+
+
+
+	4:application/json  
+
+  xml
+	json

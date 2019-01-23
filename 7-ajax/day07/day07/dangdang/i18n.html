@@ -1,0 +1,27 @@
+<html>
+ <head>
+ 	  <title>当当图书</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>异步请求服务器端返回i18n的欢迎消息</h1>
+    <script>
+      //1:页面加载完成异步发送请求
+      window.onload = function(){
+      //2:获取服务器数据 14:10--14:20
+       var xhr = new XMLHttpRequest();
+       xhr.onreadystatechange = function(){
+         if(xhr.readyState===4){
+           if(xhr.status===200){
+              var html = xhr.responseText;
+              //执行js代码eval()
+              eval(html);
+           }
+         }
+       }
+       xhr.open('GET','i18n_do.php',true);
+       xhr.send(null);
+      }
+    </script>
+ 	</body>
+</html>

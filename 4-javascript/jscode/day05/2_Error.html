@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//var num=parseFloat(
+				//prompt("输入数字")//请用户输入num
+			//);
+			//var d=prompt("输入小数位数");//请用户输入d
+		/*
+			try{
+				console.log(num.toFixed(d));
+			}catch(err){
+				//catch中的代码只有出错才执行，不出错不执行
+				//err: 自动获得错误对象，包含错误信息
+				console.log(String(err));
+			}finally{//无论是否出错，都必须执行
+				console.log("释放资源");
+				num=null; d=null;
+			}
+		*/
+		/*
+			if(!isNaN(d)&&d>=0&&d<=20){
+				console.log(num.toFixed(d));
+			}else{
+				console.log("参数超范围: 小数位数必须介于0~20之间");
+			}
+			//finally
+			console.log("释放资源"); num=null; d=null;
+			console.log("正常结束");
+		*/
+		/*
+			try{
+				new XMLHttpRequest();//尝试创建XHR类型对象
+				document.write("您的浏览器完美支持Ajax");
+			}catch(err){//如果不能创建，说明不支持
+				document.write("您的浏览器不支持Ajax技术，请下载最新版本");
+			}
+		*/
+			//所有能new的对象，已经包含在window下
+			//不是undefined的说明可以用
+			if(window.XMLHttpRequest!==undefined){
+				document.write("您的浏览器完美支持Ajax");
+			}else{//是undefined的说明不包含，不能用
+				document.write("您的浏览器不支持Ajax技术，请下载最新版本");
+			}
+		</script>
+	</body>
+</html>

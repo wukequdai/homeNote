@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+</head>
+<body>
+
+<!--算术运算-->
+<p>{{3+4}}</p>
+
+<!--逻辑运算-->
+<p>true && false result:{{true && false}}</p>
+
+<!--三目运算-->
+<p>{{3>2 ? 'yes' :'no'}}</p>
+
+<!--学习ngInit的用法-->
+<div ng-init="list=[100,200,300]">
+  <p>{{list[0]}}</p>
+</div>
+
+<h2>{{list[1]}}</h2>
+
+<span ng-init="stu={name:'lucy',age:20}">
+  {{stu.name}}
+</span>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

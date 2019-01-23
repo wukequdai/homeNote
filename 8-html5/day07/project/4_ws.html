@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>使用H5新特性创建一个WS客户端应用</h1>
+<button id="btConnect">连接到WS服务器</button>
+
+  <button id="btSendReceive">向WS服务器发送消息并接收响应</button>
+
+  <button id="btClose">断开到WS服务器的连接</button>
+  <script>
+    var ws = null;  //全局变量，WS客户端对象
+
+    btConnect.onclick = function(){
+      //连接到WS服务器，创建出一个客户端Socket
+      ws = new WebSocket('ws://127.0.0.1:9999');
+      ws.onopen = function(){
+        console.log('WS客户端已经成功连接到WS服务器...')
+      };
+    }
+
+    btSendReceive.onclick = function(){
+      //向WS服务器发送一个消息
+      ws.send('hello');
+      //等着接收服务器返回的消息——可能很多很多
+      ws.onmessage = function(e){
+        console.log('接收到服务器的消息：'+ e.data);
+      }
+    }
+
+    btClose.onclick = function(){
+      //断开到WS服务器的连接
+      ws.close();
+
+    }
+  </script>
+</body>
+</html>

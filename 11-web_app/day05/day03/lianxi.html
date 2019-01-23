@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">列表展示页面</h1>
+</ion-header-bar>
+
+<ion-content overflow-scroll="true">
+  <div
+    ng-repeat="dish in dishList"
+    ng-if="$index % 4 == 0"
+    class="row">
+    <div class="col">
+      <img ng-src="img/{{dish.url}}" alt=""/>
+      <h2>{{dish.name}}</h2>
+      <p>{{dish.price}}</p>
+    </div>
+
+    <div class="col" ng-if="$index+1 < dishList.length">
+      <img ng-src="img/{{dishList[$index+1].url}}" alt=""/>
+      <h2>{{dishList[$index+1].name}}</h2>
+      <p>{{dishList[$index+1].price}}</p>
+    </div>
+
+    <div class="col" ng-if="$index+2 < dishList.length">
+      <img ng-src="img/{{dishList[$index+2].url}}" alt=""/>
+      <h2>{{dishList[$index+2].name}}</h2>
+      <p>{{dishList[$index+2].price}}</p>
+    </div>
+
+    <div class="col" ng-if="$index+3 < dishList.length">
+      <img ng-src="img/{{dishList[$index+3].url}}" alt=""/>
+      <h2>{{dishList[$index+3].name}}</h2>
+      <p>{{dishList[$index+3].price}}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope',
+    function ($scope) {
+//      模拟数据
+      $scope.dishList = [
+        {url:'1.jpg',name:'name-1',price:21},
+        {url:'2.jpg',name:'name-2',price:22},
+        {url:'3.jpg',name:'name-3',price:23},
+        {url:'4.jpg',name:'name-4',price:24},
+        {url:'1.jpg',name:'name-5',price:25},
+        {url:'2.jpg',name:'name-6',price:26},
+        {url:'3.jpg',name:'name-7',price:27},
+        {url:'4.jpg',name:'name-8',price:28},
+        {url:'1.jpg',name:'name-9',price:29},
+        {url:'2.jpg',name:'name-10',price:30},
+        {url:'3.jpg',name:'name-11',price:31},
+        {url:'4.jpg',name:'name-12',price:32},
+        {url:'1.jpg',name:'name-13',price:33},
+      ]
+
+    }])
+
+</script>
+</body>
+</html>

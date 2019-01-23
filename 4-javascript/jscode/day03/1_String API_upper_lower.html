@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var code="E4dA";
+			//如果(请用户反复输入验证码),不等于code
+			while(
+				prompt("输入验证码"+code).toLowerCase()
+			  !=
+				code.toLowerCase()
+			){
+				alert("验证码错误,请重新输入");
+			}//(循环结束)
+			document.write(
+				"<h1 style='color:green'>验证通过</h1>"
+			);
+		</script>
+	</body>
+</html>

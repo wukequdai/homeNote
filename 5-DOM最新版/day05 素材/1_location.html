@@ -1,0 +1,34 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>事件处理</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+ 	<form>
+		姓名:<input name="username"/>
+		密码:<input type="password" name="pwd"/>
+		<input type="submit"/>
+	</form>
+  <script>
+		function parseSearch(){
+			if(location.search!=""){//如果不是空字符串
+				//将location的search去掉开头？再按&切割，保存在数组中
+				var arr=location.search.slice(1).split("&");
+				//arr:["username=zhangdong","pwd=123456"]
+				//遍历arr中，同时申明空对象obj
+				for(var i=0,obj={};i<arr.length;i++){
+					//将当前元素按=切割保存在数组split中
+					var split=arr[i].split("=");
+					//为obj添加新属性，属性名为split的第一个元素，属性值为第二个元素 
+					obj[split[0]]=split[1];
+				}
+				return obj;
+			}else return {};
+		}
+		var obj=parseSearch();
+		console.dir(obj);
+  </script>
+</body>
+</html>

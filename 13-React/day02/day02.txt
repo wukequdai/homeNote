@@ -1,0 +1,122 @@
+一、复习
+综合练习：
+A input
+B button
+Main A+B
+要求：在B组件按钮点击时，读取A组件用户在input中输入的内容
+
+①组件的创建和引用
+②props 通过属性传递一些值和方法
+③ref 寻找节点
+④state 数据存储在状态中
+
+
+步骤：
+1、创建组件（A\B\Main）
+2、将A组件中用户输入的内容 存到Main组件中状态中
+	①读取用户输入的内容 onChange this.refs
+	②将值传递给Main组件
+	  在main组件中定义一个方法handleInputChange,
+可以通过属性(inputChange)的方法传递给A组件
+	 A组件通过this.props.inputChange拿到传递过来的方法
+3、在B组件按钮点击时，从Main组件去读取状态
+       	①给按钮指定处理函数 onClick
+	②将状态在创建B组件的时候，是不是将状态直接传递给B组件
+
+
+二、组件的生命周期
+
+1、3个阶段
+mount  插入到真实的DOM
+update 正在被重新渲染
+unmount 移除DOM
+
+2、状态的处理函数
+componentWillMount() 准备插入
+componentDidMount() 已经插入
+
+componentWillUpdate(props,state) 准备更新
+componentDidUpdate(props,state) 已经更新
+
+componentWillUnmount() 准备移除
+
+练习：
+创建一个组件，在组件插入真实的DOM节点之后，启动定时器 去改组件div的透明度（0~1）
+
+将数据存在状态中。初始化、修改状态、读取状态设置div的透明度
+
+不能：style="opacity:{this.state.***}"
+要求： style={{opacity:this.state.***}}
+
+三、受控组件与非受控组件
+
+受控组件：input/textarea 指定了value，复选框单选框 checked，option指定了selected====》受到了React的控制
+
+非受控组件：除了受控组件之外的都是非受控
+
+value--》值改不了 --》value(defaultValue)
+
+受控组件的解决方案：
+初始化一个状态，将状态绑定到value
+，给表单元素指定一个事件用来监听变化，在事件的处理函数中修改状态即可
+
+
+四、三连棋
+页面构成：board 棋盘 square 小方块 
+
+步骤1：给每个小方块指定点击的回调和要显示的内容
+回调函数：存储数据到状态中
+显示的内容：根据状态xIsNext的值决定显示X还是O
+
+步骤2：结果的处理
+每一次下棋的时候，都应该判断输赢，
+calculateWinner()
+①返回的是x/o(赢了)，
+②返回的是null，两种情况 1 平局 2 还没有开始下棋
+
+结果通过弹窗显示：x赢了 o赢了 平局，
+处理棋盘：清空
+
+
+五、待做事情列表
+
+采用React组件化的思维模式，构建页面
+ToDoBox = ToDoInput（标题、输入框、添加按钮） + ToDoList（ToDoItem=删除按钮+文本 ）
+
+
+①创建组件，显示出来
+
+②实现添加功能
+ToDoInput和ToDoList是没有关系的，但是都在ToDoBox中。
+
+1、将用户输入的内容 存到 ToDoBox中的状态（数组）中，将状态的值在控制台打印出来。
+
+2、将状态中的数组 传递给ToDoList，在ToDoList创建指定数量的ToDoItem，并指定要显示的内容
+
+
+③实现删除功能
+1、给按钮指定处理函数
+2、在处理函数中 从ToDoBox状态对应数组中删除 指定位置的元素
+3、由于删除按钮在ToDoItem中，而状态在ToDoBox，不能直接操作状态，传参。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

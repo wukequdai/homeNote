@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+  <style>
+    .col{
+      background: red;
+      border:green;
+    }
+  </style>
+</head>
+<body ng-controller="myCtrl">
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <ul class="list list-inset">
+    <li class="item"
+        ng-if="$index % 4 == 0"
+        ng-repeat="dish in dishList">
+
+      <div class="row">
+        <div class="col col-25">
+          <img ng-src="img/{{dish.imgUrl}}" alt=""/>
+          <p>{{dish.name}}</p>
+          <p>{{dish.price}}</p>
+        </div>
+        <div class="col col-25" ng-if="$index+1 < dishList.length">
+          <img ng-src="img/{{dishList[$index+1].imgUrl}}" alt=""/>
+          <p>{{dishList[$index+1].name}}</p>
+          <p>{{dishList[$index+1].price}}</p>
+        </div>
+        <div class="col col-25" ng-if="$index+2 < dishList.length">
+          <img ng-src="img/{{dishList[$index+2].imgUrl}}" alt=""/>
+          <p>{{dishList[$index+2].name}}</p>
+          <p>{{dishList[$index+2].price}}</p>
+        </div>
+        <div class="col col-25" ng-if="$index+3 < dishList.length">
+          <img ng-src="img/{{dishList[$index+3].imgUrl}}" alt=""/>
+          <p>{{dishList[$index+3].name}}</p>
+          <p>{{dishList[$index+3].price}}</p>
+        </div>
+      </div>
+
+
+
+    </li>
+  </ul>
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope',
+    function ($scope) {
+      $scope.dishList = [
+        {imgUrl: '1.jpg', name: '鱼香肉丝1', price: 21},
+        {imgUrl: '2.jpg', name: '鱼香肉丝2', price: 22},
+        {imgUrl: '3.jpg', name: '鱼香肉丝3', price: 23},
+        {imgUrl: '4.jpg', name: '鱼香肉丝4', price: 24},
+        {imgUrl: '1.jpg', name: '鱼香肉丝5', price: 25},
+        {imgUrl: '2.jpg', name: '鱼香肉丝6', price: 26},
+        {imgUrl: '3.jpg', name: '鱼香肉丝7', price: 27},
+        {imgUrl: '4.jpg', name: '鱼香肉丝8', price: 28},
+        {imgUrl: '1.jpg', name: '鱼香肉丝9', price: 29},
+        {imgUrl: '2.jpg', name: '鱼香肉丝10', price: 30},
+        {imgUrl: '3.jpg', name: '鱼香肉丝11', price: 31},
+        {imgUrl: '4.jpg', name: '鱼香肉丝12', price: 32}
+      ];
+    }]);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

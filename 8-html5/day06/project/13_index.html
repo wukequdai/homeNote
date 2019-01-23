@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .blue {
+      color: #33a;
+      background: #ccf;
+    }
+    .green {
+      color: #3a3;
+      background: #cfc;
+    }
+    .pink {
+      color: #a3a;
+      background: #fcf;
+    }
+  </style>
+</head>
+<body>
+<h1>练习：使用localStorage</h1>
+
+<h3>首页</h3>
+<hr/>
+<select id="selectTheme">
+  <option value="-">—请选择主题—</option>
+  <option value="blue">蓝色主题</option>
+  <option value="green">绿色主题</option>
+  <option value="pink">粉色主题</option>
+</select>
+<hr/>
+<a href="13_usercenter.html">用户中心</a>
+<script>
+  selectTheme.onchange = function(){
+    var v = this.value;
+    document.body.className = v;
+
+    //把用户的选项保存入浏览器对应的文件系统中
+    localStorage['UserTheme'] = v;
+  }
+</script>
+
+<script>
+  //读取浏览器中存储的用户选中的主题色
+  var v = localStorage['UserTheme'];
+  document.body.className = v;
+</script>
+</body>
+</html>

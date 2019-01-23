@@ -1,0 +1,37 @@
+<div ng-include="'tpl/include/header.html'"></div>
+
+<div class="container">
+
+  <ul class="breadcrumb">
+    <li>
+      <a href="#/kfl_start">首页</a>
+    </li>
+    <li>
+      详情
+    </li>
+  </ul>
+
+  <div class="panel panel-default">
+
+    <div class="panel-body">
+      <h1>{{dish.name}}</h1>
+      <img ng-src="img/{{dish.img_lg}}" alt=""/>
+      <p>{{dish.detail}}</p>
+      <p>{{dish.material}}</p>
+      <p>{{dish.price | currency:'￥'}}</p>
+    </div>
+
+    <div class="panel-footer">
+      <div class="text-right">
+        <button class="btn btn-success" ng-click="jump('/kfl_order/'+dish.did)">我要下单</button>
+        <button class="btn btn-primary" ng-click="jump('/kfl_main')">我再看看</button>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div ng-include="'tpl/include/footer.html'"></div>

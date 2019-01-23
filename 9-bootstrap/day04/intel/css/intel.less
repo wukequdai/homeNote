@@ -1,0 +1,79 @@
+/**包含Bootstrap全部的源代码**/
+@import "bootstrap.less";
+
+/**自定义样式**/
+body {
+  font-family: "Helvetica Neue", Helvetica,'SimHei', Arial, sans-serif;
+  margin-top: @navbar-height;  /*错出固定定位的导航条高度*/
+}
+.my-main {
+  background: @blue-dark;
+  color: #fff;
+  a {
+    color: #fff;
+  }
+}
+.my-main .row {
+  margin-bottom: 15px;
+}
+.navbar .navbar-brand {
+  display: inline-block;
+  width: 63px;
+  height: 42px;
+  background: url("../img/hdr-spr.png") 0 -512px no-repeat;
+  margin-top: 3px;
+}
+
+.my-big {
+  position: relative;
+}
+.my-big h1 {
+  margin: 5px 0;
+}
+.my-big .my-caption {
+  padding: 2em;
+}
+@media screen and (min-width: @screen-sm-min){
+  .my-big .my-caption {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.my-small-1 {
+  position: relative;
+  overflow: hidden;
+}
+.my-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  top: 70%;
+  padding: .5em 1em;
+  color: #fff;
+  transition: top linear .3s;
+}
+.my-mask:hover {
+  top: 0;
+}
+
+@media screen and (min-width: 992px){
+  .my-small-2 {
+    padding: 18px;
+  }
+  .my-small-2  .list-unstyled {
+    line-height: 1.8em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+  .my-small-2 {
+    padding: 18px;
+  }
+  .my-small-2  .list-unstyled {
+    line-height: 2em;
+  }
+}
+
+
+

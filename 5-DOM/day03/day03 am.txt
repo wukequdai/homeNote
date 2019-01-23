@@ -1,0 +1,56 @@
+正课: 
+1. 添加和删除元素
+2. ***HTML DOM常用对象: 
+   Select>option
+   Table>...
+   Form>...
+
+1. 添加和删除元素: 
+   添加: 3步: 
+     1. 创建空元素: 
+        var elem=document.createElement("标签名")
+        比如: var a=document.createElement("a");
+                <a></a>
+     2. 设置关键属性: 
+        比如: a.innerHTML="go to tmooc"
+                 a.herf="http://tmooc.cn";
+        <a href="http://tmooc.cn">go to tmooc</a>
+     3. 将元素添加到DOM树: 3种:
+         1. 在父元素末尾追加: 
+             parent.appendChild(child)
+         2. 插入到父元素下的现有子元素之前:
+             parent.insertBefore(child, oldChild)
+         3. 替换父元素下现有子元素
+             parent.replaceChild(child, oldChild)
+
+***优化: 尽量少的操作DOM树
+        为什么: 每次修改DOM树，都导致重新layout
+     1. 如果同时创建父元素和子元素时，建议在内存中先将子元素添加到父元素，再将父元素一次性挂到页面
+     2. 如果只添加多个平级子元素时, 就要将所有子元素，临时添加到文档片段中。再将文档片段整体添加到页面
+       文档片段: 内存中，临时保存多个平级子元素的 虚拟父元素
+                     用法和普通父元素完全一样
+       如何: 3步: 
+        1. 创建片段: 
+             var frag=document.createDocumentFragment();
+        2. 将子元素临时追加到frag中:
+             frag.appendChild(child);
+        3. 将frag追加到页面:
+             parent.appendChild(frag);
+           强调: append之后，frag自动释放，不会占用元素
+
+HTML->DOM Tree
+                    ↓
+               Render Tree->***layout->paint
+                   ↑
+CSS->cssRules
+
+   练习: select: onchange事件: 当选中项发生改变时
+                      .selectedIndex属性: 当前选中项的下标
+     
+
+
+
+
+
+
+

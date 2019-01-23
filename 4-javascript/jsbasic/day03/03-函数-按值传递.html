@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function change(num1,num2){
+				var temp = num1;
+				num1 = num2;
+				num2 = temp;
+				console.log("交换后：");
+				console.log("num1="+num1);
+				console.log("num2="+num2);
+			}
+			function testChange(){
+				var a = 15;
+				var b = 18;
+				change(a,b);
+				console.log("调用change函数后的值：");
+				console.log("a="+a);
+				console.log("b="+b);
+			}
+		</script>
+		<button onclick="testChange()">交换数字</button>	
+	</body>
+</html>

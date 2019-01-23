@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var names=["tom","jerry","smith","eric"];
+			          // 0      1       2       3
+		  console.log(names[1]);
+			names[1]=null;
+			console.log(String(names));
+			names[1]="rose";
+			console.log(String(names));
+			console.log(names[1]);
+			console.log(names.length);
+			//获得最后一个元素的值:
+			console.log(names[names.length-1]);
+			//获得倒数第3个元素:
+			console.log(names[names.length-3]);
+			for(var i=0;i<names.length;i++){//i是下标
+				console.log("我认识"+names[i]);
+			}
+			console.log(names.length--);//缩容:
+			console.log(String(names));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function dec2bin(dec){
+				var bin=[];//定义空数组bin
+				//反复:只要dec!=0
+				while(dec!=0){
+					bin.unshift(dec%2);//将dec/2的余数压入bin
+					//将dec/2再取整，再保存回dec中
+					dec=parseInt(dec/2);
+				}//(循环结束)
+				//bin.reverse();//颠倒bin
+				//返回bin无缝拼接的结果
+				return bin.join("");
+			}
+
+			var n=90;
+			console.log(dec2bin(n),n.toString(2));
+
+			var shen7=5;
+			var queue=[];
+			for(var i=1;i<=5;i++){
+				queue.push("顾客"+i);
+				console.log(String(queue));
+			}
+			queue.push("你");
+			while(shen7>0){
+				var c=queue.shift();
+				shen7--;
+				console.log(c+"抢购成功! 剩余"+shen7);
+			}
+			console.log(String(queue)+"没抢上!");
+		</script>
+	</body>
+</html>

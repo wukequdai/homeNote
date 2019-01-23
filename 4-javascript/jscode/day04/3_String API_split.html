@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ulNames">
+			<li>smith</li><li>john</li><li>tom</li>
+			<li>jerry</li> <li>rose</li>
+		</ul>
+		<script type="text/javascript">
+			var mail="zhangdong@tedu.cn";
+			var subs=mail.split("@");
+			  //[zhangdong,tedu.cn]
+			var uname=subs[0];
+			var domain=subs[1];
+			console.log(uname,domain);
+
+			var str="Hello";
+			console.log(str.split(""));
+
+			//获得ul的内容
+			var html=ulNames.innerHTML;
+			//删除html开头的空字符和<li>
+			//删除html结尾的</li>和空字符
+			html=html.replace(
+				/^\s*<li>|<\/li>\s*$/ig,"");
+			console.log(html);
+			//将html按</li>空字符<li>切割为数组,保存在names中
+			var names=html.split(/<\/li>\s*<li>/);
+			console.log(names);
+			//将names按字符串升序排列
+			names.sort();
+			//将names拼接为li，将拼接的结果赋值给ulNames的innerHTML
+			ulNames.innerHTML=
+				"<li>"+names.join("</li><li>")+"</li>";
+		</script>	
+	</body>
+</html>

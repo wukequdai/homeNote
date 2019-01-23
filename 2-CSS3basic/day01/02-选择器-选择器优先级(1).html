@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			/*继承的 和 自定义的 ，永远都优先使用 自定义的*/
+			#d1{color:red;}
+			span{color:orange;}
+			
+			/*复杂选择器就看权值，不看状态*/
+			a.a1{color:blue;}/*1+10=11*/
+			a:hover{color:red;}/*1+10 = 11*/
+			
+
+		</style>
+	</head>
+	<body>
+		<a class="a1" href="http://www.163.com">网易新闻</a>
+		<div id="d1">
+			<span>div 中的 span</span>
+		</div>
+	</body>
+</html>

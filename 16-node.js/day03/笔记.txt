@@ -1,0 +1,137 @@
+回顾：
+	包和npm
+		下载安装：npm install 包名 -g
+		更新：	npm update 包名
+		删除：	npm uninstall 包名
+		生成package.json：npm init
+		发布：	npm adduser
+			npm publish
+	Node.js核心模块：
+	（1）querystring
+		parse()
+		stringify()
+	（2）url
+		parse()
+		format()
+		resolve()
+	（3）path
+		parse()
+		format()
+		join()
+		resolve()
+		relative()
+	（4）dns
+		lookup()
+		resolve()
+		reverse()
+	（5）util
+		format()
+		inspect()
+		inherits()
+	（6）fs
+		fs.stat()       ——fs.Stats
+				stats.isFile()
+				stats.isDirectory()
+		fs.mkdir()
+		fs.rmdir()
+		fs.readdir()
+		fs.readFile()
+		fs.writeFile()
+		fs.appendFile()
+		fs.unlink()
+		fs.rename()
+今天：
+1、mysql模块——第三方模块
+	提供了连接及操作mysql数据库的相关功能。
+	方法：
+	mysql.createConnection()	//创建一个mysql服务器的连接，参数为连接数据库的必要数据（主机、用户名、密码、数据库名称），返回一个连接对象。
+	该对象有以下常用方法：
+		connect()	//连接数据库，可以省略
+		query()	//提交SQL语句给mysql服务器执行，参数为sql语句，操作完成后出发一个回调函数。
+		end()	//断开与mysql服务器的连接
+
+
+2、http模块——核心模块
+	用于创建使用HTTP协议的客户端应用或者服务器端应用
+		创建并发起请求消息，等待并解析响应消息——实现web客户端
+		接收并解析请求消息，构建并发送响应消息——实现web服务器
+
+	常用对象：
+		http.ClientRequest
+		http.Server
+		http.ServerResponse
+		http.IncomingMessage
+
+	常用方法：
+		http.createServer()
+		http.get()
+		http.request()
+	---------------------------------------------------------
+	（1）http.request——客户端工具
+		用于向web服务器发送HTTP请求，并获取响应数据。
+		两个主要方法：
+		http.get()
+		http.request()
+		以上两个方法返回一个http.ClientRequest对象，用来描述请求信息，回调函数的参数是一个http.IncomingMessage对象，封装着响应消息。
+		http.ClientRequest对象常用方法：
+			write()	//向服务器追加请求主体数据
+			end()	//提交请求消息主体结束
+			setTimeout()//设置请求消息超时时间
+			abort()	//终止请求
+		
+		http.ClientRequest对象常用事件：
+			response	//接收到响应消息
+			abort	//请求终止事件
+			error	//请求发生错误
+
+		注意：request()方法必须手动调用end()，而get()方法无需手动调用end()。
+	------------------------------------------------------
+	（2）http.server——服务器端工具
+		http.server是一个基于事件的HTTP服务器。
+		用于构建web服务器，接收客户端请求，返回响应消息。所有的请求都被封装到独立的事件当中，我们只需对它的事件编写响应的处理程序就可以实现HTTP服务器的所有功能。
+	方法：
+		http.createServer()
+		用于创建一个web服务器应用，返回一个http.Server对象。
+		此对象的常用方法：
+			listen()	//启动web服务器，监听指定的服务端口
+			close()	//停止服务器的运行
+			setTimeout()  //设置服务器响应消息超时时间
+		此对象的常用事件：
+			connection    //出现客户端连接时
+			request          //接收到请求消息
+			close	      //服务器停止
+			error              //响应过程发生错误
+		http.Server的request事件的回调函数中：
+		第一个参数是一个http.IncomingMessage对象，封装着客户端提交的请求消息数据；
+		第二个参数是一个hppt.ServerResponse对象，用于构建向客户端输出的响应消息数据。
+
+
+3、express——第三方模块
+	express模块封装了http模块，并扩展了http模块的功能。可以方便的实现服务器的路由、发送和接收http请求、返回响应、发送和接收cookie及实现模板引擎的功能。
+	//引入express模块
+	var express=require('express');
+	//创建express类的实例作为http服务器
+	var app=express();
+	//启动服务器
+	app.listen(8000);
+
+	路由：
+	描述了如何处理针对express服务器的http请求
+	路由是由一个特定的http请求方法(get,post)和一个URI(路径)组成。
+	app.method(path,callback);
+	-method：请求方法，get、post、
+	-path：服务器端的一个路径，/表示根目录
+	-callback：当路由匹配到时，要处理的函数，接收两个参数：req，res
+	
+	中间件：
+	中间间是一个函数，可以访问请求对象，响应对象，在web应用中处于请求-响应循环流程中。可以对请求做过滤处理，把请求传递下去。
+	app.use(path,[middleware,],callback)
+
+
+
+
+
+
+
+
+

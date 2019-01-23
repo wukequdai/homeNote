@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+是否同意<input type="checkbox" ng-model="isAgree"/>
+<br/>
+
+选择喜欢的颜色
+<select ng-model="color">
+  <option value="red">红色</option>
+  <option value="green">绿色</option>
+  <option value="blue">蓝色</option>
+</select>
+<br/>
+
+选择性别
+男<input type="radio" name='sex' value="0" ng-model="user_sex"/>
+女<input type="radio" name='sex' value="1" ng-model="user_sex"/>
+
+<br/>
+<select ng-model="color"
+        ng-options="color.name for color in colors">
+
+</select>
+
+<button ng-click="submitInfo()">提交</button>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+    $scope.count = 10;
+
+    $scope.colors = [
+      {name:'红色',value:'red'},
+      {name:'绿色',value:'green'},
+      {name:'蓝色',value:'blue'}
+    ];
+
+    $scope.color = $scope.colors[2];
+
+
+    $scope.submitInfo = function(){
+      console.log("是否同意："+$scope.isAgree+" 喜欢的颜色:"+$scope.color
+      +"选择的性别:"+$scope.user_sex);
+    }
+
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

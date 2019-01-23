@@ -1,0 +1,145 @@
+开发流程
+
+1:创建目录      htdocs/jd copy 我上传jd图片
+2:创建库创建表
+  2.1 创建 jd.sql 添加sql语句
+	2.2 jd.sql必须utf-8!!!!!!!!!!
+  2.3 set names utf8
+	2.4 source  jd.sql
+3:分析第1.1/1.2个功能
+  3.1:创建js/productlist.js
+	3.2:当页面加载完成动态加载
+	    header.php
+			footer.php
+  3.3:分析productlist.html
+	    放置头和尾标签
+			productlist.html 12 line
+			<div id="site_header">
+      </div>
+			productlist.html 86 line
+			<div id="site_footer">
+			</div>
+4:用户登录
+  jd/jd_user[uid,uname,upwd]
+	4.1:分析html:
+	productlist.html  89 line 登录窗口
+5:产品列表
+  data/product_list.php 
+	查询所有产品信息.将数据转换json字符串响应发送
+  product_list.html
+	productlist.js
+	5.1:当页面加载成功后自动发送ajax请求
+	5.2:获取服务器返回json格式数据
+	5.3:页面哪个位置保存产品信息
+	    找id="plist" 
+			ul li每一个产品都是一个li元素
+
+6:添加购物车
+  6.1:理解表存放数据
+	jd_cart   [cid购物车id/userId用户id]    
+  每一个用户有且只有一个购物车
+	示例:
+	userId 100
+	jd_cart         购物车表
+	cid  userId
+	1    5
+	2    99
+  3    100
+  买商品  [9  iphone7 3000.00]  2
+	买商品  [9  iphone7 3000.00]  8
+	买商品  [10  iphone8 4000.00] 1
+  jd_cart_detail  购物车明细表
+	did  pid  cartid  count 
+  1     9   3        10
+	2     10  3        1
+
+  //11:48--12:00
+  6.2:cart_detail_add.php
+	   a:修改响应头 json		
+		 b:获取参数   uid/pid
+		 c:根据用户编号查询他对应的购物车编号
+		   SELECT cid FROM jd_cart
+			 WHERE userId=$userId
+		 d:新用户没有查询到购物车编号 null
+		 e:如果用户没有购物车，则添加一个购物车
+		   获取购物车编号
+			 INSERT INTO jd_cart values(null,$userId);
+			 $cartId = mysqli_insert_id($conn);
+		 f:查询购物国情详细表,
+		   对应购物车编号+产品编号是否存在.
+       SELECT did,count FROM jd_cart_detail
+			 WHERE cartId=$cid AND productId=$pid
+		 g:指定购物国情中没有该商品
+		   若之前未购买过商品，则插入一条购物记录
+			 购买数量为
+			 INSERT INTO jd_cart_detail
+			 VALUES(null,$cid,$pid,1);
+	   f:指定购物国情中买过该商品
+		   UPDATE jd_cart_detail
+			 SET count = count+1 WHERE did=$did;
+
+	6.3:productlist.js
+	   a:点击 添加购物车按钮
+		 b:参数 uid/pid
+		 c:添加成功
+		   报警框:"添加成功"
+  #注意:
+	 1:如何判断查询结果是否存在
+	   抓取后 一行
+		$row =  mysqli_fetch_assoc($result);
+   2:$row === null 没数据
+   3:多行数据
+	   $r = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    如何判断没数据
+		 count($r)===0;
+
+   14:55---15:05  练习
+	 15:05---15:15  休息
+7:购物车修改
+  7.1 去购物车结算
+	1:#settle_up         绑定点击事件
+	2:将用户名用户id保存cookie
+	document.cookie='loginUname=tom';
+	document.cookie='loginUid=10';
+  3:自动跳转
+	location.href = 'shoppingcart.html';
+
+	7.2 查看购物车
+	shoppingcart.html
+	shoppingcart.js
+	获取loginUname
+	获取loginUid
+	功能:查询 
+	参数:uid
+	1:依据uid查询当前用户cid
+		jd_cart
+	2: 
+	产品id,产品名称,产品图片,
+	产品价格,明细表id,明细数量
+	jd_product
+	jd_cart_detail
+  多表:
+	a:表别名
+	b:多表查询一定分析二个表之间联系
+	SELECT p.pid,p.pname,p.pic,p.price,
+	       d.did,d.count
+	FROM jd_product p,jd_cart_detail d
+  WHERE d.productId = p.pid
+	AND   d.cartId = 100;  
+  cart_detail_list.php
+
+	作业:
+	1:删除
+	  1.1:发送ajax请求将jd_cart_detail
+		    表中记录的购物项删除
+		1.2:使用js将当前 父元素 tr删除
+	2:- 
+	  2.1:发送ajax请求将jd_cart_detail
+		    表中记录的购物项数量-1
+		2.2:使用js将当前 input value-1显示结果
+	3:+
+	  3.1:发送ajax请求将jd_cart_detail
+		    表中对象的购物项删除
+		4.2:使用js将当前 input value+1显示结果
+  4:有时间试完成productlist.html 分页功能
+	参数今晚我上传代码

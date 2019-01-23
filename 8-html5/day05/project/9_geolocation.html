@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>地理定位</h1>
+  <button id="bt">获取当前浏览器所在的定位信息</button>
+
+  <script>
+    bt.onclick = function(){
+      //console.dir(navigator.geolocation);
+      navigator.geolocation.getCurrentPosition(succCB,  errorCB);
+
+      function succCB(pos){
+        console.log('定位成功！')
+        //console.log(arguments);
+        console.log('数据获取时间：'+pos.timestamp);
+        console.log('所在经度：'+pos.coords.longitude);
+        console.log('所在纬度：'+pos.coords.latitude);
+        console.log('海拔高度：'+pos.coords.altitude);
+        console.log('移动速度：'+pos.coords.speed);
+      }
+      function errorCB(err){
+        console.log('定位失败！')
+        //console.log(arguments)
+        console.log('错误编码：'+err.code);
+        console.log('错误消息：'+err.message);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+ </head>
+ <body>
+  <h1>jQueryUI：Widgets —— Accordion</h1>
+  <div id="myaccordion">
+    <h3>西游记</h3>
+    <div>一个和尚和四个动物的故事: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente distinctio deleniti ratione dignissimos soluta saepe omnis libero a tempora ipsam nostrum ea deserunt quae veritatis iusto natus pariatur nobis ullam.</div>
+    <h3>水浒传</h3>
+    <div>105个男人和3个女人的故事: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor fugiat tenetur ab repellat mollitia quidem sit consequatur asperiores consequuntur adipisci accusamus nesciunt repellendus nisi eaque harum blanditiis illum rerum corrupti.</div>
+    <h3>红楼梦</h3>
+    <div>一个男人和一群女人的故事: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut eveniet aliquam dolorum vero totam a voluptas sequi eum dolorem repellendus. Tenetur accusantium iste ratione minus nemo laborum at incidunt voluptatibus.</div>
+  </div>
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+  <script>
+    $(function(){ $("ul li").each(function(i){ if(i % 2 == 0){ $(this).css("background-color","red"); }else{ $(this).css("border","1px solid blue"); } }); });
+  </script>
+ </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+ </head>
+ <body>
+  <button>点一下</button>
+  <button>点一下1</button>
+  <button>点一下2</button>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		//通过选择器查询DOM元素，病自动封装为jQuery对象
+		var $btn=$("button");
+		//$btn:jQuery对象，也是类数组对象
+		$btn.click(function(){
+			alert(this.innerHTML);
+		})
+		$btn.css("background","yellow");
+		console.log($btn);
+	</script>
+ </body>
+</html>

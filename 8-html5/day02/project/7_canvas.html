@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Canvas绘图技术</h1>
+  <canvas id="c7" width="500" height="400">
+  </canvas>abcd
+
+  <script>
+    /*得到画布上的画笔对象——绘图上下文*/
+    var ctx1 = c7.getContext('2d');
+    var ctx2 = c7.getContext('2d');
+    console.log( ctx1 === ctx2 );
+    //true 一个画布上只有一根画笔！
+    console.dir(ctx2);
+  </script>
+</body>
+</html>

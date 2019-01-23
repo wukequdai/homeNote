@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 对于字符串的比较，是每个字符进行比较，以不相等的字符来决定到底谁大
+
+			//以下 案例， 最终 比较的就是 "三"的Unicode码 和 "无"的Unicode码之间的大小
+			var str1 = "张三丰";
+			var str2 = "张无忌";
+
+			var str3 = "张三丰";
+			var str4 = "张三";
+			
+			/*console.log(str1 == str2);//false
+			console.log(str1 != str2);//true
+			console.log("张三丰比张无忌大吗?"+(str1>str2));*/
+
+			console.log(str1>str4);
+		</script>
+	</body>
+</html>

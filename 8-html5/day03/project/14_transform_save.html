@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>使用Canvas绘图中的图形图像变形</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    var img = new Image();
+    img.src = 'img/p3.png';
+    img.onload = function(){
+
+      var deg1 = 0;  //飞机1已经旋转的角度
+      var deg3 = 0;  //飞机3已经旋转的角度
+
+      setInterval(function(){
+        //清除画布
+        ctx.clearRect(0,0, 500, 400);
+
+        //飞机1：绕自己旋转
+        ctx.save(); //保存画笔当前的状态
+        ctx.translate(img.width/2,img.height/2)//平移
+        ctx.rotate(deg1*Math.PI/180); //旋转
+        ctx.drawImage(img,-img.width/2, -img.height/2); //绘图
+        ctx.restore(); //恢复最近一次保存的画笔的状态
+        deg1 += 5;
+
+        //飞机2：不旋转
+        ctx.drawImage(img, 500-img.width, 0);
+
+        //飞机3：绕自己旋转
+        ctx.save(); //保存画笔当前状态
+
+        ctx.translate(img.width/2, 400-img.height/2)//平移
+        ctx.rotate(deg3*Math.PI/180);//旋转
+        ctx.drawImage(img,-img.width/2,-img.height/2);//绘图
+
+        ctx.restore(); //恢复画笔之前的状态
+        deg3 += 10;
+      }, 50)
+    }
+
+  </script>
+</body>
+</html>

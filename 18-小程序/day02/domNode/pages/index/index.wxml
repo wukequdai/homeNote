@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view wx:if="{{ng==1}}">你好</view>
+  <view wx:elif="{{ng==2}}">你好</view>
+  <view wx:elif="{{ng==3}}">你好</view>
+</view>

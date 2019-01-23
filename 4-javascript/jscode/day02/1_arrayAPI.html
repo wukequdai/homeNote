@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//拼接和选取
+			var arr1=[1,2,3];
+			var arr2=[123,234];
+			var newArr=arr1.concat(11,22,arr2,33);
+			console.dir(newArr);
+			//[1,2,3,11,22,123,234,33]
+			 //0 1 2 3  4  5   6   7
+			var subArr=//newArr.slice(5/*,6+1*/);
+			           //newArr.slice(-3,-2+1)
+								 newArr.slice();//复制
+			console.dir(subArr);
+			var newArr2=newArr;//没有复制
+			console.dir(newArr2);
+			console.log(subArr==newArr);//false
+			console.log(newArr==newArr2);//true
+
+			//删除:
+			newArr.splice(5,2);
+			console.dir(newArr);
+			//[1,2,3,11,22,33]
+			 //0 1 2 3  4  5
+			//插入新元素: 在3位置插入123,234
+			newArr.splice(3,0,123,234);
+			console.dir(newArr);
+			//[1,2,3,123,234,11,22,33]
+			 //0 1 2 3   4   5  6  7
+			//删除3位置开始的2个元素,在3位置插入333,666,888
+			newArr.splice(3,2,333,666,888);
+			console.dir(newArr);
+			//广告轮播:
+			var imgs=
+				["img0","img1","img2","img3","img4"];
+			//向左滚动1个:删除0位置的1个元素，再拼到imgs结尾
+			imgs=imgs.concat(imgs.splice(0,1));
+			console.log(String(imgs));
+			//"img1","img2","img3","img4","img0"
+			//向右滚动2个: 删除倒数第2个位置开始的2个元素,再拼到开始
+			imgs=
+				imgs.splice(imgs.length-2,2).concat(imgs);
+			console.log(String(imgs));
+			//"img4","img0","img1","img2","img3"
+		</script>
+	</body>
+</html>

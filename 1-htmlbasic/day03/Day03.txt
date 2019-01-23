@@ -1,0 +1,298 @@
+1、列表
+	1、作用
+		按照一定的结构来显示数据
+		按照从上到下的顺序来显示数据
+
+		所有的列表都由两部分组成
+		1、列表类型(有序或无序)
+		2、列表项
+	2、使用列表
+		1、有序列表
+			1、语法
+				列表类型：<ol></ol>  -- Order List
+				列表项：<li></li> -- List Item
+			2、属性
+				列表类型属性
+					1、type
+						取值：
+							1、1 ：默认值，数字
+							2、a ：小写字符显示
+							3、A ：大小字符显示
+							4、i ：小写罗马字符
+							5、I ：大写罗马字符
+					2、start
+						类型的起始编号
+		2、无序列表
+			1、语法
+				列表类型：<ul></ul>  --- Unorder List
+				列表项：<li></li>
+			2、属性
+				1、type
+					取值：
+						1、disc ：默认值，实心圆
+						2、circle ：空心圆
+						3、square ：实心矩形
+						4、none ：没有
+	3、定义列表
+		1、作用
+			定义列表往往用于要给出一类事物的定义的情形，如名词解释等...
+		2、语法
+			<dl></dl> : 定义一个定义列表
+				<dt></dt> : 定义 列表中的一个术语
+				<dd></dd> : 定义 列表中对术语的解释
+		3、使用场合
+			图文混排
+2、结构标记
+	1、作用
+		专门搭建网页结构，用于提升标记的可读性
+		以后可以通过结构标记来取代做布局的div
+	2、详解
+		1、<header>元素
+			作用：定义网页文档的页眉(顶部信息)
+			语法：<header></header>
+			取代：<div id="header"></div>
+		2、<nav>元素
+			作用：定义页面中的导航链接部分
+			语法：<nav></nav>
+			取代：<div id="nav"></div>
+		3、<section>元素
+			作用：定义文档中的小节，在页面中可以表示主体内容部分
+			语法：<section></section>
+			取代：<div id="main">
+		4、<article>元素
+			作用：通常用于描述 论坛帖子，报纸的文章，博客信息或微博条目
+			语法：<article></article>
+			取代：<div id="article"></div>
+		5、<aside>元素
+			作用：描述页面中的边栏信息
+			语法：<aside></aside>
+			取代：<div id="left_side"></div>
+		6、<footer>元素
+			作用：定义页面中底部的信息
+			语法：<footer></footer>
+			取代：<div id="footer"></div>
+3、表单(重难点)
+	1、表单的作用
+		用于收集信息并将信息提交给服务器
+		表单的两个基本部分
+			1、实现数据交互的可见界面元素-表单控件
+			2、表单提交后的处理
+	2、表单元素
+		表单：收集用户数据，并且提交给服务器
+		语法：
+			1、标记
+				<form></form>
+				注意：只有放在form中的表单控件才能被提交
+			2、属性
+				1、action
+					要提交给服务器处理程序的地址
+					默认提交给本页
+				2、method
+					提交方式,默认值是 get
+					取值：
+						1、get
+							1、以明文方式提交数据
+							2、安全性较低
+							3、大小限制为2KB
+							4、向服务器要数据时，使用get
+						2、post
+							1、隐式提交
+							2、安全性较高
+							3、无大小限制
+							4、传递数据给服务器进行处理时，使用post
+						3、... ...
+				3、enctype
+					指定表单数据的编码方式即指定什么样的数据可以提交给服务器
+					1、application/x-www-form-urlencoded
+						默认值，允许将普通字符，特殊字符提交给服务器
+					2、multipart/form-data
+						允许将 文件 提交给服务器
+					3、text/plain
+						允许将普通字符提交给服务器。特殊字符，文件则不可以 
+	3、表单控件
+		能与用户交互，并且提供可视化外观的HTML元素
+		表单控件，只有放在表单中，数据才可以被提交
+
+		表单控件分类：
+		1、input元素
+		2、textarea元素-多行文本域
+		3、select 和 option 元素 - 选项框
+		4、其他元素
+
+		表单控件详解：
+		1、input元素
+			1、作用 ：用于收集用户的信息
+			2、语法 ：<input>
+			3、属性 ：
+				1、type
+					根据type属性值，创建各种不同的输入控件
+				2、name
+					指定控件的名称，一般提交给服务器时使用
+					采用的是匈牙利命名法(控件缩写+作用)
+				3、value
+					控件的值，提交给服务器使用
+				4、disabled
+					禁用控件。
+					该属性无值
+			4、input 详解
+				1、文本框与密码框
+					文本框：<input type="text">
+					秘密框：<input type="password">
+
+					特有属性：
+					1、name
+						缩写：txt
+						ex:
+							txtUsername : 用户名称的文本框
+							txtUserpwd : 用户密码
+					2、maxlength
+						限制输入的字符数
+						ex:
+							<input maxlength="15">
+					3、readonly
+						只读，只能看不能写
+						无值
+				2、单选按钮和复选框	
+						单选按钮：<input type="radio">
+						复选框：<input type="checkbox">
+						
+						属性：
+						1、name
+							单选按钮缩写：rdo
+							复选框缩写：chk
+							注意：name属性除定义名称外，还能分组，如果属于一组的单选按钮或复选框，名称必须相同
+						2、value
+						3、checked
+							设置默认被选中
+				3、按钮
+					1、提交按钮
+						<input type="submit">
+						作用：功能预定义，负责将当前表单中的数据提交给服务器
+					2、重置按钮
+						<input type="reset">
+						作用：功能预定义，将表单中的数据恢复成初始化的状态
+					3、普通按钮
+						<input type="button">
+						作用：无功能，可以由用户自定义的编写功能
+					属性：
+						value ：定义按钮上的文本
+						name ：缩写 btn
+				4、隐藏域 和 文件选择框
+					1、隐藏域：<input type="hidden">
+						作用：想提交给服务器，但不想让用户看到的数据，可以保存在 隐藏域中。
+						缩写：txt
+					2、文件选择框
+						<input type="file">
+						缩写：txt
+						注意：
+							1、method 必须设置为 post
+							2、enctype 必须为 multipart/form-data
+		2、textarea元素
+			称为：多行文本域
+			语法：
+				1、标记
+					<textarea></textarea>
+				2、属性
+					1、name
+						定义名称，缩写 txt
+					2、cols
+						 指定文本域显示的列数，变相的指定宽度
+						 ex:
+							cols="50"
+							英文字符：显示50个
+							中文字符：显示25个
+					3、rows
+						 指定文本域显示的行数，变相的指定高度
+					4、readonly
+						只读
+		3、select 和 option 元素
+			称为：选项框
+			1、语法
+				1、<select></select>
+					作用：创建选项框(下拉，滚动)
+					属性：
+						1、name
+							控件名称，缩写 sel
+						2、size
+							指定选项框，默认显示选项的数量。
+							大于1的话，则为滚动列表，否则就是下拉选项框
+						3、multiple
+							设置多选
+							无值
+				2、<option>显示的数据</option>
+					选项
+					属性：
+						1、value
+							提交给服务器的数据
+						2、selected
+							预选中
+		4、其他元素
+			1、label元素
+				作用：关联 文本 和 表单控件的。关联之后，单击文本，就如同单击 表单控件 一样
+
+				语法
+					<label>文本</label>
+				属性
+					for : 表示要与该文本关联的控件的ID值
+			2、为控件分组
+				<fieldset></fieldset> : 为控件分组
+				<legend></legend> : 为分组指定标题
+4、其他标记
+	1、浮动框架
+		1、什么是浮动框架
+			可以在一个浏览器窗口中能够同时显示多个HTML文档内容
+		2、语法
+			<iframe>文本内容</iframe>
+			属性：
+				1、src
+					浮动框架中引入的页面url
+				2、width
+					宽度
+				3、height
+					高度
+				4、frameborder
+					边框，如果不想要边框，则将frameborder改为0
+	2、摘要与细节
+		1、作用
+			可以通过用户的点击操作，来显示/隐藏某一部分内容
+		2、语法
+			<details></details> : 定义摘要和细节
+				<summary></summary> : 定义允许被用户点击的标题文本
+				注意：summary 必须是 details 中的第一对子元素
+	3、度量元素
+		1、语法
+			<meter></meter>
+			作用：表示度量元素，比如：投票的比例，电池的电量... ...
+
+		2、属性
+			1、min ：定义度量范围的最小值，默认为0
+			2、max ：定义度量范围的最大值，默认为1，通常情况会将其改为 100
+			3、value ：当前显示在度量元素上的值
+	4、时间元素
+		1、作用
+			关联时间的不同表现形式
+		2、语法
+			<time>文本</time>
+			属性：
+				datetime : 表示关联的日期和时间,如果同时关联日期和时间的话，中间用 T 分隔
+	5、高亮文本显示
+		1、作用
+			以突出的背景色显示文本
+		2、语法
+			<mark>文本</mark>
+
+
+
+
+
+
+
+file:///E:/%E8%B5%B5%E6%97%AD/CLASS/01_HTML5BASIC/Day03/03-表单.html?txtUsername=sanfeng.zhang&txtUserpwd=yinsusu&rdoGender=female&chkHobby=drink&chkHobby=happy
+
+html?txtUsername=sanfeng.zhang&txtUserpwd=123456&rdoGender=male&chkHobby=drink&chkHobby=play&txtUserID=U1234567890
+
+您的名称&txtUserpwd=&rdoGender=male&txtUserID=U1234567890&txtImage=&txtIntro=fksafjkldsajfklsajflkdjalkfjdslkjflkdsajfldksajflkdsjlakfjdslkafjdlksajfkldsjafklsjafkldsajfklsjalkdjsalkfdjsaklfjdskalfjdksalfjdkslajfkldsajfklds
+
+file:///E:/%E8%B5%B5%E6%97%AD/CLASS/01_HTML5BASIC/Day03/Exer/02-%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6.html?txtName=mary&rdoGender=1&selEdu=4&selCity=2&selCity=4&txtIntro=&chkPublic=on
+
+file:///E:/%E8%B5%B5%E6%97%AD/CLASS/01_HTML5BASIC/Day03/Exer/02-%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6.html?txtName=mary&rdoGender=1&selEdu=4&selCity=4&txtIntro=

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  
+ </head>
+ <body>
+	<h1>使用属性选择器实现标签页头的切换</h1>
+	<ul class="tabs">
+		<li>
+			<a href="#">十元套餐</a><a href="#">二十元套餐</a><a href="#">三十元套餐</a>
+		</li>
+	</ul>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		/*$(".tabs").css({
+			listStyle:"none",padding:"0"
+		});
+		$(".tabs a").css({
+			textDecoration:"none",
+			color:"#000",
+			padding:"6px 12px",
+			display:"inline-block"
+		});
+		$(".tabs>li").css("float","left")
+		$(".tabs a:first").css({
+			border:"1px solid #000",
+			borderBottom:0
+		});
+		$(".tabs a:gt(0)").css("borderBottom","1px solid #000");
+		$(".tabs a").click(function(){
+			$(".tabs a").css({
+				border:0,borderBottom:"1px solid #000"
+			})
+			$(this).css({
+				border:"1px solid #000",
+				borderBottom:"0"
+			})
+		})*/
+		$(".tabs").css({
+			listStyle:"none",
+			
+		});
+		$(".tabs li").css({
+			float:"left",
+			
+		});
+		$(".tabs li a:gt(0)").css({
+			borderBottom:"2px solid #000",
+			
+		});
+		$(".tabs li:eq(0)").css({
+			border:"2px solid #000",
+			borderBottom:"0",
+		});
+		$(".tabs a").css({
+			display:"inline-block",
+			textDecoration:"none",
+			padding:"10px 20px",
+			color:"#00a887",
+		});
+		$(".tabs a").click(function(){
+			$(".tabs li a").css({
+				border:"0",borderBottom:"2px solid #000"
+			});
+			$(this).css({
+				border:"2px solid #000",borderBottom:"0"
+			});
+		});
+
+	</script>
+ </body>
+</html>

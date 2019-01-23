@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//定义4个函数，模拟 查询，转账，取款，退出功能
+			function chaxun(){
+				console.log("查询进行中，请稍后...");
+			}
+			function zhuanZhang(){
+				console.log("转账进行中，请稍后...");
+			}
+			function quKuan(){
+				console.log("取款进行中，请稍后...");
+			}
+			function tuiChu(){
+				console.log("退出系统，谢谢使用!");
+			}
+			/*
+			 * choice ：用户输入的 数字
+			*/
+			function phoneBank(choice){
+				switch(choice){
+					case 1:
+						chaxun();
+						break;
+					case 2:
+					case 3:
+						console.log("系统维护中!");
+						break;
+					case 4:
+						tuiChu();
+						break;
+					default:
+						console.log("输入有误！");
+				}
+			}
+
+			function testPhoneBank(){
+				//1、提示用户 输入电话银行操作代码
+				var choice = Number(prompt("====欢迎使用电话银行系统====\n查询请按1\n转账请按2\n取款请按3\n退出请按4"));
+				//2、调用phoneBank 完成电话银行的显示
+				phoneBank(choice);
+			}
+		</script>
+		<button onclick="testPhoneBank();">调用电话银行函数</button>
+	</body>
+</html>

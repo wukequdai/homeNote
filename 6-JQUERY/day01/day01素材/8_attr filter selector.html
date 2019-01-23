@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <style>
+    .tabs{list-style:none; padding:0}
+    .tabs>li{float:left}
+    .tabs>li>a{
+      text-decoration:none; 
+      padding:6px 12px;
+      color:#000;
+    }
+  </style>
+ </head>
+ <body>
+    <ul class="tabs">
+      <li><a data-toggle="tab" href="#">十元套餐</a></li>
+      <li><a data-toggle="tab" href="#">二十元套餐</a></li>
+      <li><a data-toggle="tab" href="#">三十元套餐</a></li>
+    </ul>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+      //选择class为tabs下的所有按钮,都加下边框
+      $(".tabs [data-toggle='tab']")
+        .css("borderBottom","1px solid #aaa")
+    //$(".tabs [data-toggle='tab']")
+        .click(function(){
+          $(".tabs [data-toggle='tab']")
+            .css({
+              border:"none",
+              borderBottom:"1px solid #aaa"
+            })
+          //当前a，加边框，去下边框
+          $(this).css({
+            border:"1px solid #aaa",
+            borderBottom:"none"
+          })
+        })
+      //选择第一个a，加完整边框后，清除下边框
+      $(".tabs [data-toggle='tab']:first")
+        .css({
+          border:"1px solid #aaa",
+          borderBottom:"none"
+        })
+    </script>
+ </body>
+</html>

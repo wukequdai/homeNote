@@ -1,0 +1,38 @@
+package com.tarena.kfl;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.webkit.WebView;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        //创建一个webView组件        
+        WebView wv = new WebView(getApplicationContext());
+        
+        //设置允许执行js
+        wv.getSettings().setJavaScriptEnabled(true);
+        
+        //设置wv，允许本地存储
+        
+        
+        //配置wv对象载入指定的url
+        wv.loadUrl("http://web1606kfl.applinzi.com/");
+        
+        //设置wv让它显示
+        setContentView(wv);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+}

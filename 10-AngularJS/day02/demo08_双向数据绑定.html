@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<input type="checkbox" ng-model="isAgree"/> 是否同意
+<br/>
+<button ng-disabled="!isAgree">注册</button>
+
+<select ng-model="flower">
+  <option value="0">郁金香</option>
+  <option value="1">水仙花</option>
+  <option value="2">牡丹花</option>
+</select>
+
+<img ng-src="image/{{imgList[index]}}" alt=""/>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+      $scope.flower = 0;
+      $scope.index = 0;
+      $scope.imgList = ['1.jpg','2.jpg','3.jpg'];
+
+      $scope.$watch('flower', function () {
+        $scope.index = $scope.flower;
+      })
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

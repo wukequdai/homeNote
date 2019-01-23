@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.alert{
+      border:1px solid #a33; color:#922;
+      background:#fee; padding:10px;
+    }
+    .close{
+      float:right; font-weight:bold; 
+      opacity:.2; cursor:pointer;
+    }
+    .close:hover{opacity:1;}
+    .fade{
+      overflow:hidden;
+      opacity:0; width:0;
+      transition:all .5s linear;
+    }
+    .fade.in{ opacity:1; width:100%;}
+	</style>
+ </head>
+ <body>
+    <button id="btn1">click me!</button>
+    <div class="alert fade">
+      <span class="close" data-trigger="close">×</span>
+      <p>您的浏览器版本太低!请下载最新版本</p>
+    </div> 
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+      //选择id为btn1的按钮绑定单击事件
+      $("#btn1").click(function(){
+        //选择class为alert的div，为其添加in class
+        $(".alert").addClass("in");
+      });
+      //选择data-trigger为close的span，绑定单击事件
+      $(".alert>[data-trigger='close']").click(
+        function(){//将当前元素的父元素隐藏
+          $(this).parent().removeClass("in");
+        }
+      );
+    </script>
+ </body>
+</html>

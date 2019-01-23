@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <style>
+    .tabs{list-style:none; padding:0}
+    .tabs>li{float:left}
+    .tabs>li>a{
+      text-decoration:none; 
+      padding:6px 12px;
+      color:#000;
+    }
+  </style>
+ </head>
+ <body>
+    <ul class="tabs">
+      <li><a data-toggle="tab" href="#">十元套餐</a></li>
+      <li><a data-toggle="tab" href="#">二十元套餐</a></li>
+      <li><a data-toggle="tab" href="#">三十元套餐</a></li>
+    </ul>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>     
+      $(".tabs [data-toggle='tab']")//所有a
+        .click(function(){
+          //当前a，加边框，去下边框
+          $(this).css({
+            border:"1px solid #aaa",
+            borderBottom:"none"
+          })//当前a的父元素的剩余兄弟下的a
+          .parent().siblings().children("a")
+          .css({
+            border:"none",
+            borderBottom:"1px solid #aaa"
+          })
+        })//所有a，加下边框
+        .css("borderBottom","1px solid #aaa")
+        //所有a,中的第一个加边框，去下边框
+        .first().css({
+          border:"1px solid #aaa",
+          borderBottom:"none"
+        });
+        
+      
+    </script>
+ </body>
+</html>

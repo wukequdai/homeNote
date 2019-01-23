@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+</head>
+<body>
+
+<!--指定容器-->
+<ng-view></ng-view>
+
+<script>
+  var app = angular.module('myApp',['ng','ngRoute']);
+
+  //配置路由词典
+  app.config(function ($routeProvider) {
+    $routeProvider
+      .when('/myLogin',{
+        templateUrl:'tpl/login.html'
+      })
+      .when('/myRegister',{
+        templateUrl:'tpl/register.html'
+      })
+      .otherwise({redirectTo:'/myLogin'})
+
+  })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!--17:36--17:41 用户注册表单--> 
+<h1>用户注册</h1>
+ 		<form action="#" method="post">
+ 		<ul>
+ 			 <li>用户名 
+ 			 <input type="text" value="" name="author"/></li>
+ 			 <li>密码 
+ 			 <input type="text" value="" name="email"/></li>
+       <li>
+         <input type="submit" value="注册" />
+       </li>
+ 		</ul>	
+</form>
+<script>
+    //构建对象  17:52---17:57
+    var http = null;
+    if(window.XMLHttpRequest){
+      //Ch FF Sa IE9+
+      http = new XMLHttpRequest();
+    }else{
+      //IE8-
+      http = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    console.log(http);
+</script>

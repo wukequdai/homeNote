@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr=[3,1,12,123,23,2];
+			//function compare(a,b){return a-b;}
+			//var compare=function(a,b){return a-b;}
+			var compare=
+				new Function("a","b","return a-b;");
+			//arr.sort(compare);
+			arr.sort(function(a,b){return a-b});
+			console.log(String(arr));
+		</script>
+	</body>
+</html>

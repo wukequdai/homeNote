@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a=10;
+			var b=a;//将a中的值复制一个副本给b
+			b++;//a++
+			console.log(a,b);
+
+			var dong=["包","包","包","包"];
+			var xu=dong;
+			xu.length--;//xu吃了个包子
+			console.log(String(dong));
+
+			var card=10;
+			function buy(card){
+				card-=3;
+				console.log("余额:"+card);
+			}
+			buy(card);//7
+			console.log("余额:"+card);//10
+
+			var dong=["包","包","包","包"];
+			function eat(arr){
+				arr.length--;
+				console.log(arr.length);
+			}
+			eat(dong);//3
+			console.log(dong.length);//3
+
+		</script>	
+	</body>
+</html>

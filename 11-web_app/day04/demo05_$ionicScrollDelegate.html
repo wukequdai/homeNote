@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+
+  <ul class="list list-inset">
+    <li class="item" ng-repeat="count in countList">
+      {{count}}
+    </li>
+  </ul>
+
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+  <button
+    ng-click="toTop()"
+    class="button button-small button-balanced">
+    Top
+  </button>
+  <button
+    ng-click="savePosition()"
+    class="button button-small button-positive">
+    save
+  </button>
+  <button
+    ng-click="toPosition()"
+    class="button button-small button-assertive">
+    滚动
+  </button>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',
+    ['$scope', '$ionicScrollDelegate',
+    function ($scope,$ionicScrollDelegate) {
+      $scope.countList = [];
+      for(var i=0;i<50;i++)
+      {
+        $scope.countList.push(i);
+      }
+
+      $scope.toTop = function () {
+        $ionicScrollDelegate.scrollTop(true);
+      }
+      //保存当前滚动的位置
+      $scope.savePosition = function () {
+        var obj = $ionicScrollDelegate.getScrollPosition();
+        console.log(obj);
+        localStorage.setItem('position',obj.top);
+      }
+
+      //滚动到指定的位置
+      $scope.toPosition = function () {
+        var top = localStorage.getItem('position');
+        $ionicScrollDelegate.scrollTo(0,top,true);
+      }
+  }]);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

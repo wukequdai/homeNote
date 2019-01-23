@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 使用HTML 元素事件 执行 JS 代码 -->
+		<!-- 在点击按钮时，在控制台上 打印输出 ：让你点你就点啊!!! -->
+		<button onclick="console.log('让你点你就点啊 !!!');">点我啊!!!</button>
+
+		<!-- 嵌入 <script>标记，完成JS代码执行 -->
+		<script>
+			console.log("这是一段在script标记中的JS");
+		</script>
+		<script>
+			console.log("这是另外一段script标记中的JS");
+		</script>
+		<!-- 引入 外部 js文件 -->
+		<script src="script.js"></script>
+
+		<!-- 在页面上 打印输出一段话 --->
+		<script>
+			document.write("<h1>Hello World</h1>");
+		</script>
+	</body>
+</html>

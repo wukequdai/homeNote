@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--调用模块-->
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+</head>
+
+<body>
+
+<!--通过ngController 调用控制器-->
+<div ng-controller="myCtrl">
+  <ul>
+    <li ng-repeat="dish in dishList">
+      <img ng-src="img/{{dish.url}}" alt=""/>
+      <p>{{dish.name}}</p>
+      <p>{{dish.price}}</p>
+    </li>
+  </ul>
+  <button ng-click="loadMore()">加载更多</button>
+</div>
+
+<script>
+  //创建模块
+  var app = angular.module('myApp',['ng']);
+
+  //创建控制器
+  app.controller('myCtrl',function($scope){
+
+    //构造数据
+    $scope.dishList = [
+      {url:'1.jpg',name:'鱼香肉丝1',price:31},
+      {url:'2.jpg',name:'鱼香肉丝2',price:32},
+      {url:'3.jpg',name:'鱼香肉丝3',price:33}
+    ];
+
+    //指定一个方法
+    $scope.loadMore = function(){
+      console.log("button is clicked");
+
+      //对dishList进行数据操作
+      $scope.dishList.push(
+        {url:'4.jpg',name:'鱼香肉丝4',price:34});
+
+    }
+
+
+  });
+
+</script>
+
+</body>
+</html>

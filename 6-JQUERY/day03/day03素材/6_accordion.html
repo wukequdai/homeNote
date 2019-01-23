@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.accordion{width:80%;margin:0 auto}
+		.accordion .title{
+			background:#eee;
+			border:1px solid #aaa;
+			padding:6px;
+			font-size:1.5em;
+			font-weight:bold;
+			cursor:pointer;
+		}
+		/*.accordion>.content{
+			padding:0 6px;
+			border:0;
+			border:1px solid #aaa;
+		}*/
+		.fade{height:0;overflow:hidden;
+		transition:all .5 linear;opacity:0;}
+		.in{
+			height:60px;opacity:1;
+			padding:6px;
+			border:1px solid #aaa;
+		}
+	</style>
+ </head>
+ <body>
+	<h1>使用“高度动画”实现“手风琴”组件</h1>
+	<div class="accordion">
+		<div class="title">红楼梦简介</div>
+		<div class="content">一个男人和很多女人的故事
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora ipsa exercitationem ullam et ipsam iusto earum porro voluptatum cum at asperiores velit molestias aliquam repellat officia necessitatibus beatae neque laudantium.
+		</div>
+		<div class="title">三国演义简介</div>
+		<div class="content">三个男人的故事Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tempora assumenda dignissimos quis architecto voluptas quos soluta earum illo ipsum sapiente iusto tempore similique labore tenetur magni veniam corrupti dolore.</div>
+		<div class="title">一路向西</div>
+		<div class="content">一个男人的经历Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque assumenda voluptate ut magni libero non animi voluptates veritatis mollitia asperiores sed molestias repellat. Natus expedita amet totam pariatur optio. Placeat.	</div>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		$(".accordion>.title").click(function(){
+			//让当前title旁边的content切换上滑或下滑
+			$(this).next().slideToggle()
+							.siblings(".content").slideUp();
+		}).first().next().show()
+		.siblings(".content").hide();
+	</script>
+ </body>
+<html>

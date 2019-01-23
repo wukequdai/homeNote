@@ -1,0 +1,218 @@
+框架：优秀的可以重复使用的代码，单独提取并封装，提高开发速度，提高代码质量，提高代码的复用率，降低你的测试难度。。。
+
+学习框架，不再靠记忆，理解、查手册、勤动手。
+
+一、设计原则和设计模式
+
+1、七大设计原则：
+①YANGNI 
+you aren't goona need it 不写不需要的代码
+
+②KISS 
+keep it simple and stupid 代码保持简介
+
+③DRY 
+Don't Repeat Yourself 不要重复自己
+
+④高内聚低耦合
+
+内聚： 一个模块内部 相关功能之间的关系
+耦合： 不同模块之间的关系
+
+⑤SRP 
+Single Responsibility Principle 单一责任原则
+
+每一个模块/方法实现 单一的功能
+
+⑥OCP 
+open close principle 开闭原则：对于扩展是开放的，对于直接修改是闭合的
+
+⑦LCP
+least knowledge principle 最少知识法则
+
+
+2、设计模式
+总体来说设计模式分为三大类：
+
+①创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+
+②结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
+
+③行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+
+常用的设计模式：①工厂方法 ②单例模式 ③适配器模式 ④迭代模式 
+
+
+mv*设计模式：提高代码质量，是23种设计模式的一些的组合。
+
+MVC：
+Model  模型数据 (有线电视传输的数据)
+View  视图 （电视）
+Controller 控制器 （遥控器）
+
+
+二、AngularJS（ng）
+
+1、介绍
+认识一个框架：①官网 ②维基百科（https://wikipedia.org/）
+
+what？ 是一个开源的前端框架，是google和一些社区共同维护的
+when？实现SPA（单一页面应用程序）程序
+
+why？ 
+①采用了MVC
+②双向数据绑定
+③依赖注入
+④模块化设计
+
+
+
+
+2、ng基础知识
+
+1、表达式：语法 {{ 运算的表达式}}
+
+2、指令
+
+2.1 
+ngApp ①指定作用范围 ②启动ng，ng的指令和表达式就可以被识别的 ng-app ③调用了多次ngApp，首次调用生效
+
+2.2
+ngInit 初始化数据，如果初始化多条数据，可以用分号隔开
+<ANY ng-init="age=20;score=80"></ANY>
+
+练习：使用ngInit初始化一个学生数组，每个学生：name age score，将这个包含有个5个学生对象的数组 显示在table中。
+
+初始化对象数组
+将数据显示在table中。
+
+2.3
+ngBind 将表达式的值 替换调用ngBind的元素的内容
+解决双花括号 闪烁的问题。
+
+指令可以作为扩展属性来使用，还可以作为标签来使用
+<html ng-app>
+<ng-view/>
+
+2.4 ngRepeat
+语法1：
+<ANY ng-repeat="tmp in list">{{tmp}}</ANY>
+语法 2：
+<ANY ng-repeat="(key，value) in list"></ANY>
+
+
+注意事项：如果要遍历的集合中有重复的数据，通过加上track by $index解决报错问题。
+
+ <ul>
+    <li ng-repeat="item in list track by $index">{{item}}</li>
+  </ul>
+
+使用ngRepeat指令来重构学生数组展示在table中的练习。
+
+
+3部分构成：
+①顺序结构
+②选择结构
+③循环结构
+
+2.5 ngIf(插入到DOM或者删除)
+<ANY ng-if=""></ANY>
+
+只显示85分以上的数据。
+
+2.6 其它指令
+ngSrc：将一个数据给img去显示，数据前后加上双花括号，同时将src改成ngSrc
+<img ng-src="img/{{url}}">
+
+ngShow/ngHide 根据表达式的结果去显示或者隐藏调用指令的元素
+
+ngDisabled/ngChecked/ngSelected
+ngStyle ngClass
+ngClick
+事件的处理：
+on** --> ng**
+
+
+三、AngularJS 特征（采用MVC设计模式）
+1、什么是MVC
+M:model 定义的模型数据（变量）
+V: view 通过ng指令和表达式增强后的html
+C: controller 完成对数据的增删改查的操作
+
+2、MVC的基本工作原理
+
+操作视图的时候，触发控制器中指定的一些方法，在方法中对模型数据做了增删改查相关的操作，由于将模型数据通过绑定完了数据和视图的绑定关系，数据更新了，视图也会跟着自动更新
+
+
+3、ng使用MVC的基本步骤
+①完成模块的创建和调用
+var app = angular.module('myApp',['ng'])
+ng-app="myApp"
+②完成控制器的创建和调用
+app.controller("myCtrl",function(){
+
+})
+<div ng-controller="myCtrl"></div>
+③定义模型数据，绑定到视图
+(将模型数据和方法都定义在$scope中)
+$scope.num = 10;
+
+<p>{{num}}</p>
+
+4、注意事项：
+①模块的名称、控制器的名称在调用时不要写错
+②控制器有一个作用范围，就是ngController所在的元素的所有的子节点都是可以调用控制器中所定义的模型数据和方法
+③$scope 是一个作用域控制对象，将模型数据和方法 都是放在这个对象中。
+
+
+对事件的处理：
+onClick=“”
+--》
+ng-click=""
+
+练习：采用MVC的方式，实现一个加载更多的效果
+①构造数据
+对象数组 每个对象：url、name、price
+②显示数据
+ngRepeat {{}}
+③指定单击的处理函数（对数据进行操作就可以）
+button ng-click="add()"
+
+$scope.add = function(){
+
+}
+
+数据可以通过ngInit去初始化数据，也可以通过控制器中的$scope对象去定义数据。
+建议使用$scope：
+①ngInit在视图中定义数据
+②使用$scope,清晰判断每个数据的作用范围
+
+使用MVC构建一个ng应用基本步骤：
+①引入必要的js文件
+②创建模块
+var app = angular.module('myApp',['ng']);
+③调用模块
+ng-app='myApp'
+④创建控制器
+app.controller('myCtrl',function($scope){})
+⑤调用控制器
+ng-controller='myCtrl'
+⑥定义模型数据
+$scope.num = 10;
+$scope.list = [];..
+⑦在控制器的视图范围内容调用并显示
+<div ng-controller='myCtrl'>
+  <p>{{num}}</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

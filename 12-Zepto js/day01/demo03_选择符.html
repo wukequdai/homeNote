@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/zepto.js"></script>
+  <title></title>
+  <style>
+    .page{
+      color:red
+    }
+  </style>
+</head>
+<body>
+
+<h1>Hello Zepto</h1>
+<h1 class="page">Hello World</h1>
+
+<button id="btn">ClickMe</button>
+
+<ul>
+  <li>test01</li>
+  <li>test02</li>
+  <li>test03</li>
+  <li>
+    <ol>
+      <li>demo01</li>
+      <li>demo02</li>
+      <li>demo03</li>
+    </ol>
+  </li>
+</ul>
+
+<div name="test"> Tmooc </div>
+
+
+<script>
+  $(function () {
+    //标签选择符
+    console.log($('h1'));
+
+    //id选择符
+    console.log($('#btn'));
+
+    //父子选择符
+    console.log($('ul>li'));
+
+    //后代选择符
+    console.log($('ul li'));
+
+    //属性选择符
+    console.log($('[name=test]'));
+
+    //class选择符
+    console.log($('.page'));
+  })
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

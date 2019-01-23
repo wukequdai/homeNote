@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--模块的调用-->
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+</head>
+<body>
+
+<!--调用控制器：myCtrl-->
+<div ng-controller="myCtrl">
+  <p>{{num}}</p>
+</div>
+
+<script>
+  //创建模块:myApp
+  var app = angular.module("myApp",['ng']);
+
+  //创建控制器:myCtrl
+  //$scope 作用域控制对象（服务）
+  app.controller("myCtrl",function($scope){
+      console.log(' in myCtrl ');
+      $scope.num = 100;
+      console.log($scope);
+  })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			if(navigator.cookieEnabled){
+				document.write("浏览器已启用cookie，请妥善保存个人信息");
+			}else{
+				document.write("浏览器已禁用cookie，记住密码功能无法使用")
+			}
+			//设置->显示高级->隐私->内容设置
+
+			function checkPlugin(pname){
+				//遍历navigator的plugins集合
+			 for(var i=0;i<navigator.plugins.length;i++){
+					//如果当前插件的name等于pname
+					if(navigator.plugins[i].name==pname)
+						return true;//返回true
+			 }//(遍历结束)
+				return false;//返回false
+			}
+			document.write(checkPlugin("Tencent QQ"));
+			document.write(checkPlugin("Shockwave Flash"));
+
+			document.write("<h1>"+navigator.userAgent+"</h1>");
+			var browser="unknown";
+			var ua=navigator.userAgent;
+			//如果ua中包含MSIE
+			if(ua.indexOf("MSIE")!=-1)
+				browser="IE";
+			//否则,如果ua中包含Firefox
+			else if(ua.indexOf("Firefox")!=-1)
+			  browser="Firefox";
+			//否则,如果ua中包含OPR
+			else if(ua.indexOf("OPR")!=-1)
+			  browser="Opera";
+			//否则,如果ua中包含Chrome
+			else if(ua.indexOf("Chrome")!=-1)
+			  browser="Chrome";
+			//否则,如果ua中包含Safari
+			else if(ua.indexOf("Safari")!=-1)
+			  browser="Safari";
+
+	    var version="unknown";
+			//如果browser不是unknown
+			if(browser!="unknown"){
+				//如果browser是Opera
+				if(browser=="Opera")
+					//在ua中找OPR的位置,+3+1,保存在i中
+					var i=ua.indexOf("OPR")+3+1;
+				else//否则
+					//在ua中找browser的位置,+browser的字符个数+1,保存在i中
+					var i=
+						ua.indexOf(browser)+browser.length+1;
+
+				//选取ua中i位置开始的3位，转为浮点数，保存在version中	
+				version=parseFloat(ua.slice(i,i+3));
+			}
+
+			document.write("<h1>"+browser+"</h1>")
+			document.write("<h1>"+version+"</h1>")
+		</script>
+	</body>
+</html>

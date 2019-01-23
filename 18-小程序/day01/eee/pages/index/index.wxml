@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+   <button bindtap="abc">点击</button>
+   <view id="zz" style="display:{{uuu}};color:#f00;">{{vvv}}</view>
+
+</view>

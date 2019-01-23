@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>自我介绍</title>
+		<link rel="Stylesheet" href="index.css"/>
+	</head>
+	<body>
+		<div id="parentDiv">
+<div id="lilei" onmouseover="" onmouseout="dialog.style.display='none'">
+</div>
+<div id="hmm" onmouseover="" onmouseout="dialog.style.display='none'">
+</div>
+			<div id="dialog">
+			</div>
+		</div>
+		<script>
+			//创建对象lilei
+				//name: Li Lei
+				//age: 11
+
+				//intr: 说: "I'm Li Lei, I'm 11"
+			var lilei={
+				sname:"Li Lei",
+				sage:11,
+				intr: function(){
+					console.log("I'm "+sname+", I'm "+sage);
+				}
+			}
+			console.log(lilei.sage);//11
+			lilei.sage++;
+			console.log(lilei.sage);//12
+			lilei.intr();
+		</script>
+	</body>
+</html>

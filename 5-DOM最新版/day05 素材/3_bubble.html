@@ -1,0 +1,32 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/3.css"/>
+		
+	</head>
+	<body>
+		<div class="d1">
+			<div class="d2">
+				<div class="d3">
+				</div>
+			</div>
+		</div>
+    <script>
+			function heightLight(e){
+				//设置当前div的背景颜色
+				this.style.background="yellow";
+				alert(this.className);//提示当前div的class
+				this.style.background="";//清除div的背景
+				e.stopPropagation();//停止蔓延，取消冒泡
+			}
+			var d1=document.querySelector(".d1");
+			d1.addEventListener("click",heightLight);
+			var d2=document.querySelector(".d2");
+			d2.addEventListener("click",heightLight);
+			var d3=document.querySelector(".d3");
+			d3.addEventListener("click",heightLight);
+		</script>
+	</body>
+</html>

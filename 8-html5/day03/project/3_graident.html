@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>使用渐变对象</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    //创建线性渐变对象
+    var g2 = ctx.createLinearGradient(50,50,450,50);
+    g2.addColorStop(0, '#f00');
+    g2.addColorStop(0, '#f00');
+    g2.addColorStop(0.5, '#ff0');
+    g2.addColorStop(1, '#0f0');
+
+    //使用渐变对象
+    //ctx.fillStyle = '#f00';
+    ctx.fillStyle = g2;
+    ctx.fillRect(50,50, 400, 100);
+
+    //ctx.strokeStyle = g2;
+    //ctx.strokeRect(50,50, 400, 100);
+
+    var txt = '达内科技2017';
+    ctx.font = '60px SimHei';
+    ctx.fillText(txt, 50, 300);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<p>{{count}}</p>
+
+<input type="text" ng-model="number"/>
+<h1>{{number}}</h1>
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+    $scope.count = 10;
+    console.log($scope.number);
+
+    $scope.$watch('number',function(){
+      console.log($scope.number);
+    })
+
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

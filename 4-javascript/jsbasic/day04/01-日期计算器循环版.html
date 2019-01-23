@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function calDate(){
+				//1、输入年月日
+				var year,month,day;
+				year=Number(prompt("Year:"));
+				month=Number(prompt("Month:"));
+				day=Number(prompt("Day:"));
+				var totalDays = 0;//用于累加天数的变量
+				//2、判断是否为闰年
+				var isRun=year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+				//3、将 当前月 之前的每一个月的天数累加到一起
+					//3.1 条件：从1月开始，<month
+					//3.2 操作：判断具体是哪个月，追加对应的天数 1.3.5.7.8.10 : 追加31天，4.6.9.11 ：追加30天，2：平年追加28天，闰年追加29天
+				//4、将day追加到结果上
+				var i=1;//从 1 月开始
+				while(i<month){
+					//变量i，在循环中，表示的就是 输入月份之前的 每一个月
+					//console.log(i);
+					switch(i){
+						case 1:
+						case 3:
+						case 5:
+						case 7:
+						case 8:
+						case 10:
+							totalDays+=31;
+							break;
+						case 4:
+						case 6:
+						case 9:
+						case 11:
+							totalDays+=30;
+							break;
+						case 2:
+							/*totalDays+=28;
+							if(isRun){
+								totalDays+=1;
+							}*/
+							if(isRun){
+								totalDays+=29;
+							}else{
+								totalDays+=28;
+							}
+							break;
+					}
+					i++;//更新循环变量
+				}
+				totalDays+=day;
+				console.log(totalDays);
+			}
+		</script>
+		<button onclick="calDate();">日期计算器</button>
+	</body>
+</html>

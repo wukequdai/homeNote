@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Two.js的使用 —— 使用动画</h1>
+  <div id="container"></div>
+
+  <script src="js/two.js"></script>
+  <script>
+    var param = {
+      width:800,
+      height:400,
+      type: Two.Types.svg
+    };
+    var two = new Two(param).appendTo(container);
+
+    //使用Two.js提供的API创建一个圆形—— 定位点在中央
+    var c = two.makeCircle(200,200, 100);
+
+    //使用Two.js提供的API创建一个矩形—— 定位点在中央
+    var r = two.makeRectangle(600,200,200, 200);
+
+    /*
+    * Two.js动画原理：
+    * 调用two.play()方法，它内部每1秒调用60次two.update()
+    * 每次调用update()函数会触发'update'事件
+     */
+    //var counter = 0;
+    var deg = 0;
+    two.on('update', function(){
+      //counter++;
+      //console.log('UPDATE事件发生一次：'+counter);
+      r.rotation = deg*Math.PI/180;
+      deg += 3;
+    })
+
+    two.play();
+    //two.update();
+    //two.update();
+  </script>
+</body>
+</html>

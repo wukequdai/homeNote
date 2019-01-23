@@ -1,0 +1,53 @@
+练习：
+通过uiRouter来管理代码片段:login、register、main
+login:
+ button(没有账号，去注册 js)-->register
+ button(登录 ui-sref) -->main  传参id,值为50
+
+register:
+ a(注册完成，去登录) -->login
+
+main  接收参数，将50显示出来
+ a(退出登录) --》login 
+
+
+传参： login->main
+①明确发送接收
+send: login
+recv: main
+②配置接收方
+state('',{
+url:'/myMain/:id'
+})
+
+$stateParams.id
+③发送
+$state.go('main',{id:3})
+ a ui-sref='main({id:3})'
+a href='#/myMain/3'
+
+ui-router嵌套：支持在代码片段中，去嵌入其它的代码片段
+步骤：
+①在需要插入代码片段的页面（状态为mail），加上ui-view
+②创建需要的代码片段
+③指定状态
+.state('mail.设置的状态名称')
+.state('mail.inbox')
+④触发状态
+ui-sref='mail.inbox'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

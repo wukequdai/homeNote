@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function pay(){//现金结账
+				if(arguments.length==1){
+					console.log("现金结账");
+				}else if(arguments.length==2){
+					console.log("刷卡结账");
+				}else{
+					console.log("微信结账");
+				}
+			}
+
+			pay(100);//现金结账
+			pay("xxxx xxxx","******");//刷卡结账
+			pay();//微信结账
+
+			function add(){
+				//遍历arguments中每个元素,同时声明sum=0
+					//将arguments中当前元素累加到sum上
+				for(var i=0,sum=0;
+						i<arguments.length;
+						sum+=arguments[i++]);
+				return sum;
+			}
+			console.log(
+				add(1,2,3),//6
+				add(1,2,3,4,5)//15
+			);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+</head>
+<body>
+
+<!--指定容器-->
+<ng-view></ng-view>
+
+<script>
+  var app = angular.module('myApp',['ng','ngRoute'])
+
+  //配置路由词典
+  app.config(function ($routeProvider) {
+    $routeProvider
+      .when('/myPerson',{
+        templateUrl:'tpl/person.html',
+        controller:'personCtrl'
+      })
+      .when('/mySetting',{
+        templateUrl:'tpl/setting.html'
+      })
+      .otherwise({redirectTo:'/myPerson'})
+  })
+
+
+  app.controller('personCtrl',["$scope","$location",
+  function($scope,$location){
+      $scope.jump = function () {
+        $location.path('/mySetting');
+      }
+  }
+  ])
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

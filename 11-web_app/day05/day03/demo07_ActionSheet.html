@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <!-- meta:vp -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="ActionSheetCtrl">
+
+<ion-header-bar class="bar-calm">
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <button
+    ng-click="showActionSheet()"
+    class="button button-balanced">
+    显示一个actionSheet
+  </button>
+</ion-content>
+
+<ion-footer-bar class="bar-calm">
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('ActionSheetCtrl', [
+    '$scope', '$ionicActionSheet',
+    function ($scope, $ionicActionSheet) {
+      $scope.showActionSheet = function () {
+          $ionicActionSheet.show({
+            titleText:'分享',
+            cancelText:'取消',
+            cancel: function () {
+              console.log('取消按钮被点击了');
+              return true;
+            },
+            buttons:[
+              {text:'分享到微博'},
+              {text:'分享到朋友圈'}
+            ],
+            buttonClicked: function (index) {
+              console.log('自定义的按钮被点击了'+index);
+              return true;
+            },
+            destructiveText:'删除',
+            destructiveButtonClicked: function () {
+              console.log('删除按钮被点击了');
+              return true;
+            }
+          });
+      }
+    }
+  ])
+
+</script>
+
+</body>
+</html>

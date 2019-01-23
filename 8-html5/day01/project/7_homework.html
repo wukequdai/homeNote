@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<form action="">
+  用户名：<input type="text" name="uname" id="uname" required minlength="3"/><br/>
+
+  <input type="submit"/>
+</form>
+
+<script>
+  uname.onblur = function(){
+    if(uname.validity.valueMissing){
+      uname.setCustomValidity('用户名是必填的！')
+    }else if(uname.validity.tooShort){
+      uname.setCustomValidity('用户名长度不能小于3位！')
+    }else {
+      uname.setCustomValidity('')
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

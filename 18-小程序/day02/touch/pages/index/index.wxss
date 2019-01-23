@@ -1,0 +1,2 @@
+/**index.wxss**/
+  .inner view{ width:750rpx; height:300px; float:left;}

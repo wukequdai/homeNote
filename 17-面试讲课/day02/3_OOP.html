@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<script>
+//  window.a=300;
+//  function fn1(){
+//    this.a=100; this.b=200;
+//    //如果构造函数return一个引用类型的对象
+//    //则构造函数不再创建新对象
+//    return function(){
+//      alert(this.a);
+//    }.call(arguments[0]);
+//  }
+//  function fn2(){ this.a=new fn1(); }
+//  var a=new fn1().b;//300
+//  //a:200
+//  var v=new fn1(fn2());//200 [object Object]
+//  //a:{a:100,b:200}
+//  //v:{a:100,b:200}
+
+//  var setObj=function(o){
+//    o.name="xiaoming";
+//    o={};//创建一个新对象给o
+//         //o不再引用p
+//    o.name="xiaohong";
+//  }
+//  var p={name:"xixi",age:24};
+//      //name:"xiaoming",
+//  setObj(p);
+//  console.log(p);//{name:xiaoming,age:24}
+
+  //var number=2;//4//8
+  //var obj={
+  //  number:4,//8
+  //  fn1:(function(){
+  //    //var number;
+  //    this.number*=2;
+  //    number*=2;
+  //    var number=3;
+  //    return function(){
+  //      this.number*=2;
+  //      number*=3;
+  //      alert(number);
+  //    }
+  //  })()
+  //  //fn1:function(){ number=3//9//27
+  //      //this.number*=2;
+  //      //number*=3;
+  //      //alert(number);
+  //  //}
+  //}
+  //var fn1=obj.fn1;
+  //alert(number);//4
+  //fn1();//9
+  //obj.fn1();//27
+  //alert(window.number);//8
+  //alert(obj.number);//8
+
+  //var x=5,o={
+  //  x:10,
+  //  doit:function doit(){
+  //    var x=20;
+  //    setTimeout(
+  //      function(){alert(this.x)},10
+  //    );
+  //  }
+  //}
+  //alert(o.doit());//undefined
+  ////(function(){alert(this.x)})();//5
+
+  //function Foo(){
+  //  getName=function(){alert(1)};
+  //  return this;
+  //}
+  //Foo.getName=function(){alert(2)};
+  //Foo.prototype.getName=function(){alert(3)};
+  //var getName=function(){alert(4)};
+  //function getName(){alert(5)};
+  //Foo.getName();//2
+  //getName();//4
+  //Foo().getName();//1
+  ////getName:function(){alert(1)}
+  //getName();//1
+  //new Foo.getName();//2
+  //new Foo().getName();//3
+  //new new Foo().getName();//3
+
+  var foo=function(){console.log(this.a);}
+  var obj={a:2,foo:foo};
+  var a=10;
+  var bar=obj.foo;
+  var bar2=foo.bind(obj);
+  //bar2:function(){console.log(obj.a);}
+  bar();//10
+  bar2();//2
+  foo();//10
+  obj.foo();//2
+  setTimeout(bar,0);//10
+</script>
+</body>
+</html>

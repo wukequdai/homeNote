@@ -1,0 +1,7 @@
+/*标准的css，在任何浏览器中均能正常显示的CSS代码*/
+h1{
+	color:red;
+	background-color:blue;
+	font-family:"微软雅黑";
+	border:1px solid black;
+}

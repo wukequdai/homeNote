@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>继承与扩展</title>
+	</head>
+	<body>
+		<script>
+			function Flyer(name,speed){
+				this.name=name;
+				this.speed=speed;
+			}
+			Flyer.prototype.fly=function(){
+				console.log(
+					this.name+"以时速"+this.speed+"飞行");
+			}
+			
+			function Plane(name,speed,score){
+				Flyer.call(this,name,speed);
+					//相当于: this.Flyer(name,speed)
+				this.score=score;
+			}
+			Plane.prototype.getScore=function(){
+				console.log("击落敌机,得分"+this.score);
+			}
+			//让子类型原型对象，继承父类型原型对象
+			Object.setPrototypeOf(
+				Plane.prototype,Flyer.prototype
+			);
+			var f16=new Plane("F16",1000,20);
+			f16.fly();
+			f16.getScore();
+
+			function Bee(name,speed,award){
+				Flyer.call(this,name,speed);
+				this.award=award;
+			}
+			Bee.prototype.getAward=function(){
+				console.log("击落蜜蜂,得奖励"+this.award);
+			}
+			//让子类型原型对象，继承父类型原型对象
+			Object.setPrototypeOf(
+				Bee.prototype,Flyer.prototype
+			);
+			var bee=new Bee("小蜜蜂",60,"1 life");
+			bee.fly();
+			bee.getAward();
+		</script>
+	</body>
+</html>

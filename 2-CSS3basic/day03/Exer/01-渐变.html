@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			#comment{
+				width:90%;
+				min-height:50px;
+				border:1px solid #D0E4C2;
+				padding:10px;
+				margin-bottom:15px;
+			}
+			#pages a{
+				/*边框，倒角，内边距*/
+				border:1px solid #ccc;
+				border-radius:5px;
+				padding:3px 10px;
+			}
+			#pages .current{
+				border:none;
+			}
+
+			/*2017.01.06 作业*/
+			#comment{
+				background:#FDFFFA;
+			}
+
+			#comment div.topic{
+				border-bottom:1px solid #D0E4C2;
+				padding:0 0 5px 5px;
+			}
+			.star{
+				width:76px;
+				height:15px;
+				background:url(../Images/iconlist_1.png) no-repeat;
+			}
+			.star5{
+				background-position:-108px -238px;
+			}
+			.star4{
+				background-position:-123px -238px;
+			}
+			.star3{
+				background-position:-138px -238px;
+			}
+			.star2{
+				background-position:-153px -238px;
+			}
+			.star1{
+				background-position:-168px -238px;
+			}
+
+			#comment b{
+				background:#FCECD2;
+				padding:3px 5px;
+			}
+			
+			#pages a:hover{
+				background:#005aa0;
+				color:#fff;
+			}
+			#pages a.current{
+				background:transparent;
+				color:black;
+			}
+			
+			#comment button{
+				width:80px;
+				height:38px;
+				border:1px solid #D5D5D3;
+				border-radius:3px;
+				background-image:linear-gradient(to bottom,#f9f9f9,#ccc);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="comment">
+			<!-- 五角星 -->
+			<div class="topic">
+				<div class="star star3"></div>
+			</div>
+			<p>
+				标&nbsp;&nbsp;签：
+				<b>比洗衣粉好</b>
+				<b>去污能力强</b>
+			</p>
+			<p>
+				心&nbsp;&nbsp;得：
+				买了几次了，挺好用的，洗的衣服挺干净
+			</p>
+			<p>
+				购买日期：
+				2014-12-01
+			</p>
+			<p>
+				<button>有用(3)</button>
+				<button>回复(3)</button>
+			</p>
+		</div>
+		<div id="pages">
+			<a class="current">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+		</div>
+	</body>
+</html>

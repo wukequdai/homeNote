@@ -1,0 +1,51 @@
+正课:
+1. *****ES5: 
+  数组API: 过滤和汇总
+  bind()
+  严格模式
+
+1. 数组API: 
+  过滤: 选取出原数组中符合条件的元素，组成新数组返回
+      var subArr=arr.filter(function(val,i,arr){return 判断条件})
+  汇总: 依次统计数组中每个元素的值，最终得出一个结果
+      var result=arr.reduce(function(prev,val,i,arr){
+           //prev: 获得的是截至目前的临时汇总至
+           return prev和val的汇总值。
+      }, startVal)
+
+2. bind()
+  什么是: 基于一个现有函数，创建一个新函数，并提前绑定this
+  为什么: call和apply，都是临时借用，不是永久绑定。
+  何时: 只要希望一个函数中的this，始终固定指向一个对象。
+  如何: 
+     function 原函数(参数1,参数2,...){...}
+     var 新函数=
+	原函数.bind(替换this的对象[, 提前绑定的部分参数])
+     新函数(剩余参数值) //新函数不用再用call/apply绑定this
+  鄙视: 
+    区分call apply bind
+    call和apply: 临时借用函数，并替换函数中的this
+        调用函数
+                       参数： call: 所有参数单独传入
+                                  apply: 所有参数放入数组中集中传入
+    bind: 创建函数, 永久绑定函数中的this
+        创建函数
+3. 严格模式:  比普通js运行模式更严格的运行模式
+    新项目最好都在严格模式下开发
+    旧项目应该逐个方法向严格模式迁移
+
+    如何: 在代码段开头: "use strict";
+       加在script的开头，整个script启用严格模式——新项目
+       加在单个function的内部开头，仅对当前函数启用严格模式
+				——旧项目
+
+    要求: 
+      1. 将静默失败升级为了错误！
+      2. 禁止对未声明的变量赋值！
+      3. 增加了eval作用域
+      4. 不建议使用arguments.callee或caller
+
+
+
+
+

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function calScore(){
+				//1、输入一个考试分数，保存在score变量
+				var score = prompt("请输入考试分数:");
+				//2、成绩判断...
+				if(score>=90){
+					console.log("A");
+				}else if(score>=80){
+					console.log("B");
+				}else if(score>=60){
+					console.log("C");
+				}else{
+					console.log("D");
+				}
+			}
+		</script>
+		<button onclick="calScore();">测试成绩</button>
+	</body>
+</html>

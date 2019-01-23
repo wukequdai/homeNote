@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Two.js的使用 —— 绕画布中央的旋转动画</h1>
+  <div id="container"></div>
+
+  <script src="js/two.js"></script>
+  <script>
+    var param = {
+      width:800,
+      height:400,
+      type: Two.Types.svg
+    };
+    var two = new Two(param).appendTo(container);
+
+    //使用Two.js提供的API创建一个圆形—— 定位点在中央
+    //var c = two.makeCircle(200,200, 100);
+    var c = two.makeCircle(-200,0, 100);
+
+    //使用Two.js提供的API创建一个矩形—— 定位点在中央
+    //var r = two.makeRectangle(600,200,200, 200);
+    var r = two.makeRectangle(200,0,200, 200);
+
+    //创建一个透明的塑料袋(其中心在画布的中央)，包含矩形，让塑料袋旋转起来——小组内所有图形的坐标值都是相对于小组的原点
+    var g = two.makeGroup( r, c ); //“小组”对象的默认位置在(0,0)
+    console.dir(g);
+    g.translation.x = 400;  //修改“小组”的坐标
+    g.translation.y = 200;
+
+    var deg = 0;
+    two.on('update', function(){
+      //让小组绕自己的中心旋转
+      g.rotation = deg * Math.PI/180;
+      deg += 3;
+    })
+
+    two.play();
+  </script>
+</body>
+</html>

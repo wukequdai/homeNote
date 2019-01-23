@@ -1,0 +1,9 @@
+.media {
+  margin-bottom: 50px;
+}
+.media-left {
+  float: left;
+}
+.panel {
+  border: 50px solid transparent;
+}

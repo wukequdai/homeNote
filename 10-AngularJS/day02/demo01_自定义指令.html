@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<p>{{count}}</p>
+
+
+<!--element-->
+<ts-hello></ts-hello>
+
+<!--attribute-->
+<div ts-hello></div>
+
+<!--class -->
+<div class="ts-hello"></div>
+
+<!-- comment -->
+<!-- directive: ts-hello -->
+
+<script>
+  var app = angular.module('myApp',['ng']);
+
+  //创建指令
+  app.directive('tsHello',function(){
+    return {
+      template:'<h2> Hello Directive </h2>',
+      restrict: 'EACM',
+      replace: true
+    }
+  });
+
+  app.controller('myCtrl',function($scope){
+    $scope.count = 10;
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

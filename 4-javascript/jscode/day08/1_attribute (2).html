@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			"use strict";//使用严格模式执行程序
+			var eric={
+				id:1001,//{value:  , writable:true,...}
+				name:"Eric",
+				sal:15000
+			};
+			console.dir(
+			  Object.getOwnPropertyDescriptor(eric,"id")
+			);
+		/*让id只读: 设置id的writable特性为false
+			console.log(eric.id);
+			Object.defineProperty(eric,"id",{
+				writable:false,
+				configurable:false
+			});
+
+			Object.defineProperty(eric,"id",{
+				writable:true,
+				configurable:true
+			});
+			eric.id=1002;
+			Object.defineProperty(eric,"id",{
+				writable:false
+			});
+			console.log(eric.id);
+		*/
+		/*让sal不可遍历
+			for(var key in eric){
+				console.log(key+":"+eric[key]);
+			}
+			Object.defineProperty(eric,"sal",{
+				enumerable:false
+			});
+			for(var key in eric){
+				console.log(key+":"+eric[key]);
+			}
+			console.log(eric.sal);
+		*/
+		/*禁止删除name属性:
+			Object.defineProperty(eric,"name",{
+				configurable:false
+			});
+			delete eric.name;
+			console.dir(eric);
+		*/
+		/*
+		  Object.defineProperty(eric,"age",{//自动创建
+				value:25,
+				writable:true,
+				enumerable:true,
+				//configurable:false
+			});
+			console.dir(
+				Object.getOwnPropertyDescriptor(eric,"age")
+			);
+		*/
+			//id只读
+			//name不可删除
+			//sal不可遍历
+			//添加age，值为24，可修改，可遍历，不可删除
+			Object.defineProperties(eric,{
+				id:{
+					writable:false,
+					configurable:false,
+				},
+				name:{
+					configurable:false
+				},
+				sal:{
+					enumerable:false,
+					configurable:false,
+				},
+				age:{
+					value:24,
+					writable:true,
+					enumerable:true,
+				}
+			});
+			//eric.id=1002;
+			//delete eric.name;
+			for(var key in eric){
+				console.log(key+":"+eric[key]);
+			}
+			console.dir(
+				Object.getOwnPropertyDescriptor(eric,"age")
+			);
+		</script>	
+	</body>
+</html>

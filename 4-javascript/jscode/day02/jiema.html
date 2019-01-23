@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+	 var msg="你好";
+	 function emcode(msg){
+		for(var i=0,code="";i<msg.length;i++){
+			var u=msg.charCodeAt(i);
+			u=(u+100000+"").slice(1);
+				code+=u;
+		}
+		return code;
+	 }
+	 var code=emcode(msg);
+	 document.write(code);
+	 function except(code){
+			for(var i=0,msg="";i<code.length;i+=5){
+				var sub=code.slice(i,i+5);
+				msg+=String.fromCharCode(
+				code.slice(i,i+5)
+				//code.substring(i,i+5)
+				//code.substr(i,5)
+				);
+			}
+			return msg;
+		}
+		alert(except(code));
+	</script>
+</body>
+</html>

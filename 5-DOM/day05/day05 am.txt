@@ -1,0 +1,42 @@
+正课: 
+1. ***BOM常用对象: history  location  navigator event
+
+1. history: 封装当前窗口打开后成功访问过的url的历史记录栈
+       无法读取和修改其内容
+    如何: history.go(1): 前进
+             history.go(-1): 后退
+             history.go(0): 刷新
+
+             history.go(n): 前进n次
+2. location: 封装当前窗口正在打开的url地址
+     属性: 
+       href: 完整url
+       protocol: 协议
+       host: 主机名+端口号:
+          hostname: 主机名
+          port: 端口号
+       pathname: 相对路径名称
+       hash: #锚点名
+       search: ?查询字符串
+    
+   在当前窗口打开新链接: 
+       location.href="url"
+       location.assign("url")
+       location="url";
+    禁止后退: location.replace("url");
+
+   刷新: location.reload(false/true)
+      force:  是否强制从服务器硬盘重新获取html文件
+            false: 优先从服务器缓存中快速获取html
+            true: 强制从服务器硬盘获取html文件
+
+3. navigator: 封装浏览器配置信息的对象
+   .cookieEnabled:  检测浏览器是否启用了cookie
+   .plugins: 包含浏览器安装的所有插件的集合
+   .userAgent: 记录浏览器内核，版本号，名称的字符串
+
+
+
+
+
+

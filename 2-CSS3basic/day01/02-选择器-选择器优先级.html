@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Insert your title</title>
+		<meta charset="utf-8">
+		<style>
+			div span{color:red;}/*1+1=2*/
+			#d1 span{color:yellow;}/*100+1=101*/
+			#p1 #s1{color:orange;}/*100+100=200*/
+			.c1 span{color:blue;}/*10+1=11*/
+			#d1 .c1 span{color:pink;}/*100+10+1=111*/
+			#d1 p span{color:purple;}/*100+1+1=102*/
+
+		
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<p id="p1" class="c1">
+				<span id="s1">div 中的 p 中的 span</span>
+			</p>
+		</div>
+	</body>
+</html>

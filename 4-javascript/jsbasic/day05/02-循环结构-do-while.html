@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function printMsg(){
+				/**让用户先录入数据，如果是 exit，则退出程序，否则打印输出 继续录入*/
+				do{
+					//1、用户录入数据
+					var input = prompt("请输入一个数据:");
+					if(input == "exit"){
+						console.log("程序结束!!");
+					}else{
+						console.log(input);
+					}
+					
+				}while(input != "exit");
+			}
+		</script>
+		<button onclick="printMsg();">测试do..while</button>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<view class="container">
+   <!--表盘-->
+   <view class="circle">
+     
+     <view class="sec" style="transform:rotate({{ngsec}}deg);"></view>
+   </view>
+
+</view>

@@ -1,0 +1,165 @@
+正课:
+1. ***DOM树
+    遍历: 
+2. ***查找: 
+
+1. ***DOM树: 
+   网页中一切内容在内存中都是以树形结构存储的。
+   今后只要存储上下级关系的数据，也要用树形结构
+
+   网页中的每项内容在内存中都是一个节点对象Node
+   包括: 
+      document: 整个树的根节点
+      网页中一切内容都是document的子节点
+
+   节点对象: Node  Node.prototype
+      三大属性: 
+        *nodeType: 节点的类型
+           document  9
+         *element      1
+           attribute     2
+         *text             3
+          问题: 只能区分节点类型，不能进一步区分元素类型
+          解决: 
+        *nodeName: 节点的名称
+           document  #document
+         *element      标签名   今后只要区分元素，就nodeName
+              强调: 所有元素的节点名都是全大写！
+           attribute     属性名
+         *text             #text
+         nodeValue: 节点值
+           document  null
+           element      null
+           attribute     属性值   都用.value
+           文本            文本内容  
+
+   节点间关系: 
+      节点树: 特点: 包含所有节点，包括看不见文本节点
+       1. 父子: parentNode   childNodes   firstChild    lastChild
+                       父                   直接子 
+       2. 兄弟: previousSibling    nextSibling
+                       前一个兄弟        后一个兄弟
+      问题: 会受到看不见的文本节点干扰。
+      解决: 
+      元素树: 只包含元素节点，不包含一切文本节点
+       1. 父子: parentElement  children IE8+   
+                       父                    直接子元素
+                    firstElementChild    lastElementChild
+       2. 兄弟:  previousElementSibling    nextElementSibling
+                       前一个兄弟                           后一个兄弟
+       兼容性问题:IE9+
+       强调: 元素树不是新的树，仅仅是节点树去掉文本后的子集
+       问题: 不包含一切文本节点
+
+   何时: 只要已经站在一个节点，要找周围节点时
+
+   重点: childNodes和children返回的都是动态集合(live collection)
+      动态集合: 不实际存储数据，每次访问时都重新查找DOM树
+         优: 首次查找速度极快。因为不用完全遍历
+         缺: 反复查找，效率低，会反复查找DOM树
+          错: for(var i=0;i<children.length;i++)
+             每遍历一次就会访问children.length反复查找DOM树
+      解决: 遍历: for(var i=0,len=children.length;i<len;i++)
+          只在第一次查找DOM树，之后不再反复查找。
+
+遍历: 查找指定父节点下的所有子节点
+   Step1: 先定义函数，仅遍历直接子节点
+   Step2: 对每个直接子节点，再调用和父节点先相同的函数
+   强调: 1. 递归: 函数内又调用了函数自己
+                其实，递归时，不应直接使用函数名
+                   应该用arguments.callee代替
+                          但严格模式下已不推荐使用
+                效率低（外层函数调用还未结束，内层函数调用已经开始）
+        解决: 2. 多数递归都可用循环代替。
+                遍历API: ——了解 2个:
+                1. nodeIterator节点迭代器: 
+                   什么是: 依次访问每个节点对象。每次只能访问一个
+                   何时: 只要用循环方式遍历子节点时
+                   如何: 2步: 
+                   Step1. 创建节点迭代器对象:(告知起点)
+                        var iterator=document.createNodeIterator(
+                             parent, NodeFilter.SHOW_ALL, 
+                                                           .SHOW_ELEMENT
+                             null,false
+                        );
+                   Step2. 调用iterator的nextNode():
+                        返回当前所在节点，再跳到下一个节点
+                        到头，返回null
+                    固定套路:
+                       var node=null; 
+                       while((node=iterator.nextNode())!=null){
+	           node//当前节点对象
+                       }
+    总结: 递归和遍历API都是用深度优先遍历算法: 
+                 优先遍历子节点，子节点遍历完，才返回遍历兄弟
+       如果想打破深度优先的顺序: 
+               2. TreeWalker: 可任意跳转节点的特殊迭代器
+                    基本用法和iterator完全一样
+                       除了父节点不输出——一开始就站在父节点上
+                   差别: 多了几个调整方向的API: 
+                    .parentNode(); //跳到父节点
+                    .first/lastChild(); //跳到第一个/最后一个子节点
+                    .previous/nextSibling();//跳到前一个/后一个兄弟
+                     
+2. ***查找: 
+   按HTML查找:  4种: 
+   *1. 按id属性，精确查找一个元素对象: 
+        var elem=document.getElementById("id")
+                                           效率非常高！
+         强调: getElementById只能用在document上
+         何时: 只用于精确查找一个元素
+         问题: 不是所有元素都有id
+   *2. 按标签名找: 
+        var elems=parent.getElementsByTagName("tag");
+          查找指定parent节点下的所有标签为tag的子代节点
+          强调: 1. 可用在任意父元素上
+                   2. 不仅查直接子节点，而且查所有子代节点
+                   3. 返回一个动态集合
+                       即使只找到一个元素，也返回集合
+                          必须用[0],取出唯一元素
+        问题: 不但找直接，而且找所有子代。
+     3. 按name属性找: 专门查找表单中指定name属性的元素
+       var elems=parent.getElementsByName("name");
+     4. 按class属性找: 查找父元素下指定class属性的元素
+       var elems=parent.getElemnetsByClassName("class");
+         有兼容性问题: IE9+
+
+   练习: <button onclick="calc(this)"->button对象
+                                     ___传递__|
+                                     ↓
+             function calc(btn){btn->this->button对象
+                 this -> window
+             }
+       何时: 处理函数中需要快速获得当前元素对象时,就用this
+          
+       最可靠的API: .parentNode 父元素
+                            .getElementById
+                            .getElementsByTagName
+
+   按选择器查找: Selector API
+     1. 只找一个元素: 
+	var elem=parent.querySelector("selector")
+          强调: selector支持一切css中选择器
+     2. 找多个: 
+            var elems=parent.querySelectorAll("selector")
+     强调: selector API 返回的是非动态集合:
+               实际存储数据，每次访问不会反复查找DOM树
+鄙视vs getXXXX:
+         1. 效率: 首次查找， getXXX 效率高: 不返回全部数据
+                                        selectorAPI 效率低: 要准备完整数据
+         2. 返回值: getXXX 返回动态集合: 可能反复查找DOM树
+                         selectorAPI 返回非动态集合: 不会反复查找DOM树
+         3. 难易: getXXX繁琐;  selector 绝对简单
+     
+     总结: 如果一次查找即可获得想要的元素时，首选getXXX
+            如果需要多次查找才能获得想要的元素时, 首选selector
+
+
+
+
+
+
+
+
+
+   

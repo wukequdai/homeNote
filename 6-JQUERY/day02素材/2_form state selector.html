@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>.....</title>
+  <meta charset="utf-8"/>
+  <style>
+  </style>
+ </head>
+ <body>
+	<!-- form>input[type=checkbox]*4+input[type=button]	 -->
+	<form action="">请选择您关注的话题：<br>
+		<!-- <input type="checkbox" />体育<br> -->
+		<!-- <input type="checkbox" />音乐<br> -->
+		<!-- <input type="checkbox" />搞笑<br> -->
+		<!-- <input type="checkbox" />娱乐<br> -->
+		<select multiple>
+			<option value="">体育</option>
+			<option value="">音乐</option>
+			<option value="">搞笑</option>
+			<option value="">娱乐</option>
+		</select>
+		<input type="button" value="进入我的微博"/>
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		//绑定点击事件
+		/*$(":button").click(function(){
+			var $chbs=$(":checkbox:checked");
+			if($chbs.length!=0)
+				document.write("欢迎开通微博")
+			else
+				alert("至少选择一项")
+		})*/
+		$(":button").click(function(){
+			//查找type为CheckBox的input中选中的元素
+			//var $chbs=$(":checkbox:checked");
+			//查找select下选中 的option
+			var $chbs=$("select>option:selected")
+			if($chbs.length!=0)
+				document.write("欢迎开通微博")
+			else
+				alert("至少选择一项")
+		})
+	</script>
+ </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+  <style>
+    #d1{
+      border:1px solid #aaa; border-radius:6px;
+      background:#eee; width:50px; height:50px;
+      position:absolute; top:120px;
+    }
+  </style>
+ </head>
+ <body>
+	<h1>jQuery动画函数——透明度动画</h1>
+  <button id="bt1">开始动画</button><br>
+  <button id="bt2">停止动画</button><br>
+  <div id="d1">abcd</div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    $("#bt2").click(function(){
+      $(":animated").stop(true);
+    });
+    $("#bt1").click(function(){
+      $("#d1").animate({
+        left:300,
+        //width:300,
+        //height:300,
+        //opacity:0.2,
+        //fontSize:100,
+        //borderWidth:10,
+        //borderRadius:25,
+        //不支持的
+        //fontFamily:"SimHei",
+        //transform:"translate(100px,200px)",
+        //backgroundColor:"#f00",
+      },2000).animate({top:300},2000);
+    });
+  </script>
+ </body>
+</html>

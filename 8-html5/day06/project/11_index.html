@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #topBar {
+      text-align: right;
+      padding: 1em;
+      border-bottom: 1px solid #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="topBar">
+    <a href="11_login.html">登录</a>
+  </div>
+  <h1>练习：使用sessionStorage</h1>
+  <h3>首页</h3>
+
+  <script>
+    //试着读取浏览器内存中的数据
+    var n = sessionStorage['LoginName'];
+    //var n = sessionStorage.getItem('LoginName');
+    if( n ){  //若浏览器内存中存在登录用户名，则替换登录超链接
+      topBar.innerHTML = `
+        欢迎回来：${n}
+        <a href="11_logout.html">退出登录</a>
+      `;
+    }
+  </script>
+</body>
+</html>

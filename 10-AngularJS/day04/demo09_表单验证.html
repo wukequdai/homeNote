@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <script src="js/angular.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<form name="temp_form" ng-submit="save()">
+  
+  <div>
+    <input type="text" name="t_name"
+           ng-model="name" required/>
+    <span ng-show="temp_form.t_name.$error.required">
+      姓名不能为空
+    </span>
+    <span ng-show="temp_form.t_name.$pristine">未曾输入过</span>
+    <span ng-show="temp_form.t_name.$dirty">操作过</span>
+    <span ng-show="temp_form.t_name.$valid">验证通过</span>
+  </div>
+
+  <input ng-disabled="temp_form.$invalid" type="submit" value="提交"/>
+  
+</form>
+
+
+<script>
+  var app = angular.module('myApp', ['ng']);
+
+  app.controller('myCtrl', function ($scope) {
+      $scope.save = function () {
+        console.log($scope.name);
+      }
+  })
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

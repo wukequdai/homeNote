@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <style>
+    div {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div class="container"> <!--最外层容器-->
+  <h1>全局样式——栅格布局系统</h1>
+  <h3>一行中只放置一列</h3>
+  <div class="row"> <!--行-->
+    <div class="col-md-1">  <!--列-->
+      MD-1
+    </div>
+  </div>
+
+  <div class="row"> <!--行 -->
+    <div class="col-md-2">  <!--列-->
+      MD-2
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">MD-3</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">MD-4</div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">MD-5</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">MD-6</div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">MD-7</div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">MD-8</div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">MD-9</div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">MD-10</div>
+  </div>
+  <div class="row">
+    <div class="col-md-11">MD-11</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">MD-12</div>
+  </div>
+
+  <h3>一行中放置多列</h3>
+  <div class="row">
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+    <div class="col-md-1">MD-1</div>
+
+    <div class="col-md-1">MD-1</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">MD-4
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur quas suscipit ut? Ab aperiam dolor dolorem id libero, odit officia officiis possimus quasi quo ratione reiciendis. Corporis cum quasi recusandae!</span><span>A ad asperiores consequuntur dolorum eligendi et expedita fugit harum iure laudantium libero maxime minus perspiciatis placeat praesentium, provident quae quia quidem quos reiciendis saepe sequi tempore unde veniam veritatis?</span></p>
+    </div>
+    <div class="col-md-4">MD-4
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt dicta dolorem! Accusantium assumenda, atque eum ex illum ipsam magnam maiores maxime obcaecati quam reprehenderit sit. Laboriosam nemo quos tempore?</span><span>Ad, amet aperiam autem dolor error eveniet, fuga id inventore ipsa magnam non quod saepe sapiente suscipit totam? Assumenda commodi culpa deserunt excepturi ipsam iusto labore maxime modi quam voluptatem.</span><span>Accusamus ad asperiores eius est explicabo ipsum laborum quia, temporibus vitae voluptatum. Accusantium aliquid assumenda aut beatae, commodi cumque ea est ipsa laboriosam molestiae nemo neque, odio recusandae soluta vitae!</span><span>Accusamus ipsam iste, laudantium modi pariatur quam tempora voluptates. Doloribus ea earum explicabo inventore, ipsum maiores nostrum officiis quam ratione voluptatem voluptatibus voluptatum. Delectus distinctio ea eum pariatur tempora voluptatibus.</span><span>Alias culpa, eius, enim eos eveniet exercitationem fugiat illo itaque numquam odio, odit ratione? A ab aperiam consectetur consequatur corporis delectus eveniet fugit, harum ipsum iure magni molestiae sapiente ut.</span></p>
+    </div>
+    <div class="col-md-4">MD-4
+      <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequatur cum, delectus deleniti dicta eaque facilis labore, odit pariatur placeat repellendus sunt voluptas voluptatum? Enim fugiat harum ipsa modi quis?</span><span>Aut dolorem eum nihil officia perferendis repellat repudiandae saepe. Aliquam deserunt eaque molestias perferendis perspiciatis provident ratione. Accusamus blanditiis cumque debitis, ducimus explicabo, facilis magni placeat quae, qui totam velit.</span><span>Blanditiis commodi consequuntur et facere hic mollitia neque numquam, qui quibusdam quisquam quo, ratione, repudiandae suscipit temporibus totam ullam voluptatibus. Dicta dolorem eveniet incidunt laboriosam nemo, nihil nulla obcaecati veritatis?</span></p>
+    </div>
+
+    <div class="col-md-4">MD-4</div>
+  </div>
+
+  <h3>一行中放置多个不等宽的列</h3>
+  <!--宽度1:2:1 =>  3:6:3 的三列-->
+  <div class="row">
+    <div class="col-md-3">MD-3</div>
+    <div class="col-md-6">MD-6</div>
+    <div class="col-md-3">MD-3</div>
+  </div>
+  <!--宽度1:4:1 =>  2:8:2 的三列-->
+  <div class="row">
+    <div class="col-md-2">MD-2</div>
+    <div class="col-md-8">MD-8</div>
+    <div class="col-md-2">MD-2</div>
+  </div>
+  <!--宽度1:3:1 => 1:2:6:2:1的三列-->
+  <div class="row">
+    <!--<div class="col-md-1"></div>-->
+    <div class="col-md-2 col-md-offset-1">MD-2</div>
+    <div class="col-md-6">MD-6</div>
+    <div class="col-md-2">MD-2</div>
+  </div>
+
+  <h3>列偏移-offset</h3>
+  <div class="row">
+    <div class="col-md-2">MD-2</div>
+    <div class="col-md-6">MD-6</div>
+  </div>
+  <!--不足12的多列居中-->
+  <div class="row">
+    <div class="col-md-2 col-md-offset-2">MD-2</div>
+    <div class="col-md-6">MD-6</div>
+  </div>
+  <!--不足12的多列左右分居-->
+  <div class="row">
+    <div class="col-md-2">MD-2</div>
+    <div class="col-md-6 col-md-offset-4">MD-6</div>
+  </div>
+
+  <!--1/24的列？-->
+  <h1>宽度占比1/24的列</h1>
+  <div class="row">
+    <div class="col-md-1">
+      <div class="row">
+        <div class="col-md-6">1/24</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootlint.js"></script>
+<script>
+  bootlint.showLintReportForCurrentDocument([]);
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <button
+    ng-click="showLoading()"
+    class="button button-small button-positive">
+    refresh
+  </button>
+  <h1 class="title">header</h1>
+
+</ion-header-bar>
+
+<ion-content>
+
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl',['$scope','$ionicLoading','$timeout'
+    , function ($scope,$ionicLoading,$timeout) {
+      $scope.showLoading = function () {
+        $ionicLoading.show({
+          template:'loading...',
+          duration:2000
+        })
+//        $timeout(function () {
+//          $ionicLoading.hide();
+//        },2000);
+      }
+    }
+  ]);
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

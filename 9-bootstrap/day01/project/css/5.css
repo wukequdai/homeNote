@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+.container:before {
+  content: ' ';
+  display: table;
+}
+.container:after,
+.img-list:after {
+   content: ' ';
+   display: table;
+   clear: both;
+ }
+.img-list > img {
+  float: left;
+  padding: 5px;
+}
+
+/*PC屏幕专用的样式*/
+@media screen and (min-width: 992px){
+  .left,
+  .right {
+    width: 20%;
+    float: left;
+  }
+  .middle {
+    width: 60%;
+    float: left;
+  }
+  .img-list > img {
+    width: 25%;
+  }
+}
+/*PAD屏幕专用的样式*/
+@media screen and (min-width: 768px) and (max-width: 991px){
+  .left {
+    width: 25%;
+    float: left;
+  }
+  .middle {
+    width: 75%;
+    float: left;
+  }
+  .right {
+    display: none;
+  }
+  .img-list > img {
+    width: 25%;
+  }
+}
+
+/*PHONE屏幕专用的样式*/
+@media screen and (max-width: 767px){
+  .left {
+    width: 100%;
+  }
+  .middle {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+  .img-list > img {
+    width: 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+

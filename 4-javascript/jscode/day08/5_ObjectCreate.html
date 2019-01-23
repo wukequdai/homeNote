@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//鄙视题: 
+			Object.create=function(father,props){
+				document.write("自定义的create方法<br>");
+				//创建新对象obj
+				//让obj继承father
+				//Object.setPrototypeOf(obj,father);
+				var Fn=function(){};//空构造函数
+				Fn.prototype=father;
+				var obj=new Fn();
+				//为obj添加props中的属性定义
+				//Object.defineProperties(obj,props);
+				//IE8
+				for(var key in props){
+					obj[key]=props[key].value;
+				}
+				return obj;
+			}
+			var father={
+				car:"infiniti",
+				bal:1000000000
+			};
+			var child=Object.create(father,{
+				phone:{
+					value: "iphone7s plus",
+					writable: true,
+					enumerable:true,
+					configurable:true
+				},
+				bao:{
+					value: "LV",
+					writable: true,
+					enumerable:true,
+					configurable:true
+				}
+			});
+			for(var key in child){
+				document.write(key+":"+child[key]+"<br>");
+			}
+		</script>
+	</body>
+</html>

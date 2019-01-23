@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[3,1,5,2,4,7,6];
+			function bubbleSort(arr){
+				//r从1开始，到<length结束
+				for(var r=1;r<arr.length;r++){
+					//第r轮的公式:
+					//遍历arr，到<length-r结束
+					for(var i=0;i<arr.length-r;i++){
+						//如果当前元素>下一个元素
+							//交换当前元素和下一个元素的位置
+						arr[i]>arr[i+1]&&
+							(arr[i]^=arr[i+1],
+								arr[i+1]^=arr[i],
+									arr[i]^=arr[i+1]);
+					}
+				}
+			}
+			bubbleSort(arr);
+			console.log(String(arr));
+			/*交换两变量的值:*/
+			var a=3,b=5;
+			/*方法1: 使用第三个变量(鄙视时禁用)
+			var t=a; a=b; b=t;*/
+			/*方法2: 异或 ——只能交换数字
+			a^=b; b^=a; a^=b;*/
+			/*方法3: 做加减 ——只能交换数字
+			a+=b; b=a-b; a-=b;*/
+			/*方法4: 万能*/
+			a=[b,b=a][0];
+			console.log(a,b);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		body { margin: 0; }
+		.page {
+			position: fixed;
+			left: 0; right: 0; top: 0; bottom: 0;
+		}
+		.btn{
+			width:100px;height:100px;
+			border-radius:50px;
+			background:#fff;
+			opacity:.5;
+			position:fixed; top:50%; margin-top:-50px;
+			text-align:center;
+			line-height:50px;
+		}
+		.left{left:0}
+		.right{right:0}
+	</style>
+ </head>
+ <body>
+	<div class="page" style="left: 0; background:#faa;">
+		第一个PAGE<hr>
+	</div>
+
+	<div class="page" style="left: 100%; background:#afa;">
+		第二个PAGE<hr>
+	</div>
+	<div class="page" style="left: 100%; background:#afa;">
+		第三个PAGE<hr>
+	</div>
+	<div class="page" style="left: 100%; background:#afa;">
+		第四个PAGE<hr>
+	</div>
+	<div class="page" style="left: 100%; background:#afa;">
+		第五个PAGE<hr>
+	</div>
+	<div class="btn">&lt;&lt;</div>
+	<div class="btn">&gt;&gt;</div>
+
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		$("page").each(function({
+			var r=Math.floor(Math.random()*256);
+			var g=Math.floor(Math.random()*256);
+			var b=Math.floor(Math.random()*256);
+			$(this).css("background","rgb("+r+","+g+","+b+")");
+		})
+		$(".page:(not)last").click(function(){
+			$(this).animate({
+				left:"-100%"
+			},1000).next().animate({
+				left:0
+			},1000)
+		})
+	</script>
+ </body>
+</html>

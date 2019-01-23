@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		var n=1,s="Hello",b=true,un=undefined,nu=null;
+		console.log(
+typeof(n),typeof(s),typeof(b),typeof(un),typeof(nu)
+		);
+		var obj1=[1,2,3], obj2={}, obj3={},
+				obj4=function(){},
+				obj5={};
+		obj3.__proto__=Array.prototype;
+		obj5.__proto__=obj1;
+		//obj5->obj1->Array.prototype
+		console.log(
+typeof(obj1),typeof(obj2),typeof(obj3),typeof(obj4)
+		);
+
+		//1. var bool=father.isPrototypeOf(child)
+		console.log(
+			Array.prototype.isPrototypeOf(obj1),//true
+			Array.prototype.isPrototypeOf(obj2),//false
+			Array.prototype.isPrototypeOf(obj3),//true
+			Array.prototype.isPrototypeOf(obj5)//true
+		);
+		//2. var bool=child instanceof Array
+		console.log(
+			obj1 instanceof Array,//true
+			obj2 instanceof Array,//false
+			obj3 instanceof Array,//true
+			obj5 instanceof Array//true
+		);
+		//3. 判断对象的内部属性class
+		console.log(
+			Object.prototype.toString.call(obj1)
+				=="[object Array]",//true
+			Object.prototype.toString.call(obj2)
+				=="[object Array]",//false
+			Object.prototype.toString.call(obj3)
+				=="[object Array]"//false
+		);
+
+		//4. ES5: Array.isArray(obj)
+		console.log(
+			Array.isArray(obj1),//true
+			Array.isArray(obj2),//false
+			Array.isArray(obj3)//false
+		);
+		</script>
+	</body>
+</html>

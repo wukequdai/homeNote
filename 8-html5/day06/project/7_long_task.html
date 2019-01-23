@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>HTML中执行一段很耗时的JS任务</h1>
+  <div id="msg"></div>
+  <button onclick="console.log(1)">第一个按钮</button>
+  <script>
+    new Worker('js/7.js');
+  </script>
+  <button onclick="console.log(2)">第二个按钮</button>
+
+
+</body>
+</html>

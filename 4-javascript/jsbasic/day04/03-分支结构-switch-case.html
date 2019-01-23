@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function showFood(){
+				var date = Number(prompt("今天星期?"));
+				//通过 switch-case 结构 等值判断
+				switch(date){
+					case 1:
+						console.log("牛肉炖土豆!");
+						break;
+					case 2:
+						console.log("土豆炖牛肉!");
+					case 3:
+						console.log("牛肉炖柿子!");
+					case 4:
+						console.log("柿子炖牛肉!");
+						break;
+					case 5:
+						console.log("牛肉炖萝卜!");
+						break;
+					case 6:
+					case 7:
+						console.log("今日休息!");
+						break;
+					default:
+						console.log("您的输入有误!!!");
+						break;
+				}
+			}
+		</script>
+		<button onclick="showFood();">显示菜谱</button>
+	</body>
+</html>

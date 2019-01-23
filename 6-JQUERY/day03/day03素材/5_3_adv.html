@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>窗口右下角消息弹出框</title>
+  <meta charset="utf-8"/>
+  <style>
+    *{margin:0;padding:0}
+    #msg{
+      width:200px;height:200px;
+      position:fixed;
+      right:30px;
+      bottom:-200px;
+      background-color:LightBlue;
+    }
+    #msg>a{
+      float:right;
+      padding:5px 10px;
+      border:1px solid black;
+      cursor:pointer;
+    }
+  </style>
+ </head>
+ <body>
+  <div id="msg">
+	  <a>X</a>
+  </div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script>
+    var adv={
+      HEIGHT:0,//adv的高度
+      DURATION:2000,//总时间
+      $div:null,//保存id为msg的div
+      WAIT:3000,//保存下移结束后，等待上移的时间
+      init(){//初始化adv对象
+        //获得id为msg的div保存在div属性中
+        this.$div=$("#msg");
+        //获得div的height保存在HEIGHT属性中
+        this.HEIGHT=parseFloat(
+          this.$div.css("height")
+        );
+        this.moveUp();//启动上移
+        //为div下的子元素a绑定单击事件为moveDown
+        this.$div.children("a").click(
+          this.moveDown.bind(this)
+        );
+      },
+      moveUp(){//启动移动
+        //让div在DURATION事件内bottom变到0
+        this.$div.animate({bottom:0},this.DURATION);
+      },
+      moveDown(){
+        //如果div没有在移动
+        if(!this.$div.is(":animated"))
+          this.$div
+          //先让div在DURAION时间内bottom变到-HEIGHT
+          .animate({
+            bottom:-this.HEIGHT
+          },this.DURATION)
+          .delay(this.WAIT)//延迟WAIT毫秒
+          //再让div在DURAION时间内bottom变回0
+          .animate({bottom:0},this.DURATION);
+      }
+    }
+    adv.init();
+  </script>
+ </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*1*3=3 2*3=6 3*3=9*/
+			/*i*num=(i*num) i*num=(i*num) i*num=(i*num)*/
+			function printMulti(){
+				//1、输入一个数字
+				var num=Number(prompt("请输入一个数字:"));
+				//2、循环
+					//2.1 条件：从1开始，到num结束
+					//2.2 操作：条件变量*num=条件变量*num
+				var msg="";
+				for(var i=1;i<=num;i++){
+					msg+=(i+"*"+num+"="+(i*num))+"\t";
+				}
+				console.log(msg);
+			}
+			
+			/*
+				1+3+5+7+...+999
+			*/
+			function printSum(){
+				var sum=0;
+				for(var i=1;i<1000;i+=2){
+					sum+=1/i;
+				}
+				console.log(sum);
+			}
+			/**
+			 * 判断一个数字是否为素数 15
+			 */
+			function isPrime(){
+				var num = Number(prompt("请输入一个数字："));
+				var isP = true;//默认 是素数
+				//条件：从2开始，到num-1为止 -->i
+				//操作：num%i==0 不是素数
+				for(var i=2;i<num/2;i++){
+					if(num%i == 0){
+						isP = false; //说明不是素数
+						break;
+					}
+				}
+				if(isP){
+					console.log("是素数!");
+				}else{
+					console.log("不是素数!");
+				}
+			}
+
+			function printFib(){
+				var n1=1;
+				var n2=1;
+				console.log(n1,n2);
+				for(var i=1;i<10;i++){
+					n1=n1+n2;
+					n2=n2+n1;
+					console.log(n1,n2);
+				}
+			}
+
+			/**
+			 * 兔子问题 ：某个月的兔子总量
+			 */
+			function f(n){
+				if(n < 3){
+					return 1;
+				}
+				return f(n-1)+f(n-2);
+			}
+			
+			/**
+			 * 使用循环 代替 递归 计算 某个月兔子总量
+			 */
+			function f1(n){
+				if(n<3){
+					return 1;
+				}
+				var f1=1,f2=1,fn;
+				for(var i=1;i<=n-2;i++){
+					fn=f1+f2;
+					f1=f2;
+					f2=fn;
+				}
+				return fn;
+			}
+
+		</script>
+		<button onclick="printMulti();">打印乘法表中某一行</button>	
+		<button onclick="printSum();">打印和</button>
+		<button onclick="isPrime();">判断素数</button>
+		<button onclick="printFib();">兔子问题(斐波那契数列)</button>	
+		<button onclick="console.log(f(10));">兔子总量</button>
+		<button onclick="console.log(f1(10));">兔子总量(循环)</button>		
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h3>练习：使用Canvas绘制图像——随鼠标移动的飞机</h3>
+  <canvas id="c2" width="500" height="400"></canvas>
+  <script>
+    var ctx = c2.getContext('2d');
+
+    var img = new Image();
+    img.src = 'img/p3.png';
+    img.onload = function(){
+      //1 创建两个全局变量，表示飞机的坐标
+      var x = 0;
+      var y = 0;
+      //2 随着鼠标在画布上移动，修改全局变量
+      c2.onmousemove = function(e){
+        x = e.offsetX;
+        y = e.offsetY;
+        console.log(x + '-' + y);
+      }
+      //3 启用定时器，不停的绘制飞机
+      setInterval(function(){
+        ctx.clearRect(0,0,500,400);
+        ctx.drawImage(img, x-img.width/2, y-img.height/2);
+      }, 50)
+    }
+
+  </script>
+</body>
+</html>

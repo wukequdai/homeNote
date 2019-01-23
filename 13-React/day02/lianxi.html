@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+  <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+  var AComponent = React.createClass({
+    handleChange:function(){
+      var inputValue = this.refs.myInput.value;
+      console.log(inputValue);
+      this.props.inputChange(inputValue);
+    },
+    render:function(){
+      return <input
+       ref="myInput"
+       onChange={this.handleChange}
+       type="text"/>
+    }
+  })
+
+  var BComponent = React.createClass({
+    handleClick:function(){
+      console.log(this.props.inputResult);
+    },
+    render:function(){
+      return <button
+      onClick={this.handleClick}>clickMe</button>
+    }
+  })
+
+  var MainComponent = React.createClass({
+    getInitialState:function(){
+      return {result:''}
+    },
+    handleInputChange:function(value){
+      console.log('main组件方法被调用了'+value);
+      this.setState({result:value});
+    },
+    render:function(){
+      return <div>
+        <AComponent
+          inputChange={this.handleInputChange}/>
+        <BComponent
+          inputResult={this.state.result}
+        />
+      </div>
+    }
+  })
+
+  ReactDOM.render(
+    <MainComponent/>,
+     document.getElementById('example')
+  );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    svg {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>在SVG中使用特效对象——滤镜——高斯模糊滤镜</h1>
+  <svg width="500" height="400">
+    <!--定义特效对象-->
+    <defs>
+      <filter id="f1">
+        <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+      </filter>
+      <filter id="f2">
+        <feGaussianBlur stdDeviation="6"></feGaussianBlur>
+      </filter>
+    </defs>
+
+
+    <text font-size="80" font-family="SimHei" y="100">达内科技2017</text>
+    <text font-size="80" font-family="SimHei" y="200" filter="url(#f1)">达内科技2017</text>
+    <text font-size="80" font-family="SimHei" y="300" filter="url(#f2)">达内科技2017</text>
+  </svg>
+</body>
+</html>

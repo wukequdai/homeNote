@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<script type="text/javascript">
+		var str=prompt("如果有no就是敏感词，不行试试？");
+		//替换
+		var nos=str.replace(/no/ig,"**")
+		document.write(nos+"<br>");
+		//查找所有no并且输出no的个数
+		var kwords=str.match(/no/ig);
+		console.log(String(kwords));
+		if(kwords!==null)
+		document.write("共找到"+kwords.length+"个敏感词");
+		else
+		//没有找到敏感词
+		document.write("没找到敏感词");
+	</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+zeptoJS 2天+ReactJS（2天）+微信（1天 版本控制工具git）
+
+2048小游戏
+
+一、zeptoJS
+
+zeptojs.com 官网即手册
+http://github.e-sites.nl/zeptobuilder/  选中需要用的模块，点击genrate custom build,保存即可， 构建不同的模块
+
+what 
+是一个轻量级的针对现代浏览器的js库
+
+why 
+zeptojs是提供jquery类似API的非常轻量的js库，5~10k
+精力写代码
+
+优势
+①门槛低
+②轻量
+③浏览器支持
+
+zeptojs默认包含5个模块：
+zepto 核心模块
+ajax 异步请求
+form 表单
+ie ie浏览器的支持
+event 事件
+
+
+
+核心模块：
+数据操作的相关方法：extend/map/each..
+选择器： id、class、属性、标签。。。
+插入：insertAfter/Before/append/appendTo/prepend/prependTo删除：remove/removeClass....
+修改：html/css/...
+查找:next/prev/children/parent/parents/find..
+
+
+detect模块
+检查对应的运行环境的os和browser
+比如：
+Object {iphone: true, ios: true, version: "9.1", tablet: false, phone: true}
+
+
+Object {webkit: true, version: "601.1.46", safari: true}
+
+
+event模块：
+on 绑定
+off  解绑
+one  绑定之后 只有第一次是生效
+trigger 手工触发指定的事件
+
+练习：添加一个按钮btn1，点击按钮，实现一个计数器；超过5的时候，解绑；再通过one绑定事件，输出‘only once ’
+
+添加一个按钮btn2，绑定'customClick',立即触发(trigger)，在事件的处理函数中输出‘this is a custom event’
+
+
+ajax模块
+$.ajax/$.get/load/$.post/$.param
+
+练习：使用post请求 name='michael',
+要求：接收到服务器返回的结果，直接打印出来。
+①$.ajax
+②$.post
+
+demo.php, 接收参数，返回json数组，包含name 和 class（class1）
+
+注意：apache htdocs 80端口
+
+form模块：
+serialize serializeArray submit
+
+touch模块：
+提供了一些事件的支持：
+tap/singleTap/doubleTap/longTap
+swipe/swipeLeft/swipeRight/swipeUp/swipeDown
+
+可以通过on和off方法完成指定的事件的绑定和解绑
+
+
+fx和fxMethods模块
+animate/fadeIn/fadeOut/fadeToggle/show/hide
+
+gesture模块
+pinch /pinchIn /pinchOut 通过手指在移动端进行缩放时支持的事件 
+on/off/one 
+
+
+练习：使用zeptojs来完成网页版的简单简历
+在显示技能的时候，颜色调整为随机的颜色
+
+步骤：
+拿到数据
+遍历数据时创建元素显示
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

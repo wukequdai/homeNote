@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    canvas {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <h1>使用Canvas技术绘图——绘制文本</h1>
+  <canvas id="c8" width="500" height="400">
+    您的浏览器不支持CANVAS标签
+  </canvas>
+  <script>
+    var ctx = c8.getContext('2d');
+
+    //左上角填充文本
+    var txt = "abfgxyz中国";
+    ctx.textBaseline = 'top'; //修改文本基线
+    ctx.font = '30px SimHei'; //修改字体
+    ctx.fillText(txt, 0, 0);
+
+    //右上角填充文本
+    var txtWidth = ctx.measureText(txt).width;
+    ctx.fillText(txt, 500-txtWidth, 0);
+
+    //左下角描边文本
+    ctx.strokeText(txt, 0, 400-30);
+  </script>
+</body>
+</html>

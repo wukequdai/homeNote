@@ -1,0 +1,159 @@
+一、phoneGap介绍
+
+昨天学习的Eclipse\第一个Android应用\第一个hybridApp，是实现混合编程的基础知识，是一些实现的原理。
+要想实现混合编程，对前端开发要求 熟悉Java还有Android原生组件的用法，使用PhoneGap。
+
+
+what？ 是一个开源的移动设备开发框架，直接使用js调用智能设备底层的核心功能（GPS、传感器、震动）
+when？开发跨平台的移动设备应用程序
+why？ 使用phoneGap编写完代码之后，可以非常方便的打包成各个平台下的应用程序
+
+历史：被Adobe收购，依然保留phoneGap的商标所有权；将核心的跨平台是共享给了apache，apache将核心代码进行开源并起名：Apache Cordova
+Cordova与PhoneGap的关系 就像是webKit与chrome
+
+核心特点：
+大众化
+兼容性： write once,run everywhere
+标准化： 采用w3c标准
+
+how？ phoneGap的工作原理，划分为3层：
+第一层：是web前端开发 编写前端代码
+第二层：是phoneGap所提供的各种接口
+第三层：设备层
+
+第一层中编写的js代码，去调用第二层phoneGap所提供的js方法，实现对于设备层核心功能的调用
+
+注意点：phoneGap提供的接口 都是以各种各样的插件plugin，给我们提供的
+
+phonegap-plugins.com
+build.phonegap.com
+phonegap.com
+cordova.apache.org
+
+二、搭建phoneGap的开发环境
+方式1：通过命令行
+npm install -g cordova
+cordova create MyApp
+cordova platform add ios 添加对平台的支持
+cordova run android 编译生成Android平台下的应用程序
+
+方式2：图形化工具
+ ①由PC端和移动端构成的
+ ②PC端会启动一个本地的服务，移动端可以输入pc端对应的ip和端口号，建立连接，连接之后：pc代码的修改将同步到移动端去预览
+
+pc端PhoneGap软件：
++：创建和打开存在
+-：从列表中移除 而不会删除代码
+齿轮：设置端口号
+控制台：查看日志
+
+移动端：
+打开eclipse，启动模拟器
+下载了对应的apk包（https://github.com/phonegap/phonegap-app-developer/tree/master/resources/release/android）
+将对应的apk安装到模拟器
+两种方式：
+①启动apache，将apk放到htdocs，模拟器打开浏览器，访问服务器，下载
+②adb (android debug bridge)
+需要找到adb在哪
+windows+R  -》 cmd --》进入命令提示符操作界面
+
+通过命令行去执行adb install安装对应的apk
+
+有可能出现的问题：
+① install failed already exists
+已经安装好了，重复安装就会报这个错误
+②waiting for device
+ 第一 确认模拟器有没有跑起来
+ 第二 关掉eclipse和模拟器，重新打开他们
+
+三、phoneGap所提供的事件
+
+deviceReady
+online/offline
+pause/resume
+battery**
+***Button
+
+document.addEventListener('online',func,false)
+
+四、PhoneGap所提供的核心API
+
+对于插件来说
+①插件中的www目录中的js文件，是给开发者使用的，是提供好了js的接口；
+②在插件中的src目录，实现了各个平台下指定的功能
+
+扩展：
+调用device插件中version，在初始化插件的时候，执行exec方法，去找对应平台的cordova.js文件，会调用NativeApiProviders.get().exec方法，调用对应的平台原生代码
+
+
+
+1、device 
+读取设备版本和系统信息，显示。
+
+2、accelerometer
+navigator.acceleromter.getCurrentAcceleration();
+navigator.acceleromter.watchAcceleration();
+navigator.acceleromter.clearWatch();
+
+3、capture 采集
+navigator.device.capture.captureAudio() 录制音频
+navigator.device.capture.captureImage() 拍摄照片
+navigator.device.capture.captureVideo（) 录制视频
+
+4、notification 通知 
+navigator.notification.alert("显示的内容")/beep(次数)/vibrate（震动的毫秒）
+
+要求：点击按钮，显示一个确认窗口，ok/cancel --> 确认和取消
+
+5、file文件
+点击“写按钮”，向指定的文件写入一个字符串
+点击“读按钮”，从指定的文件读取相关内容
+
+写操作：
+拿到文件系统对象 fileSystem
+window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onSuccess, null);
+针对文件操作 fileEntry(对象代表文件系统中的一个文件)
+fileSystm.root.getFile("test.txt",{create:true},onSuccess,onError)
+写操作 fileWriter
+fileEntry.createWriter(onSuccess,onError)
+fileWriter.write()
+
+读操作：
+拿到文件系统对象 fileSystem
+针对文件操作 fileEntry
+记录文件所有的内容 （file 对象）
+fileEntry.file(onSuccess,onError)
+读操作 （fileReader 对象）
+var reader = new FileReader();
+reader.readAsText(file);
+
+6、camera 摄像头
+getPicture实现拍照或者从相册去选取照片
+
+{sourceType:}
+
+如果选取照片，在成功的处理函数中 将拿到参数：图片的路径
+
+练习：使用camera实现选取图片设置头像的功能 
+要求：button img,点击按钮，从相册中选取图片，选取图片之后，在img显示图片
+
+注意：需要下载一些图片
+启动apache，在模拟器中通过浏览器去输入pc端ip地址，找到开饭啦项目中的img，选择一张图片，长按图片保存就可以
+
+思路：
+点击按钮 怎么读取相册
+navigator.camera.getpicture(onSucc,onError,{
+sourceType:Camera.PictureSourceType.PHOTOLIBRARY
+})
+
+
+
+
+
+
+
+
+
+
+
+

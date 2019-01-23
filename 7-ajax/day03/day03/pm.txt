@@ -1,0 +1,77 @@
+
+总结: mysqli_query($conn,$sql);
+返回值
+1:DML  insert delete update
+  失败:false
+  成功:true
+2:DQL  select
+  失败:false
+  成功:查询结果集对象
+
+惠买车
+1:查询
+2:删除
+  http://127.0.0.1/day02/car_delete_do.php?cid=2
+  http://127.0.0.1/day02/car_delete_do.php?cid=3
+3:更新
+
+
+
+惠买车总结流程
+常见问题处理
+1:乱码
+  ???
+  根源:sql文件不是utf-8编码
+  1:创建sql脚本文件 一定utf-8{!!!}
+  2:set names utf8
+  3:source ...
+  ANSI === WINDOWS GBK
+2:参数获取不到
+  $cid = $_request['cid'];
+  $cid = $_REQUEST['cid'];
+  流程  
+3:查询字段是哪个字段
+  数据库字段名称
+
+
+添加一个功能:用户登录
+功能:
+      用户登录 login.html
+      输入帐户和密码
+      login_do.php 处理表单
+      1:获取用户名和密码
+      2:去数据库中查询用户名和密码是否匹配
+      3:登录成功  index.html
+      4:登录失败  login.html
+
+a:创建用户表  t_login{还在huimaiche库中}   
+b:添加一些测试数据    16:20--16:30
+c:login.html 表单{用户名和密码}
+  表单验证            
+  用户名  6~8 字母数字下划线
+  密码    6~8 数字    16:30--16:40  
+d:login_do.php
+  d.1:获取参数用户名
+  d.2:获取参数密码
+  d.3:连接数据库
+  d.4:设置编码
+  d.5:!! 创建sql 依据参数中用户名和密码
+         查询t_login
+  d.6:如果不存在该用户名或密码错误
+      重新登录
+  d.7:如果正确 显示index.html
+
+
+
+  作业:
+  1:登录 login.html login_do.php
+         index.html
+  理解:重新自己完成
+  login.html 验证
+  2:汽车查询,更新,删除
+  2.1:思维导图 流程 参数
+  2.2:重新自己完成
+
+
+
+

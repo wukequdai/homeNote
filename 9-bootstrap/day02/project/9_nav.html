@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title></title>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <style>
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>组件——导航</h1>
+
+  <h3>1.标签页式导航</h3>
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#tc10">十元套餐</a></li>
+    <li class="active"><a data-toggle="tab" href="#tc20">二十元套餐</a></li>
+    <li><a data-toggle="tab" href="#tc30">三十元套餐</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="tc10" class="tab-pane">十元套餐详情...</div>
+    <div id="tc20" class="tab-pane active">二十元套餐详情...</div>
+    <div id="tc30" class="tab-pane">三十元套餐详情...</div>
+  </div>
+
+  <h3>2.胶囊式导航</h3>
+  <ul class="nav nav-pills">
+    <li><a data-toggle="tab" href="#tc100">十元套餐</a></li>
+    <li class="active"><a data-toggle="tab" href="#tc200">二十元套餐</a></li>
+    <li><a data-toggle="tab" href="#tc300">三十元套餐</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="tc100" class="tab-pane">十元套餐详情...</div>
+    <div id="tc200" class="tab-pane active">二十元套餐详情...</div>
+    <div id="tc300" class="tab-pane">三十元套餐详情...</div>
+  </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootlint.js"></script>
+<script>
+  bootlint.showLintReportForCurrentDocument([]);
+</script>
+</body>
+</html>

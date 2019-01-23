@@ -1,0 +1,20 @@
+
+<!--单向数据流动：从数据到视图-->
+<p>Hello {{userName}}</p>
+
+<p> age from parentComponent is {{userAge}}</p>
+
+<ul>
+    <li *ngFor="let num of list">{{num}}</li>
+</ul>
+
+<div *ngIf="isMemeber">
+    <p> 仅会员可见 </p>
+</div>
+<!--单向数据流：从视图到数据-->
+<button (click)="send()">clickMe</button>
+
+<!--双向数据绑定-->
+<input type="text" [(ngModel)]="order.userAddr"/>
+
+<p>input content is {{order.userAddr}}</p>

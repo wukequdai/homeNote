@@ -1,0 +1,77 @@
+<html>
+ <head>
+ 	  <title>搜狐新闻管理系统</title>
+ 	  <meta charset="utf-8">
+ 	</head>
+ 	<body>
+ 		<h1>用户注册</h1>
+ 		<form action="#" method="post" id="loginForm">
+ 		<ul>
+ 			 <li>用户名
+ 			 <input type="text" value=""
+       name="name" id="name1"/>
+       <span id="nameTip"
+       style="color:red"></span>
+       </li>
+ 			 <li>用户密码 
+ 			 <input type="text" value="" name="pwd" id="pwd"/></li>
+ 			 <li> <input type="submit" value="注册"/></li>
+ 		</ul>	
+ 		</form>
+
+  <script>
+    //1:获取name对象  11:47--11:57
+    var name1 = document.getElementById('name1');
+    //2:绑定失去焦点事件
+    name1.onblur = function(){
+     // 2.1:获取当前输入用户名
+     var n = this.value;
+     // 2.2:判断如果用户名为空不再执行后代码
+     //     返回
+     if(!n){
+       return;
+     }
+     // 2.3:创建对象XMLHttpRequest 保存变量xhr
+     var xhr = new XMLHttpRequest();
+     // 2.4:为xhr绑定事件，状态改变事件
+     //     onreadystatechange
+     xhr.onreadystatechange = function(){
+      //   2.4.1 获取当前状态值 0 1 2 3 4 
+      //console.log(xhr.readyState);
+      //xhr.responseText bucunzai
+      //2.4.2 判断当前状态    4   readyState
+      //2.4.3 判断服务器返回状态码 200 status
+      //2.4.4 获取服务器返回数据 responseText
+      if(xhr.readyState===4){
+        if(xhr.status===200){
+          var html = "";
+          if(xhr.responseText==='bucunzai'){
+              html = "该用名可以使用";
+          }else{
+              html = "该用户名己被占用";
+          }
+          var nameTip = document.getElementById("nameTip");
+          nameTip.innerHTML = html;
+        } //14:30---14:35 
+      }
+
+
+      // reponseText bucunzai cunzai
+      // 2.4.5 获取span id=nameTip
+      //2.4.6 判断 bucunzai  span 
+      //      该用户名可以使用
+      //           cunzai    span
+      //      该用户名己被占用   
+
+     }
+     // 2.5:打开web连接 open('GET',url,true);
+     xhr.open('GET',
+     'reg_do.php?name='+n,true);
+     // 2.6:发送请求
+     xhr.send(null);
+    }
+
+
+  </script>
+ 	</body>
+</html>

@@ -1,0 +1,60 @@
+moveUp:function(){
+  //为data拍照保存在before中
+  //遍历data中每一列
+    //调用moveUpInCol上移第c列
+  //为data拍照保存在after中
+  //如果before不等于after
+    //随机生成数
+    //更新页面
+},
+moveUpInCol:function(c){
+    //r从0开始,到r<RN-1结束，r每次递增1
+      //查找r行c列下方下一个不为0的位置nextr
+      //如果没找到,就退出循环
+      //否则  
+        //如果r位置c列的值为0
+          //将nextr位置c列的值赋值给r位置
+          //将nextr位置c列置为0
+          //r留在原地
+        //否则，如果r位置c列的值等于nextr位置的值          
+	  //将r位置c列的值*2
+          //将nextr位置c列的值置为0
+},
+getNextInCol:function(r,c){
+    //r+1
+    //循环，到<RN结束，r每次递增1
+      //如果r位置c列不等于0
+        //返回r
+    //(遍历结束)
+    //返回-1
+},
+moveDown:function(){
+  //为data拍照保存在before中
+  //遍历data中每一列
+    //调用moveDownInCol下移第c列
+  //为data拍照保存在after中
+  //如果before不等于after
+    //随机生成数
+    //更新页面
+},
+moveDownInCol:function(c){
+    //r从RN-1开始，到r>0结束，r每次递减1
+      //查找r位置c列上方前一个不为0的位置prevr
+      //如果没找到,就退出循环
+      //否则  
+        //如果r位置c列的值为0
+          //将prevr位置c列的值赋值给r位置
+          //将prevr位置c列置为0
+          //r留在原地
+        //否则，如果r位置c列的值等于prevr位置的值
+          //将r位置c列的值*2
+          //将prevr位置c列置为0
+},
+getPrevInCol:function(r,c){
+    //r-1
+    //循环，r到>=0结束，每次递减1
+      //如果r位置c列不等于0
+        //返回r
+    //(遍历结束)
+    //返回-1
+},

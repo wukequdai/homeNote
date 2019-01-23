@@ -1,0 +1,98 @@
+最快的安卓模拟器——Genymotion-genymotion中文官网
+
+使用phoneGap的云端打包服务：
+build.phonegap.com
+注册adobe账号，登录
+new app (首次使用，第二次就负责update)
+update是选择对应的压缩包，上传，等待云端编译完成，下载就可以使用
+
+一 、Ionic 介绍
+what？ 是一个强大的h5移动应用程序开发框架
+when？ 开发跨平台的移动设备应用程序
+
+特点：
+①完美融合ng
+②使用cordova调用底层硬件
+③设计风格漂亮，适合于移动端的用户体验
+④支持强大的cli(command line)
+⑤性能好 （放弃了ios6 Android4.1以下所有的版本支持）
+
+ionicframework.com 官网
+http://ionicons.com/ 官方支持的图标
+http://www.ionic.wang/  中文网站
+
+ionic = ng(数据处理) + cordova（底层操作） + ui（ionic支持的一套ui库）
+
+二、使用ionic
+1、搭建Ionic的开发环境
+第一类：cli（命令行）
+① 安装cordova ionic
+npm install -g cordova ionic
+②使用ionic指令去创建ionic的项目
+ionic start --v2 myApp tabs
+③运行
+cd myApp
+ionic serve
+
+第二类：引入对应的文件（ionic.bundle.js\ionic.css）
+
+快速设置viewport
+meta:vp
+
+
+二、css
+0、基本页面结构
+ion-header-bar ion-content ion-footer-bar
+注意：创建ng的模块，并启动ng
+
+1、button
+button/button-positive/button-block/button-full/button-outline/button-clear/button-small/button-large/button-icon/icon-left/icon-right/ion-ipod/button-bar
+
+2、list
+list/item/item-divider/item-icon-left/item-icon-right/badge/item-note/item-avator/item-thumbnail-left/item-thumbnail-right/list-inset
+
+3、card
+card/item/item-divider
+
+4、form
+list/item/item-input/input-label/item-stacked-label/item-floating-label
+
+5、tabs(多数情况，直接放在底部去使用)
+tabs/tab-item/tabs-icon-only/left/right/top/bottom
+
+6、grid
+row/col/col-10/25/50..
+col-offset-25/**
+col-center/top/bottom
+row-center/top/bottom
+
+
+每日一练：
+要求使用grid来展示一个列表，要求每行显示4条数据
+
+ng结合ionic的grid实现
+
+难点：ngRepeat
+
+分析：
+①在显示列表时候（ngRepeat），只显示$index为4的整数倍的数据（ngIf）
+0
+4
+8
+②在每一行中指定第二列、第三列、第四列
+0 1 2 3
+4 5 6 7
+8 9 10 11
+
+
+
+
+
+
+
+
+
+
+
+
+

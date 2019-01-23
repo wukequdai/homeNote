@@ -1,0 +1,229 @@
+屏幕截图、取色工具：FastStoneCapture
+1、边框
+	1、边框属性
+		边框是由四个三角形或梯形组成的
+	2、边框倒角
+		将边框的四个直角倒换成圆角
+		属性：
+			border-radius
+		取值：
+			1个值：四个角的倒角半径
+			2个值：...
+			3个值：...
+			4个值：左上 右上 右下 左下 倒角半径
+		取值单位：
+			1、px ：具体数值
+			2、% ：使用元素的宽度和高度的占比来作为倒角半径
+				如果 元素本身是 正方形，border-radius 指定为 50%的话，则当前元素为圆形
+		单独定义：
+			border-top-left-radius:左上角倒角半径
+			border-top-right-radius:右上
+			border-bottom-left-radius:左下
+			border-bottom-right-radius:右下
+	3、边框阴影
+		属性：box-shadow
+		取值：由多个值组成的值列表
+		取值：h-shadow v-shadow blur spread color inset
+			1、h-shadow ：(必须)
+				阴影的水平偏移距离
+				取值为正，则向右偏移
+				取值为负，则向左偏移
+			2、v-shadow ：(必须)
+				阴影的垂直偏移距离
+				取值为正，则向下偏移
+				取值为负，则向上偏移
+			3、blur
+				可选值，模糊距离
+			4、spread
+				可选值，阴影大小
+			5、color
+				可选值，颜色
+			6、inset
+				可选值，将默认的外阴影改为内阴影
+	4、轮廓
+		1、什么是轮廓
+			轮廓是绘制于元素周围的一条线，位于边框之外
+		2、属性
+			outline:width style color;
+			outline-width:
+			outline-style:
+			outline-color:
+
+			outline:none;或outline:0; 取消轮廓
+			border:none;或border:0;取消边框
+2、框模型
+	1、什么是框模型
+		框模型(Box Model),也称为"盒模型"，定义了元素框处理元素内容，内边距，边框和外边距的方式
+		框：页面元素皆为框
+		cellpadding:边框内边距 - 边框与内容之间的距离
+		cellspacing:边框外边距 - 单元格与单元格之间的距离
+
+		如果为元素设置了框模型属性的话，那么元素最终所占据的区域尺寸会发生改变，但不会影响内容区域尺寸
+
+		住人：300平米(内容区域尺寸)
+		院子：500米 (内边距)
+		搭院子砖头宽度：5米(边框)
+		院子外：周围 1公里(外边距) 
+		我家最终占地面积：300平米 + 500米 + 5米 + 1公里
+		住人：300平
+
+		元素占地尺寸(宽度) = 左右外边距 + 左右边框 + 左右内边距 + width
+		元素占地尺寸(高度) = 上下外边距 + 上下边框 + 上下内边距 + height
+	2、外边距
+		1、什么是外边距
+			围绕在元素边框周围的空白区域就是外边距
+			默认情况下，是不允许被其它元素所占据的
+		2、语法
+			属性：
+				margin:value;/*上下左右四个方向的外边距值*/
+				margin-top/right/bottom/left:value;
+			取值：
+				1、px ：具体数值
+				2、% ：宽和高的占比作为外边距
+				3、auto ：自动，只对左右外边距有效,控制块级元素水平居中对齐的。(前提是必须设置元素宽度)
+				4、取值为负数 ：移动元素 
+			简便写法：
+				margin:value;/*四个方向外边距值*/
+				margin:v1 v2;/*v1:上下   v2:左右*/
+				margin:v1 v2 v3;/*v1:上 v2:左右 v3:下*/
+				margin:v1 v2 v3 v4;/*上 右 下 左*/
+
+				ex:
+					margin:0 auto;
+					margin:5px 10px 3px;
+		3、具备默认外边距的元素
+			可以通过 css重写 的方式，更改具备默认外边距的元素
+		4、特殊问题
+			1、外边距合并
+				当两个垂直外边距相遇时，它们将形成一个外边距，合并后外边距的高度等于两个元素中外边距较大的值。
+			2、外边距溢出
+				在某些特殊情况下，给子元素增加垂直外边距时，有可能会作用到父元素上
+				1、父元素没有上下边框时
+				2、为第一个子元素(上外边距)或最后一个子元素(下外边距)设置外边距时
+
+				解决方案：
+				1、为父元素增加边框(透明)
+					弊端：会额外增加元素的高度
+				2、通过为父元素设置上内边距取代子元素的上外边距
+					弊端：会额外增加元素的高度
+				3、为父元素再增加一个子元素在第一个位置处
+					<table></table>
+				4、... ...
+			3、为行内元素和行内块元素设置上下外边距的异常
+				行内元素：对上下外边距无效
+				行内块元素：设置上下外边距时，整个一行都跟着变。
+	3、内边距
+		1、什么是内边距
+			内容区域和边框之间的距离
+			注意：内边距会扩大元素边框所占区域
+		2、语法
+			属性：
+				padding:value;/*四个方向内边距值*/
+				padding-top/right/bottom/left:value;
+			取值单位：
+				1、px
+				2、%
+				3、auto
+			简写方式：
+				padding:value;/*四个方向内边距*/
+				padding:v1 v2;/*上下  左右*/
+				padding:v1 v2 v3;/*上  左右  下*/
+				padding:v1 v2 v3 v4;/*上 右 下 左*/
+		3、注意问题
+			1、为行内元素和行内块元素增加上下内边距时，只影响当前元素自己，并不影响其他元素
+	4、box-sizing
+		重新指定框模型数据的计算模式
+		默认情况：
+		元素最终宽度=左右外边距+左右边框+左右内边距+w;
+		元素边框以及边框内宽度=左右边框+左右内边距+w;
+		ex:
+		div{
+			width:150px;
+			padding:15px 10px 3px 8px;
+			border:5px solid red;
+		}
+
+		边框内宽度：150+10+8+10 = 178px
+
+		属性：box-sizing
+		取值：
+			1、content-box
+				默认值
+				元素的padding和border会额外的加载width,height上
+			2、border-box
+				给定的width(height)值，会包含 padding以及border;
+3、背景属性
+	1、背景色
+		属性：background-color
+		取值：合法颜色值
+		注意：背景色是从边框位置处开始绘制
+	2、背景图像
+		属性：background-image
+		取值：url(图像地址)
+		ex:
+			background-image:url(images/a.jpg);
+	3、背景重复(平铺)
+		属性：background-repeat
+		取值：
+			1、repeat
+				默认值，垂直和水平两个方向都平铺
+			2、repeat-x
+				只在 水平方向 平铺
+			3、repeat-y
+				只在 垂直方向 平铺
+			4、no-repeat
+				不平铺
+	4、背景图片尺寸
+		属性：background-size
+		取值：
+			1、value1 value2
+				value1：宽度
+				value2：高度
+			2、value1% value2%
+				采用元素宽和高的占比，决定背景图大小
+			3、cover
+				覆盖
+				将背景图进行等比扩大，直到覆盖到元素所有区域为止。
+			4、contain
+				包含
+				将背景图进行等比扩大，直到右边或下边有一个边缘碰到元素位置
+	5、背景图片固定
+		背景图不会随着滚动条而发生位置的改变，永远都在可视化范围的固定位置处。
+		 属性：background-attachment
+		 取值：
+			1、scroll
+				默认值
+			2、fixed
+				固定
+	6、背景图像定位(位置)
+		属性：background-position
+		取值：
+			1、x y
+				x：背景图片水平偏移距离
+					取值为正，图片右移动
+					取值为负，图片左移动
+				y：背景图片垂直偏移距离
+					取值为正，图片下移动
+					取值为负，图片上移动
+			2、x% y%
+				采用元素的宽和高以及图片的宽和高计算出来的偏移量
+			3、关键字
+				x ：left/center/right
+				y ：top/center/bottom
+
+			ex:
+				background-position:left 15px;
+	7、背景属性
+		通过 background 属性设置所有有关背景的属性值
+		属性：background
+		取值：color url() repeat attachment position;
+		常用方式：
+			background:url() repeat position;
+			background:url(a.jpg) no-repeat 25px -15px;
+	8、CSS Sprites(雪碧图，精灵图)
+		将若干幅小图合并到一副大图中，根据实际使用需求，改变图像的位置，从而显示出向看的图片
+		如何显示 雪碧图 中的某一块图像???
+		1、根据要显示的图像创建一个一模一样大小的元素
+		2、为元素设置背景图，并且移动图像到显示区域
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>HTML中执行一段很耗时的JS任务</h1>
+  <button onclick="console.log(1)">第一个按钮</button>
+  <!--在UI主线程中执行耗时JS任务-->
+  <!--<script src="js/5.js"></script>-->
+  <script>
+    /*创建一个新的工作线程执行耗时的JS任务*/
+    var w = new Worker('js/5.js');
+    console.log('UI主线程执行后续的代码')
+  </script>
+  <button onclick="console.log(2)">第二个按钮</button>
+
+
+</body>
+</html>

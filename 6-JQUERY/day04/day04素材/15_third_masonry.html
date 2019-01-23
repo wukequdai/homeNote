@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> </title>
+  <meta charset="utf-8"/>
+  <style>.block{width:300px;}</style>
+ </head>
+
+ <body>
+  <h1>使用第三方插件函数</h1>
+  <h3>瀑布流插件</h3>
+  <div id="container">
+    <div class="block">1. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptatem accusamus nostrum ut expedita quibusdam repellat inventore odio. Facilis in neque quas commodi alias molestias suscipit amet quo placeat architecto.</div>
+    <div>Culpa reprehenderit commodi molestias hic inventore perferendis quisquam ex delectus molestiae iure et illo tempora distinctio eveniet laborum autem unde. Consequatur vel iusto incidunt aut ad consequuntur sunt eum minus.</div></div>
+    <div class="block">2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore possimus repellendus ipsam eligendi soluta illum expedita assumenda accusamus non culpa consequatur libero quod vitae corrupti atque ad ex nam necessitatibus.</div>
+    <div class="block">3. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam porro enim accusantium a aperiam reprehenderit distinctio quod dolor sunt rerum. Quod reprehenderit optio beatae fugit natus aspernatur vel ratione facere.</div>
+    <div>Possimus nulla deserunt qui aliquam fugit explicabo sed commodi non accusantium deleniti quaerat rerum molestias porro aperiam voluptas consequatur expedita provident adipisci ducimus ad magnam odit consequuntur! Voluptatum commodi dolor.</div>
+    <div>Perspiciatis facilis harum amet velit rerum excepturi hic laboriosam voluptatibus obcaecati pariatur nesciunt asperiores ab doloribus sequi assumenda aperiam fugiat impedit facere recusandae qui. Distinctio optio ipsum voluptatum deleniti rerum.</div></div>
+    <div class="block">4. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus vel explicabo dolorem dolore neque enim tempore pariatur incidunt saepe a cupiditate repellendus deserunt? Facilis deleniti quam dolore magni rerum. Facilis!</div>
+    <div class="block">5. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt repudiandae accusantium deleniti eius veritatis beatae nobis nihil aperiam repellat dignissimos fugit. Asperiores quia ad eligendi ratione non obcaecati! Doloremque.</div>
+    <div class="block">6. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia tenetur sequi qui repellat illum inventore voluptates possimus itaque architecto amet animi nulla. Dignissimos impedit maiores sapiente facilis quaerat est hic!</div>
+    <div>Eligendi obcaecati dolores eaque itaque illum rem dolorem deserunt ea quos cumque dignissimos nisi odit a minima modi quaerat vel eius culpa maiores sequi laborum porro at voluptatum voluptatibus expedita!</div></div>
+    <div class="block">7. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas soluta modi blanditiis at reprehenderit nobis expedita facilis nam culpa iusto quia odit earum minus nisi ad et molestias. Assumenda amet.</div>
+    <div>Dolorum nisi alias earum voluptatem provident nam voluptate incidunt tempora nobis quos quam ex sequi error rem deleniti aut magni impedit harum quo necessitatibus sit temporibus vel magnam omnis expedita?</div>
+    <div>Perspiciatis earum qui architecto iusto necessitatibus odit quaerat sed quas dolorum maxime cupiditate dignissimos adipisci quam eius explicabo ducimus vitae reiciendis iure distinctio provident consequatur in quasi eos. Quod sed.</div></div>
+    <div class="block">8. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis mollitia distinctio odit ipsum sed voluptatibus sequi autem dolorem vel quasi eaque aspernatur voluptatem neque dignissimos quod quis voluptate aperiam itaque.</div>
+    <div>Quo maxime modi aperiam sed ratione ex nesciunt ullam rerum laboriosam corporis alias rem iusto. Libero asperiores aut ipsa ad voluptatum eligendi ducimus sapiente quidem. Numquam est nemo consequatur voluptatem.</div></div>
+    <div class="block">9. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio consectetur saepe numquam dolorem in necessitatibus laborum harum rem porro amet fugiat laudantium sed ipsam. Cum tenetur natus repudiandae ullam facere.</div>
+    <div class="block">10. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis a ipsa dicta aliquid quo explicabo praesentium doloremque ducimus officia ab atque deserunt ad perferendis voluptatibus saepe modi aut est porro!</div>
+    <div>Dignissimos consequuntur inventore magni beatae enim cum quaerat excepturi pariatur at exercitationem repellat architecto. Possimus harum temporibus quibusdam sequi at alias quaerat dolor fugit vitae aliquid veniam sed totam aliquam!</div></div>
+    <div class="block">11. <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam at quis dolorum quos omnis tempore vitae praesentium aspernatur sequi hic in dolores voluptatem facilis culpa explicabo nulla natus rerum adipisci.</div>
+    <div>Deleniti cumque nemo inventore consequatur omnis nisi quas voluptas iure fuga porro libero dicta expedita magni quisquam saepe! Deserunt aut quas aliquam omnis libero fugit ea consequuntur quaerat porro laboriosam.</div></div>
+    <div class="block">12. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione laborum aut illum eos eligendi tenetur delectus velit consequuntur earum alias beatae asperiores autem a nulla sit illo deserunt veritatis quod.</div>
+  </div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="js/masonry.pkgd.js"></script>
+  <script>
+    $(".block").css("background",function(){
+      var r=Math.floor(Math.random()*256);
+      var g=Math.floor(Math.random()*256);
+      var b=Math.floor(Math.random()*256);
+      return "rgb("+r+","+g+","+b+")";
+    });
+    $("#container").masonry();
+  </script>
+ </body>
+</html>

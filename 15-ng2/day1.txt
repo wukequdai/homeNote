@@ -1,0 +1,110 @@
+一、TypeScript
+
+是由微软提出的一种语言，基于es6新特性，加上了typescript的新语法。
+
+google采用typescript进行angular的开发。
+
+
+二、angular（ng2-》angular  ng1-》angularJS）
+
+webComponent 是w3c推出一个组件化的标准
+
+ng2概念：
+模块 (module)
+组件 (component)
+模板 (template)
+元数据 (metadata)
+数据绑定 (data binding)
+指令 (directive)
+服务 (service)
+依赖注入 (dependency injection)
+
+搭建环境：
+①安装 vscode
+②将johnpapa插件放到 C:\Users\bjwsl-001\.vscode\extensions这个文件夹中，重启vscode即可
+③设置 到文件-》首选项-》设置 json文件--》选中要修改的项，进行编辑即可
+
+三、typescript
+在浏览器中运行时，将typescript转换为js
+
+网络连接： npm install typescript
+
+tsc
+在工程目录中，进到node_modules目录( cd node_modules),进到.bin目录（cd .bin）
+测试tsc是否可用： tsc -v 如果能查看版本号，说明tsc是可用的
+
+tsc ../../demo01_first.ts 将会在ts统一目录生成名称一样的js文件
+
+
+注意：现在多数浏览器是不能直接去执行typescript，需要借助于tsc (typescript compiler),将ts文件转换为浏览器能够识别的js文件
+
+基本数据类型：
+布尔类型、数字、字符串、数组、元祖、枚举。。。
+
+
+四、ng2
+
+准备工作：
+①将quickstart-master.zip解压缩，将文件夹放到工程目录
+②将node_modules.zip加压缩，放到工程中quickstart-master的根目录下，确认下：node_modules中的各个模块文件夹是否在quickstart-master的node_modules目录的根目录中
+③在终端中输入 :npm start 完成编译工作，并启动服务器
+
+package.json 配置npm的，执行的脚本和配置信息
+
+lite-server 是轻量级的服务器 ，它仅支持 web app, 它能够为你打开浏览器, 当你的html或是JavaScript文件变化时,它会识别到并自动识别，刷新浏览器对应的页面
+
+dependencies 指定当前应用所需要用到的模块列表
+
+
+
+1、创建组件：
+①在app目录创建目录 demo01
+②在demo01目录中创建组件：app.demo01.ts
+③在app.modules.ts文件中声明新创建的组件
+引入：
+import { demo01Component } from './demo01/app.demo01'
+声明：
+declarations: [ AppComponent,demo01Component ],
+④在其他地方，通过组件的selector使用组件
+<demo01></demo01>
+
+
+2、数据传递：
+①单向数据：从数据源到视图
+<p>Hello {{userName}}</p>
+<p> age from parentComponent is {{userAge}}</p>
+
+*ngFor *ngIf
+
+②单向数据：从视图到数据（事件绑定）
+(click)="send()"
+③双向数据绑定：
+
+
+
+
+3、路由的配置
+①创建路由配置文件
+const routes:Routes = [
+    {path:'demo01',component:demo01Component},
+    {path:'demo02',component:demo02Component},
+    {path:'',redirectTo:'/demo01',pathMatch:'full'}
+]
+
+②在module.ts中引入并添加到imports随对应的数组
+import {AppRoutingModule} from './app.route'
+
+
+ imports:      [AppRoutingModule, BrowserModule,FormsModule ],
+
+③设置显示组件的插座
+
+template: `
+  <router-outlet></router-outlet>
+  `,
+
+
+
+
+
+

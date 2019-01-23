@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="css/ionic.css"/>
+  <script src="js/ionic.bundle.js"></script>
+  <title></title>
+</head>
+<body ng-controller="myCtrl">
+
+<ion-header-bar>
+  <h1 class="title">header</h1>
+</ion-header-bar>
+
+<ion-content>
+  <button
+    ng-click="showConfirm()"
+    class="button button-positive">
+    显示确认窗口
+  </button>
+  <button ng-click="showAlert()"
+          class="button button-calm">alert
+  </button>
+  <button ng-click="showPrompt()"
+          class="button button-calm">prompt
+  </button>
+  <button ng-click="showCustomPopup()"
+    class="button button-energized">
+    custom
+  </button>
+</ion-content>
+
+<ion-footer-bar>
+  <h1 class="title">footer</h1>
+</ion-footer-bar>
+
+<script>
+  var app = angular.module('myApp', ['ionic']);
+
+  app.controller('myCtrl', ['$scope', '$ionicPopup',
+    function ($scope, $ionicPopup) {
+      $scope.showConfirm = function () {
+
+        $ionicPopup
+          .confirm({
+            title: '确定这样操作吗',
+            template: '执行该操作，将导致***'
+          })
+          .then(function (res) {
+            console.log(res);
+          })
+
+
+      }
+
+      $scope.showAlert = function () {
+        $ionicPopup
+          .alert({
+            title: '警告',
+            template: '没有操作权限！！'
+          })
+          .then(function (result) {
+            console.log(result);
+          })
+      }
+
+      $scope.showPrompt = function () {
+        $ionicPopup
+          .prompt({
+            title: '请输入',
+            template: '请输入要操作的密码'
+          })
+          .then(function (result) {
+            console.log(result);
+          })
+      }
+
+      //实现一个自定义弹窗
+      $scope.showCustomPopup = function () {
+        $ionicPopup
+          .show({
+            title: '请输入',
+            template: "123",
+            buttons: [
+              {text: '取消'},
+              {
+                text: '保存',
+                onTap: function () {
+                  return true;
+                }
+              }
+            ]
+          })
+          .then(function (result) {
+            console.log(result);
+          })
+        ;
+      }
+    }
+  ])
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*search*/
+			//var reply="wo cao，你家真大";
+			//var i=reply.search(/[我卧][草操艹槽]/);
+			//if(i!=-1){alert("发现敏感词!")}
+			//else{alert("clear!")}
+
+			/*match*/
+			//我去,我草,我去草,我草草,我去去
+			var str="那天，我去了她家，我说:'我草，你家真大'。她说，想和我去草地野餐。我草草的收拾了草地。她说:'我去去就来'";
+			var kwords=str.match(/我[去草]{1,2}/g);
+			console.log(kwords);
+		</script>
+	</body>
+</html>

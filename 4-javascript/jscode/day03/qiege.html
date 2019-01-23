@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>Doctment</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+	<ul id="names">
+		<li>dome1</li>
+		<li>eome2</li>
+		<li>dome3</li>
+		<li>come4</li>
+		<li>aome5</li>
+		<li>gome6</li>
+	</ul>
+	<script type="text/javascript">
+		var name=names.innerHTML
+							.replace(/^\s*<li>|<\/li>\s*$/g,"")
+							.split(/<\/li>\s*<li>/)
+							.sort();
+		
+		names.innerHTML="<li>"+name.join("</li><li>")+"</li>";
+		console.log(String(name));
+	</script>
+</body>
+</html>

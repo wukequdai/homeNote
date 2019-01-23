@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://code.tarena.com.cn/WEBCode/wfd1608/09_DOM/day03/3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>联动菜单</title>
+
+<script>
+	/*使用 HTML DOM 的方式实现联动菜单*/
+	var categories=[
+{"id":10,"name":'男装',"children":[
+	{"id":101,"name":'正装'},
+	{"id":102,"name":'T恤'},
+	{"id":103,"name":'裤衩'}
+]},
+{"id":20,"name":'女装',"children":[
+	{"id":201,"name":'短裙'},
+	{"id":202,"name":'连衣裙'},
+	{"id":203,"name":'裤子',"children":[
+		{"id":2031,"name":'长裤'},
+		{"id":2031,"name":'九分裤'},
+		{"id":2031,"name":'七分裤'}
+	]},
+]},
+{"id":30,"name":'童装',"children":[
+	{"id":301,"name":'帽子'},
+	{"id":302,"name":'套装',"children":[
+		{"id":3021,"name":"0-3岁"},
+		{"id":3021,"name":"3-6岁"},
+		{"id":3021,"name":"6-9岁"},
+		{"id":3021,"name":"9-12岁"}
+	]},
+	{"id":303,"name":'手套'}
+]}
+];
+	
+</script>
+</head>
+<body>
+	<div id="category"><select><option>-请选择-</option><option value="10">男装</option><option value="20">女装</option><option value="30">童装</option></select></div>
+	<script>
+		function createSelect(arr){
+			//创建select，保存在sel中
+			var sel=document.createElement("select");
+			//创建一个option,设置text为"-请选择-"，直接添加到sel中
+			sel.add(new Option("-请选择-"));
+			//遍历arr中每个商品分类
+			for(var i=0;i<arr.length;i++){
+				//创建一个option,设置text为当前分类的name属性，设置value为当前分类的id属性，直接添加到sel中
+				sel.add(new Option(arr[i].name,arr[i].id));
+			}//(遍历结束)
+			//为sel添加onchange事件处理函数:
+			sel.onchange=function(){
+				//反复: 只要this不是当前sel父元素的最后一个
+				while(this!=this.parentNode.lastChild){
+					//删除当前sel的父元素下的最后一个子元素
+					this.parentNode.removeChild(
+						this.parentNode.lastChild
+					);
+				}
+				//获得当前sel选中项的下标i
+				//arr中找i-1位置的商品分类
+				//利用商品分类的children子数组创建下一个select
+				createSelect(
+					arr[this.selectedIndex-1].children
+				);
+			}
+			//将sel追加到id为category的div下
+			document.getElementById("category")
+			        .appendChild(sel);
+		}
+		createSelect(categories);
+	</script>
+
+
+</body></html>

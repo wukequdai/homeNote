@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态创建表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; border-collapse:collapse;
+		text-align:center;
+	}
+	td,th{border:1px solid #ccc}
+</style>
+
+</head>
+<body>
+	<div id="data">
+	</div>
+  <script>
+	+function(){
+		var json='[{"ename":"Tom", "salary":3500, "age":25},{"ename":"John", "salary":3800, "age":28},{"ename":"Mary", "salary":3600, "age":25}]';
+		var emps=eval(json);//将json转换到内存对象中
+		//创建table
+		var table=document.createElement("table");
+		//创建thead
+		//var thead=document.createElement("thead");
+		//table.appendChild(thead);//将thead追加到table中
+		var thead=table.createTHead();
+		//var tr=document.createElement("tr");
+		//thead.appendChild(tr);
+		var tr=thead.insertRow();
+		//遍历emps中第一个对象的每个属性
+		/*for(var key in emps[0]){
+			var th=document.createElement("th");
+			th.innerHTML=key;//设置th的内容为当前属性名
+			tr.appendChild(th);
+		}*/
+		for(tr.insertCell().innerHTML in emps[0]);
+		//var tbody=document.createElement("tbody");
+		//table.appendChild(tbody);
+		var tbody=table.createTBody();
+		for(var i=0;i<emps.length;i++){
+			//var tr=document.createElement("tr");
+			//tbody.appendChild(tr);
+			var tr=tbody.insertRow();
+			for(var key in emps[i]){
+				//var td=document.createElement("td");
+				//td.innerHTML=emps[i][key];
+				//tr.appendChild(td);
+				tr.insertCell().innerHTML=emps[i][key];
+			}
+		}
+		document.getElementById("data").appendChild(table);
+	}();
+  </script>
+</body>
+</html>

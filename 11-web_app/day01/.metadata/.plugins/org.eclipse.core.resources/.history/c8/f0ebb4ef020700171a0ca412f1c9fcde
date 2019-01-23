@@ -1,0 +1,12 @@
+package com.tarena.demo05_callandroid;
+
+import android.content.Context;
+
+public class WebInterface {
+	Context mContext;
+
+	//构造函数，构造函数名称必须和类的名称一致
+	WebInterface(Context c){
+		mContext = c;
+	}
+}

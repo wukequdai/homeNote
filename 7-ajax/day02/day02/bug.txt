@@ -1,0 +1,17 @@
+BUG
+apache启动不成功
+根源:端口冲突
+解决:把冲突程序停止
+
+
+BUG
+原因：名称冲突
+mysql系统自己使用一些单词，
+你是不能用.
+count
+create table std(
+ id int
+);
+create table t_std(
+ id int
+);
